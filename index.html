@@ -2209,7 +2209,7 @@
             `;
           });
         } else {
-          wsGrid.innerHTML = `<="empty-tab-msg">No workshops in this direction yet</div>`;
+          wsGrid.innerHTML = `<div class="empty-tab-msg">No workshops in this direction yet</div>`;
         }
 
         // 3. Partners Tab (Independent Brands with own catalogue)
@@ -2231,7 +2231,7 @@
             `;
           });
         } else {
-          partGrid.innerHTML = `<="empty-tab-msg">No partners in this direction yet</div>`;
+          partGrid.innerHTML = `<div class="empty-tab-msg">No partners in this direction yet</div>`;
         }
 
         // 4. Schemes Tab
@@ -2255,7 +2255,7 @@
             `;
           });
         } else {
-          schGrid.innerHTML = `<="empty-tab-msg">No schemes in this direction yet</div>`;
+          schGrid.innerHTML = `<div class="empty-tab-msg">No schemes in this direction yet</div>`;
         }
 
         // Default active tab is items
@@ -2289,7 +2289,7 @@
           `;
         });
       } else {
-        prodGrid.innerHTML = `<="empty-tab-msg">No items in this direction yet</div>`;
+        prodGrid.innerHTML = `<div class="empty-tab-msg">No items in this direction yet</div>`;
       }
     }
 
@@ -2310,7 +2310,7 @@
           } else {
             filled = ((r + c) % 3 === 0) && (r % 2 === 0);
           }
-          html += `<="chart-cell ${filled ? 'filled' : ''}"></div>`;
+          html += `<div class="chart-cell ${filled ? 'filled' : ''}"></div>`;
         }
       }
       return html;
@@ -2486,7 +2486,7 @@
           `;
         });
       } else {
-        catGrid.innerHTML = `<="empty-tab-msg">No products in this catalogue yet</div>`;
+        catGrid.innerHTML = `<div class="empty-tab-msg">No products in this catalogue yet</div>`;
       }
 
       showView('partner-detail');
@@ -2543,7 +2543,7 @@
           `;
         });
       } else {
-        grid.innerHTML = `<="empty-tab-msg">No workshops in this direction yet</div>`;
+        grid.innerHTML = `<div class="empty-tab-msg">No workshops in this direction yet</div>`;
       }
     }
 
@@ -2598,7 +2598,7 @@
           `;
         });
       } else {
-        grid.innerHTML = `<="empty-tab-msg">No partners in this direction yet</div>`;
+        grid.innerHTML = `<div class="empty-tab-msg">No partners in this direction yet</div>`;
       }
     }
 
@@ -2656,7 +2656,7 @@
           `;
         });
       } else {
-        relGrid.innerHTML = `<="empty-tab-msg">No items catalogued with this pattern yet</div>`;
+        relGrid.innerHTML = `<div class="empty-tab-msg">No items catalogued with this pattern yet</div>`;
       }
 
       showView('pattern-detail');
