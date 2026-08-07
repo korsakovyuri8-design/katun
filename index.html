@@ -1,0 +1,2696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KATUN — Traditional Folk Knitwear</title>
+  
+  <!-- EB Garamond & Inter Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* DESIGN TOKENS */
+    :root {
+      --bg-cream: #F7F3ED;
+      --card: #EBE3D6;
+      --ink: #1A1614;
+      --madder: #7B1612;
+      --rule: #B8A597;
+      
+      --font-serif: 'EB Garamond', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* RESET & BASE */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg-cream);
+    }
+
+    /* TYPOGRAPHY UTILS */
+    h1, h2, h3, h4, .serif {
+      font-family: var(--font-serif);
+      font-weight: 400;
+    }
+
+    /* LAYOUT CONTAINERS & RULES */
+    .container {
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        padding-left: 80px;
+        padding-right: 80px;
+      }
+    }
+
+    .section-divider {
+      border: 0;
+      border-top: 1px solid var(--rule);
+      width: 100%;
+    }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .header-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wordmark {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    @media (min-width: 768px) {
+      .nav {
+        gap: 24px;
+      }
+    }
+
+    .nav-link {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--madder);
+    }
+
+    /* BREADCRUMBS */
+    .breadcrumbs-bar {
+      padding-top: 24px;
+      padding-bottom: 8px;
+    }
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #665E58;
+    }
+
+    .breadcrumb-item {
+      cursor: pointer;
+      color: #665E58;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .breadcrumb-item:hover {
+      color: var(--madder);
+    }
+
+    .breadcrumb-current {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* COLOR BLOCK PLACEHOLDERS */
+    .color-block {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: rgba(26, 22, 20, 0.4);
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      user-select: none;
+      border-radius: 2px;
+    }
+
+    /* VIEW MANAGEMENT */
+    .view-section {
+      display: none;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    /* ==========================================
+       VIEW 1: HOME
+       ========================================== */
+    .hero {
+      padding-top: 60px;
+      padding-bottom: 60px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding-top: 90px;
+        padding-bottom: 90px;
+      }
+    }
+
+    .hero-statement {
+      font-size: 28px;
+      line-height: 1.3;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .hero-statement {
+        font-size: 38px;
+      }
+    }
+
+    .home-grid-section {
+      padding-top: 60px;
+      padding-bottom: 80px;
+    }
+
+    .country-home-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (min-width: 1024px) {
+      .country-home-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .country-card {
+      background-color: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--ink);
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .country-card:hover {
+      border-color: var(--madder);
+    }
+
+    .country-card-media {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+    }
+
+    .country-card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    @media (min-width: 768px) {
+      .country-card-body {
+        padding: 20px;
+      }
+    }
+
+    .country-card-title {
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .country-card-caption {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #665E58;
+    }
+
+    /* ==========================================
+       VIEW 2: COUNTRY PAGE
+       ========================================== */
+    .country-banner {
+      margin-top: 16px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .country-banner-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .country-banner-content {
+        grid-template-columns: 300px 1fr;
+        gap: 48px;
+      }
+    }
+
+    .country-banner-media {
+      width: 100%;
+      height: 180px;
+    }
+
+    .country-banner-text h1 {
+      font-size: 44px;
+      margin-bottom: 12px;
+      line-height: 1.1;
+    }
+
+    .country-banner-text p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #38322E;
+      max-width: 720px;
+    }
+
+    .region-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 2px;
+      border: 1px solid var(--rule);
+      background-color: transparent;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .tag-pill.active, .tag-pill:hover {
+      background-color: var(--ink);
+      color: var(--bg-cream);
+      border-color: var(--ink);
+    }
+
+    /* TAB SWITCHER */
+    .tabs-row {
+      display: flex;
+      gap: 24px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 40px;
+      overflow-x: auto;
+    }
+
+    @media (min-width: 768px) {
+      .tabs-row {
+        gap: 32px;
+      }
+    }
+
+    .tab-btn {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      color: #665E58;
+      background: none;
+      border: none;
+      padding-bottom: 12px;
+      cursor: pointer;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--ink);
+    }
+
+    .tab-btn.active {
+      color: var(--ink);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--madder);
+    }
+
+    .tab-content {
+      display: none;
+      padding-bottom: 60px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* TAB GRIDS */
+    .workshops-grid, .partners-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .workshops-grid, .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .workshop-card, .partner-card {
+      background-color: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .workshop-card:hover, .partner-card:hover {
+      border-color: var(--madder);
+    }
+
+    .workshop-media, .partner-media {
+      width: 70px;
+      height: 70px;
+      flex-shrink: 0;
+    }
+
+    .card-type-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rule);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .workshop-info h3, .partner-info h3 {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .workshop-info p, .partner-info p {
+      font-size: 12px;
+      color: #665E58;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* TAB: ITEMS */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (min-width: 1024px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .product-card {
+      background-color: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .product-card:hover {
+      border-color: var(--madder);
+    }
+
+    .product-card-media {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+    }
+
+    .product-card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .product-card-title {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .product-card-price {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--madder);
+      margin-top: 2px;
+    }
+
+    .product-card-meta {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #665E58;
+      margin-top: 4px;
+    }
+
+    /* TAB: SCHEMES (PATTERNS) */
+    .schemes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (min-width: 1024px) {
+      .schemes-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .scheme-card {
+      background-color: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .scheme-card:hover {
+      border-color: var(--madder);
+    }
+
+    .scheme-chart-preview {
+      background-color: var(--bg-cream);
+      border: 1px solid var(--rule);
+      padding: 12px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .scheme-16-chart {
+      display: grid;
+      grid-template-columns: repeat(16, 10px);
+      grid-template-rows: repeat(16, 10px);
+      gap: 1px;
+      background-color: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    @media (min-width: 480px) {
+      .scheme-16-chart {
+        grid-template-columns: repeat(16, 12px);
+        grid-template-rows: repeat(16, 12px);
+      }
+    }
+
+    .scheme-card-body {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-align: left;
+    }
+
+    .scheme-card-title {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .scheme-card-price {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--madder);
+      margin-top: 2px;
+    }
+
+    .scheme-card-meta {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #665E58;
+      margin-top: 2px;
+    }
+
+    /* EMPTY TAB STATE */
+    .empty-tab-msg {
+      text-align: center;
+      padding: 60px 0;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      color: var(--rule);
+      grid-column: 1 / -1;
+    }
+
+    .opening-soon-block {
+      padding: 60px 20px;
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .opening-soon-title {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .opening-soon-desc {
+      font-size: 14px;
+      color: #665E58;
+      margin-bottom: 32px;
+    }
+
+    .opening-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      background-color: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: var(--ink);
+    }
+
+    .btn-madder {
+      background-color: var(--madder);
+      color: var(--bg-cream);
+      border: none;
+      padding: 14px 24px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: opacity 0.15s ease;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn-madder:hover {
+      opacity: 0.9;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      padding: 12px 24px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--ink);
+      color: var(--bg-cream);
+    }
+
+    .btn-outline-madder {
+      background-color: transparent;
+      color: var(--madder);
+      border: 1px solid var(--madder);
+      padding: 12px 24px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .btn-outline-madder:hover {
+      background-color: var(--madder);
+      color: var(--bg-cream);
+    }
+
+    .maker-cta-banner {
+      padding: 40px 0;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .maker-cta-banner a {
+      color: var(--madder);
+      text-decoration: underline;
+      margin-left: 6px;
+      cursor: pointer;
+    }
+
+    /* ==========================================
+       VIEW 3: PRODUCT PAGE
+       ========================================== */
+    .product-detail-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding-top: 24px;
+      padding-bottom: 60px;
+    }
+
+    @media (min-width: 768px) {
+      .product-detail-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+      }
+    }
+
+    .product-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .product-main-media {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+    }
+
+    .product-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .product-thumb-media {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .product-thumb-media.active {
+      border-color: var(--ink);
+    }
+
+    .product-info-panel {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-title {
+      font-size: 38px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--madder);
+      margin-bottom: 12px;
+    }
+
+    .product-origin {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #665E58;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 24px;
+    }
+
+    .product-origin-link {
+      color: var(--madder);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .add-to-cart-btn {
+      width: 100%;
+      padding: 16px;
+      margin-bottom: 32px;
+    }
+
+    .spec-table {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 13px;
+    }
+
+    .spec-label {
+      color: #665E58;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 11px;
+    }
+
+    .spec-value {
+      color: var(--ink);
+      text-align: right;
+    }
+
+    /* Pattern Section (Product Teaser) */
+    .pattern-section {
+      padding-top: 48px;
+      padding-bottom: 80px;
+    }
+
+    .pattern-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 720px;
+    }
+
+    .pattern-heading {
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    .pattern-body-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #38322E;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chart-teaser-container {
+      width: 120px;
+      height: 120px;
+      max-width: 120px;
+      max-height: 120px;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      background-color: var(--bg-cream);
+    }
+
+    .chart-teaser-grid {
+      display: grid;
+      grid-template-columns: repeat(20, 8px);
+      grid-template-rows: repeat(20, 8px);
+      gap: 1px;
+      background-color: var(--rule);
+      filter: blur(2.5px);
+      transform: scale(1.1);
+    }
+
+    /* ==========================================
+       VIEW 4: WORKSHOP / PARTNER DETAIL PAGE
+       ========================================== */
+    .partner-page-section {
+      padding-top: 16px;
+      padding-bottom: 80px;
+    }
+
+    .partner-banner {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .partner-banner-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    @media (min-width: 768px) {
+      .partner-banner-content {
+        grid-template-columns: 300px 1fr;
+        gap: 48px;
+      }
+    }
+
+    .partner-banner-media {
+      width: 100%;
+      height: 220px;
+    }
+
+    .partner-banner-text h1 {
+      font-size: 44px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .partner-type-tag {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rule);
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .partner-meta-row {
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #665E58;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .partner-story {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #38322E;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .partner-pattern-line {
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--madder);
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .partner-catalogue-title {
+      font-size: 28px;
+      margin-bottom: 24px;
+      margin-top: 40px;
+    }
+
+    .partner-actions-bottom {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    @media (min-width: 480px) {
+      .partner-actions-bottom {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .back-link {
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: #665E58;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* ==========================================
+       GLOBAL LIST DIRECTORY VIEWS
+       ========================================== */
+    .directory-section {
+      padding-top: 40px;
+      padding-bottom: 80px;
+    }
+
+    .directory-header {
+      margin-bottom: 32px;
+    }
+
+    .directory-header h1 {
+      font-size: 40px;
+      margin-bottom: 8px;
+    }
+
+    .directory-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    /* ==========================================
+       VIEW 7: PATTERN PAGE (NEW VIEW)
+       ========================================== */
+    .pattern-view-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding-top: 32px;
+      padding-bottom: 60px;
+    }
+
+    @media (min-width: 768px) {
+      .pattern-view-layout {
+        grid-template-columns: 340px 1fr;
+        gap: 64px;
+      }
+    }
+
+    .full-chart-box {
+      background-color: var(--card);
+      border: 1px solid var(--rule);
+      padding: 20px;
+      display: inline-block;
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .full-knitting-chart {
+      display: grid;
+      grid-template-columns: repeat(20, 12px);
+      grid-template-rows: repeat(20, 12px);
+      gap: 1px;
+      background-color: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    @media (min-width: 480px) {
+      .full-knitting-chart {
+        grid-template-columns: repeat(20, 14px);
+        grid-template-rows: repeat(20, 14px);
+      }
+    }
+
+    .chart-cell {
+      background-color: var(--bg-cream);
+    }
+
+    .chart-cell.filled {
+      background-color: var(--ink);
+    }
+
+    .pattern-info-panel h1 {
+      font-size: 40px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .pattern-meta-sub {
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #665E58;
+      margin-bottom: 24px;
+    }
+
+    .pattern-origin-story {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #38322E;
+      margin-bottom: 32px;
+      max-width: 680px;
+    }
+
+    .pattern-purchase-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .pattern-price-tag {
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--madder);
+      font-family: var(--font-serif);
+    }
+
+    .related-items-section {
+      padding-top: 40px;
+      padding-bottom: 80px;
+    }
+
+    .related-items-title {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: var(--madder);
+      color: var(--bg-cream);
+      padding-top: 60px;
+      padding-bottom: 60px;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 320px;
+    }
+
+    .footer-wordmark {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bg-cream);
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: #E2CECA;
+    }
+
+    .footer-nav-group {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    @media (min-width: 768px) {
+      .footer-nav-group {
+        gap: 60px;
+      }
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #D3A7A4;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .footer-link {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--bg-cream);
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s ease;
+    }
+
+    .footer-link:hover {
+      opacity: 0.75;
+    }
+
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(247, 243, 237, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 300;
+      color: #E2CECA;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  .nav-join { position: relative; }
+.join-dropdown {
+  display: none; position: absolute; right: 0; top: 26px;
+  background: var(--bg-cream); border: 1px solid var(--rule);
+  border-radius: 2px; min-width: 150px; z-index: 10;
+}
+.join-dropdown.open { display: block; }
+.join-dropdown a {
+  display: block; padding: 10px 16px; font-size: 13px;
+  color: var(--ink); text-decoration: none; cursor: pointer;
+  border-bottom: 1px solid var(--rule);
+}
+.join-dropdown a:last-child { border-bottom: none; }
+.join-dropdown a:hover { color: var(--madder); }  
+  </style>
+</head>
+<body>
+
+  <div class="page-wrapper">
+    
+    <!-- HEADER -->
+    <header>
+      <div class="container">
+        <div class="header-inner">
+          <a onclick="showView('home')" class="wordmark">KATUN</a>
+          <nav class="nav">
+  <a onclick="showView('all-workshops')" class="nav-link">Makers</a>
+  <a onclick="alert('Patterns archive opening soon.')" class="nav-link">Patterns</a>
+  <span class="nav-join">
+    <a onclick="toggleJoin(event)" class="nav-link">Join ▾</a>
+    <div id="join-dropdown" class="join-dropdown">
+      <a onclick="alert('Maker applications open.')">For Makers</a>
+      <a onclick="alert('Wholesale catalog on request.')">For Shops</a>
+    </div>
+  </span>
+  <a onclick="alert('Cart is empty.')" class="nav-link">Cart (0)</a>
+</nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main>
+
+      <!-- ==========================================
+           VIEW 1: HOME
+           ========================================== -->
+      <section id="view-home" class="view-section active">
+        
+        <div class="container">
+          <div class="hero">
+            <h1 class="hero-statement serif">
+              A living index of regional folk knitwear, preserved by master artisans.
+            </h1>
+          </div>
+        </div>
+
+        <hr class="section-divider" />
+
+        <div class="container">
+          <div class="home-grid-section">
+            <div class="country-home-grid">
+              
+              <!-- Montenegro -->
+              <div class="country-card" onclick="openCountry('montenegro')">
+                <div class="country-card-media">
+                  <div class="color-block" style="background-color: #8C2D19; color: #F7F3ED;">Montenegro</div>
+                </div>
+                <div class="country-card-body">
+                  <h2 class="country-card-title serif">Montenegro</h2>
+                  <span class="country-card-caption">1 workshop · 4 items</span>
+                </div>
+              </div>
+
+              <!-- Serbia -->
+              <div class="country-card" onclick="openCountry('serbia')">
+                <div class="country-card-media">
+                  <div class="color-block" style="background-color: #3B4836; color: #F7F3ED;">Serbia</div>
+                </div>
+                <div class="country-card-body">
+                  <h2 class="country-card-title serif">Serbia</h2>
+                  <span class="country-card-caption">Opening soon</span>
+                </div>
+              </div>
+
+              <!-- Georgia -->
+              <div class="country-card" onclick="openCountry('georgia')">
+                <div class="country-card-media">
+                  <div class="color-block" style="background-color: #A66E38; color: #F7F3ED;">Georgia</div>
+                </div>
+                <div class="country-card-body">
+                  <h2 class="country-card-title serif">Georgia</h2>
+                  <span class="country-card-caption">1 workshop · 1 partner · 7 items</span>
+                </div>
+              </div>
+
+              <!-- Kyrgyzstan -->
+              <div class="country-card" onclick="openCountry('kyrgyzstan')">
+                <div class="country-card-media">
+                  <div class="color-block" style="background-color: #4A5B6A; color: #F7F3ED;">Kyrgyzstan</div>
+                </div>
+                <div class="country-card-body">
+                  <h2 class="country-card-title serif">Kyrgyzstan</h2>
+                  <span class="country-card-caption">Opening soon</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           VIEW 2: COUNTRY PAGE (4 SEPARATE TABS)
+           ========================================== -->
+      <section id="view-country" class="view-section">
+        
+        <div class="container">
+          <div class="breadcrumbs-bar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
+              <span>/</span>
+              <span class="breadcrumb-current" id="country-breadcrumb-name">Country</span>
+            </div>
+          </div>
+
+          <div class="country-banner">
+            <div class="country-banner-content">
+              <div class="country-banner-media" id="country-banner-media">
+                <!-- Color Block -->
+              </div>
+              <div class="country-banner-text">
+                <h1 id="country-title" class="serif">Country Name</h1>
+                <p id="country-desc">Ornament tradition description placeholder...</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="region-tags" id="country-region-tags">
+            <!-- Dynamic Region Tags -->
+          </div>
+
+          <!-- TAB SWITCHER ROW (4 TABS) -->
+          <div class="tabs-row" id="country-tabs-row">
+            <button class="tab-btn active" onclick="switchTab('items')">Items</button>
+            <button class="tab-btn" onclick="switchTab('workshops')">Workshops</button>
+            <button class="tab-btn" onclick="switchTab('partners')">Partners</button>
+            <button class="tab-btn" onclick="switchTab('schemes')">Schemes</button>
+          </div>
+        </div>
+
+        <div class="container">
+          
+          <!-- TAB CONTENT 1: ITEMS (ACTIVE BY DEFAULT) -->
+          <div id="tab-items" class="tab-content active">
+            <div class="products-grid" id="country-products-grid">
+              <!-- Items dynamic content -->
+            </div>
+          </div>
+
+          <!-- TAB CONTENT 2: WORKSHOPS (KATUN MAKERS ONLY) -->
+          <div id="tab-workshops" class="tab-content">
+            <div class="workshops-grid" id="country-workshops-grid">
+              <!-- Workshops dynamic content -->
+            </div>
+          </div>
+
+          <!-- TAB CONTENT 3: PARTNERS (INDEPENDENT BRANDS ONLY) -->
+          <div id="tab-partners" class="tab-content">
+            <div class="partners-grid" id="country-partners-grid">
+              <!-- Partners dynamic content -->
+            </div>
+          </div>
+
+          <!-- TAB CONTENT 4: SCHEMES -->
+          <div id="tab-schemes" class="tab-content">
+            <div class="schemes-grid" id="country-schemes-grid">
+              <!-- Schemes dynamic content -->
+            </div>
+          </div>
+
+          <!-- OPENING SOON STATE (SERBIA & KYRGYZSTAN) -->
+          <div id="country-opening-content" style="display: none;">
+            <div class="opening-soon-block">
+              <h2 class="opening-soon-title serif">This direction is opening</h2>
+              <p class="opening-soon-desc">We are currently cataloging workshops and reviving regional patterns in this region. Leave your details to get notified of the first drop.</p>
+              
+              <form class="opening-form" onsubmit="event.preventDefault(); alert('Thank you. We will notify you when this directory opens.');">
+                <div class="form-group">
+                  <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                  <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" placeholder="Knitting technique or region interest (optional)">
+                </div>
+                <button type="submit" class="btn-madder">Notify Me On Launch</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+        <hr class="section-divider" />
+
+        <div class="container">
+          <div class="maker-cta-banner">
+            <span>Are you a traditional maker from <strong id="country-cta-name">this country</strong>?</span>
+            <a onclick="alert('Join application form')">Apply to join KATUN</a>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           VIEW 3: PRODUCT PAGE (TEASER PATTERN BLOCK)
+           ========================================== -->
+      <section id="view-product" class="view-section">
+        
+        <div class="container">
+          <div class="breadcrumbs-bar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
+              <span>/</span>
+              <span class="breadcrumb-item" id="product-breadcrumb-country" onclick="openCountry(currentProduct.countryId)">Country</span>
+              <span>/</span>
+              <span class="breadcrumb-current" id="product-breadcrumb-title">Item Name</span>
+            </div>
+          </div>
+
+          <div class="product-detail-layout">
+            
+            <!-- Left: Gallery -->
+            <div class="product-gallery">
+              <div class="product-main-media" id="product-main-media">
+                <!-- Color Block -->
+              </div>
+              <div class="product-thumbnails" id="product-thumbnails">
+                <!-- 3 Small Thumbnails -->
+              </div>
+            </div>
+
+            <!-- Right: Info Panel -->
+            <div class="product-info-panel">
+              <h1 class="product-title serif" id="product-title">Product Title</h1>
+              <div class="product-price" id="product-price">€000</div>
+              <div class="product-origin" id="product-origin">
+                Made by <span id="product-origin-link" class="product-origin-link">Workshop</span>, <span id="product-origin-region">Region</span>, <span id="product-origin-country">Country</span>
+              </div>
+
+              <button class="btn-madder add-to-cart-btn" onclick="alert('Added to cart.')">Add to cart</button>
+
+              <div class="spec-table">
+                <div class="spec-row">
+                  <span class="spec-label">Material</span>
+                  <span class="spec-value" id="spec-material">100% Unbleached Mountain Wool</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Size</span>
+                  <span class="spec-value" id="spec-size">One Size (Fits M-L)</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Care</span>
+                  <span class="spec-value" id="spec-care">Hand wash cold with wool detergent</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Made in</span>
+                  <span class="spec-value" id="spec-days">14 days</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Shipping</span>
+                  <span class="spec-value" id="spec-shipping">Ships directly from artisan studio</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <hr class="section-divider" />
+
+        <!-- Pattern Teaser Section (No visible full chart) -->
+        <div class="container">
+          <div class="pattern-section">
+            <div class="pattern-layout">
+              <h2 class="pattern-heading serif" id="teaser-pattern-heading">Pattern Name</h2>
+              
+              <div class="pattern-body-text">
+                <p id="teaser-p1">
+                  Originating from high-altitude shepherd communities recorded in regional museum ethnography collections.
+                </p>
+                <p id="teaser-p2">
+                  Revived directly from preserved garments, maintaining original grid proportions and traditional stitch count density.
+                </p>
+              </div>
+
+              <!-- Small Blurred Teaser -->
+              <div class="chart-teaser-container">
+                <div class="chart-teaser-grid" id="chart-teaser-grid">
+                  <!-- Blurred Grid Generated JS -->
+                </div>
+              </div>
+
+              <div>
+                <button class="btn-outline-madder" id="get-full-chart-btn" onclick="openPatternPage(currentProduct.schemeId)">
+                  Get the full chart — €14
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           VIEW 4: WORKSHOP / PARTNER DETAIL PAGE
+           ========================================== -->
+      <section id="view-partner-detail" class="view-section">
+        
+        <div class="container">
+          <div class="breadcrumbs-bar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
+              <span>/</span>
+              <span class="breadcrumb-item" id="partner-breadcrumb-country" onclick="openCountry(currentEntity.countryId)">Country</span>
+              <span>/</span>
+              <span class="breadcrumb-current" id="partner-breadcrumb-name">Entity Name</span>
+            </div>
+          </div>
+
+          <div class="partner-page-section">
+            <div class="partner-banner">
+              <div class="partner-banner-content">
+                <div class="partner-banner-media" id="partner-banner-media">
+                  <!-- Color block -->
+                </div>
+                <div class="partner-banner-text">
+                  <h1 id="partner-title" class="serif">Entity Name</h1>
+                  <span id="partner-type-tag" class="partner-type-tag">WORKSHOP</span>
+                  
+                  <div class="partner-meta-row" id="partner-meta-row">
+                    City, Country · Founded Year · Technique
+                  </div>
+
+                  <div class="partner-story">
+                    <p id="partner-p1">Paragraph 1 story...</p>
+                    <p id="partner-p2">Paragraph 2 story...</p>
+                    <p id="partner-pattern-line" class="partner-pattern-line" style="display: none;">
+                      Works with patterns from <span id="partner-pattern-region">Region</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr class="section-divider" style="margin-top: 40px; margin-bottom: 40px;" />
+
+            <!-- CATALOGUE SECTION -->
+            <div class="partner-catalogue-area">
+              <h2 class="partner-catalogue-title serif">Catalogue</h2>
+              <div class="products-grid" id="partner-products-grid">
+                <!-- Products for this workshop/partner -->
+              </div>
+            </div>
+
+            <div class="partner-actions-bottom">
+              <div id="partner-website-container">
+                <a id="partner-website-link" href="#" target="_blank" class="btn-outline" style="display: none;">Visit their own site</a>
+              </div>
+              <a id="partner-back-country-link" class="back-link" onclick="openCountry(currentEntity.countryId)">← Back to Country Page</a>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           VIEW 5: GLOBAL WORKSHOPS DIRECTORY VIEW
+           ========================================== -->
+      <section id="view-all-workshops" class="view-section">
+        <div class="container">
+          <div class="breadcrumbs-bar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+              <span>/</span>
+              <span class="breadcrumb-current">Workshops</span>
+            </div>
+          </div>
+
+          <div class="directory-section">
+            <div class="directory-header">
+              <h1 class="serif">Workshops</h1>
+              <p style="color: #665E58; font-size: 15px;">KATUN traditional makers working with our regional pattern index.</p>
+            </div>
+
+            <div class="directory-filters" id="workshops-filter-pills">
+              <!-- Dynamic Filter Pills -->
+            </div>
+
+            <div class="workshops-grid" id="global-workshops-grid">
+              <!-- Grid of KATUN workshops -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           VIEW 6: GLOBAL PARTNERS DIRECTORY VIEW
+           ========================================== -->
+      <section id="view-all-partners" class="view-section">
+        <div class="container">
+          <div class="breadcrumbs-bar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+              <span>/</span>
+              <span class="breadcrumb-current">Partners</span>
+            </div>
+          </div>
+
+          <div class="directory-section">
+            <div class="directory-header">
+              <h1 class="serif">Partner Brands</h1>
+              <p style="color: #665E58; font-size: 15px;">Independent revivalist design studios with their own distinct collections.</p>
+            </div>
+
+            <div class="directory-filters" id="partners-filter-pills">
+              <!-- Dynamic Filter Pills -->
+            </div>
+
+            <div class="partners-grid" id="global-partners-grid">
+              <!-- Grid of Partner brands -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           VIEW 7: PATTERN PAGE (NEW DEDICATED VIEW)
+           ========================================== -->
+      <section id="view-pattern-detail" class="view-section">
+        <div class="container">
+          <div class="breadcrumbs-bar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-item" onclick="showView('home')">Patterns</span>
+              <span>/</span>
+              <span class="breadcrumb-current" id="pattern-breadcrumb-name">Pattern Name</span>
+            </div>
+          </div>
+
+          <div class="pattern-view-layout">
+            <!-- Left: Full CSS Chart -->
+            <div class="full-chart-box">
+              <div class="full-knitting-chart" id="full-knitting-chart">
+                <!-- 20x20 Grid -->
+              </div>
+            </div>
+
+            <!-- Right: Details & Purchase -->
+            <div class="pattern-info-panel">
+              <h1 class="serif" id="pattern-page-title">Pattern Name</h1>
+              <div class="pattern-meta-sub" id="pattern-page-meta">Region, Country</div>
+
+              <div class="pattern-origin-story" id="pattern-page-story">
+                Origin story paragraph describing museum reference collection, historical shepherd lineage, and technical knitting structure revived.
+              </div>
+
+              <div class="pattern-purchase-row">
+                <span class="pattern-price-tag" id="pattern-page-price">€14</span>
+                <button class="btn-madder" onclick="alert('Digital pattern chart added to cart.')">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <hr class="section-divider" />
+
+          <!-- Related Items Section -->
+          <div class="related-items-section">
+            <h2 class="related-items-title serif">Items made with this pattern</h2>
+            <div class="products-grid" id="pattern-related-products-grid">
+              <!-- Grid of products using this pattern -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <span class="footer-wordmark">KATUN</span>
+            <p class="footer-desc">
+              Documenting and preserving textile heritage through direct commerce with independent rural knitting circles.
+            </p>
+          </div>
+
+          <div class="footer-nav-group">
+            <div class="footer-column">
+              <span class="footer-title">Navigation</span>
+              <ul class="footer-links">
+                <li><a onclick="showView('home')" class="footer-link">Countries</a></li>
+                <li><a onclick="showView('all-workshops')" class="footer-link">Workshops</a></li>
+                <li><a onclick="showView('all-partners')" class="footer-link">Partners</a></li>
+                <li><a onclick="alert('Patterns archive')" class="footer-link">Patterns</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <span class="footer-title">Partnership</span>
+              <ul class="footer-links">
+                <li><a onclick="alert('For Makers application form')" class="footer-link">For Makers</a></li>
+                <li><a onclick="alert('For Shops wholesale catalog')" class="footer-link">For Shops</a></li>
+                <li><a onclick="alert('Standards')" class="footer-link">Standards</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <span class="footer-title">Legal</span>
+              <ul class="footer-links">
+                <li><a onclick="alert('Terms')" class="footer-link">Terms & Provenance</a></li>
+                <li><a onclick="alert('Privacy')" class="footer-link">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>&copy; 2026 KATUN Index. All rights reserved.</span>
+          <span>Museum Catalogue Edition No. 01</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- APPLICATION DATA & LOGIC -->
+  <script>
+    /* DATABASE STRUCTURE WITH SEPARATED WORKSHOPS AND PARTNERS */
+    const DATA = {
+      countries: {
+        montenegro: {
+          id: 'montenegro',
+          name: 'Montenegro',
+          color: '#8C2D19',
+          isOpeningSoon: false,
+          desc: 'Montenegrin folk knitting is defined by thick, unbleached mountain wool designed for harsh karst winters. Geometric motifs from the Durmitor highlands traditionally encoded village lineages.',
+          regions: ['All Regions', 'Durmitor', 'Bjelasica', 'Prokletije'],
+          workshops: [
+            {
+              id: 'w-durmitor',
+              type: 'WORKSHOP',
+              countryId: 'montenegro',
+              name: 'Durmitor Craft Circle',
+              city: 'Žabljak',
+              itemsCount: 4,
+              color: '#6B2314',
+              foundedYear: '1984',
+              technique: 'Heavy Ribbed Hand-Knitting & Coarse Carding',
+              patternRegion: 'Durmitor Highlands',
+              storyP1: 'Organized as a rural collective of high-altitude sheep herders in Žabljak, the Durmitor Craft Circle preserves traditional winter garments built to withstand sub-zero karst gales.',
+              storyP2: 'Using unbleached local mountain wool spun on hand-carved wooden spindles, each garment is hand-knitted without modern synthetics, maintaining ancestral thermal properties.',
+              websiteUrl: null
+            }
+          ],
+          partners: [], // Empty partners test state for Montenegro
+          products: [
+            {
+              id: 'mn-01',
+              countryId: 'montenegro',
+              title: 'Durmitor Ribbed Vest',
+              price: 180,
+              workshopId: 'w-durmitor',
+              workshop: 'Durmitor Craft Circle',
+              city: 'Žabljak',
+              region: 'Durmitor',
+              color: '#8C2D19',
+              thumbColors: ['#7A2715', '#99321C', '#611F12'],
+              material: '100% Unbleached Durmitor Wool',
+              size: 'One Size (M-L)',
+              care: 'Hand wash cold with wool detergent',
+              days: '12 days',
+              schemeId: 'sch-mn-01',
+              patternName: 'Highland Solar Star Motif',
+              patternOrigin: 'Recorded in Cetinje Museum ethnography archives, origin 1912.',
+              patternRevived: 'Double-ribbed insulating grid construction revived directly from high-pasture shepherd vests.'
+            },
+            {
+              id: 'mn-02',
+              countryId: 'montenegro',
+              title: 'Karst Highland Mittens',
+              price: 65,
+              workshopId: 'w-durmitor',
+              workshop: 'Durmitor Craft Circle',
+              city: 'Žabljak',
+              region: 'Durmitor',
+              color: '#9E3B27',
+              thumbColors: ['#8A3321', '#B3432C', '#732A1B'],
+              material: '100% Coarse Mountain Wool',
+              size: 'Standard Adult',
+              care: 'Dry clean or gentle hand wash',
+              days: '4 days',
+              schemeId: 'sch-mn-01',
+              patternName: 'Highland Solar Star Motif',
+              patternOrigin: 'Documented in northern alpine settlements near Žabljak.',
+              patternRevived: 'Triangular star draft guarding against alpine wind gusts.'
+            },
+            {
+              id: 'mn-03',
+              countryId: 'montenegro',
+              title: 'Bjelasica Heavy Cardigan',
+              price: 290,
+              workshopId: 'w-durmitor',
+              workshop: 'Durmitor Craft Circle',
+              city: 'Kolašin',
+              region: 'Bjelasica',
+              color: '#682213',
+              thumbColors: ['#541B0F', '#7C2917', '#42150C'],
+              material: 'Hand-spun Natural Grey Wool',
+              size: 'Large / Oversized',
+              care: 'Air outdoor in snow or hand wash',
+              days: '18 days',
+              schemeId: 'sch-mn-02',
+              patternName: 'Karst River Cable Grid',
+              patternOrigin: 'Kolašin regional textile archives.',
+              patternRevived: 'Heavy multi-stranded cable rows inspired by glacial riverbed paths.'
+            },
+            {
+              id: 'mn-04',
+              countryId: 'montenegro',
+              title: 'Prokletije Patterned Socks',
+              price: 55,
+              workshopId: 'w-durmitor',
+              workshop: 'Durmitor Craft Circle',
+              city: 'Plav',
+              region: 'Prokletije',
+              color: '#B54731',
+              thumbColors: ['#A13E2A', '#C94F37', '#873423'],
+              material: 'Dense Highland Sheep Wool',
+              size: 'EU 39-42',
+              care: 'Hand wash cold',
+              days: '5 days',
+              schemeId: 'sch-mn-01',
+              patternName: 'Highland Solar Star Motif',
+              patternOrigin: 'Border pass traditional costume collection.',
+              patternRevived: 'High-density heel and toe reinforcement with contrasting solar bands.'
+            }
+          ],
+          schemes: [
+            {
+              id: 'sch-mn-01',
+              name: 'Highland Solar Star Chart',
+              region: 'Durmitor',
+              countryId: 'montenegro',
+              countryName: 'Montenegro',
+              price: 14,
+              seed: 1,
+              originStory: 'This geometric star motif originates from high-altitude shepherd communities in the Durmitor mountain range. Preserved in the Cetinje National Ethnographic Collection, the solar grid was historically knitted into outer garments to serve as both regional identification and symbolic protection against severe mountain gales.'
+            },
+            {
+              id: 'sch-mn-02',
+              name: 'Karst River Cable Grid',
+              region: 'Bjelasica',
+              countryId: 'montenegro',
+              countryName: 'Montenegro',
+              price: 12,
+              seed: 2,
+              originStory: 'Documented in Kolašin valley settlements, this heavy cable grid emulates the winding glacial streams of the Bjelasica range. The double-stranded draft creates insulating air pockets within thick mountain cardigans.'
+            }
+          ]
+        },
+        serbia: {
+          id: 'serbia',
+          name: 'Serbia',
+          color: '#3B4836',
+          isOpeningSoon: true,
+          desc: 'Serbian folk textiles are world-renowned for the intricate Sirogojno floral motifs and the dense geometric rug-knitting styles of Zlatibor.',
+          regions: ['Zlatibor', 'Pirot'],
+          workshops: [],
+          partners: [],
+          products: [],
+          schemes: []
+        },
+        georgia: {
+          id: 'georgia',
+          name: 'Georgia',
+          color: '#A66E38',
+          isOpeningSoon: false,
+          desc: 'Highland Georgian knitting from Tusheti and Svaneti utilizes rich natural vegetable dyes and complex stranded colorwork techniques dating back centuries.',
+          regions: ['All Regions', 'Tusheti', 'Svaneti', 'Tbilisi'],
+          workshops: [
+            {
+              id: 'w-tusheti',
+              type: 'WORKSHOP',
+              countryId: 'georgia',
+              name: 'Tusheti Women Guild',
+              city: 'Omalo',
+              itemsCount: 3,
+              color: '#8C5A2B',
+              foundedYear: '1998',
+              technique: 'Stranded Jacquard & Botanical Dyeing',
+              patternRegion: 'Tusheti High Passes',
+              storyP1: 'Located in the remote mountain settlement of Omalo, reachable only a few months a year, the Tusheti Women Guild keeps alive the intricate stranded sock-knitting traditions of northern Georgia.',
+              storyP2: 'The wool is dyed using wild madder roots, walnut husks, and onion skins gathered in the alpine valleys, creating deep earthy tones that do not fade.',
+              websiteUrl: null
+            }
+          ],
+          partners: [
+            {
+              id: 'p-tbilisi-rugs',
+              type: 'PARTNER',
+              countryId: 'georgia',
+              name: 'Tbilisi Tapestry & Atelier',
+              city: 'Tbilisi',
+              itemsCount: 4,
+              color: '#B57C48',
+              foundedYear: '2016',
+              technique: 'Traditional Kilim Weaving & Flat-Knit Tapestry',
+              patternRegion: 'Kakheti & Old Tbilisi Revival',
+              storyP1: 'Tbilisi Tapestry & Atelier is an independent design studio collaborating with master weavers from eastern Georgia to adapt museum flat-knit motifs into modern functional home textiles.',
+              storyP2: 'Operating out of an restored 19th-century courtyard in Sololaki, the studio documents historic Georgian ornament catalogs and translates them onto hand-loom wool rugs and wall panels.',
+              websiteUrl: 'https://example.com/tbilisi-tapestry'
+            }
+          ],
+          products: [
+            {
+              id: 'ge-01',
+              countryId: 'georgia',
+              title: 'Tusheti Stranded Socks (Chiti)',
+              price: 85,
+              workshopId: 'w-tusheti',
+              workshop: 'Tusheti Women Guild',
+              city: 'Omalo',
+              region: 'Tusheti',
+              color: '#A66E38',
+              thumbColors: ['#916030', '#BC7D40', '#784E26'],
+              material: 'Vegetable-dyed Tushetian Wool',
+              size: 'EU 38-41',
+              care: 'Hand wash cold only',
+              days: '7 days',
+              schemeId: 'sch-ge-01',
+              patternName: 'Tushetian Chiti Jacquard Matrix',
+              patternOrigin: 'Omalo high mountain village collection.',
+              patternRevived: 'High-density stranded colorwork dyed with natural madder root and walnut husks.'
+            },
+            {
+              id: 'ge-02',
+              countryId: 'georgia',
+              title: 'Svaneti Mountain Pullover',
+              price: 240,
+              workshopId: 'w-tusheti',
+              workshop: 'Tusheti Women Guild',
+              city: 'Mestia',
+              region: 'Svaneti',
+              color: '#8A5629',
+              thumbColors: ['#754822', '#9E632F', '#5E3A1B'],
+              material: '100% Unrefined Caucasian Wool',
+              size: 'Medium',
+              care: 'Dry flat, hand wash cold',
+              days: '15 days',
+              schemeId: 'sch-ge-02',
+              patternName: 'Svaneti Tower Masonry Motif',
+              patternOrigin: 'Mestia ethnography museum archives.',
+              patternRevived: 'Monochrome ribbing structure modeled after medieval defensive stone towers.'
+            },
+            {
+              id: 'ge-03',
+              countryId: 'georgia',
+              title: 'Omalo Patterned Scarf',
+              price: 110,
+              workshopId: 'w-tusheti',
+              workshop: 'Tusheti Women Guild',
+              city: 'Omalo',
+              region: 'Tusheti',
+              color: '#BF8247',
+              thumbColors: ['#AA733E', '#D49150', '#916133'],
+              material: 'Soft Alpaca & Wool Blend',
+              size: '200cm x 35cm',
+              care: 'Hand wash cold',
+              days: '8 days',
+              schemeId: 'sch-ge-01',
+              patternName: 'Tushetian Chiti Jacquard Matrix',
+              patternOrigin: 'Alpine Caucasus transhumance heritage catalog.',
+              patternRevived: 'Repetitive diamond solar symbols representing seasonal migration routes.'
+            },
+            {
+              id: 'ge-04',
+              countryId: 'georgia',
+              title: 'Kakheti Sun Flat-Woven Runner',
+              price: 320,
+              partnerId: 'p-tbilisi-rugs',
+              workshop: 'Tbilisi Tapestry & Atelier',
+              city: 'Tbilisi',
+              region: 'Tbilisi',
+              color: '#9C6233',
+              thumbColors: ['#87542B', '#B06F3A', '#734724'],
+              material: 'Hand-spun Organic Wool Weft',
+              size: '180cm x 60cm',
+              care: 'Vacuum without brush, dry clean',
+              days: '21 days',
+              schemeId: 'sch-ge-01',
+              patternName: 'Tushetian Chiti Jacquard Matrix',
+              patternOrigin: 'Late 18th-century Kakhetian flat-knit tapestry collection.',
+              patternRevived: 'Sunburst central motif adapted from antique loom samples.'
+            }
+          ],
+          schemes: [
+            {
+              id: 'sch-ge-01',
+              name: 'Tushetian Chiti Jacquard Matrix',
+              region: 'Tusheti',
+              countryId: 'georgia',
+              countryName: 'Georgia',
+              price: 16,
+              seed: 3,
+              originStory: 'Recovered from hand-knitted footwear in Omalo, Tusheti. This complex matrix utilizes double-stranded wool dyed with wild botanical extracts, historically created by women during winter snowlocks.'
+            },
+            {
+              id: 'sch-ge-02',
+              name: 'Svaneti Tower Masonry Motif',
+              region: 'Svaneti',
+              countryId: 'georgia',
+              countryName: 'Georgia',
+              price: 15,
+              seed: 4,
+              originStory: 'Inspired by the defensive stone towers of Mestia. The pattern translates geometric masonry lines into high-gauge wool ribbing.'
+            }
+          ]
+        },
+        kyrgyzstan: {
+          id: 'kyrgyzstan',
+          name: 'Kyrgyzstan',
+          color: '#4A5B6A',
+          isOpeningSoon: true,
+          desc: 'Nomadic Kyrgyz wool traditions fuse heavy felting with intricate needlework and camel-wool yarn spinning built for life on the high steppes.',
+          regions: ['Naryn', 'Issyk-Kul'],
+          workshops: [],
+          partners: [],
+          products: [],
+          schemes: []
+        }
+      }
+    };
+
+    /* STATE MANAGEMENT */
+    let currentView = 'home';
+    let currentCountry = null;
+    let currentProduct = null;
+    let currentEntity = null; // Workshop or Partner
+    let currentPattern = null;
+    let activeTab = 'items';
+    let activeWorkshopsFilter = 'ALL';
+    let activePartnersFilter = 'ALL';
+
+    /* VIEW SWITCHER */
+    function showView(viewId) {
+      document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+      const target = document.getElementById(`view-${viewId}`);
+      if (target) {
+        target.classList.add('active');
+        currentView = viewId;
+        window.scrollTo(0, 0);
+      }
+
+      if (viewId === 'all-workshops') {
+        renderGlobalWorkshops();
+      } else if (viewId === 'all-partners') {
+        renderGlobalPartners();
+      }
+    }
+
+    /* SWITCH TAB IN COUNTRY VIEW */
+    function switchTab(tabId) {
+      activeTab = tabId;
+      document.querySelectorAll('#country-tabs-row .tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${tabId}'`));
+      });
+      document.querySelectorAll('#view-country .tab-content').forEach(content => {
+        content.classList.toggle('active', content.id === `tab-${tabId}`);
+      });
+    }
+
+    /* OPEN COUNTRY VIEW */
+    function openCountry(countryId) {
+      const c = DATA.countries[countryId];
+      if (!c) return;
+      currentCountry = c;
+
+      // Update Breadcrumbs & Banner
+      document.getElementById('country-breadcrumb-name').innerText = c.name;
+      document.getElementById('country-title').innerText = c.name;
+      document.getElementById('country-desc').innerText = c.desc;
+      document.getElementById('country-cta-name').innerText = c.name;
+
+      // Banner Color Block
+      document.getElementById('country-banner-media').innerHTML = `
+        <div class="color-block" style="background-color: ${c.color}; color: #F7F3ED;">${c.name} Landscape</div>
+      `;
+
+      // Render Region Tags
+      const tagsContainer = document.getElementById('country-region-tags');
+      tagsContainer.innerHTML = '';
+      if (c.regions && c.regions.length > 0) {
+        c.regions.forEach((r, idx) => {
+  const pill = document.createElement('span');
+  pill.className = `tag-pill ${idx === 0 ? 'active' : ''}`;
+  pill.innerText = r;
+  pill.onclick = () => {
+    tagsContainer.querySelectorAll('.tag-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    renderCountryItems(r);
+  };
+  tagsContainer.appendChild(pill);
+
+      });
+}
+
+      const tabsRow = document.getElementById('country-tabs-row');
+      const tabItems = document.getElementById('tab-items');
+      const tabWorkshops = document.getElementById('tab-workshops');
+      const tabPartners = document.getElementById('tab-partners');
+      const tabSchemes = document.getElementById('tab-schemes');
+      const openingContent = document.getElementById('country-opening-content');
+
+      if (c.isOpeningSoon) {
+        tabsRow.style.display = 'none';
+        tabItems.style.display = 'none';
+        tabWorkshops.style.display = 'none';
+        tabPartners.style.display = 'none';
+        tabSchemes.style.display = 'none';
+        openingContent.style.display = 'block';
+      } else {
+        tabsRow.style.display = 'flex';
+        [tabItems, tabWorkshops, tabPartners, tabSchemes].forEach(el => el.style.display = '');
+        openingContent.style.display = 'none';
+
+        // 1. Items Tab
+        renderCountryItems();
+
+        // 2. Workshops Tab (KATUN Makers working with our patterns)
+        const wsGrid = document.getElementById('country-workshops-grid');
+        wsGrid.innerHTML = '';
+        if (c.workshops && c.workshops.length > 0) {
+          c.workshops.forEach(w => {
+            wsGrid.innerHTML += `
+              <div class="workshop-card" onclick="openPartnerDetail('${w.id}')">
+                <div class="workshop-media">
+                  <div class="color-block" style="background-color: ${w.color}; color: #F7F3ED; font-size: 10px;">${w.name}</div>
+                </div>
+                <div class="workshop-info">
+                  <span class="card-type-label">WORKSHOP</span>
+                  <h3 class="serif">${w.name}</h3>
+                  <p>${w.city} · ${w.itemsCount} items</p>
+                </div>
+              </div>
+            `;
+          });
+        } else {
+          wsGrid.innerHTML = `<div class="empty-tab-msg">No workshops in this direction yet</div>`;
+        }
+
+        // 3. Partners Tab (Independent Brands with own catalogue)
+        const partGrid = document.getElementById('country-partners-grid');
+        partGrid.innerHTML = '';
+        if (c.partners && c.partners.length > 0) {
+          c.partners.forEach(p => {
+            partGrid.innerHTML += `
+              <div class="partner-card" onclick="openPartnerDetail('${p.id}')">
+                <div class="partner-media">
+                  <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED; font-size: 10px;">${p.name}</div>
+                </div>
+                <div class="partner-info">
+                  <span class="card-type-label">PARTNER</span>
+                  <h3 class="serif">${p.name}</h3>
+                  <p>${p.city} · ${p.itemsCount} items</p>
+                </div>
+              </div>
+            `;
+          });
+        } else {
+          partGrid.innerHTML = `<div class="empty-tab-msg">No partners in this direction yet</div>`;
+        }
+
+        // 4. Schemes Tab
+        const schGrid = document.getElementById('country-schemes-grid');
+        schGrid.innerHTML = '';
+        if (c.schemes && c.schemes.length > 0) {
+          c.schemes.forEach(s => {
+            schGrid.innerHTML += `
+              <div class="scheme-card" onclick="openPatternPage('${s.id}')">
+                <div class="scheme-chart-preview">
+                  <div class="scheme-16-chart">
+                    ${generate16x16ChartCells(s.seed)}
+                  </div>
+                </div>
+                <div class="scheme-card-body">
+                  <h3 class="scheme-card-title serif">${s.name}</h3>
+                  <div class="scheme-card-price">€${s.price}</div>
+                  <div class="scheme-card-meta">${s.region} · Digital Chart</div>
+                </div>
+              </div>
+            `;
+          });
+        } else {
+          schGrid.innerHTML = `<div class="empty-tab-msg">No schemes in this direction yet</div>`;
+        }
+
+        // Default active tab is items
+        switchTab('items');
+      }
+
+      showView('country');
+    }
+
+    /* RENDER ITEMS IN COUNTRY PAGE */
+    function renderCountryItems(region) {
+  const prodGrid = document.getElementById('country-products-grid');
+  prodGrid.innerHTML = '';
+  let itemsToDisplay = currentCountry.products || [];
+  if (region && !region.startsWith('All')) {
+    itemsToDisplay = itemsToDisplay.filter(p => p.region === region);
+  }
+      if (itemsToDisplay.length > 0) {
+        itemsToDisplay.forEach(p => {
+          prodGrid.innerHTML += `
+            <div class="product-card" onclick="openProduct('${p.id}')">
+              <div class="product-card-media">
+                <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
+              </div>
+              <div class="product-card-body">
+                <h3 class="product-card-title serif">${p.title}</h3>
+                <div class="product-card-price">€${p.price}</div>
+                <div class="product-card-meta">${p.workshop} · ${p.region}</div>
+              </div>
+            </div>
+          `;
+        });
+      } else {
+        prodGrid.innerHTML = `<div class="empty-tab-msg">No items in this direction yet</div>`;
+      }
+    }
+
+    /* GENERATE 16x16 CSS CHART CELLS FOR SCHEMES PREVIEW */
+    function generate16x16ChartCells(seed) {
+      let html = '';
+      for (let r = 0; r < 16; r++) {
+        for (let c = 0; c < 16; c++) {
+          let filled = false;
+          if (seed === 1) {
+            const dist = Math.abs(r - 7.5) + Math.abs(c - 7.5);
+            filled = (dist > 3 && dist < 6) || (r === 7 || r === 8 || c === 7 || c === 8);
+          } else if (seed === 2) {
+            filled = ((r + c) % 4 === 0) || (r === c) || (r === 15 - c);
+          } else if (seed === 3) {
+            const dist = Math.abs(r - 7.5) + Math.abs(c - 7.5);
+            filled = (dist <= 2) || (dist >= 5 && dist <= 7);
+          } else {
+            filled = ((r + c) % 3 === 0) && (r % 2 === 0);
+          }
+          html += `<div class="chart-cell ${filled ? 'filled' : ''}"></div>`;
+        }
+      }
+      return html;
+    }
+
+    /* OPEN PRODUCT VIEW (WITH PATTERN TEASER) */
+    function openProduct(productId) {
+      let foundProd = null;
+      let foundCountry = null;
+
+      Object.values(DATA.countries).forEach(c => {
+        const p = c.products.find(item => item.id === productId);
+        if (p) {
+          foundProd = p;
+          foundCountry = c;
+        }
+      });
+
+      if (!foundProd) return;
+      currentProduct = foundProd;
+
+      // Update Breadcrumbs
+      document.getElementById('product-breadcrumb-country').innerText = foundCountry.name;
+      document.getElementById('product-breadcrumb-title').innerText = foundProd.title;
+
+      // Update Main Info
+      document.getElementById('product-title').innerText = foundProd.title;
+      document.getElementById('product-price').innerText = `€${foundProd.price}`;
+
+      // Clickable Origin Link
+      const originLink = document.getElementById('product-origin-link');
+      originLink.innerText = foundProd.workshop;
+      originLink.onclick = () => openPartnerDetail(foundProd.workshopId || foundProd.partnerId);
+
+      document.getElementById('product-origin-region').innerText = foundProd.region;
+      document.getElementById('product-origin-country').innerText = foundCountry.name;
+
+      // Specs
+      document.getElementById('spec-material').innerText = foundProd.material;
+      document.getElementById('spec-size').innerText = foundProd.size;
+      document.getElementById('spec-care').innerText = foundProd.care;
+      document.getElementById('spec-days').innerText = foundProd.days;
+
+      // Main Media Block
+      document.getElementById('product-main-media').innerHTML = `
+        <div class="color-block" style="background-color: ${foundProd.color}; color: #F7F3ED; font-size: 18px;">${foundProd.title} Detail</div>
+      `;
+
+      // Thumbnails
+      const thumbContainer = document.getElementById('product-thumbnails');
+      thumbContainer.innerHTML = '';
+      foundProd.thumbColors.forEach((col, idx) => {
+        thumbContainer.innerHTML += `
+          <div class="product-thumb-media ${idx === 0 ? 'active' : ''}">
+            <div class="color-block" style="background-color: ${col}; font-size: 9px; color: #F7F3ED;">View ${idx+1}</div>
+          </div>
+        `;
+      });
+
+      // UPDATE TEASER BLOCK (NO VISIBLE CHART)
+      document.getElementById('teaser-pattern-heading').innerText = foundProd.patternName || 'Traditional Regional Pattern';
+      document.getElementById('teaser-p1').innerText = foundProd.patternOrigin || 'Recorded in regional ethnography museum archives.';
+      document.getElementById('teaser-p2').innerText = foundProd.patternRevived || 'Revived directly from preserved shepherd garments.';
+
+      // Get Price for Pattern button from Scheme object
+      let patternPrice = 14;
+      const targetScheme = foundCountry.schemes.find(s => s.id === foundProd.schemeId);
+      if (targetScheme) {
+        patternPrice = targetScheme.price;
+      }
+      document.getElementById('get-full-chart-btn').innerText = `Get the full chart — €${patternPrice}`;
+
+      // Generate blurred teaser grid
+      renderTeaserGrid();
+
+      showView('product');
+    }
+
+    /* RENDER BLURRED TEASER GRID FOR PRODUCT PAGE */
+    function renderTeaserGrid() {
+      const container = document.getElementById('chart-teaser-grid');
+      container.innerHTML = '';
+      for (let r = 0; r < 20; r++) {
+        for (let c = 0; c < 20; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'chart-cell';
+          if ((r + c) % 3 === 0 || (r === c)) {
+            cell.classList.add('filled');
+          }
+          container.appendChild(cell);
+        }
+      }
+    }
+
+    /* OPEN WORKSHOP OR PARTNER DETAIL PAGE */
+    function openPartnerDetail(entityId) {
+      let foundEntity = null;
+      let foundCountry = null;
+
+      Object.values(DATA.countries).forEach(c => {
+        if (c.workshops) {
+          const w = c.workshops.find(item => item.id === entityId);
+          if (w) {
+            foundEntity = w;
+            foundCountry = c;
+          }
+        }
+        if (c.partners) {
+          const p = c.partners.find(item => item.id === entityId);
+          if (p) {
+            foundEntity = p;
+            foundCountry = c;
+          }
+        }
+      });
+
+      if (!foundEntity) return;
+      currentEntity = foundEntity;
+
+      // Breadcrumbs
+      document.getElementById('partner-breadcrumb-country').innerText = foundCountry.name;
+      document.getElementById('partner-breadcrumb-name').innerText = foundEntity.name;
+
+      // Banner Color Block
+      document.getElementById('partner-banner-media').innerHTML = `
+        <div class="color-block" style="background-color: ${foundEntity.color}; color: #F7F3ED;">${foundEntity.name} Studio</div>
+      `;
+
+      // Text Fields
+      document.getElementById('partner-title').innerText = foundEntity.name;
+      document.getElementById('partner-type-tag').innerText = foundEntity.type || 'WORKSHOP';
+      document.getElementById('partner-meta-row').innerText = `${foundEntity.city}, ${foundCountry.name} · Est. ${foundEntity.foundedYear} · ${foundEntity.technique}`;
+      
+      document.getElementById('partner-p1').innerText = foundEntity.storyP1;
+      document.getElementById('partner-p2').innerText = foundEntity.storyP2;
+
+      // Workshop Pattern line
+      const patternLine = document.getElementById('partner-pattern-line');
+      if (foundEntity.type === 'WORKSHOP' && foundEntity.patternRegion) {
+        document.getElementById('partner-pattern-region').innerText = foundEntity.patternRegion;
+        patternLine.style.display = 'block';
+      } else {
+        patternLine.style.display = 'none';
+      }
+
+      // External website link
+      const siteBtn = document.getElementById('partner-website-link');
+      if (foundEntity.websiteUrl) {
+        siteBtn.href = foundEntity.websiteUrl;
+        siteBtn.style.display = 'inline-block';
+      } else {
+        siteBtn.style.display = 'none';
+      }
+
+      // Render Catalogue Grid
+      const catGrid = document.getElementById('partner-products-grid');
+      catGrid.innerHTML = '';
+      const entityProducts = foundCountry.products.filter(p => p.workshopId === foundEntity.id || p.partnerId === foundEntity.id);
+
+      if (entityProducts.length > 0) {
+        entityProducts.forEach(p => {
+          catGrid.innerHTML += `
+            <div class="product-card" onclick="openProduct('${p.id}')">
+              <div class="product-card-media">
+                <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
+              </div>
+              <div class="product-card-body">
+                <h3 class="product-card-title serif">${p.title}</h3>
+                <div class="product-card-price">€${p.price}</div>
+                <div class="product-card-meta">${p.region}</div>
+              </div>
+            </div>
+          `;
+        });
+      } else {
+        catGrid.innerHTML = `<div class="empty-tab-msg">No products in this catalogue yet</div>`;
+      }
+
+      showView('partner-detail');
+    }
+
+    /* GLOBAL WORKSHOPS VIEW */
+    function renderGlobalWorkshops() {
+      // Filter Pills
+      const filterPills = document.getElementById('workshops-filter-pills');
+      filterPills.innerHTML = '';
+      const countries = ['ALL', 'Montenegro', 'Serbia', 'Georgia', 'Kyrgyzstan'];
+
+      countries.forEach(cName => {
+        const pill = document.createElement('span');
+        pill.className = `tag-pill ${activeWorkshopsFilter === cName ? 'active' : ''}`;
+        pill.innerText = cName;
+        pill.onclick = () => {
+          activeWorkshopsFilter = cName;
+          renderGlobalWorkshops();
+        };
+        filterPills.appendChild(pill);
+      });
+
+      // Grid
+      const grid = document.getElementById('global-workshops-grid');
+      grid.innerHTML = '';
+
+      let list = [];
+      Object.values(DATA.countries).forEach(c => {
+        if (c.workshops) {
+          c.workshops.forEach(w => {
+            list.push({ ...w, countryName: c.name });
+          });
+        }
+      });
+
+      if (activeWorkshopsFilter !== 'ALL') {
+        list = list.filter(item => item.countryName.toLowerCase() === activeWorkshopsFilter.toLowerCase());
+      }
+
+      if (list.length > 0) {
+        list.forEach(w => {
+          grid.innerHTML += `
+            <div class="workshop-card" onclick="openPartnerDetail('${w.id}')">
+              <div class="workshop-media">
+                <div class="color-block" style="background-color: ${w.color}; color: #F7F3ED; font-size: 10px;">${w.name}</div>
+              </div>
+              <div class="workshop-info">
+                <span class="card-type-label">WORKSHOP</span>
+                <h3 class="serif">${w.name}</h3>
+                <p>${w.city}, ${w.countryName} · ${w.itemsCount} items</p>
+              </div>
+            </div>
+          `;
+        });
+      } else {
+        grid.innerHTML = `<div class="empty-tab-msg">No workshops in this direction yet</div>`;
+      }
+    }
+
+    /* GLOBAL PARTNERS VIEW */
+    function renderGlobalPartners() {
+      // Filter Pills
+      const filterPills = document.getElementById('partners-filter-pills');
+      filterPills.innerHTML = '';
+      const countries = ['ALL', 'Montenegro', 'Serbia', 'Georgia', 'Kyrgyzstan'];
+
+      countries.forEach(cName => {
+        const pill = document.createElement('span');
+        pill.className = `tag-pill ${activePartnersFilter === cName ? 'active' : ''}`;
+        pill.innerText = cName;
+        pill.onclick = () => {
+          activePartnersFilter = cName;
+          renderGlobalPartners();
+        };
+        filterPills.appendChild(pill);
+      });
+
+      // Grid
+      const grid = document.getElementById('global-partners-grid');
+      grid.innerHTML = '';
+
+      let list = [];
+      Object.values(DATA.countries).forEach(c => {
+        if (c.partners) {
+          c.partners.forEach(p => {
+            list.push({ ...p, countryName: c.name });
+          });
+        }
+      });
+
+      if (activePartnersFilter !== 'ALL') {
+        list = list.filter(item => item.countryName.toLowerCase() === activePartnersFilter.toLowerCase());
+      }
+
+      if (list.length > 0) {
+        list.forEach(p => {
+          grid.innerHTML += `
+            <div class="partner-card" onclick="openPartnerDetail('${p.id}')">
+              <div class="partner-media">
+                <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED; font-size: 10px;">${p.name}</div>
+              </div>
+              <div class="partner-info">
+                <span class="card-type-label">PARTNER</span>
+                <h3 class="serif">${p.name}</h3>
+                <p>${p.city}, ${p.countryName} · ${p.itemsCount} items</p>
+              </div>
+            </div>
+          `;
+        });
+      } else {
+        grid.innerHTML = `<div class="empty-tab-msg">No partners in this direction yet</div>`;
+      }
+    }
+
+    /* OPEN DEDICATED PATTERN PAGE VIEW (NEW) */
+    function openPatternPage(schemeId) {
+      let foundScheme = null;
+
+      Object.values(DATA.countries).forEach(c => {
+        if (c.schemes) {
+          const s = c.schemes.find(item => item.id === schemeId);
+          if (s) {
+            foundScheme = s;
+          }
+        }
+      });
+
+      if (!foundScheme) return;
+      currentPattern = foundScheme;
+
+      // Breadcrumbs & Header
+      document.getElementById('pattern-breadcrumb-name').innerText = foundScheme.name;
+      document.getElementById('pattern-page-title').innerText = foundScheme.name;
+      document.getElementById('pattern-page-meta').innerText = `${foundScheme.region}, ${foundScheme.countryName}`;
+      document.getElementById('pattern-page-story').innerText = foundScheme.originStory;
+      document.getElementById('pattern-page-price').innerText = `€${foundScheme.price}`;
+
+      // Render Full Visible Chart Grid
+      renderFullPatternChart();
+
+      // Render Related Products made with this pattern
+      const relGrid = document.getElementById('pattern-related-products-grid');
+      relGrid.innerHTML = '';
+
+      let relatedProducts = [];
+      Object.values(DATA.countries).forEach(c => {
+        if (c.products) {
+          const matches = c.products.filter(p => p.schemeId === foundScheme.id);
+          relatedProducts = relatedProducts.concat(matches);
+        }
+      });
+
+      if (relatedProducts.length > 0) {
+        relatedProducts.forEach(p => {
+          relGrid.innerHTML += `
+            <div class="product-card" onclick="openProduct('${p.id}')">
+              <div class="product-card-media">
+                <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
+              </div>
+              <div class="product-card-body">
+                <h3 class="product-card-title serif">${p.title}</h3>
+                <div class="product-card-price">€${p.price}</div>
+                <div class="product-card-meta">${p.workshop} · ${p.region}</div>
+              </div>
+            </div>
+          `;
+        });
+      } else {
+        relGrid.innerHTML = `<div class="empty-tab-msg">No items catalogued with this pattern yet</div>`;
+      }
+
+      showView('pattern-detail');
+    }
+
+    /* RENDER FULL 20x20 CHART GRID ON PATTERN PAGE */
+    function renderFullPatternChart() {
+      const chart = document.getElementById('full-knitting-chart');
+      chart.innerHTML = '';
+
+      for (let r = 0; r < 20; r++) {
+        for (let c = 0; c < 20; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'chart-cell';
+
+          const centerDist = Math.abs(r - 9.5) + Math.abs(c - 9.5);
+          const isBorder = (r === 0 || r === 19 || c === 0 || c === 19);
+          const isInnerCross = (r === 9 || r === 10 || c === 9 || c === 10);
+
+          if ((centerDist > 4 && centerDist < 8) || (isInnerCross && centerDist < 4) || isBorder) {
+            cell.classList.add('filled');
+          }
+
+          chart.appendChild(cell);
+        }
+      }
+    }
+function toggleJoin(e) {
+  e.stopPropagation();
+  document.getElementById('join-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', () => {
+  document.getElementById('join-dropdown').classList.remove('open');
+});
+    // INIT DEFAULT STATE
+    window.addEventListener('DOMContentLoaded', () => {
+      showView('home');
+    });
+  </script>
+</body>
+</html>
+
