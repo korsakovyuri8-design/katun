@@ -11,6 +11,11 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    .photo-block {
+  width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+}
     /* DESIGN TOKENS */
     :root {
       --bg-cream: #F7F3ED;
@@ -1258,12 +1263,12 @@
 </head>
 <body>
 
-  <div class="page-wrapper">
+  <="page-wrapper">
     
     <!-- HEADER -->
     <header>
-      <div class="container">
-        <div class="header-inner">
+      <="container">
+        <="header-inner">
           <a onclick="showView('home')" class="wordmark">KATUN</a>
           <nav class="nav">
   <a onclick="showView('all-workshops')" class="nav-link">Makers</a>
@@ -1289,8 +1294,8 @@
            ========================================== -->
       <section id="view-home" class="view-section active">
         
-        <div class="container">
-          <div class="hero">
+        <="container">
+          <="hero">
             <h1 class="hero-statement serif">
               A living index of regional folk knitwear, preserved by master artisans.
             </h1>
@@ -1299,49 +1304,49 @@
 
         <hr class="section-divider" />
 
-        <div class="container">
-          <div class="home-grid-section">
-            <div class="country-home-grid">
+        <="container">
+          <="home-grid-section">
+            <="country-home-grid">
               
               <!-- Montenegro -->
-              <div class="country-card" onclick="openCountry('montenegro')">
-                <div class="country-card-media">
-                  <div class="color-block" style="background-color: #8C2D19; color: #F7F3ED;">Montenegro</div>
+              <="country-card" onclick="openCountry('montenegro')">
+                <="country-card-media">
+                  <="color-block" style="background-color: openCountry('montenegro')</div>
                 </div>
-                <div class="country-card-body">
+                <="country-card-body">
                   <h2 class="country-card-title serif">Montenegro</h2>
                   <span class="country-card-caption">1 workshop · 4 items</span>
                 </div>
               </div>
 
               <!-- Serbia -->
-              <div class="country-card" onclick="openCountry('serbia')">
-                <div class="country-card-media">
-                  <div class="color-block" style="background-color: #3B4836; color: #F7F3ED;">Serbia</div>
+              <="country-card" onclick="openCountry('serbia')">
+                <="country-card-media">
+                  <="color-block" style="background-color: openCountry('serbia.jpg')</div>
                 </div>
-                <div class="country-card-body">
+                <="country-card-body">
                   <h2 class="country-card-title serif">Serbia</h2>
                   <span class="country-card-caption">Opening soon</span>
                 </div>
               </div>
 
               <!-- Georgia -->
-              <div class="country-card" onclick="openCountry('georgia')">
-                <div class="country-card-media">
-                  <div class="color-block" style="background-color: #A66E38; color: #F7F3ED;">Georgia</div>
+              <="country-card" onclick="openCountry('georgia')">
+                <="country-card-media">
+                  <="color-block" style="background-color: openCountry('georgia.jpg')</div>
                 </div>
-                <div class="country-card-body">
+                <="country-card-body">
                   <h2 class="country-card-title serif">Georgia</h2>
                   <span class="country-card-caption">1 workshop · 1 partner · 7 items</span>
                 </div>
               </div>
 
               <!-- Kyrgyzstan -->
-              <div class="country-card" onclick="openCountry('kyrgyzstan')">
-                <div class="country-card-media">
-                  <div class="color-block" style="background-color: #4A5B6A; color: #F7F3ED;">Kyrgyzstan</div>
+              <="country-card" onclick="openCountry('kyrgyzstan')">
+                <="country-card-media">
+                  <="color-block" style="background-color: openCountry('kyrgyzstan.jpg')</div>
                 </div>
-                <div class="country-card-body">
+                <="country-card-body">
                   <h2 class="country-card-title serif">Kyrgyzstan</h2>
                   <span class="country-card-caption">Opening soon</span>
                 </div>
@@ -1358,33 +1363,33 @@
            ========================================== -->
       <section id="view-country" class="view-section">
         
-        <div class="container">
-          <div class="breadcrumbs-bar">
-            <div class="breadcrumbs">
+        <="container">
+          <="breadcrumbs-bar">
+            <="breadcrumbs">
               <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
               <span>/</span>
               <span class="breadcrumb-current" id="country-breadcrumb-name">Country</span>
             </div>
           </div>
 
-          <div class="country-banner">
-            <div class="country-banner-content">
-              <div class="country-banner-media" id="country-banner-media">
+          <="country-banner">
+            <="country-banner-content">
+              <="country-banner-media" id="country-banner-media">
                 <!-- Color Block -->
               </div>
-              <div class="country-banner-text">
+              <="country-banner-text">
                 <h1 id="country-title" class="serif">Country Name</h1>
                 <p id="country-desc">Ornament tradition description placeholder...</p>
               </div>
             </div>
           </div>
 
-          <div class="region-tags" id="country-region-tags">
+          <="region-tags" id="country-region-tags">
             <!-- Dynamic Region Tags -->
           </div>
 
           <!-- TAB SWITCHER ROW (4 TABS) -->
-          <div class="tabs-row" id="country-tabs-row">
+          <="tabs-row" id="country-tabs-row">
             <button class="tab-btn active" onclick="switchTab('items')">Items</button>
             <button class="tab-btn" onclick="switchTab('workshops')">Workshops</button>
             <button class="tab-btn" onclick="switchTab('partners')">Partners</button>
@@ -1392,50 +1397,50 @@
           </div>
         </div>
 
-        <div class="container">
+        <="container">
           
           <!-- TAB CONTENT 1: ITEMS (ACTIVE BY DEFAULT) -->
           <div id="tab-items" class="tab-content active">
-            <div class="products-grid" id="country-products-grid">
+            <="products-grid" id="country-products-grid">
               <!-- Items dynamic content -->
             </div>
           </div>
 
           <!-- TAB CONTENT 2: WORKSHOPS (KATUN MAKERS ONLY) -->
           <div id="tab-workshops" class="tab-content">
-            <div class="workshops-grid" id="country-workshops-grid">
+            <="workshops-grid" id="country-workshops-grid">
               <!-- Workshops dynamic content -->
             </div>
           </div>
 
           <!-- TAB CONTENT 3: PARTNERS (INDEPENDENT BRANDS ONLY) -->
           <div id="tab-partners" class="tab-content">
-            <div class="partners-grid" id="country-partners-grid">
+            <="partners-grid" id="country-partners-grid">
               <!-- Partners dynamic content -->
             </div>
           </div>
 
           <!-- TAB CONTENT 4: SCHEMES -->
           <div id="tab-schemes" class="tab-content">
-            <div class="schemes-grid" id="country-schemes-grid">
+            <="schemes-grid" id="country-schemes-grid">
               <!-- Schemes dynamic content -->
             </div>
           </div>
 
           <!-- OPENING SOON STATE (SERBIA & KYRGYZSTAN) -->
           <div id="country-opening-content" style="display: none;">
-            <div class="opening-soon-block">
+            <="opening-soon-block">
               <h2 class="opening-soon-title serif">This direction is opening</h2>
               <p class="opening-soon-desc">We are currently cataloging workshops and reviving regional patterns in this region. Leave your details to get notified of the first drop.</p>
               
               <form class="opening-form" onsubmit="event.preventDefault(); alert('Thank you. We will notify you when this directory opens.');">
-                <div class="form-group">
+                <="form-group">
                   <input type="text" placeholder="Your Name" required>
                 </div>
-                <div class="form-group">
+                <="form-group">
                   <input type="email" placeholder="Email Address" required>
                 </div>
-                <div class="form-group">
+                <="form-group">
                   <input type="text" placeholder="Knitting technique or region interest (optional)">
                 </div>
                 <button type="submit" class="btn-madder">Notify Me On Launch</button>
@@ -1447,8 +1452,8 @@
 
         <hr class="section-divider" />
 
-        <div class="container">
-          <div class="maker-cta-banner">
+        <="container">
+          <="maker-cta-banner">
             <span>Are you a traditional maker from <strong id="country-cta-name">this country</strong>?</span>
             <a onclick="alert('Join application form')">Apply to join KATUN</a>
           </div>
@@ -1461,9 +1466,9 @@
            ========================================== -->
       <section id="view-product" class="view-section">
         
-        <div class="container">
-          <div class="breadcrumbs-bar">
-            <div class="breadcrumbs">
+        <="container">
+          <="breadcrumbs-bar">
+            <="breadcrumbs">
               <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
               <span>/</span>
               <span class="breadcrumb-item" id="product-breadcrumb-country" onclick="openCountry(currentProduct.countryId)">Country</span>
@@ -1472,46 +1477,46 @@
             </div>
           </div>
 
-          <div class="product-detail-layout">
+          <="product-detail-layout">
             
             <!-- Left: Gallery -->
-            <div class="product-gallery">
-              <div class="product-main-media" id="product-main-media">
+            <="product-gallery">
+              <="product-main-media" id="product-main-media">
                 <!-- Color Block -->
               </div>
-              <div class="product-thumbnails" id="product-thumbnails">
+              <="product-thumbnails" id="product-thumbnails">
                 <!-- 3 Small Thumbnails -->
               </div>
             </div>
 
             <!-- Right: Info Panel -->
-            <div class="product-info-panel">
+            <="product-info-panel">
               <h1 class="product-title serif" id="product-title">Product Title</h1>
-              <div class="product-price" id="product-price">€000</div>
-              <div class="product-origin" id="product-origin">
+              <="product-price" id="product-price">€000</div>
+              <="product-origin" id="product-origin">
                 Made by <span id="product-origin-link" class="product-origin-link">Workshop</span>, <span id="product-origin-region">Region</span>, <span id="product-origin-country">Country</span>
               </div>
 
               <button class="btn-madder add-to-cart-btn" onclick="alert('Added to cart.')">Add to cart</button>
 
-              <div class="spec-table">
-                <div class="spec-row">
+              <="spec-table">
+                <="spec-row">
                   <span class="spec-label">Material</span>
                   <span class="spec-value" id="spec-material">100% Unbleached Mountain Wool</span>
                 </div>
-                <div class="spec-row">
+                <="spec-row">
                   <span class="spec-label">Size</span>
                   <span class="spec-value" id="spec-size">One Size (Fits M-L)</span>
                 </div>
-                <div class="spec-row">
+                <="spec-row">
                   <span class="spec-label">Care</span>
                   <span class="spec-value" id="spec-care">Hand wash cold with wool detergent</span>
                 </div>
-                <div class="spec-row">
+                <="spec-row">
                   <span class="spec-label">Made in</span>
                   <span class="spec-value" id="spec-days">14 days</span>
                 </div>
-                <div class="spec-row">
+                <="spec-row">
                   <span class="spec-label">Shipping</span>
                   <span class="spec-value" id="spec-shipping">Ships directly from artisan studio</span>
                 </div>
@@ -1524,12 +1529,12 @@
         <hr class="section-divider" />
 
         <!-- Pattern Teaser Section (No visible full chart) -->
-        <div class="container">
-          <div class="pattern-section">
-            <div class="pattern-layout">
+        <="container">
+          <="pattern-section">
+            <="pattern-layout">
               <h2 class="pattern-heading serif" id="teaser-pattern-heading">Pattern Name</h2>
               
-              <div class="pattern-body-text">
+              <="pattern-body-text">
                 <p id="teaser-p1">
                   Originating from high-altitude shepherd communities recorded in regional museum ethnography collections.
                 </p>
@@ -1539,8 +1544,8 @@
               </div>
 
               <!-- Small Blurred Teaser -->
-              <div class="chart-teaser-container">
-                <div class="chart-teaser-grid" id="chart-teaser-grid">
+              <="chart-teaser-container">
+                <="chart-teaser-grid" id="chart-teaser-grid">
                   <!-- Blurred Grid Generated JS -->
                 </div>
               </div>
@@ -1562,9 +1567,9 @@
            ========================================== -->
       <section id="view-partner-detail" class="view-section">
         
-        <div class="container">
-          <div class="breadcrumbs-bar">
-            <div class="breadcrumbs">
+        <="container">
+          <="breadcrumbs-bar">
+            <="breadcrumbs">
               <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
               <span>/</span>
               <span class="breadcrumb-item" id="partner-breadcrumb-country" onclick="openCountry(currentEntity.countryId)">Country</span>
@@ -1573,21 +1578,21 @@
             </div>
           </div>
 
-          <div class="partner-page-section">
-            <div class="partner-banner">
-              <div class="partner-banner-content">
-                <div class="partner-banner-media" id="partner-banner-media">
+          <="partner-page-section">
+            <="partner-banner">
+              <="partner-banner-content">
+                <="partner-banner-media" id="partner-banner-media">
                   <!-- Color block -->
                 </div>
-                <div class="partner-banner-text">
+                <="partner-banner-text">
                   <h1 id="partner-title" class="serif">Entity Name</h1>
                   <span id="partner-type-tag" class="partner-type-tag">WORKSHOP</span>
                   
-                  <div class="partner-meta-row" id="partner-meta-row">
+                  <="partner-meta-row" id="partner-meta-row">
                     City, Country · Founded Year · Technique
                   </div>
 
-                  <div class="partner-story">
+                  <="partner-story">
                     <p id="partner-p1">Paragraph 1 story...</p>
                     <p id="partner-p2">Paragraph 2 story...</p>
                     <p id="partner-pattern-line" class="partner-pattern-line" style="display: none;">
@@ -1601,14 +1606,14 @@
             <hr class="section-divider" style="margin-top: 40px; margin-bottom: 40px;" />
 
             <!-- CATALOGUE SECTION -->
-            <div class="partner-catalogue-area">
+            <="partner-catalogue-area">
               <h2 class="partner-catalogue-title serif">Catalogue</h2>
-              <div class="products-grid" id="partner-products-grid">
+              <="products-grid" id="partner-products-grid">
                 <!-- Products for this workshop/partner -->
               </div>
             </div>
 
-            <div class="partner-actions-bottom">
+            <="partner-actions-bottom">
               <div id="partner-website-container">
                 <a id="partner-website-link" href="#" target="_blank" class="btn-outline" style="display: none;">Visit their own site</a>
               </div>
@@ -1624,26 +1629,26 @@
            VIEW 5: GLOBAL WORKSHOPS DIRECTORY VIEW
            ========================================== -->
       <section id="view-all-workshops" class="view-section">
-        <div class="container">
-          <div class="breadcrumbs-bar">
-            <div class="breadcrumbs">
+        <="container">
+          <="breadcrumbs-bar">
+            <="breadcrumbs">
               <span class="breadcrumb-item" onclick="showView('home')">Home</span>
               <span>/</span>
               <span class="breadcrumb-current">Workshops</span>
             </div>
           </div>
 
-          <div class="directory-section">
-            <div class="directory-header">
+          <="directory-section">
+            <="directory-header">
               <h1 class="serif">Workshops</h1>
               <p style="color: #665E58; font-size: 15px;">KATUN traditional makers working with our regional pattern index.</p>
             </div>
 
-            <div class="directory-filters" id="workshops-filter-pills">
+            <="directory-filters" id="workshops-filter-pills">
               <!-- Dynamic Filter Pills -->
             </div>
 
-            <div class="workshops-grid" id="global-workshops-grid">
+            <="workshops-grid" id="global-workshops-grid">
               <!-- Grid of KATUN workshops -->
             </div>
           </div>
@@ -1654,26 +1659,26 @@
            VIEW 6: GLOBAL PARTNERS DIRECTORY VIEW
            ========================================== -->
       <section id="view-all-partners" class="view-section">
-        <div class="container">
-          <div class="breadcrumbs-bar">
-            <div class="breadcrumbs">
+        <="container">
+          <="breadcrumbs-bar">
+            <="breadcrumbs">
               <span class="breadcrumb-item" onclick="showView('home')">Home</span>
               <span>/</span>
               <span class="breadcrumb-current">Partners</span>
             </div>
           </div>
 
-          <div class="directory-section">
-            <div class="directory-header">
+          <="directory-section">
+            <="directory-header">
               <h1 class="serif">Partner Brands</h1>
               <p style="color: #665E58; font-size: 15px;">Independent revivalist design studios with their own distinct collections.</p>
             </div>
 
-            <div class="directory-filters" id="partners-filter-pills">
+            <="directory-filters" id="partners-filter-pills">
               <!-- Dynamic Filter Pills -->
             </div>
 
-            <div class="partners-grid" id="global-partners-grid">
+            <="partners-grid" id="global-partners-grid">
               <!-- Grid of Partner brands -->
             </div>
           </div>
@@ -1684,33 +1689,33 @@
            VIEW 7: PATTERN PAGE (NEW DEDICATED VIEW)
            ========================================== -->
       <section id="view-pattern-detail" class="view-section">
-        <div class="container">
-          <div class="breadcrumbs-bar">
-            <div class="breadcrumbs">
+        <="container">
+          <="breadcrumbs-bar">
+            <="breadcrumbs">
               <span class="breadcrumb-item" onclick="showView('home')">Patterns</span>
               <span>/</span>
               <span class="breadcrumb-current" id="pattern-breadcrumb-name">Pattern Name</span>
             </div>
           </div>
 
-          <div class="pattern-view-layout">
+          <="pattern-view-layout">
             <!-- Left: Full CSS Chart -->
-            <div class="full-chart-box">
-              <div class="full-knitting-chart" id="full-knitting-chart">
+            <="full-chart-box">
+              <="full-knitting-chart" id="full-knitting-chart">
                 <!-- 20x20 Grid -->
               </div>
             </div>
 
             <!-- Right: Details & Purchase -->
-            <div class="pattern-info-panel">
+            <="pattern-info-panel">
               <h1 class="serif" id="pattern-page-title">Pattern Name</h1>
-              <div class="pattern-meta-sub" id="pattern-page-meta">Region, Country</div>
+              <="pattern-meta-sub" id="pattern-page-meta">Region, Country</div>
 
-              <div class="pattern-origin-story" id="pattern-page-story">
+              <="pattern-origin-story" id="pattern-page-story">
                 Origin story paragraph describing museum reference collection, historical shepherd lineage, and technical knitting structure revived.
               </div>
 
-              <div class="pattern-purchase-row">
+              <="pattern-purchase-row">
                 <span class="pattern-price-tag" id="pattern-page-price">€14</span>
                 <button class="btn-madder" onclick="alert('Digital pattern chart added to cart.')">Add to cart</button>
               </div>
@@ -1720,9 +1725,9 @@
           <hr class="section-divider" />
 
           <!-- Related Items Section -->
-          <div class="related-items-section">
+          <="related-items-section">
             <h2 class="related-items-title serif">Items made with this pattern</h2>
-            <div class="products-grid" id="pattern-related-products-grid">
+            <="products-grid" id="pattern-related-products-grid">
               <!-- Grid of products using this pattern -->
             </div>
           </div>
@@ -1734,17 +1739,17 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
+      <="container">
+        <="footer-content">
+          <="footer-brand">
             <span class="footer-wordmark">KATUN</span>
             <p class="footer-desc">
               Documenting and preserving textile heritage through direct commerce with independent rural knitting circles.
             </p>
           </div>
 
-          <div class="footer-nav-group">
-            <div class="footer-column">
+          <="footer-nav-group">
+            <="footer-column">
               <span class="footer-title">Navigation</span>
               <ul class="footer-links">
                 <li><a onclick="showView('home')" class="footer-link">Countries</a></li>
@@ -1754,7 +1759,7 @@
               </ul>
             </div>
 
-            <div class="footer-column">
+            <="footer-column">
               <span class="footer-title">Partnership</span>
               <ul class="footer-links">
                 <li><a onclick="alert('For Makers application form')" class="footer-link">For Makers</a></li>
@@ -1763,7 +1768,7 @@
               </ul>
             </div>
 
-            <div class="footer-column">
+            <="footer-column">
               <span class="footer-title">Legal</span>
               <ul class="footer-links">
                 <li><a onclick="alert('Terms')" class="footer-link">Terms & Provenance</a></li>
@@ -1773,7 +1778,7 @@
           </div>
         </div>
 
-        <div class="footer-bottom">
+        <="footer-bottom">
           <span>&copy; 2026 KATUN Index. All rights reserved.</span>
           <span>Museum Catalogue Edition No. 01</span>
         </div>
@@ -2142,7 +2147,7 @@
 
       // Banner Color Block
       document.getElementById('country-banner-media').innerHTML = `
-        <div class="color-block" style="background-color: ${c.color}; color: #F7F3ED;">${c.name} Landscape</div>
+        <="color-block" style="background-color: ${c.color}; color: #F7F3ED;">${c.name} Landscape</div>
       `;
 
       // Render Region Tags
@@ -2191,11 +2196,11 @@
         if (c.workshops && c.workshops.length > 0) {
           c.workshops.forEach(w => {
             wsGrid.innerHTML += `
-              <div class="workshop-card" onclick="openPartnerDetail('${w.id}')">
-                <div class="workshop-media">
-                  <div class="color-block" style="background-color: ${w.color}; color: #F7F3ED; font-size: 10px;">${w.name}</div>
+              <="workshop-card" onclick="openPartnerDetail('${w.id}')">
+                <="workshop-media">
+                  <="color-block" style="background-color: ${w.color}; color: #F7F3ED; font-size: 10px;">${w.name}</div>
                 </div>
-                <div class="workshop-info">
+                <="workshop-info">
                   <span class="card-type-label">WORKSHOP</span>
                   <h3 class="serif">${w.name}</h3>
                   <p>${w.city} · ${w.itemsCount} items</p>
@@ -2204,7 +2209,7 @@
             `;
           });
         } else {
-          wsGrid.innerHTML = `<div class="empty-tab-msg">No workshops in this direction yet</div>`;
+          wsGrid.innerHTML = `<="empty-tab-msg">No workshops in this direction yet</div>`;
         }
 
         // 3. Partners Tab (Independent Brands with own catalogue)
@@ -2213,11 +2218,11 @@
         if (c.partners && c.partners.length > 0) {
           c.partners.forEach(p => {
             partGrid.innerHTML += `
-              <div class="partner-card" onclick="openPartnerDetail('${p.id}')">
-                <div class="partner-media">
-                  <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED; font-size: 10px;">${p.name}</div>
+              <="partner-card" onclick="openPartnerDetail('${p.id}')">
+                <="partner-media">
+                  <="color-block" style="background-color: ${p.color}; color: #F7F3ED; font-size: 10px;">${p.name}</div>
                 </div>
-                <div class="partner-info">
+                <="partner-info">
                   <span class="card-type-label">PARTNER</span>
                   <h3 class="serif">${p.name}</h3>
                   <p>${p.city} · ${p.itemsCount} items</p>
@@ -2226,7 +2231,7 @@
             `;
           });
         } else {
-          partGrid.innerHTML = `<div class="empty-tab-msg">No partners in this direction yet</div>`;
+          partGrid.innerHTML = `<="empty-tab-msg">No partners in this direction yet</div>`;
         }
 
         // 4. Schemes Tab
@@ -2235,22 +2240,22 @@
         if (c.schemes && c.schemes.length > 0) {
           c.schemes.forEach(s => {
             schGrid.innerHTML += `
-              <div class="scheme-card" onclick="openPatternPage('${s.id}')">
-                <div class="scheme-chart-preview">
-                  <div class="scheme-16-chart">
+              <="scheme-card" onclick="openPatternPage('${s.id}')">
+                <="scheme-chart-preview">
+                  <="scheme-16-chart">
                     ${generate16x16ChartCells(s.seed)}
                   </div>
                 </div>
-                <div class="scheme-card-body">
+                <="scheme-card-body">
                   <h3 class="scheme-card-title serif">${s.name}</h3>
-                  <div class="scheme-card-price">€${s.price}</div>
-                  <div class="scheme-card-meta">${s.region} · Digital Chart</div>
+                  <="scheme-card-price">€${s.price}</div>
+                  <="scheme-card-meta">${s.region} · Digital Chart</div>
                 </div>
               </div>
             `;
           });
         } else {
-          schGrid.innerHTML = `<div class="empty-tab-msg">No schemes in this direction yet</div>`;
+          schGrid.innerHTML = `<="empty-tab-msg">No schemes in this direction yet</div>`;
         }
 
         // Default active tab is items
@@ -2271,20 +2276,20 @@
       if (itemsToDisplay.length > 0) {
         itemsToDisplay.forEach(p => {
           prodGrid.innerHTML += `
-            <div class="product-card" onclick="openProduct('${p.id}')">
-              <div class="product-card-media">
-                <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
+            <="product-card" onclick="openProduct('${p.id}')">
+              <="product-card-media">
+                <="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
               </div>
-              <div class="product-card-body">
+              <="product-card-body">
                 <h3 class="product-card-title serif">${p.title}</h3>
-                <div class="product-card-price">€${p.price}</div>
-                <div class="product-card-meta">${p.workshop} · ${p.region}</div>
+                <="product-card-price">€${p.price}</div>
+                <="product-card-meta">${p.workshop} · ${p.region}</div>
               </div>
             </div>
           `;
         });
       } else {
-        prodGrid.innerHTML = `<div class="empty-tab-msg">No items in this direction yet</div>`;
+        prodGrid.innerHTML = `<="empty-tab-msg">No items in this direction yet</div>`;
       }
     }
 
@@ -2305,7 +2310,7 @@
           } else {
             filled = ((r + c) % 3 === 0) && (r % 2 === 0);
           }
-          html += `<div class="chart-cell ${filled ? 'filled' : ''}"></div>`;
+          html += `<="chart-cell ${filled ? 'filled' : ''}"></div>`;
         }
       }
       return html;
@@ -2351,7 +2356,7 @@
 
       // Main Media Block
       document.getElementById('product-main-media').innerHTML = `
-        <div class="color-block" style="background-color: ${foundProd.color}; color: #F7F3ED; font-size: 18px;">${foundProd.title} Detail</div>
+        <="color-block" style="background-color: ${foundProd.color}; color: #F7F3ED; font-size: 18px;">${foundProd.title} Detail</div>
       `;
 
       // Thumbnails
@@ -2359,8 +2364,8 @@
       thumbContainer.innerHTML = '';
       foundProd.thumbColors.forEach((col, idx) => {
         thumbContainer.innerHTML += `
-          <div class="product-thumb-media ${idx === 0 ? 'active' : ''}">
-            <div class="color-block" style="background-color: ${col}; font-size: 9px; color: #F7F3ED;">View ${idx+1}</div>
+          <="product-thumb-media ${idx === 0 ? 'active' : ''}">
+            <="color-block" style="background-color: ${col}; font-size: 9px; color: #F7F3ED;">View ${idx+1}</div>
           </div>
         `;
       });
@@ -2431,7 +2436,7 @@
 
       // Banner Color Block
       document.getElementById('partner-banner-media').innerHTML = `
-        <div class="color-block" style="background-color: ${foundEntity.color}; color: #F7F3ED;">${foundEntity.name} Studio</div>
+        <="color-block" style="background-color: ${foundEntity.color}; color: #F7F3ED;">${foundEntity.name} Studio</div>
       `;
 
       // Text Fields
@@ -2468,20 +2473,20 @@
       if (entityProducts.length > 0) {
         entityProducts.forEach(p => {
           catGrid.innerHTML += `
-            <div class="product-card" onclick="openProduct('${p.id}')">
-              <div class="product-card-media">
-                <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
+            <="product-card" onclick="openProduct('${p.id}')">
+              <="product-card-media">
+                <="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
               </div>
-              <div class="product-card-body">
+              <="product-card-body">
                 <h3 class="product-card-title serif">${p.title}</h3>
-                <div class="product-card-price">€${p.price}</div>
-                <div class="product-card-meta">${p.region}</div>
+                <="product-card-price">€${p.price}</div>
+                <="product-card-meta">${p.region}</div>
               </div>
             </div>
           `;
         });
       } else {
-        catGrid.innerHTML = `<div class="empty-tab-msg">No products in this catalogue yet</div>`;
+        catGrid.innerHTML = `<="empty-tab-msg">No products in this catalogue yet</div>`;
       }
 
       showView('partner-detail');
@@ -2525,11 +2530,11 @@
       if (list.length > 0) {
         list.forEach(w => {
           grid.innerHTML += `
-            <div class="workshop-card" onclick="openPartnerDetail('${w.id}')">
-              <div class="workshop-media">
-                <div class="color-block" style="background-color: ${w.color}; color: #F7F3ED; font-size: 10px;">${w.name}</div>
+            <="workshop-card" onclick="openPartnerDetail('${w.id}')">
+              <="workshop-media">
+                <="color-block" style="background-color: ${w.color}; color: #F7F3ED; font-size: 10px;">${w.name}</div>
               </div>
-              <div class="workshop-info">
+              <="workshop-info">
                 <span class="card-type-label">WORKSHOP</span>
                 <h3 class="serif">${w.name}</h3>
                 <p>${w.city}, ${w.countryName} · ${w.itemsCount} items</p>
@@ -2538,7 +2543,7 @@
           `;
         });
       } else {
-        grid.innerHTML = `<div class="empty-tab-msg">No workshops in this direction yet</div>`;
+        grid.innerHTML = `<="empty-tab-msg">No workshops in this direction yet</div>`;
       }
     }
 
@@ -2580,11 +2585,11 @@
       if (list.length > 0) {
         list.forEach(p => {
           grid.innerHTML += `
-            <div class="partner-card" onclick="openPartnerDetail('${p.id}')">
-              <div class="partner-media">
-                <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED; font-size: 10px;">${p.name}</div>
+            <="partner-card" onclick="openPartnerDetail('${p.id}')">
+              <="partner-media">
+                <="color-block" style="background-color: ${p.color}; color: #F7F3ED; font-size: 10px;">${p.name}</div>
               </div>
-              <div class="partner-info">
+              <="partner-info">
                 <span class="card-type-label">PARTNER</span>
                 <h3 class="serif">${p.name}</h3>
                 <p>${p.city}, ${p.countryName} · ${p.itemsCount} items</p>
@@ -2593,7 +2598,7 @@
           `;
         });
       } else {
-        grid.innerHTML = `<div class="empty-tab-msg">No partners in this direction yet</div>`;
+        grid.innerHTML = `<="empty-tab-msg">No partners in this direction yet</div>`;
       }
     }
 
@@ -2638,20 +2643,20 @@
       if (relatedProducts.length > 0) {
         relatedProducts.forEach(p => {
           relGrid.innerHTML += `
-            <div class="product-card" onclick="openProduct('${p.id}')">
-              <div class="product-card-media">
-                <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
+            <="product-card" onclick="openProduct('${p.id}')">
+              <="product-card-media">
+                <="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
               </div>
-              <div class="product-card-body">
+              <="product-card-body">
                 <h3 class="product-card-title serif">${p.title}</h3>
-                <div class="product-card-price">€${p.price}</div>
-                <div class="product-card-meta">${p.workshop} · ${p.region}</div>
+                <="product-card-price">€${p.price}</div>
+                <="product-card-meta">${p.workshop} · ${p.region}</div>
               </div>
             </div>
           `;
         });
       } else {
-        relGrid.innerHTML = `<div class="empty-tab-msg">No items catalogued with this pattern yet</div>`;
+        relGrid.innerHTML = `<="empty-tab-msg">No items catalogued with this pattern yet</div>`;
       }
 
       showView('pattern-detail');
