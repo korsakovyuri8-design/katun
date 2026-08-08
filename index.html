@@ -1648,6 +1648,17 @@
 .cart-total-value{font-size:28px;font-family:var(--font-serif);color:var(--madder)}
 .cart-actions{display:flex;flex-direction:column;gap:12px;max-width:420px}
     html { scroll-behavior: smooth; }
+    .split-table{width:100%;max-width:680px;border-collapse:collapse;font-size:15px}
+.split-table td{padding:14px 0;border-bottom:1px solid var(--rule);vertical-align:baseline}
+.split-table td:first-child{color:var(--ink)}
+.split-share{width:80px;text-align:right;padding-right:24px!important;font-family:var(--font-serif);font-size:20px;color:var(--ink)}
+.split-note{color:#665E58;font-size:13px}
+.split-highlight td{background:var(--card)}
+.split-highlight td:first-child{font-weight:500;padding-left:12px!important}
+.split-highlight .split-share{color:var(--madder);font-size:24px}
+.honest-block{background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:32px;max-width:680px}
+.honest-block p{font-size:15px;line-height:1.6;color:#38322E;margin-bottom:12px}
+.honest-block p:last-child{margin-bottom:0}
   </style>
 </head>
 <body>
@@ -2226,133 +2237,90 @@
 
 <!-- VIEW B: FOR MAKERS -->
 <section id="view-for-makers" class="view-section">
-  <div class="container" style="max-width: 760px;">
-    <div class="breadcrumbs">
-      <a onclick="showView('home')">Home</a> / For Makers
-    </div>
-    <div class="view-header" style="margin-bottom: 32px;">
-      <h1 class="serif" style="font-size: 36px; margin-bottom: 12px;">You make. We handle the rest.</h1>
-      <p style="color: #38322E; font-size: 16px; line-height: 1.5;">Photography, copy, translation, shipping, talking to buyers. All you do is work with your hands.</p>
-    </div>
-
-    <div style="display: flex; flex-direction: column; gap: 24px; margin-bottom: 48px;">
-      <div style="background-color: var(--card); border: 1px solid var(--rule); padding: 24px; border-radius: 2px;">
-        <h3 class="serif" style="font-size: 20px; margin-bottom: 8px;">What we do</h3>
-        <p style="font-size: 14px; line-height: 1.6; color: #38322E; margin: 0;">We photograph your work, write the descriptions, translate them, put them on the site and handle the buyer.</p>
-      </div>
-
-      <div style="background-color: var(--card); border: 1px solid var(--rule); padding: 24px; border-radius: 2px;">
-        <h3 class="serif" style="font-size: 20px; margin-bottom: 8px;">What you do</h3>
-        <p style="font-size: 14px; line-height: 1.6; color: #38322E; margin: 0;">You make the pieces. Nothing else. No English, no photography, no shop admin.</p>
-      </div>
-
-      <div style="background-color: var(--card); border: 1px solid var(--rule); padding: 24px; border-radius: 2px;">
-        <h3 class="serif" style="font-size: 20px; margin-bottom: 8px;">How we pay</h3>
-        <p style="font-size: 14px; line-height: 1.6; color: #38322E; margin: 0;">You know your share before you start. Payment goes out when the piece sells, with no holds.</p>
+  <div class="container">
+    <div class="breadcrumbs-bar">
+      <div class="breadcrumbs">
+        <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+        <span>/</span><span class="breadcrumb-current">For Makers</span>
       </div>
     </div>
 
-    <div style="background-color: var(--bg-cream); border: 1px solid var(--rule); padding: 32px; border-radius: 2px;">
-      <h2 class="serif" style="font-size: 28px; margin-bottom: 20px;">Join as a Maker</h2>
-      <form name="makers" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks">
+    <div class="directory-section">
+      <h1 class="serif" style="font-size:40px;margin-bottom:12px;">You make. We handle the rest.</h1>
+      <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;">
+        You don't need English, a camera, or a shop to sell what you make. You need someone to do that part for you. That's us.
+      </p>
+      <a class="btn-madder" href="#join-form" style="margin-bottom:56px;">Join us</a>
+
+      <div class="pillars-grid" style="margin-top:56px;margin-bottom:64px;">
+        <div class="pillar-card">
+          <h3 class="serif">You're not on your own</h3>
+          <p>Photography, descriptions, translation, shipping, talking to the buyer, handling returns. All of it is ours. You make the piece and hand it over.</p>
+        </div>
+        <div class="pillar-card">
+          <h3 class="serif">Your name stays on it</h3>
+          <p>Not an anonymous seller ID. Your name, your region, your technique - on the page and on the tag. People buy from you, not from a platform.</p>
+        </div>
+        <div class="pillar-card">
+          <h3 class="serif">You know your share before you start</h3>
+          <p>No listing fees. No paying to be seen. No money held for months. A fixed amount per piece, agreed before you cast on.</p>
+        </div>
+      </div>
+
+      <hr class="section-divider" style="margin-bottom:48px;" />
+
+      <h2 class="serif" style="font-size:32px;margin-bottom:8px;">Where the money goes</h2>
+      <p style="font-size:15px;color:#665E58;margin-bottom:28px;max-width:600px;">
+        We take the sale price as 100% and split it. Same for everyone, every country, every piece.
+      </p>
+
+      <table class="split-table">
+        <tr><td>Materials</td><td class="split-share">7%</td><td class="split-note">yarn and supplies</td></tr>
+        <tr class="split-highlight"><td>Maker</td><td class="split-share">40%</td><td class="split-note">your work</td></tr>
+        <tr><td>Country coordinator</td><td class="split-share">12%</td><td class="split-note">the person running your direction</td></tr>
+        <tr><td>KATUN</td><td class="split-share">41%</td><td class="split-note">brand, promotion, logistics, shipping</td></tr>
+      </table>
+
+      <p style="font-size:15px;color:#38322E;margin-top:20px;margin-bottom:56px;max-width:620px;line-height:1.6;">
+        At €45 the maker gets €18. At €90 - €36. At €170 - €68. The higher the piece is priced, the more everyone earns, at the same shares.
+      </p>
+
+      <hr class="section-divider" style="margin-bottom:48px;" />
+
+      <div class="honest-block">
+        <h2 class="serif" style="font-size:28px;margin-bottom:12px;">What we can't promise</h2>
+        <p>We're at the start. There are no sales yet, so we can't promise you a number. What we can promise is a share you know in advance and conditions that don't change behind your back.</p>
+        <p>If you're looking for a guaranteed salary, this isn't the place, and we'd rather say so now.</p>
+      </div>
+
+      <h2 class="serif" style="font-size:28px;margin-top:56px;margin-bottom:12px;">Beyond selling</h2>
+      <p style="font-size:15px;color:#38322E;max-width:640px;line-height:1.6;margin-bottom:56px;">
+        Your patterns become charts we sell - and you get a share of every chart sold, not just every piece. Later: in-person workshops in your region, recorded courses, and a permanent record of the patterns you work with.
+      </p>
+
+      <hr class="section-divider" style="margin-bottom:40px;" />
+
+      <h2 class="serif" id="join-form" style="font-size:28px;margin-bottom:8px;">Write to us</h2>
+      <p style="font-size:15px;color:#665E58;margin-bottom:24px;">
+        Tell us what you make and where. We answer every message ourselves.
+      </p>
+
+      <form name="makers" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+            action="/?thanks=1" class="opening-form" style="max-width:520px;">
         <input type="hidden" name="form-name" value="makers">
         <p style="display:none"><input name="bot-field"></p>
-
-        <div class="form-group" style="margin-bottom: 16px;">
-          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Your Name</label>
-          <input type="text" name="name" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
-        </div>
-
-        <div class="form-group" style="margin-bottom: 16px;">
-          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Country / Region</label>
-          <input type="text" name="country" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
-        </div>
-
-        <div class="form-group" style="margin-bottom: 16px;">
-          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Email</label>
-          <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
-        </div>
-
-        <div class="form-group" style="margin-bottom: 16px;">
-          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Technique / Craft</label>
-          <input type="text" name="technique" placeholder="e.g. Knitting, Embroidery, Weaving" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
-        </div>
-
-        <div class="form-group" style="margin-bottom: 24px;">
-          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Tell us about your work</label>
-          <textarea name="message" rows="4" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit; resize: vertical;"></textarea>
-        </div>
-
-        <button type="submit" class="btn-madder" style="width: 100%; cursor: pointer;">Send Application</button>
+        <div class="form-group"><input type="text" name="name" placeholder="Your name" required></div>
+        <div class="form-group"><input type="text" name="country" placeholder="Country" required></div>
+        <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
+        <div class="form-group"><input type="text" name="technique" placeholder="What you make"></div>
+        <div class="form-group"><input type="text" name="message" placeholder="Message"></div>
+        <button type="submit" class="btn-madder">Send</button>
       </form>
     </div>
   </div>
 </section>
-
 <!-- VIEW C: FOR SHOPS -->
-<section id="view-for-shops" class="view-section">
-  <div class="container" style="max-width: 760px;">
-    <div class="breadcrumbs">
-      <a onclick="showView('home')">Home</a> / For Shops
-    </div>
-    <div class="view-header" style="margin-bottom: 32px;">
-      <h1 class="serif" style="font-size: 36px; margin-bottom: 12px;">For workshops and brands</h1>
-      <p style="color: #38322E; font-size: 16px; line-height: 1.5;">If you already have your own workshop or brand, we give you a page on KATUN and promote it.</p>
-    </div>
 
-    <div style="display: flex; flex-direction: column; gap: 24px; margin-bottom: 48px;">
-      <div style="background-color: var(--card); border: 1px solid var(--rule); padding: 24px; border-radius: 2px;">
-        <h3 class="serif" style="font-size: 20px; margin-bottom: 8px;">Your own page</h3>
-        <p style="font-size: 14px; line-height: 1.6; color: #38322E; margin: 0;">Your name, your city, your story and your full catalogue. You don't dissolve into a marketplace.</p>
-      </div>
-
-      <div style="background-color: var(--card); border: 1px solid var(--rule); padding: 24px; border-radius: 2px;">
-        <h3 class="serif" style="font-size: 20px; margin-bottom: 8px;">We do the promotion</h3>
-        <p style="font-size: 14px; line-height: 1.6; color: #38322E; margin: 0;">Photography, copy and reach. You keep making and shipping.</p>
-      </div>
-
-      <div style="background-color: var(--card); border: 1px solid var(--rule); padding: 24px; border-radius: 2px;">
-        <h3 class="serif" style="font-size: 20px; margin-bottom: 8px;">Simple terms</h3>
-        <p style="font-size: 14px; line-height: 1.6; color: #38322E; margin: 0;">A share of what sells through KATUN. No listing fees, no mandatory ads.</p>
-      </div>
-    </div>
-
-    <div style="background-color: var(--bg-cream); border: 1px solid var(--rule); padding: 32px; border-radius: 2px;">
-      <h2 class="serif" style="font-size: 28px; margin-bottom: 20px;">Partner with Us</h2>
-      <form name="shops" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks">
-        <input type="hidden" name="form-name" value="shops">
-        <p style="display:none"><input name="bot-field"></p>
-
-        <div class="form-group" style="margin-bottom: 16px;">
-          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Brand Name</label>
-          <input type="text" name="brand" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
-        </div>
-
-        <div class="form-group" style="margin-bottom: 16px;">
-          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Country</label>
-          <input type="text" name="country" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
-        </div>
-
-        <div class="form-group" style="margin-bottom: 16px;">
-          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Website or Instagram</label>
-          <input type="text" name="link" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
-        </div>
-
-        <div class="form-group" style="margin-bottom: 16px;">
-          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Email</label>
-          <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
-        </div>
-
-        <div class="form-group" style="margin-bottom: 24px;">
-          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Message / Details</label>
-          <textarea name="message" rows="4" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit; resize: vertical;"></textarea>
-        </div>
-
-        <button type="submit" class="btn-madder" style="width: 100%; cursor: pointer;">Submit Workshop Application</button>
-      </form>
-    </div>
-  </div>
-</section>
 
 <!-- VIEW D: THANK YOU -->
 <section id="view-thanks" class="view-section">
@@ -2438,30 +2406,77 @@
         <span>/</span><span class="breadcrumb-current">For Shops</span>
       </div>
     </div>
+
     <div class="directory-section">
       <h1 class="serif" style="font-size:40px;margin-bottom:12px;">For workshops and brands</h1>
-      <p style="font-size:16px;color:#38322E;max-width:620px;margin-bottom:48px;">
-        If you already have your own workshop or brand, we give you a page on KATUN and put your work in front of people looking for exactly this.
+      <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;">
+        You already make the work. We give you a page, put it in front of people who came looking for exactly this, and take care of everything that isn't making.
       </p>
+      <a class="btn-madder" href="#shops-form" style="margin-bottom:56px;">Talk to us</a>
 
-      <div class="pillars-grid" style="margin-bottom:56px;">
+      <div class="pillars-grid" style="margin-top:56px;margin-bottom:40px;">
         <div class="pillar-card">
           <h3 class="serif">Your own page</h3>
-          <p>Your name, your city, your story and your full catalogue. You keep your brand — you don't dissolve into a marketplace.</p>
+          <p>Your name, your city, your story and your full catalogue — with a link out to your own site. You keep your brand. You don't dissolve into a marketplace.</p>
         </div>
         <div class="pillar-card">
-          <h3 class="serif">We do the work around the product</h3>
-          <p>Photography, copy, translation and social. You keep making and shipping.</p>
+          <h3 class="serif">We make your photos work</h3>
+          <p>Send us what you have, even from a phone. We crop, colour-correct and prepare them for the site — and you get the files back for your own use.</p>
         </div>
         <div class="pillar-card">
-          <h3 class="serif">Simple terms</h3>
-          <p>A share of what sells through KATUN. No listing fees, no mandatory ads, no charge for being here.</p>
+          <h3 class="serif">Written and translated</h3>
+          <p>Descriptions, captions and messages with buyers, in English. The barrier that keeps most workshops from ever selling outside their own country.</p>
         </div>
       </div>
 
+      <div class="pillars-grid" style="margin-bottom:64px;">
+        <div class="pillar-card">
+          <h3 class="serif">A physical point on the Adriatic</h3>
+          <p>Fairs, hotels and museum shops in Montenegro. Your work stands on a table in front of a traveller who is already here — somewhere you would never ship a single piece to.</p>
+        </div>
+        <div class="pillar-card">
+          <h3 class="serif">Nothing to pay to be here</h3>
+          <p>No listing fees, no ads you have to buy, no charge for a place on the site. A share of what actually sells, and nothing before that.</p>
+        </div>
+        <div class="pillar-card">
+          <h3 class="serif">Your patterns on record</h3>
+          <p>We document where each ornament comes from and keep it. If a workshop closes, the pattern doesn't disappear with it. That's the part museums and archives talk to us about.</p>
+        </div>
+      </div>
+
+      <hr class="section-divider" style="margin-bottom:48px;" />
+
+      <h2 class="serif" style="font-size:32px;margin-bottom:8px;">What we take, and for what</h2>
+      <p style="font-size:15px;color:#665E58;margin-bottom:28px;max-width:600px;">
+        We take the sale price as 100%. Nothing else.
+      </p>
+
+      <table class="split-table">
+        <tr class="split-highlight"><td>Your workshop</td><td class="split-share">47%</td><td class="split-note">materials and your work</td></tr>
+        <tr><td>Country coordinator</td><td class="split-share">12%</td><td class="split-note">the person running your direction</td></tr>
+        <tr><td>KATUN</td><td class="split-share">41%</td><td class="split-note">photo prep, copy, translation, promotion, logistics</td></tr>
+      </table>
+
+      <p style="font-size:15px;color:#38322E;margin-top:20px;margin-bottom:56px;max-width:620px;line-height:1.6;">
+        You tell us the price you need for a piece. We build ours on top of it, so what reaches you doesn't shrink.
+      </p>
+
+      <hr class="section-divider" style="margin-bottom:48px;" />
+
+      <div class="honest-block">
+        <h2 class="serif" style="font-size:28px;margin-bottom:12px;">Where we are now</h2>
+        <p>We're at the start. We're not going to tell you we'll bring you traffic — we don't have it yet, and you'd hear straight through that.</p>
+        <p>What's real today: the page, the photo prep, the writing, the translation, the fairs in Montenegro, and terms that cost you nothing until something sells. You keep your own shop and lose nothing by being here too.</p>
+      </div>
+
+      <h2 class="serif" style="font-size:28px;margin-top:56px;margin-bottom:12px;">Where this is going</h2>
+      <p style="font-size:15px;color:#38322E;max-width:640px;line-height:1.6;margin-bottom:56px;">
+        A base inside the EU, so parcels from outside it stop being expensive and unpredictable for everyone we work with. In-person workshops in your region. And a growing record of the ornaments each direction is built on.
+      </p>
+
       <hr class="section-divider" style="margin-bottom:40px;" />
 
-      <h2 class="serif" style="font-size:28px;margin-bottom:8px;">Write to us</h2>
+      <h2 class="serif" id="shops-form" style="font-size:28px;margin-bottom:8px;">Talk to us</h2>
       <p style="font-size:15px;color:#665E58;margin-bottom:24px;">
         Send us a link to your work and we'll come back to you.
       </p>
@@ -2470,7 +2485,7 @@
             action="/?thanks=1" class="opening-form" style="max-width:520px;">
         <input type="hidden" name="form-name" value="shops">
         <p style="display:none"><input name="bot-field"></p>
-        <div class="form-group"><input type="text" name="brand" placeholder="Brand name" required></div>
+        <div class="form-group"><input type="text" name="brand" placeholder="Brand or workshop name" required></div>
         <div class="form-group"><input type="text" name="country" placeholder="Country" required></div>
         <div class="form-group"><input type="text" name="link" placeholder="Website or Instagram"></div>
         <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
@@ -2480,8 +2495,6 @@
     </div>
   </div>
 </section>
-    </main>
-
     <!-- FOOTER -->
     <footer class="footer">
      <div class="container">
