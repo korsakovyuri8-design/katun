@@ -1647,6 +1647,7 @@
 .cart-total-label{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#665E58}
 .cart-total-value{font-size:28px;font-family:var(--font-serif);color:var(--madder)}
 .cart-actions{display:flex;flex-direction:column;gap:12px;max-width:420px}
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
@@ -1688,7 +1689,7 @@
         <h1 class="serif">Patterns that stopped being made, we make again</h1>
         <p class="hero-subline">Folk crafts from around the world: things made by hand from ornaments that almost fell out of use.</p>
         <div>
-          <a class="btn-madder" onclick="showView('home')">See the pieces</a>
+          <a class="btn-madder" href="#countries">See the pieces</a>
         </div>
       </div>
     </div>
@@ -1710,8 +1711,8 @@
         <div class="story-photo"></div>
         <div class="story-text">
           <h2 class="serif">From a grandmother's chest</h2>
-          <p>It started with socks my grandmother knitted. Things like these still lie in chests around the world, but almost no one is left who knows how to make them: the makers are past sixty and there are no students.</p>
-          <p>We find these patterns in museums and with the makers themselves, turn them into charts, and put them back to work. Not as a souvenir, but as something you wear.</p>
+          <p>It started with socks my grandmother knitted. Things like these still lie in chests around the world, but almost no one is left who knows how to make them.</p>
+          <p>We find these patterns in museums and with the makers themselves, turn them into charts, and put them back to work. Not as a museum piece, but as something people actually use.</p>
         </div>
       </div>
     </div>
@@ -1723,22 +1724,22 @@
       <div class="pillars-grid">
         <div class="pillar-card">
           <h3 class="serif">A piece with an author</h3>
-          <p>Every item is made by a specific person. We show the maker's name, their village and their hands.</p>
+          <p>Every item is made by a specific person. We show their name, their region and the technique they use.</p>
         </div>
         <div class="pillar-card">
           <h3 class="serif">A pattern with an address</h3>
-          <p>We don't sell 'ethnic ornament'. We say which region the pattern comes from, which collection, and what was revived in it.</p>
+          <p>We say which region the pattern comes from and what was revived in it.</p>
         </div>
         <div class="pillar-card">
           <h3 class="serif">Small batches</h3>
-          <p>Not a warehouse of identical goods. As many as one person can make by hand.</p>
+          <p>Small differences come with handwork. They're what tells you a person made it.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 5. COUNTRIES -->
-  <section class="countries-section">
+  <section class="countries-section" id="countries">
     <div class="container">
       <div class="countries-header">
         <h2 class="serif">Craft without borders</h2>
@@ -1818,7 +1819,7 @@
       <div class="for-makers-card">
         <h2 class="serif">You make. We handle the rest.</h2>
         <p>Photography, copy, translation, shipping, talking to buyers. All you do is work with your hands.</p>
-        <a class="btn-outline" onclick="alert('Join application form')">Join us</a>
+        <a class="btn-outline" onclick="showView('for-makers')">Join us</a>
       </div>
     </div>
   </section>
@@ -1921,7 +1922,7 @@
        <div class="container">
          <div class="maker-cta-banner">
             <span>Are you a traditional maker from <strong id="country-cta-name">this country</strong>?</span>
-            <a onclick="alert('Join application form')">Apply to join KATUN</a>
+            <a onclick="showView('for-makers')">Apply to join KATUN</a>
           </div>
         </div>
 
