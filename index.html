@@ -1659,13 +1659,13 @@
        <div class="header-inner">
           <a onclick="showView('home')" class="wordmark">KATUN</a>
           <nav class="nav">
-  <a onclick="showView('all-workshops')" class="nav-link">Makers</a>
-  <a onclick="showView('patterns')" class="nav-link">Patterns</a>
+  <a onclick="showView('all-partners')" class="nav-link">Makers</a>
+  <a onclick="showView('all-workshops')" class="nav-link">Workshops</a>
   <span class="nav-join">
     <a onclick="toggleJoin(event)" class="nav-link">Join ▾</a>
     <div id="join-dropdown" class="join-dropdown">
-      <a onclick="alert('Maker applications open.')">For Makers</a>
-      <a onclick="alert('Wholesale catalog on request.')">For Shops</a>
+      <a onclick="showView('for-makers')">For Makers</a>
+      <a onclick="showView('for-shops')">For Shops</a>
     </div>
   </span>
   <a id="cart-btn" onclick="showView('cart')" class="nav-link">Cart (0)</a>
@@ -2373,6 +2373,109 @@
       <h1 class="serif" style="font-size:40px;margin-bottom:24px;">Your cart</h1>
       <div id="cart-items"></div>
       <div id="cart-summary"></div>
+    </div>
+  </div>
+</section>
+      <!-- FOR MAKERS -->
+<section id="view-for-makers" class="view-section">
+  <div class="container">
+    <div class="breadcrumbs-bar">
+      <div class="breadcrumbs">
+        <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+        <span>/</span><span class="breadcrumb-current">For Makers</span>
+      </div>
+    </div>
+    <div class="directory-section">
+      <h1 class="serif" style="font-size:40px;margin-bottom:12px;">You make. We handle the rest.</h1>
+      <p style="font-size:16px;color:#38322E;max-width:620px;margin-bottom:48px;">
+        Photography, copy, translation, shipping, talking to buyers. All you do is work with your hands.
+      </p>
+
+      <div class="pillars-grid" style="margin-bottom:56px;">
+        <div class="pillar-card">
+          <h3 class="serif">What we do</h3>
+          <p>We photograph your work, write the descriptions, translate them, put them on the site and handle the buyer from first message to delivery.</p>
+        </div>
+        <div class="pillar-card">
+          <h3 class="serif">What you do</h3>
+          <p>You make the pieces. Nothing else. No English, no photography, no shop admin, no packing slips.</p>
+        </div>
+        <div class="pillar-card">
+          <h3 class="serif">How we pay</h3>
+          <p>You know your share before you start. Payment goes out when the piece sells, with no holds and no listing fees.</p>
+        </div>
+      </div>
+
+      <hr class="section-divider" style="margin-bottom:40px;" />
+
+      <h2 class="serif" style="font-size:28px;margin-bottom:8px;">Write to us</h2>
+      <p style="font-size:15px;color:#665E58;margin-bottom:24px;">
+        Tell us what you make and where. We answer every message ourselves.
+      </p>
+
+      <form name="makers" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+            action="/?thanks=1" class="opening-form" style="max-width:520px;">
+        <input type="hidden" name="form-name" value="makers">
+        <p style="display:none"><input name="bot-field"></p>
+        <div class="form-group"><input type="text" name="name" placeholder="Your name" required></div>
+        <div class="form-group"><input type="text" name="country" placeholder="Country" required></div>
+        <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
+        <div class="form-group"><input type="text" name="technique" placeholder="What you make"></div>
+        <div class="form-group"><input type="text" name="message" placeholder="Message"></div>
+        <button type="submit" class="btn-madder">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOR SHOPS -->
+<section id="view-for-shops" class="view-section">
+  <div class="container">
+    <div class="breadcrumbs-bar">
+      <div class="breadcrumbs">
+        <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+        <span>/</span><span class="breadcrumb-current">For Shops</span>
+      </div>
+    </div>
+    <div class="directory-section">
+      <h1 class="serif" style="font-size:40px;margin-bottom:12px;">For workshops and brands</h1>
+      <p style="font-size:16px;color:#38322E;max-width:620px;margin-bottom:48px;">
+        If you already have your own workshop or brand, we give you a page on KATUN and put your work in front of people looking for exactly this.
+      </p>
+
+      <div class="pillars-grid" style="margin-bottom:56px;">
+        <div class="pillar-card">
+          <h3 class="serif">Your own page</h3>
+          <p>Your name, your city, your story and your full catalogue. You keep your brand — you don't dissolve into a marketplace.</p>
+        </div>
+        <div class="pillar-card">
+          <h3 class="serif">We do the work around the product</h3>
+          <p>Photography, copy, translation and social. You keep making and shipping.</p>
+        </div>
+        <div class="pillar-card">
+          <h3 class="serif">Simple terms</h3>
+          <p>A share of what sells through KATUN. No listing fees, no mandatory ads, no charge for being here.</p>
+        </div>
+      </div>
+
+      <hr class="section-divider" style="margin-bottom:40px;" />
+
+      <h2 class="serif" style="font-size:28px;margin-bottom:8px;">Write to us</h2>
+      <p style="font-size:15px;color:#665E58;margin-bottom:24px;">
+        Send us a link to your work and we'll come back to you.
+      </p>
+
+      <form name="shops" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+            action="/?thanks=1" class="opening-form" style="max-width:520px;">
+        <input type="hidden" name="form-name" value="shops">
+        <p style="display:none"><input name="bot-field"></p>
+        <div class="form-group"><input type="text" name="brand" placeholder="Brand name" required></div>
+        <div class="form-group"><input type="text" name="country" placeholder="Country" required></div>
+        <div class="form-group"><input type="text" name="link" placeholder="Website or Instagram"></div>
+        <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
+        <div class="form-group"><input type="text" name="message" placeholder="Message"></div>
+        <button type="submit" class="btn-madder">Send</button>
+      </form>
     </div>
   </div>
 </section>
@@ -3498,4 +3601,3 @@ function orderEmail(){
   </script>
 </body>
 </html>
-
