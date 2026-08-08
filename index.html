@@ -1636,7 +1636,17 @@
       color: #665E58;
       margin: 0;
     }
-
+.cart-row{display:flex;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--rule)}
+.cart-thumb{width:64px;height:80px;flex-shrink:0}
+.cart-info{flex:1}
+.cart-info h3{font-size:20px;line-height:1.2}
+.cart-info p{font-size:12px;color:#665E58;text-transform:uppercase;letter-spacing:.04em;margin-top:4px}
+.cart-price{font-size:16px;color:var(--madder);font-weight:500;white-space:nowrap}
+.cart-remove{font-size:12px;color:#665E58;text-decoration:underline;cursor:pointer;margin-left:12px}
+.cart-total{display:flex;justify-content:space-between;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--rule);margin-bottom:24px}
+.cart-total-label{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#665E58}
+.cart-total-value{font-size:28px;font-family:var(--font-serif);color:var(--madder)}
+.cart-actions{display:flex;flex-direction:column;gap:12px;max-width:420px}
   </style>
 </head>
 <body>
@@ -1658,7 +1668,7 @@
       <a onclick="alert('Wholesale catalog on request.')">For Shops</a>
     </div>
   </span>
-  <a onclick="alert('Cart is empty.')" class="nav-link">Cart (0)</a>
+  <a id="cart-btn" onclick="showView('cart')" class="nav-link">Cart (0)</a>
 </nav>
         </div>
       </div>
@@ -1953,7 +1963,7 @@
                 Made by <span id="product-origin-link" class="product-origin-link">Workshop</span>, <span id="product-origin-region">Region</span>, <span id="product-origin-country">Country</span>
               </div>
 
-              <button class="btn-madder add-to-cart-btn" onclick="alert('Added to cart.')">Add to cart</button>
+              <button class="btn-madder add-to-cart-btn" onclick="addToCart('product', currentProduct.id)">Add to cart</button>
 
              <div class="spec-table">
                <div class="spec-row">
@@ -2173,7 +2183,7 @@
 
              <div class="pattern-purchase-row">
                 <span class="pattern-price-tag" id="pattern-page-price">€14</span>
-                <button class="btn-madder" onclick="alert('Digital pattern chart added to cart.')">Add to cart</button>
+                <button class="btn-madder" onclick="addToCart('scheme', currentPattern.id)"">Add to cart</button>
               </div>
             </div>
           </div>
@@ -2351,7 +2361,21 @@
     <a class="btn-madder" onclick="showView('home')">Back to Home</a>
   </div>
 </section>
-
+<section id="view-cart" class="view-section">
+  <div class="container">
+    <div class="breadcrumbs-bar">
+      <div class="breadcrumbs">
+        <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+        <span>/</span><span class="breadcrumb-current">Cart</span>
+      </div>
+    </div>
+    <div class="directory-section">
+      <h1 class="serif" style="font-size:40px;margin-bottom:24px;">Your cart</h1>
+      <div id="cart-items"></div>
+      <div id="cart-summary"></div>
+    </div>
+  </div>
+</section>
     </main>
 
     <!-- FOOTER -->
@@ -2738,6 +2762,8 @@
         renderGlobalPartners();
       } else if (viewId === 'patterns') {
         renderPatterns(currentPatternFilter);
+      } else if (viewId === 'cart') {
+        renderCart();
       }
     }
 
@@ -3364,6 +3390,107 @@ function renderPatterns(filterCountry = 'all') {
 function filterPatterns(countryKey) {
   renderPatterns(countryKey);
 }
+    /* ===== CART ===== */
+let cart = [];
+
+function loadCart(){
+  const s = localStorage.getItem('katun-cart');
+  cart = s ? JSON.parse(s) : [];
+  updateCartCount();
+}
+function saveCart(){
+  localStorage.setItem('katun-cart', JSON.stringify(cart));
+  updateCartCount();
+}
+function updateCartCount(){
+  const el = document.getElementById('cart-btn');
+  if (el) el.innerText = 'Cart (' + cart.length + ')';
+}
+function addToCart(type, id){
+  cart.push({ type: type, id: id });
+  saveCart();
+  showView('cart');
+}
+function removeFromCart(i){
+  cart.splice(i,1);
+  saveCart();
+  renderCart();
+}
+function findItem(entry){
+  let found = null;
+  Object.values(DATA.countries).forEach(c => {
+    if (entry.type === 'product') {
+      const p = c.products.find(x => x.id === entry.id);
+      if (p) found = { title:p.title, price:p.price, meta:p.workshop + ' · ' + p.region, color:p.color };
+    } else {
+      const s = c.schemes.find(x => x.id === entry.id);
+      if (s) found = { title:s.name, price:s.price, meta:'Digital chart · ' + s.region, color:'#B8A597' };
+    }
+  });
+  return found;
+}
+function renderCart(){
+  const box = document.getElementById('cart-items');
+  const sum = document.getElementById('cart-summary');
+  if (!box) return;
+
+  if (cart.length === 0){
+    box.innerHTML = `<div class="empty-tab-msg">Your cart is empty</div>`;
+    sum.innerHTML = '';
+    return;
+  }
+
+  let total = 0;
+  box.innerHTML = cart.map((entry, i) => {
+    const it = findItem(entry);
+    if (!it) return '';
+    total += it.price;
+    const price = (typeof fmt === 'function') ? fmt(it.price) : '€' + it.price;
+    return `
+      <div class="cart-row">
+        <div class="cart-thumb"><div class="color-block" style="background-color:${it.color}"></div></div>
+        <div class="cart-info">
+          <h3 class="serif">${it.title}</h3>
+          <p>${it.meta}</p>
+        </div>
+        <span class="cart-price">${price}</span>
+        <span class="cart-remove" onclick="removeFromCart(${i})">Remove</span>
+      </div>`;
+  }).join('');
+
+  const totalStr = (typeof fmt === 'function') ? fmt(total) : '€' + total;
+  sum.innerHTML = `
+    <div class="cart-total">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-value">${totalStr}</span>
+    </div>
+    <div class="cart-actions">
+      <a class="btn-madder" onclick="orderWhatsApp()">Order via WhatsApp</a>
+      <a class="btn-outline" onclick="orderEmail()">Order by email</a>
+      <p style="font-size:13px;color:#665E58;line-height:1.5;margin-top:8px;">
+        We'll confirm availability and shipping cost, then send payment details.
+      </p>
+    </div>`;
+}
+function orderText(){
+  let t = 'KATUN order:%0A';
+  let total = 0;
+  cart.forEach(e => {
+    const it = findItem(e);
+    if (it){ t += '- ' + it.title + ' (€' + it.price + ')%0A'; total += it.price; }
+  });
+  t += 'Total: €' + total;
+  return t;
+}
+function orderWhatsApp(){
+  window.open('https://wa.me/38267804046?text=' + orderText(), '_blank');
+}
+function orderEmail(){
+  window.location.href = 'mailto:katun.montenegro@gmail.com?subject=KATUN order&body=' +
+    orderText().replace(/%0A/g,'%0D%0A');
+}
+
+
     // INIT DEFAULT STATE
     window.addEventListener('DOMContentLoaded', () => {
       showView('home');
@@ -3371,5 +3498,4 @@ function filterPatterns(countryKey) {
   </script>
 </body>
 </html>
-
 
