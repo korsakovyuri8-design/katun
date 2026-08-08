@@ -1659,6 +1659,36 @@
 .honest-block{background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:32px;max-width:680px}
 .honest-block p{font-size:15px;line-height:1.6;color:#38322E;margin-bottom:12px}
 .honest-block p:last-child{margin-bottom:0}
+    @media (min-width: 768px) {
+      .pillars-two {
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .pillars-two .pillar-card:nth-child(2) {
+        padding-right: 0;
+        border-right: none;
+      }
+    @media (min-width: 768px) {
+      .pillars-two {
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+        @media (min-width: 768px) {
+      .pillars-two {
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: start;
+      }
+      .pillars-two .pillar-card:nth-child(2) {
+        padding-right: 0;
+        border-right: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2282,7 +2312,6 @@
       </table>
 
       <p style="font-size:15px;color:#38322E;margin-top:20px;margin-bottom:56px;max-width:620px;line-height:1.6;">
-        At €45 the maker gets €18. At €90 - €36. At €170 - €68. The higher the piece is priced, the more everyone earns, at the same shares.
       </p>
 
       <hr class="section-divider" style="margin-bottom:48px;" />
@@ -2417,11 +2446,11 @@
       <div class="pillars-grid" style="margin-top:56px;margin-bottom:40px;">
         <div class="pillar-card">
           <h3 class="serif">Your own page</h3>
-          <p>Your name, your city, your story and your full catalogue — with a link out to your own site. You keep your brand. You don't dissolve into a marketplace.</p>
+          <p>Your name, your city, your story and your full catalogue - with a link out to your own site. You keep your brand. You don't dissolve into a marketplace.</p>
         </div>
         <div class="pillar-card">
           <h3 class="serif">We make your photos work</h3>
-          <p>Send us what you have, even from a phone. We crop, colour-correct and prepare them for the site — and you get the files back for your own use.</p>
+          <p>Send us what you have, even from a phone. We crop, colour-correct and prepare them for the site - and you get the files back for your own use.</p>
         </div>
         <div class="pillar-card">
           <h3 class="serif">Written and translated</h3>
@@ -2429,11 +2458,7 @@
         </div>
       </div>
 
-      <div class="pillars-grid" style="margin-bottom:64px;">
-        <div class="pillar-card">
-          <h3 class="serif">A physical point on the Adriatic</h3>
-          <p>Fairs, hotels and museum shops in Montenegro. Your work stands on a table in front of a traveller who is already here — somewhere you would never ship a single piece to.</p>
-        </div>
+      <div class="pillars-grid pillars-two" style="margin-bottom:64px;">
         <div class="pillar-card">
           <h3 class="serif">Nothing to pay to be here</h3>
           <p>No listing fees, no ads you have to buy, no charge for a place on the site. A share of what actually sells, and nothing before that.</p>
@@ -2465,7 +2490,7 @@
 
       <div class="honest-block">
         <h2 class="serif" style="font-size:28px;margin-bottom:12px;">Where we are now</h2>
-        <p>We're at the start. We're not going to tell you we'll bring you traffic — we don't have it yet, and you'd hear straight through that.</p>
+        <p>We're at the start. We're not going to tell you we'll bring you traffic - we don't have it yet, and you'd hear straight through that.</p>
         <p>What's real today: the page, the photo prep, the writing, the translation, the fairs in Montenegro, and terms that cost you nothing until something sells. You keep your own shop and lose nothing by being here too.</p>
       </div>
 
