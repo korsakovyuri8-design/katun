@@ -1659,24 +1659,7 @@
 .honest-block{background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:32px;max-width:680px}
 .honest-block p{font-size:15px;line-height:1.6;color:#38322E;margin-bottom:12px}
 .honest-block p:last-child{margin-bottom:0}
-    @media (min-width: 768px) {
-      .pillars-two {
-        grid-template-columns: repeat(2, 1fr) !important;
-        max-width: 760px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .pillars-two .pillar-card:nth-child(2) {
-        padding-right: 0;
-        border-right: none;
-      }
-    @media (min-width: 768px) {
-      .pillars-two {
-        grid-template-columns: repeat(2, 1fr) !important;
-        max-width: 760px;
-        margin-left: auto;
-        margin-right: auto;
-        @media (min-width: 768px) {
+@media (min-width: 768px) {
       .pillars-two {
         grid-template-columns: repeat(2, 1fr) !important;
         max-width: 760px;
@@ -1689,6 +1672,17 @@
         border-right: none;
       }
     }
+    .about-text{max-width:680px}
+    .about-text p{font-size:16px;line-height:1.7;color:#38322E;margin-bottom:20px}
+    .team-grid{display:grid;grid-template-columns:1fr;gap:40px;max-width:760px}
+    @media (min-width:768px){.team-grid{grid-template-columns:repeat(2,1fr);gap:48px}}
+    .team-card{display:flex;flex-direction:column}
+    .team-photo{width:100%;aspect-ratio:3/4;background-color:var(--card);border:1px solid var(--rule);border-radius:2px;margin-bottom:20px;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center}
+    .team-photo::after{content:attr(data-label);font-family:var(--font-serif);font-style:italic;font-size:14px;color:var(--rule)}
+    .team-photo[style*="background-image"]::after{display:none}
+    .team-card h3{font-size:24px;line-height:1.2;margin-bottom:4px}
+    .team-role{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--madder);margin-bottom:12px}
+    .team-card p{font-size:15px;line-height:1.6;color:#38322E}
   </style>
 </head>
 <body>
@@ -2375,56 +2369,7 @@
   </div>
 </section>
       <!-- FOR MAKERS -->
-<section id="view-for-makers" class="view-section">
-  <div class="container">
-    <div class="breadcrumbs-bar">
-      <div class="breadcrumbs">
-        <span class="breadcrumb-item" onclick="showView('home')">Home</span>
-        <span>/</span><span class="breadcrumb-current">For Makers</span>
-      </div>
-    </div>
-    <div class="directory-section">
-      <h1 class="serif" style="font-size:40px;margin-bottom:12px;">You make. We handle the rest.</h1>
-      <p style="font-size:16px;color:#38322E;max-width:620px;margin-bottom:48px;">
-        Photography, copy, translation, shipping, talking to buyers. All you do is work with your hands.
-      </p>
 
-      <div class="pillars-grid" style="margin-bottom:56px;">
-        <div class="pillar-card">
-          <h3 class="serif">What we do</h3>
-          <p>We photograph your work, write the descriptions, translate them, put them on the site and handle the buyer from first message to delivery.</p>
-        </div>
-        <div class="pillar-card">
-          <h3 class="serif">What you do</h3>
-          <p>You make the pieces. Nothing else. No English, no photography, no shop admin, no packing slips.</p>
-        </div>
-        <div class="pillar-card">
-          <h3 class="serif">How we pay</h3>
-          <p>You know your share before you start. Payment goes out when the piece sells, with no holds and no listing fees.</p>
-        </div>
-      </div>
-
-      <hr class="section-divider" style="margin-bottom:40px;" />
-
-      <h2 class="serif" style="font-size:28px;margin-bottom:8px;">Write to us</h2>
-      <p style="font-size:15px;color:#665E58;margin-bottom:24px;">
-        Tell us what you make and where. We answer every message ourselves.
-      </p>
-
-      <form name="makers" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-            action="/?thanks=1" class="opening-form" style="max-width:520px;">
-        <input type="hidden" name="form-name" value="makers">
-        <p style="display:none"><input name="bot-field"></p>
-        <div class="form-group"><input type="text" name="name" placeholder="Your name" required></div>
-        <div class="form-group"><input type="text" name="country" placeholder="Country" required></div>
-        <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
-        <div class="form-group"><input type="text" name="technique" placeholder="What you make"></div>
-        <div class="form-group"><input type="text" name="message" placeholder="Message"></div>
-        <button type="submit" class="btn-madder">Send</button>
-      </form>
-    </div>
-  </div>
-</section>
 
 <!-- FOR SHOPS -->
 <section id="view-for-shops" class="view-section">
@@ -2520,6 +2465,55 @@
     </div>
   </div>
 </section>
+<section id="view-about" class="view-section">
+  <div class="container">
+    <div class="breadcrumbs-bar">
+      <div class="breadcrumbs">
+        <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+        <span>/</span><span class="breadcrumb-current">About us</span>
+      </div>
+    </div>
+
+    <div class="directory-section">
+      <h1 class="serif" style="font-size:40px;margin-bottom:24px;">About KATUN</h1>
+
+      <div class="about-text">
+        <p>It started with a pair of socks. Thick, two-strand, knitted by a grandmother in a house where nobody thought of them as anything but socks. Things like these still lie in chests all over the world — and almost no one is left who knows how to make them.</p>
+
+        <p>The women who do are past sixty. Their daughters left for the cities. The patterns they carry were never written down: they were learned by watching, and they end when the watching stops. Museums hold the finished pieces behind glass, but a piece behind glass isn't a living craft. It's a record of one that died.</p>
+
+        <p>KATUN exists to keep the making alive, not just the memory of it. We find these patterns — in regional museums, in family chests, with the makers themselves — turn them into charts, and put them back into work that people wear and use. Every piece carries the name of the person who made it, the region it comes from and the technique behind it.</p>
+
+        <p>We're not a marketplace. We choose what goes on this site, we know every maker by name, and we take care of everything that isn't making: the photography, the writing, the translation, the shipping, the buyer. The maker makes. That's the whole arrangement.</p>
+
+        <p>We started in Montenegro, because that's where we live. Georgia, Serbia and Kyrgyzstan came next. There's no limit to the map — every region has ornament that's slipping out of use, and every one of them has someone still able to make it. We'd like to find them while there's still time.</p>
+      </div>
+
+      <hr class="section-divider" style="margin:56px 0 48px;" />
+
+      <h2 class="serif" style="font-size:32px;margin-bottom:32px;">Who we are</h2>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-photo" data-label="Фото"></div>
+          <h3 class="serif">Name Surname</h3>
+          <div class="team-role">Founder</div>
+          <p>Short paragraph: where they're from, what they did before, why this project.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-photo" data-label="Фото"></div>
+          <h3 class="serif">Name Surname</h3>
+          <div class="team-role">Lead maker</div>
+          <p>Short paragraph: where they're from, what they make, how long they've been doing it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    </main>
+
     <!-- FOOTER -->
     <footer class="footer">
      <div class="container">
@@ -2539,6 +2533,7 @@
                 <li><a onclick="showView('all-workshops')" class="footer-link">Workshops</a></li>
                 <li><a onclick="showView('all-partners')" class="footer-link">Partners</a></li>
                 <li><a onclick="showView('patterns')" class="footer-link">Patterns</a></li>
+<li><a onclick="showView('about')" class="footer-link">About us</a></li>
               </ul>
             </div>
 
@@ -3634,7 +3629,12 @@ function orderEmail(){
 
     // INIT DEFAULT STATE
     window.addEventListener('DOMContentLoaded', () => {
-      showView('home');
+      loadCart();
+      if (new URLSearchParams(location.search).get('thanks') === '1') {
+        showView('thanks');
+      } else {
+        showView('home');
+      }
     });
   </script>
 </body>
