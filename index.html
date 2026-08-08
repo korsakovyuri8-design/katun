@@ -1258,7 +1258,385 @@
   border-bottom: 1px solid var(--rule);
 }
 .join-dropdown a:last-child { border-bottom: none; }
-.join-dropdown a:hover { color: var(--madder); }  
+.join-dropdown a:hover { color: var(--madder); }      /* ==========================================
+       HOME VIEW REWRITE STYLES
+       ========================================== */
+
+    /* 1. HERO */
+    .hero-photo {
+      width: 100%;
+      min-height: 80vh;
+      background-image: url('hero.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: var(--card);
+      position: relative;
+      display: flex;
+    }
+
+    .hero-overlay {
+      width: 100%;
+      height: 100%;
+      min-height: 80vh;
+      background-color: rgba(26, 22, 20, 0.35);
+      display: flex;
+      align-items: flex-end;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    .hero-content {
+      color: var(--bg-cream);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 800px;
+      margin-left: 0;
+    }
+
+    .hero-content h1 {
+      font-size: 36px;
+      line-height: 1.15;
+      color: var(--bg-cream);
+    }
+
+    .hero-subline {
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--bg-cream);
+      max-width: 600px;
+      font-weight: 300;
+    }
+
+    @media (min-width: 768px) {
+      .hero-content h1 {
+        font-size: 54px;
+      }
+      .hero-subline {
+        font-size: 18px;
+      }
+    }
+
+    /* 2. TRUST STRIP */
+    .trust-strip {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      background-color: var(--bg-cream);
+      padding: 14px 0;
+    }
+
+    .trust-strip-inner {
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    /* 3. STORY */
+    .story-section {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .story-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background-image: url('story.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: var(--card);
+      border-radius: 2px;
+    }
+
+    .story-text {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .story-text h2 {
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    .story-text p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #38322E;
+    }
+
+    @media (min-width: 768px) {
+      .story-section {
+        padding-top: 100px;
+        padding-bottom: 100px;
+      }
+      .story-grid {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 64px;
+      }
+      .story-photo {
+        aspect-ratio: 16 / 10;
+      }
+      .story-text h2 {
+        font-size: 40px;
+      }
+    }
+
+    /* 4. THREE PILLARS */
+    .pillars-section {
+      padding-top: 48px;
+      padding-bottom: 64px;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .pillar-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pillar-card h3 {
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .pillar-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #38322E;
+    }
+
+    @media (min-width: 768px) {
+      .pillars-section {
+        padding-top: 80px;
+        padding-bottom: 100px;
+      }
+      .pillars-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
+      .pillar-card {
+        padding-right: 20px;
+        border-right: 1px solid var(--rule);
+      }
+      .pillar-card:last-child {
+        padding-right: 0;
+        border-right: none;
+      }
+    }
+
+    /* 5. COUNTRIES */
+    .countries-section {
+      padding-top: 48px;
+      padding-bottom: 64px;
+    }
+
+    .countries-header {
+      margin-bottom: 32px;
+    }
+
+    .countries-header h2 {
+      font-size: 32px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .countries-sub {
+      font-size: 15px;
+      color: #665E58;
+    }
+
+    @media (min-width: 768px) {
+      .countries-section {
+        padding-top: 80px;
+        padding-bottom: 100px;
+      }
+      .countries-header h2 {
+        font-size: 40px;
+      }
+    }
+
+    /* 6. FEATURED ITEM */
+    .featured-section {
+      padding-top: 48px;
+      padding-bottom: 64px;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .featured-content {
+      background-color: var(--bg-cream);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .featured-content h2 {
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    .featured-content p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #38322E;
+    }
+
+    .featured-price-line {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .featured-price {
+      font-size: 24px;
+      font-family: var(--font-serif);
+      color: var(--madder);
+      font-weight: 500;
+    }
+
+    .featured-meta {
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #665E58;
+    }
+
+    .featured-photo {
+      width: 100%;
+      min-height: 300px;
+      background-image: url('featured.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: var(--card);
+    }
+
+    @media (min-width: 768px) {
+      .featured-section {
+        padding-top: 80px;
+        padding-bottom: 100px;
+      }
+      .featured-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .featured-content {
+        padding: 60px 48px;
+      }
+      .featured-content h2 {
+        font-size: 40px;
+      }
+      .featured-photo {
+        min-height: 400px;
+      }
+    }
+
+    /* 7. FOR MAKERS */
+    .for-makers-section {
+      padding-top: 48px;
+      padding-bottom: 64px;
+    }
+
+    .for-makers-card {
+      background-color: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: 40px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .for-makers-card h2 {
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    .for-makers-card p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #38322E;
+      max-width: 540px;
+    }
+
+    @media (min-width: 768px) {
+      .for-makers-section {
+        padding-top: 80px;
+        padding-bottom: 120px;
+      }
+      .for-makers-card {
+        padding: 64px 40px;
+      }
+      .for-makers-card h2 {
+        font-size: 40px;
+      }
+    }
+    /* NEW VIEWS EXTENSION STYLES */
+    .filter-pills .tag-pill {
+      background-color: var(--card);
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      padding: 6px 16px;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .filter-pills .tag-pill:hover {
+      border-color: var(--ink);
+    }
+
+    .filter-pills .tag-pill.active {
+      background-color: var(--madder);
+      border-color: var(--madder);
+      color: var(--bg-cream);
+    }
+
+    .patterns-empty-state {
+      grid-column: 1 / -1;
+      padding: 60px 20px;
+      text-align: center;
+      background-color: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+    }
+
+    .patterns-empty-state p {
+      font-size: 16px;
+      color: #665E58;
+      margin: 0;
+    }
+
   </style>
 </head>
 <body>
@@ -1272,7 +1650,7 @@
           <a onclick="showView('home')" class="wordmark">KATUN</a>
           <nav class="nav">
   <a onclick="showView('all-workshops')" class="nav-link">Makers</a>
-  <a onclick="alert('Patterns archive opening soon.')" class="nav-link">Patterns</a>
+  <a onclick="showView('patterns')" class="nav-link">Patterns</a>
   <span class="nav-join">
     <a onclick="toggleJoin(event)" class="nav-link">Join ▾</a>
     <div id="join-dropdown" class="join-dropdown">
@@ -1293,70 +1671,148 @@
            VIEW 1: HOME
            ========================================== -->
       <section id="view-home" class="view-section active">
-        
-       <div class="container">
-         <div class="hero">
-            <h1 class="hero-statement serif">
-              A living index of regional folk knitwear, preserved by master artisans.
-            </h1>
+  <!-- 1. HERO -->
+  <div class="hero-photo">
+    <div class="hero-overlay">
+      <div class="container hero-content">
+        <h1 class="serif">Patterns that stopped being made, we make again</h1>
+        <p class="hero-subline">Folk crafts from around the world: things made by hand from ornaments that almost fell out of use.</p>
+        <div>
+          <a class="btn-madder" onclick="showView('home')">See the pieces</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="container">
+      <div class="trust-strip-inner">
+        Made by hand &middot; Small batches &middot; Ships from Montenegro &middot; 14-day returns
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. STORY -->
+  <section class="story-section">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-photo"></div>
+        <div class="story-text">
+          <h2 class="serif">From a grandmother's chest</h2>
+          <p>It started with socks my grandmother knitted. Things like these still lie in chests around the world, but almost no one is left who knows how to make them: the makers are past sixty and there are no students.</p>
+          <p>We find these patterns in museums and with the makers themselves, turn them into charts, and put them back to work. Not as a souvenir, but as something you wear.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. THREE PILLARS -->
+  <section class="pillars-section">
+    <div class="container">
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <h3 class="serif">A piece with an author</h3>
+          <p>Every item is made by a specific person. We show the maker's name, their village and their hands.</p>
+        </div>
+        <div class="pillar-card">
+          <h3 class="serif">A pattern with an address</h3>
+          <p>We don't sell 'ethnic ornament'. We say which region the pattern comes from, which collection, and what was revived in it.</p>
+        </div>
+        <div class="pillar-card">
+          <h3 class="serif">Small batches</h3>
+          <p>Not a warehouse of identical goods. As many as one person can make by hand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. COUNTRIES -->
+  <section class="countries-section">
+    <div class="container">
+      <div class="countries-header">
+        <h2 class="serif">Craft without borders</h2>
+        <p class="countries-sub">Every region has its own ornament. Choose a direction.</p>
+      </div>
+      <div class="country-home-grid">
+        <!-- Montenegro -->
+        <div class="country-card" onclick="openCountry('montenegro')">
+          <div class="country-card-media">
+            <div class="photo-block" style="background-image: url('montenegro.jpg')"></div>
+          </div>
+          <div class="country-card-body">
+            <h2 class="country-card-title serif">Montenegro</h2>
+            <span class="country-card-caption">1 workshop &middot; 4 items</span>
           </div>
         </div>
 
-        <hr class="section-divider" />
-
-       <div class="container">
-         <div class="home-grid-section">
-           <div class="country-home-grid">
-              
-              <!-- Montenegro -->
-             <div class="country-card" onclick="openCountry('montenegro')">
-               <div class="country-card-media">
-                 <div class="photo-block" style="background-image: url('montenegro.jpg')"></div>
-                </div>
-               <div class="country-card-body">
-                  <h2 class="country-card-title serif">Montenegro</h2>
-                  <span class="country-card-caption">1 workshop · 4 items</span>
-                </div>
-              </div>
-
-              <!-- Serbia -->
-             <div class="country-card" onclick="openCountry('serbia')">
-               <div class="country-card-media">
-                 <div class="photo-block" style="background-image: url('serbia.jpg')"></div>
-                </div>
-               <div class="country-card-body">
-                  <h2 class="country-card-title serif">Serbia</h2>
-                  <span class="country-card-caption">Opening soon</span>
-                </div>
-              </div>
-
-              <!-- Georgia -->
-             <div class="country-card" onclick="openCountry('georgia')">
-               <div class="country-card-media">
-                <div class="photo-block" style="background-image: url('georgia.jpg')"></div>
-                </div>
-               <div class="country-card-body">
-                  <h2 class="country-card-title serif">Georgia</h2>
-                  <span class="country-card-caption">1 workshop · 1 partner · 7 items</span>
-                </div>
-              </div>
-
-              <!-- Kyrgyzstan -->
-             <div class="country-card" onclick="openCountry('kyrgyzstan')">
-               <div class="country-card-media">
-                 <div class="photo-block" style="background-image: url('kyrgyzstan.jpg')"></div>
-                </div>
-               <div class="country-card-body">
-                  <h2 class="country-card-title serif">Kyrgyzstan</h2>
-                  <span class="country-card-caption">Opening soon</span>
-                </div>
-              </div>
-
-            </div>
+        <!-- Serbia -->
+        <div class="country-card" onclick="openCountry('serbia')">
+          <div class="country-card-media">
+            <div class="photo-block" style="background-image: url('serbia.jpg')"></div>
+          </div>
+          <div class="country-card-body">
+            <h2 class="country-card-title serif">Serbia</h2>
+            <span class="country-card-caption">Opening soon</span>
           </div>
         </div>
 
-      </section>
+        <!-- Georgia -->
+        <div class="country-card" onclick="openCountry('georgia')">
+          <div class="country-card-media">
+            <div class="photo-block" style="background-image: url('georgia.jpg')"></div>
+          </div>
+          <div class="country-card-body">
+            <h2 class="country-card-title serif">Georgia</h2>
+            <span class="country-card-caption">1 workshop &middot; 1 partner &middot; 7 items</span>
+          </div>
+        </div>
+
+        <!-- Kyrgyzstan -->
+        <div class="country-card" onclick="openCountry('kyrgyzstan')">
+          <div class="country-card-media">
+            <div class="photo-block" style="background-image: url('kyrgyzstan.jpg')"></div>
+          </div>
+          <div class="country-card-body">
+            <h2 class="country-card-title serif">Kyrgyzstan</h2>
+            <span class="country-card-caption">Opening soon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FEATURED ITEM -->
+  <section class="featured-section">
+    <div class="container">
+      <div class="featured-grid">
+        <div class="featured-content">
+          <h2 class="serif">Durmitor Socks</h2>
+          <p>Two-strand knitting in undyed mountain wool. Pattern revived from a piece in the Cetinje collection.</p>
+          <div class="featured-price-line">
+            <span class="featured-price">€—</span>
+            <span class="featured-meta">made in 5 days</span>
+          </div>
+          <div>
+            <a class="btn-madder" onclick="openProduct('mn-04')">Buy</a>
+          </div>
+        </div>
+        <div class="featured-photo"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FOR MAKERS -->
+  <section class="for-makers-section">
+    <div class="container">
+      <div class="for-makers-card">
+        <h2 class="serif">You make. We handle the rest.</h2>
+        <p>Photography, copy, translation, shipping, talking to buyers. All you do is work with your hands.</p>
+        <a class="btn-outline" onclick="alert('Join application form')">Join us</a>
+      </div>
+    </div>
+  </section>
+</section>
 
       <!-- ==========================================
            VIEW 2: COUNTRY PAGE (4 SEPARATE TABS)
@@ -1734,6 +2190,167 @@
 
         </div>
       </section>
+<!-- VIEW A: PATTERNS -->
+<section id="view-patterns" class="view-section">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a onclick="showView('home')">Home</a> / Patterns
+    </div>
+    <div class="view-header" style="margin-bottom: 24px;">
+      <h1 class="serif" style="font-size: 36px; margin-bottom: 8px;">Patterns</h1>
+      <p style="color: #665E58; font-size: 16px; max-width: 600px;">Charts recovered from museum collections and from the makers themselves. Buy a chart and knit it yourself.</p>
+    </div>
+
+    <div class="filter-pills" id="patterns-country-filters" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px;">
+      <button class="tag-pill active" onclick="filterPatterns('all')">All</button>
+      <button class="tag-pill" onclick="filterPatterns('montenegro')">Montenegro</button>
+      <button class="tag-pill" onclick="filterPatterns('serbia')">Serbia</button>
+      <button class="tag-pill" onclick="filterPatterns('georgia')">Georgia</button>
+      <button class="tag-pill" onclick="filterPatterns('kyrgyzstan')">Kyrgyzstan</button>
+    </div>
+
+    <div id="patterns-grid-container" class="schemes-grid"></div>
+  </div>
+</section>
+
+<!-- VIEW B: FOR MAKERS -->
+<section id="view-for-makers" class="view-section">
+  <div class="container" style="max-width: 760px;">
+    <div class="breadcrumbs">
+      <a onclick="showView('home')">Home</a> / For Makers
+    </div>
+    <div class="view-header" style="margin-bottom: 32px;">
+      <h1 class="serif" style="font-size: 36px; margin-bottom: 12px;">You make. We handle the rest.</h1>
+      <p style="color: #38322E; font-size: 16px; line-height: 1.5;">Photography, copy, translation, shipping, talking to buyers. All you do is work with your hands.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 24px; margin-bottom: 48px;">
+      <div style="background-color: var(--card); border: 1px solid var(--rule); padding: 24px; border-radius: 2px;">
+        <h3 class="serif" style="font-size: 20px; margin-bottom: 8px;">What we do</h3>
+        <p style="font-size: 14px; line-height: 1.6; color: #38322E; margin: 0;">We photograph your work, write the descriptions, translate them, put them on the site and handle the buyer.</p>
+      </div>
+
+      <div style="background-color: var(--card); border: 1px solid var(--rule); padding: 24px; border-radius: 2px;">
+        <h3 class="serif" style="font-size: 20px; margin-bottom: 8px;">What you do</h3>
+        <p style="font-size: 14px; line-height: 1.6; color: #38322E; margin: 0;">You make the pieces. Nothing else. No English, no photography, no shop admin.</p>
+      </div>
+
+      <div style="background-color: var(--card); border: 1px solid var(--rule); padding: 24px; border-radius: 2px;">
+        <h3 class="serif" style="font-size: 20px; margin-bottom: 8px;">How we pay</h3>
+        <p style="font-size: 14px; line-height: 1.6; color: #38322E; margin: 0;">You know your share before you start. Payment goes out when the piece sells, with no holds.</p>
+      </div>
+    </div>
+
+    <div style="background-color: var(--bg-cream); border: 1px solid var(--rule); padding: 32px; border-radius: 2px;">
+      <h2 class="serif" style="font-size: 28px; margin-bottom: 20px;">Join as a Maker</h2>
+      <form name="makers" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks">
+        <input type="hidden" name="form-name" value="makers">
+        <p style="display:none"><input name="bot-field"></p>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Your Name</label>
+          <input type="text" name="name" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Country / Region</label>
+          <input type="text" name="country" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Email</label>
+          <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Technique / Craft</label>
+          <input type="text" name="technique" placeholder="e.g. Knitting, Embroidery, Weaving" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Tell us about your work</label>
+          <textarea name="message" rows="4" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit; resize: vertical;"></textarea>
+        </div>
+
+        <button type="submit" class="btn-madder" style="width: 100%; cursor: pointer;">Send Application</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- VIEW C: FOR SHOPS -->
+<section id="view-for-shops" class="view-section">
+  <div class="container" style="max-width: 760px;">
+    <div class="breadcrumbs">
+      <a onclick="showView('home')">Home</a> / For Shops
+    </div>
+    <div class="view-header" style="margin-bottom: 32px;">
+      <h1 class="serif" style="font-size: 36px; margin-bottom: 12px;">For workshops and brands</h1>
+      <p style="color: #38322E; font-size: 16px; line-height: 1.5;">If you already have your own workshop or brand, we give you a page on KATUN and promote it.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 24px; margin-bottom: 48px;">
+      <div style="background-color: var(--card); border: 1px solid var(--rule); padding: 24px; border-radius: 2px;">
+        <h3 class="serif" style="font-size: 20px; margin-bottom: 8px;">Your own page</h3>
+        <p style="font-size: 14px; line-height: 1.6; color: #38322E; margin: 0;">Your name, your city, your story and your full catalogue. You don't dissolve into a marketplace.</p>
+      </div>
+
+      <div style="background-color: var(--card); border: 1px solid var(--rule); padding: 24px; border-radius: 2px;">
+        <h3 class="serif" style="font-size: 20px; margin-bottom: 8px;">We do the promotion</h3>
+        <p style="font-size: 14px; line-height: 1.6; color: #38322E; margin: 0;">Photography, copy and reach. You keep making and shipping.</p>
+      </div>
+
+      <div style="background-color: var(--card); border: 1px solid var(--rule); padding: 24px; border-radius: 2px;">
+        <h3 class="serif" style="font-size: 20px; margin-bottom: 8px;">Simple terms</h3>
+        <p style="font-size: 14px; line-height: 1.6; color: #38322E; margin: 0;">A share of what sells through KATUN. No listing fees, no mandatory ads.</p>
+      </div>
+    </div>
+
+    <div style="background-color: var(--bg-cream); border: 1px solid var(--rule); padding: 32px; border-radius: 2px;">
+      <h2 class="serif" style="font-size: 28px; margin-bottom: 20px;">Partner with Us</h2>
+      <form name="shops" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks">
+        <input type="hidden" name="form-name" value="shops">
+        <p style="display:none"><input name="bot-field"></p>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Brand Name</label>
+          <input type="text" name="brand" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Country</label>
+          <input type="text" name="country" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Website or Instagram</label>
+          <input type="text" name="link" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Email</label>
+          <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Message / Details</label>
+          <textarea name="message" rows="4" required style="width: 100%; padding: 10px; border: 1px solid var(--rule); background: #fff; font-family: inherit; resize: vertical;"></textarea>
+        </div>
+
+        <button type="submit" class="btn-madder" style="width: 100%; cursor: pointer;">Submit Workshop Application</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- VIEW D: THANK YOU -->
+<section id="view-thanks" class="view-section">
+  <div class="container" style="max-width: 600px; text-align: center; padding-top: 60px; padding-bottom: 60px;">
+    <h1 class="serif" style="font-size: 40px; margin-bottom: 16px;">Thank you</h1>
+    <p style="font-size: 16px; line-height: 1.6; color: #38322E; margin-bottom: 32px;">We've got your message. We answer from katun.montenegro@gmail.com, usually within a few days.</p>
+    <a class="btn-madder" onclick="showView('home')">Back to Home</a>
+  </div>
+</section>
 
     </main>
 
@@ -1755,7 +2372,7 @@
                 <li><a onclick="showView('home')" class="footer-link">Countries</a></li>
                 <li><a onclick="showView('all-workshops')" class="footer-link">Workshops</a></li>
                 <li><a onclick="showView('all-partners')" class="footer-link">Partners</a></li>
-                <li><a onclick="alert('Patterns archive')" class="footer-link">Patterns</a></li>
+                <li><a onclick="showView('patterns')" class="footer-link">Patterns</a></li>
               </ul>
             </div>
 
@@ -2115,10 +2732,12 @@
         window.scrollTo(0, 0);
       }
 
-      if (viewId === 'all-workshops') {
+   if (viewId === 'all-workshops') {
         renderGlobalWorkshops();
       } else if (viewId === 'all-partners') {
         renderGlobalPartners();
+      } else if (viewId === 'patterns') {
+        renderPatterns(currentPatternFilter);
       }
     }
 
@@ -2690,7 +3309,61 @@ function toggleJoin(e) {
 }
 document.addEventListener('click', () => {
   document.getElementById('join-dropdown').classList.remove('open');
-});
+});/* ===== PATTERNS VIEW ===== */
+let currentPatternFilter = 'all';
+
+function renderPatterns(filterCountry = 'all') {
+  currentPatternFilter = filterCountry;
+  const container = document.getElementById('patterns-grid-container');
+  if (!container) return;
+
+  document.querySelectorAll('#patterns-country-filters .tag-pill').forEach(btn => {
+    const isTarget = btn.getAttribute('onclick').includes(`'${filterCountry}'`);
+    btn.classList.toggle('active', isTarget);
+  });
+
+  let allSchemes = [];
+  Object.keys(DATA.countries).forEach(countryKey => {
+    if (filterCountry === 'all' || filterCountry === countryKey) {
+      const countryData = DATA.countries[countryKey];
+      if (countryData && countryData.schemes) {
+        countryData.schemes.forEach(scheme => {
+          allSchemes.push({
+            ...scheme,
+            countryKey: countryKey,
+            countryName: countryData.name
+          });
+        });
+      }
+    }
+  });
+
+  if (allSchemes.length === 0) {
+    container.innerHTML = `<div class="empty-tab-msg">No pattern charts in this direction yet</div>`;
+    return;
+  }
+
+  container.innerHTML = allSchemes.map(s => {
+    const gridHtml = generate16x16ChartCells(s.seed);
+    const price = (typeof fmt === 'function') ? fmt(s.price) : `€${s.price}`;
+    return `
+      <div class="scheme-card" onclick="openPatternPage('${s.id}')">
+        <div class="scheme-chart-preview">
+          <div class="scheme-16-chart">${gridHtml}</div>
+        </div>
+        <div class="scheme-card-body">
+          <div class="scheme-card-meta">${s.region} &middot; ${s.countryName}</div>
+          <h3 class="scheme-card-title serif">${s.name}</h3>
+          <div class="scheme-card-price">${price}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function filterPatterns(countryKey) {
+  renderPatterns(countryKey);
+}
     // INIT DEFAULT STATE
     window.addEventListener('DOMContentLoaded', () => {
       showView('home');
@@ -2698,3 +3371,5 @@ document.addEventListener('click', () => {
   </script>
 </body>
 </html>
+
+
