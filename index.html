@@ -1218,6 +1218,14 @@
       background-color: var(--ink);
     }
 
+    .chart-cell.cross { position: relative; }
+    .chart-cell.cross::after {
+      content: ''; position: absolute; inset: 10%;
+      background:
+        linear-gradient(to bottom right, transparent 44%, var(--ink) 44%, var(--ink) 56%, transparent 56%),
+        linear-gradient(to bottom left, transparent 44%, var(--ink) 44%, var(--ink) 56%, transparent 56%);
+    }
+
     .pattern-info-panel h1 {
       font-size: 40px;
       line-height: 1.1;
@@ -1909,7 +1917,7 @@
         <h2 class="serif">Craft without borders</h2>
         <p class="countries-sub">Every region has its own ornament. Choose a direction.</p>
       </div>
-      <div class="country-home-grid">
+<div class="country-home-grid">
         <!-- Montenegro -->
         <div class="country-card" onclick="openCountry('montenegro')">
           <div class="country-card-media">
@@ -1939,7 +1947,7 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Georgia</h2>
-            <span class="country-card-caption">1 workshop &middot; 1 partner &middot; 7 items</span>
+            <span class="country-card-caption">1 workshop &middot; 1 partner &middot; 4 items</span>
           </div>
         </div>
 
@@ -1950,13 +1958,12 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Kyrgyzstan</h2>
-            <span class="country-card-caption">Opening soon</span>
+            <span class="country-card-caption">1 workshop &middot; 1 partner &middot; 4 items</span>
           </div>
         </div>
       </div>
     </div>
   </section>
-
   <!-- 6. FEATURED ITEM -->
   <section class="featured-section">
     <div class="container">
@@ -2065,20 +2072,12 @@
           <div id="country-opening-content" style="display: none;">
            <div class="opening-soon-block">
               <h2 class="opening-soon-title serif">This direction is opening</h2>
-              <p class="opening-soon-desc">We are currently cataloging workshops and reviving regional patterns in this region. Leave your details to get notified of the first drop.</p>
+<p class="opening-soon-desc">We're looking for makers in this region and putting its patterns on record. If you make here, or know someone who does, write to us.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+                <a class="btn-madder" onclick="showView('for-makers')">Join us as a maker</a>
+                <a class="btn-outline" onclick="showView('for-shops')">Join us as a shop</a>
+              </div>
               
-              <form class="opening-form" onsubmit="event.preventDefault(); alert('Thank you. We will notify you when this directory opens.');">
-               <div class="form-group">
-                  <input type="text" placeholder="Your Name" required>
-                </div>
-               <div class="form-group">
-                  <input type="email" placeholder="Email Address" required>
-                </div>
-               <div class="form-group">
-                  <input type="text" placeholder="Knitting technique or region interest (optional)">
-                </div>
-                <button type="submit" class="btn-madder">Notify Me On Launch</button>
-              </form>
             </div>
           </div>
 
@@ -2152,7 +2151,7 @@
                 </div>
                <div class="spec-row">
                   <span class="spec-label">Shipping</span>
-                  <span class="spec-value" id="spec-shipping">Ships directly from artisan studio</span>
+                  <span class="spec-value" id="spec-shipping">From Montenegro, tracked · <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">rates</a></span>
                 </div>
               </div>
             </div>
@@ -2656,7 +2655,77 @@
     </div>
   </div>
 </section>
+<section id="view-terms" class="view-section">
+  <div class="container">
+    <div class="breadcrumbs-bar"><div class="breadcrumbs">
+      <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+      <span>/</span><span class="breadcrumb-current">Terms &amp; returns</span>
+    </div></div>
+    <div class="directory-section about-text">
+      <h1 class="serif" style="font-size:40px;margin-bottom:24px;">Terms &amp; returns</h1>
 
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Who you are buying from</h2>
+      <p>[Legal name], registered in [city, country] under number [registration number]. Address: [address]. Email: katun.montenegro@gmail.com.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Prices</h2>
+      <p>All prices are in euro and include [VAT / no VAT — state which]. Shipping is charged separately and confirmed before you pay. Import duties in your country, if any, are yours to pay.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">How an order works</h2>
+      <p>You add pieces to the cart and send us the order by WhatsApp or email. We reply with availability, the shipping cost and payment details. Your order is confirmed once payment reaches us — not before. Most pieces are made to order, and the making time is shown on each piece.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Shipping</h2>
+      <p>We ship from [country] worldwide. Delivery normally takes [X–Y] working days after the piece is finished. We send you the tracking number the day it leaves. If a parcel is lost in transit, we replace it or refund you in full.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Returns</h2>
+      <p>You have 14 days from the day the parcel reaches you to tell us you want to return it. Write to katun.montenegro@gmail.com. Send the piece back unworn and in the condition it arrived, and we refund the price within 14 days of receiving it. Return postage is yours unless the piece arrived faulty or wrong.</p>
+      <p>[Decide and state: whether made-to-order pieces can be returned.]</p>
+      <p>Pattern charts are digital files. Once the file has been sent to you, it can't be returned.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Faulty pieces</h2>
+      <p>These are made by hand, so small differences between pieces are normal and are not faults. If something is genuinely wrong — a hole, a seam that fails, the wrong piece — send us a photo and we repair, replace or refund it.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Workshop places</h2>
+      <p>A place is held once payment reaches us. Cancel more than [X] days before the date and we refund in full; after that we can move you to another date but can't refund. If we cancel a session, you get the full amount back.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Law</h2>
+      <p>These terms are governed by the law of [country]. Last updated [date].</p>
+    </div>
+  </div>
+</section>
+
+<section id="view-privacy" class="view-section">
+  <div class="container">
+    <div class="breadcrumbs-bar"><div class="breadcrumbs">
+      <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+      <span>/</span><span class="breadcrumb-current">Privacy</span>
+    </div></div>
+    <div class="directory-section about-text">
+      <h1 class="serif" style="font-size:40px;margin-bottom:24px;">Privacy</h1>
+
+      <p>[Legal name], [address], katun.montenegro@gmail.com, decides how your data is used on this site.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">What we collect</h2>
+      <p>Only what you type. If you fill in a form, we get your name, your email and whatever you write in the message. If you send an order, we get what you tell us in WhatsApp or by email — including the delivery address you give us. We ask for nothing else.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">What we do with it</h2>
+      <p>We answer you, and we send you your parcel. We don't sell your details, and we don't add you to a mailing list you didn't ask for.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Who else sees it</h2>
+      <p>Form submissions pass through FormSubmit, which forwards them to our inbox. Email goes through Google. Messages go through WhatsApp. Parcels go through the postal service, which needs your address to deliver. Each of them has its own privacy policy.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Your cart</h2>
+      <p>What you put in the cart is stored in your own browser and never reaches us until you send the order. Clearing your browser data clears it.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Cookies</h2>
+      <p>We set no tracking cookies and run no analytics. Fonts are loaded from Google Fonts, which sees your IP address as part of serving them.</p>
+
+      <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Your rights</h2>
+      <p>Write to katun.montenegro@gmail.com and we'll tell you what we hold about you, correct it, or delete it. We keep order records for [X] years because [reason — usually tax law], and delete everything else once the conversation is over.</p>
+
+      <p>Last updated [date].</p>
+    </div>
+  </div>
+</section>
     </main>
 
     <!-- FOOTER -->
@@ -2693,8 +2762,8 @@
            <div class="footer-column">
               <span class="footer-title">Legal</span>
               <ul class="footer-links">
-                <li><a onclick="alert('Terms')" class="footer-link">Terms & Provenance</a></li>
-                <li><a onclick="alert('Privacy')" class="footer-link">Privacy Policy</a></li>
+                <li><a onclick="showView('terms')" class="footer-link">Terms & returns</a></li>
+                <li><a onclick="showView('privacy')" class="footer-link">Privacy</a></li>
               </ul>
             </div>
           </div>
@@ -2751,9 +2820,46 @@
                 }
               ]
             }
+,
+            {
+              id: 'w-elena',
+              type: 'WORKSHOP',
+              countryId: 'montenegro',
+              name: 'Elena',
+              city: 'Budva',
+              itemsCount: 1,
+              color: '#6E6350',
+              foundedYear: '—',
+              technique: 'Hand-knitting in undyed Montenegrin wool',
+              patternRegion: '',
+              storyP1: 'Elena knits in undyed Montenegrin wool, spun from local flocks.',
+              storyP2: 'PLACEHOLDER — её история: откуда, у кого училась, что делает.',
+              websiteUrl: null
+            }
           ],
           partners: [], // Empty partners test state for Montenegro
           products: [
+            {
+              id: 'mn-knee',
+              countryId: 'montenegro',
+              title: 'Knee warmers',
+              price: 48,
+              workshopId: 'w-elena',
+              workshop: 'Elena',
+              city: 'Budva',
+              region: 'All Regions',
+              color: '#6E6350',
+              photo: 'knee-warmers.jpg',
+              thumbColors: ['#6E6350', '#7C7160', '#5C5344'],
+              material: '100% Montenegrin wool, undyed',
+              size: 'One size · knee 32–42 cm',
+              care: 'Hand wash cold',
+              days: '16 hours of work',
+              schemeId: null,
+              patternName: '',
+              patternOrigin: '',
+              patternRevived: ''
+            },
             {
               id: 'mn-01',
               countryId: 'montenegro',
@@ -2844,6 +2950,38 @@
               countryName: 'Montenegro',
               price: 14,
               seed: 1,
+              chart: [
+                "10101010101010101010101",
+                "10101010101010101010101",
+                "10000000000000000000001",
+                "11110000000100000001111",
+                "11110111100100111101111",
+                "11110100100100100101111",
+                "10000010000100001000001",
+                "10000011000100011000001",
+                "10111001100100110011101",
+                "10111100111111100111101",
+                "10100110011111001100101",
+                "10110111000100011101101",
+                "10000000100100100000001",
+                "11111111111111111111111",
+                "10000000000000000000001",
+                "10000000000000000000001",
+                "11111111111111111111111",
+                "10000000100100100000001",
+                "10110111000100011101101",
+                "10100110011111001100101",
+                "10111100111111100111101",
+                "10111001100100110011101",
+                "10000011000100011000001",
+                "10000010000100001000001",
+                "11110100100100100101111",
+                "11110111100100111101111",
+                "11110000000100000001111",
+                "10000000000000000000001",
+                "10101010101010101010101",
+                "10101010101010101010101"
+              ],
               originStory: 'This geometric star motif originates from high-altitude shepherd communities in the Durmitor mountain range. Preserved in the Cetinje National Ethnographic Collection, the solar grid was historically knitted into outer garments to serve as both regional identification and symbolic protection against severe mountain gales.'
             },
             {
@@ -3020,15 +3158,149 @@
           id: 'kyrgyzstan',
           name: 'Kyrgyzstan',
           color: '#4A5B6A',
-          isOpeningSoon: true,
+          isOpeningSoon: false,
           desc: 'Nomadic Kyrgyz wool traditions fuse heavy felting with intricate needlework and camel-wool yarn spinning built for life on the high steppes.',
-          regions: ['Naryn', 'Issyk-Kul'],
-          workshops: [],
-          partners: [],
-          products: [],
-          schemes: []
+          regions: ['All Regions', 'Naryn', 'Issyk-Kul'],
+          workshops: [
+            {
+              id: 'w-naryn',
+              type: 'WORKSHOP',
+              countryId: 'kyrgyzstan',
+              name: 'Naryn Wool Circle',
+              city: 'Naryn',
+              itemsCount: 3,
+              color: '#3E4E5C',
+              foundedYear: '—',
+              technique: 'Felting & Camel-Wool Hand-Knitting',
+              patternRegion: 'Naryn Valley',
+              storyP1: 'A group of women in Naryn working with wool from local flocks, knitting and felting through the winter months.',
+              storyP2: 'PLACEHOLDER — replace with the real story once the direction opens: who they are, how they learned, what they still make.',
+              websiteUrl: null
+            }
+          ],
+          partners: [
+            {
+              id: 'p-issykkul',
+              type: 'PARTNER',
+              countryId: 'kyrgyzstan',
+              name: 'Issyk-Kul Felt Studio',
+              city: 'Cholpon-Ata',
+              itemsCount: 1,
+              color: '#5C6E7E',
+              foundedYear: '—',
+              technique: 'Shyrdak Felt & Flat-Knit Panels',
+              patternRegion: 'Issyk-Kul',
+              storyP1: 'An independent studio on the north shore of Issyk-Kul working in felt and knitted panels.',
+              storyP2: 'PLACEHOLDER — replace with the real story once the direction opens.',
+              websiteUrl: null
+            }
+          ],
+          products: [
+            {
+              id: 'kg-01',
+              countryId: 'kyrgyzstan',
+              title: 'Naryn Camel-Wool Socks',
+              price: 60,
+              workshopId: 'w-naryn',
+              workshop: 'Naryn Wool Circle',
+              city: 'Naryn',
+              region: 'Naryn',
+              color: '#4A5B6A',
+              thumbColors: ['#3E4E5C', '#5C6E7E', '#33414D'],
+              material: 'Camel wool',
+              size: 'EU 38-42',
+              care: 'Hand wash cold',
+              days: '6 days',
+              schemeId: 'sch-kg-01',
+              patternName: 'Naryn Horn Motif',
+              patternOrigin: 'PLACEHOLDER — where this pattern was found.',
+              patternRevived: 'PLACEHOLDER — what was revived in it.'
+            },
+            {
+              id: 'kg-02',
+              countryId: 'kyrgyzstan',
+              title: 'Steppe Wool Mittens',
+              price: 55,
+              workshopId: 'w-naryn',
+              workshop: 'Naryn Wool Circle',
+              city: 'Naryn',
+              region: 'Naryn',
+              color: '#3E4E5C',
+              thumbColors: ['#33414D', '#4A5B6A', '#2B3740'],
+              material: 'Sheep wool',
+              size: 'Standard adult',
+              care: 'Hand wash cold',
+              days: '5 days',
+              schemeId: 'sch-kg-01',
+              patternName: 'Naryn Horn Motif',
+              patternOrigin: 'PLACEHOLDER — where this pattern was found.',
+              patternRevived: 'PLACEHOLDER — what was revived in it.'
+            },
+            {
+              id: 'kg-03',
+              countryId: 'kyrgyzstan',
+              title: 'Issyk-Kul Knitted Scarf',
+              price: 95,
+              workshopId: 'w-naryn',
+              workshop: 'Naryn Wool Circle',
+              city: 'Karakol',
+              region: 'Issyk-Kul',
+              color: '#5C6E7E',
+              thumbColors: ['#4A5B6A', '#6B7C8B', '#3E4E5C'],
+              material: 'Wool blend',
+              size: '190cm x 32cm',
+              care: 'Hand wash cold',
+              days: '8 days',
+              schemeId: 'sch-kg-02',
+              patternName: 'Issyk-Kul Wave Border',
+              patternOrigin: 'PLACEHOLDER — where this pattern was found.',
+              patternRevived: 'PLACEHOLDER — what was revived in it.'
+            },
+            {
+              id: 'kg-04',
+              countryId: 'kyrgyzstan',
+              title: 'Shyrdak Wall Panel',
+              price: 210,
+              partnerId: 'p-issykkul',
+              workshop: 'Issyk-Kul Felt Studio',
+              city: 'Cholpon-Ata',
+              region: 'Issyk-Kul',
+              color: '#6B7C8B',
+              thumbColors: ['#5C6E7E', '#7B8C9B', '#4A5B6A'],
+              material: 'Felted sheep wool',
+              size: '120cm x 70cm',
+              care: 'Air outdoors, spot clean',
+              days: '18 days',
+              schemeId: 'sch-kg-02',
+              patternName: 'Issyk-Kul Wave Border',
+              patternOrigin: 'PLACEHOLDER — where this pattern was found.',
+              patternRevived: 'PLACEHOLDER — what was revived in it.'
+            }
+          ],
+          schemes: [
+            {
+              id: 'sch-kg-01',
+              name: 'Naryn Horn Motif',
+              region: 'Naryn',
+              countryId: 'kyrgyzstan',
+              countryName: 'Kyrgyzstan',
+              price: 14,
+              seed: 5,
+              originStory: 'PLACEHOLDER — the origin of this chart: where it was recorded, who still knits it, what the motif meant.'
+            },
+            {
+              id: 'sch-kg-02',
+              name: 'Issyk-Kul Wave Border',
+              region: 'Issyk-Kul',
+              countryId: 'kyrgyzstan',
+              countryName: 'Kyrgyzstan',
+              price: 12,
+              seed: 6,
+              originStory: 'PLACEHOLDER — the origin of this chart.'
+            }
+          ]
         }
-      }
+        }
     };
 
     /* STATE MANAGEMENT */
@@ -3183,9 +3455,7 @@ currentView = viewId;
             schGrid.innerHTML += `
              <div class="scheme-card" onclick="openPatternPage('${s.id}')">
                <div class="scheme-chart-preview">
-                 <div class="scheme-16-chart">
-                    ${generate16x16ChartCells(s.seed)}
-                  </div>
+                 ${chartPreview(s, 200)}
                 </div>
                <div class="scheme-card-body">
                   <h3 class="scheme-card-title serif">${s.name}</h3>
@@ -3235,27 +3505,19 @@ currentView = viewId;
       }
     }
 
-    /* GENERATE 16x16 CSS CHART CELLS FOR SCHEMES PREVIEW */
-    function generate16x16ChartCells(seed) {
-      let html = '';
-      for (let r = 0; r < 16; r++) {
-        for (let c = 0; c < 16; c++) {
-          let filled = false;
-          if (seed === 1) {
-            const dist = Math.abs(r - 7.5) + Math.abs(c - 7.5);
-            filled = (dist > 3 && dist < 6) || (r === 7 || r === 8 || c === 7 || c === 8);
-          } else if (seed === 2) {
-            filled = ((r + c) % 4 === 0) || (r === c) || (r === 15 - c);
-          } else if (seed === 3) {
-            const dist = Math.abs(r - 7.5) + Math.abs(c - 7.5);
-            filled = (dist <= 2) || (dist >= 5 && dist <= 7);
-          } else {
-            filled = ((r + c) % 3 === 0) && (r % 2 === 0);
-          }
-          html += `<div class="chart-cell ${filled ? 'filled' : ''}"></div>`;
-        }
-      }
-      return html;
+/* CHART RENDERING FROM REAL DATA */
+    function chartCells(chart) {
+      return chart.map(row => row.split('').map(v =>
+        '<div class="chart-cell' + (v === '1' ? ' filled' : v === '2' ? ' cross' : '') + '"></div>'
+      ).join('')).join('');
+    }
+
+    function chartPreview(s, box) {
+      if (!s.chart || !s.chart.length) return '<div class="empty-tab-msg">Chart in preparation</div>';
+      const cols = s.chart[0].length, rows = s.chart.length;
+      const size = Math.max(3, Math.min(11, Math.floor(box / cols)));
+      return '<div class="scheme-16-chart" style="grid-template-columns:repeat(' + cols + ',' + size +
+        'px);grid-template-rows:repeat(' + rows + ',' + size + 'px)">' + chartCells(s.chart) + '</div>';
     }
 
     /* OPEN PRODUCT VIEW (WITH PATTERN TEASER) */
@@ -3297,9 +3559,9 @@ currentView = viewId;
       document.getElementById('spec-days').innerText = foundProd.days;
 
       // Main Media Block
-      document.getElementById('product-main-media').innerHTML = `
-       <div class="color-block" style="background-color: ${foundProd.color}; color: #F7F3ED; font-size: 18px;">${foundProd.title} Detail</div>
-      `;
+      document.getElementById('product-main-media').innerHTML = foundProd.photo
+        ? `<div class="photo-block" style="background-image:url('${foundProd.photo}')"></div>`
+        : `<div class="color-block" style="background-color: ${foundProd.color}; color: #F7F3ED; font-size: 18px;">${foundProd.title}</div>`;
 
       // Thumbnails
       const thumbContainer = document.getElementById('product-thumbnails');
@@ -3325,8 +3587,13 @@ currentView = viewId;
       }
       document.getElementById('get-full-chart-btn').innerText = `Get the full chart — €${patternPrice}`;
 
-      // Generate blurred teaser grid
-      renderTeaserGrid();
+      const teaser = document.querySelector('#view-product .pattern-section');
+      if (foundProd.schemeId) {
+        if (teaser) teaser.style.display = '';
+        renderTeaserGrid();
+      } else {
+        if (teaser) teaser.style.display = 'none';
+      }
 
 setHash('/item/' + productId);
       showView('product');
@@ -3425,7 +3692,7 @@ const siteBtn = document.getElementById('partner-website-link');
           catGrid.innerHTML += `
            <div class="product-card" onclick="openProduct('${p.id}')">
              <div class="product-card-media">
-               <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
+${p.photo ? `<div class="photo-block" style="background-image:url('${p.photo}')"></div>` : `<div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>`}
               </div>
              <div class="product-card-body">
                 <h3 class="product-card-title serif">${p.title}</h3>
@@ -3615,26 +3882,16 @@ setHash('/pattern/' + schemeId);
     }
 
     /* RENDER FULL 20x20 CHART GRID ON PATTERN PAGE */
-    function renderFullPatternChart() {
+function renderFullPatternChart() {
       const chart = document.getElementById('full-knitting-chart');
       chart.innerHTML = '';
-
-      for (let r = 0; r < 20; r++) {
-        for (let c = 0; c < 20; c++) {
-          const cell = document.createElement('div');
-          cell.className = 'chart-cell';
-
-          const centerDist = Math.abs(r - 9.5) + Math.abs(c - 9.5);
-          const isBorder = (r === 0 || r === 19 || c === 0 || c === 19);
-          const isInnerCross = (r === 9 || r === 10 || c === 9 || c === 10);
-
-          if ((centerDist > 4 && centerDist < 8) || (isInnerCross && centerDist < 4) || isBorder) {
-            cell.classList.add('filled');
-          }
-
-          chart.appendChild(cell);
-        }
-      }
+      const data = (currentPattern && currentPattern.chart) ? currentPattern.chart : [];
+      if (!data.length) return;
+      const cols = data[0].length, rows = data.length;
+      const size = Math.max(6, Math.min(14, Math.floor(340 / cols)));
+      chart.style.gridTemplateColumns = 'repeat(' + cols + ',' + size + 'px)';
+      chart.style.gridTemplateRows = 'repeat(' + rows + ',' + size + 'px)';
+      chart.innerHTML = chartCells(data);
     }
 function goCountries() {
   showView('home');
@@ -3643,7 +3900,7 @@ function goCountries() {
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 50);
 }
-    const SIMPLE_VIEWS = ['home','all-workshops','all-partners','patterns','cart','for-makers','for-shops','about','thanks'];
+    const SIMPLE_VIEWS = ['home','all-workshops','all-partners','patterns','cart','for-makers','for-shops','about','thanks','terms','privacy'];
 let routing = false;
 
 function setHash(h) {
@@ -3737,12 +3994,12 @@ function renderPatterns(filterCountry = 'all') {
   }
 
   container.innerHTML = allSchemes.map(s => {
-    const gridHtml = generate16x16ChartCells(s.seed);
+    const gridHtml = chartPreview(s, 200);
     const price = (typeof fmt === 'function') ? fmt(s.price) : `€${s.price}`;
     return `
       <div class="scheme-card" onclick="openPatternPage('${s.id}')">
         <div class="scheme-chart-preview">
-          <div class="scheme-16-chart">${gridHtml}</div>
+          ${gridHtml}
         </div>
         <div class="scheme-card-body">
           <div class="scheme-card-meta">${s.region} &middot; ${s.countryName}</div>
@@ -3754,9 +4011,27 @@ function renderPatterns(filterCountry = 'all') {
   }).join('');
 }
 
+/* ===== SHIPPING ===== */
+const SHIPPING = [
+  { zone: 'Montenegro',                      price: null, days: null },
+  { zone: 'Serbia, Bosnia, Croatia, Albania', price: null, days: null },
+  { zone: 'European Union',                  price: null, days: null },
+  { zone: 'Rest of the world',               price: null, days: null }
+];
+
+function shippingRows() {
+  return SHIPPING.map(s => `
+    <tr>
+      <td>${s.zone}</td>
+      <td class="split-share">${s.price === null ? '—' : '€' + s.price}</td>
+      <td class="split-note">${s.days === null ? 'confirmed before you pay' : s.days + ' working days'}</td>
+    </tr>`).join('');
+}
+
 function filterPatterns(countryKey) {
   renderPatterns(countryKey);
 }
+    
     /* ===== CART ===== */
 let cart = [];
 
@@ -3836,6 +4111,13 @@ function renderCart(){
       <span class="cart-total-label">Total</span>
       <span class="cart-total-value">${totalStr}</span>
     </div>
+    ${cart.some(e => e.type === 'product') ? `
+    <div style="margin-bottom:32px;">
+      <h3 class="serif" style="font-size:22px;margin-bottom:6px;">Shipping</h3>
+      <p style="font-size:14px;color:#665E58;margin-bottom:16px;">Sent from Montenegro with tracking. Charts are digital and workshop places need no delivery.</p>
+      <table class="split-table">${shippingRows()}</table>
+      <p style="font-size:13px;color:#665E58;margin-top:12px;">Import duties outside the EU are yours to pay. <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">Terms &amp; returns</a></p>
+    </div>` : ''}
     <div class="cart-actions">
       <a class="btn-madder" onclick="orderWhatsApp()">Order via WhatsApp</a>
       <a class="btn-outline" onclick="orderEmail()">Order by email</a>
