@@ -118,7 +118,9 @@
       display: flex;
       gap: 12px;
       align-items: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      line-height: 1;
+      white-space: nowrap;
     }
 
     @media (min-width: 768px) {
@@ -140,6 +142,17 @@
 
     .nav-link:hover {
       color: var(--madder);
+    }
+
+    .nav-link {
+      display: inline-block;
+      line-height: 1;
+    }
+
+    .nav-join {
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
     }
 
     /* MOBILE HEADER */
@@ -943,73 +956,123 @@
       padding-bottom: 80px;
     }
 
-    .partner-banner {
-      padding-top: 40px;
-      padding-bottom: 40px;
+.partner-banner {
+      padding-top: 32px;
+      padding-bottom: 48px;
     }
 
     .partner-banner-content {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 32px;
-      align-items: flex-start;
+      gap: 28px;
+      align-items: start;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 900px) {
       .partner-banner-content {
-        grid-template-columns: 300px 1fr;
-        gap: 48px;
+        grid-template-columns: 420px 1fr;
+        gap: 56px;
       }
     }
 
     .partner-banner-media {
       width: 100%;
-      height: 220px;
-    }
-
-    .partner-banner-text h1 {
-      font-size: 44px;
-      line-height: 1.1;
-      margin-bottom: 4px;
+      aspect-ratio: 4 / 5;
+      height: auto;
+      border-radius: 2px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--card);
     }
 
     .partner-type-tag {
-      font-size: 11px;
-      letter-spacing: 0.12em;
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--rule);
       font-weight: 600;
+      color: var(--madder);
+      border: 1px solid var(--madder);
+      border-radius: 2px;
+      padding: 4px 10px;
       margin-bottom: 16px;
-      display: block;
+    }
+
+    .partner-banner-text h1 {
+      font-size: 40px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .partner-banner-text h1 { font-size: 56px; }
     }
 
     .partner-meta-row {
-      font-size: 12px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #665E58;
-      padding-bottom: 16px;
-      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 24px;
+      padding: 20px 0;
+      border-top: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
+      margin-bottom: 28px;
+    }
+
+    @media (min-width: 640px) {
+      .partner-meta-row {
+        grid-template-columns: repeat(4, auto);
+        gap: 32px;
+      }
+    }
+
+    .fact-label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rule);
+      margin-bottom: 6px;
+    }
+
+    .fact-value {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 18px;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+    a.fact-value {
+      color: var(--madder);
+      text-decoration: none;
+      border-bottom: 1px solid var(--madder);
     }
 
     .partner-story {
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.7;
       color: #38322E;
-      max-width: 720px;
+      max-width: 640px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
+    }
+
+    .partner-story p:not(.partner-pattern-line) {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      line-height: 1.45;
+      color: var(--ink);
     }
 
     .partner-pattern-line {
-      font-size: 13px;
-      letter-spacing: 0.04em;
+      font-size: 12px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--madder);
       font-weight: 500;
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     .partner-catalogue-title {
@@ -1033,7 +1096,27 @@
         justify-content: space-between;
       }
     }
-
+.event-card {
+      background-color: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: 24px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    @media (min-width: 768px) {
+      .event-card { flex-direction: row; align-items: center; justify-content: space-between; gap: 40px; }
+    }
+    .event-main h3 { font-size: 24px; line-height: 1.2; margin-bottom: 6px; }
+    .event-meta { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: #665E58; margin-bottom: 12px; }
+    .event-desc { font-size: 15px; line-height: 1.6; color: #38322E; max-width: 480px; margin-bottom: 12px; }
+    .event-spots { font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--madder); }
+    .event-buy { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; flex-shrink: 0; }
+    @media (min-width: 768px) { .event-buy { align-items: flex-end; } }
+    .event-price { font-family: var(--font-serif); font-size: 30px; color: var(--madder); }
+    .event-sold { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: #665E58; }
     .back-link {
       font-size: 13px;
       letter-spacing: 0.04em;
@@ -1723,8 +1806,8 @@
        <div class="header-inner">
           <a onclick="showView('home')" class="wordmark">KATUN</a>
           <nav class="nav">
-  <a onclick="showView('all-partners')" class="nav-link">Makers</a>
-  <a onclick="showView('all-workshops')" class="nav-link">Workshops</a>
+<a onclick="showView('all-workshops')" class="nav-link">Workshops</a>
+  <a onclick="showView('all-partners')" class="nav-link">Partners</a>
   <span class="nav-join">
     <a onclick="toggleJoin(event)" class="nav-link">Join ▾</a>
     <div id="join-dropdown" class="join-dropdown">
@@ -1882,7 +1965,10 @@
       <div class="for-makers-card">
         <h2 class="serif">You make. We handle the rest.</h2>
         <p>Photography, copy, translation, shipping, talking to buyers. All you do is work with your hands.</p>
-        <a class="btn-outline" onclick="showView('for-makers')">Join us</a>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+          <a class="btn-outline" onclick="showView('for-makers')">Join us as a maker</a>
+          <a class="btn-outline" onclick="showView('for-shops')">Join us as a shop</a>
+        </div>
       </div>
     </div>
   </section>
@@ -2104,6 +2190,8 @@
               <span>/</span>
               <span class="breadcrumb-item" id="partner-breadcrumb-country" onclick="openCountry(currentEntity.countryId)">Country</span>
               <span>/</span>
+              <span class="breadcrumb-item" id="partner-breadcrumb-type" onclick="openCountryTab(currentEntity.countryId, currentEntity.type === 'PARTNER' ? 'partners' : 'workshops')">Workshops</span>
+              <span>/</span>
               <span class="breadcrumb-current" id="partner-breadcrumb-name">Entity Name</span>
             </div>
           </div>
@@ -2142,7 +2230,12 @@
                 <!-- Products for this workshop/partner -->
               </div>
             </div>
-
+<div id="workshop-events" style="display:none;margin-top:56px;">
+             <hr class="section-divider" style="margin-bottom:40px;" />
+             <h2 class="serif" style="font-size:28px;margin-bottom:8px;">Upcoming sessions</h2>
+             <p style="font-size:15px;color:#665E58;margin-bottom:28px;max-width:560px;">Small groups. Everything is provided, and you leave with what you made.</p>
+             <div id="events-list"></div>
+           </div>
            <div class="partner-actions-bottom">
               <div id="partner-website-container">
                 <a id="partner-website-link" href="#" target="_blank" class="btn-outline" style="display: none;">Visit their own site</a>
@@ -2356,10 +2449,13 @@
         Tell us what you make and where. We answer every message ourselves.
       </p>
 
-      <form name="makers" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-            action="/?thanks=1" class="opening-form" style="max-width:520px;">
-        <input type="hidden" name="form-name" value="makers">
-        <p style="display:none"><input name="bot-field"></p>
+      <form action="https://formsubmit.co/katun.montenegro@gmail.com" method="POST"
+            class="opening-form" style="max-width:520px;">
+        <input type="hidden" name="_subject" value="KATUN — maker application">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://korsakovyuri8-design.github.io/katun/?thanks=1">
+        <p style="display:none"><input name="_honey"></p>
         <div class="form-group"><input type="text" name="name" placeholder="Your name" required></div>
         <div class="form-group"><input type="text" name="country" placeholder="Country" required></div>
         <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
@@ -2479,10 +2575,13 @@
         Send us a link to your work and we'll come back to you.
       </p>
 
-      <form name="shops" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-            action="/?thanks=1" class="opening-form" style="max-width:520px;">
-        <input type="hidden" name="form-name" value="shops">
-        <p style="display:none"><input name="bot-field"></p>
+      <form action="https://formsubmit.co/katun.montenegro@gmail.com" method="POST"
+            class="opening-form" style="max-width:520px;">
+        <input type="hidden" name="_subject" value="KATUN — shop application">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://korsakovyuri8-design.github.io/katun/?thanks=1">
+        <p style="display:none"><input name="_honey"></p>
         <div class="form-group"><input type="text" name="brand" placeholder="Brand or workshop name" required></div>
         <div class="form-group"><input type="text" name="country" placeholder="Country" required></div>
         <div class="form-group"><input type="text" name="link" placeholder="Website or Instagram"></div>
@@ -2549,7 +2648,7 @@
          <div class="footer-brand">
             <span class="footer-wordmark">KATUN</span>
             <p class="footer-desc">
-              Documenting and preserving textile heritage through direct commerce with independent rural knitting circles.
+              Documenting and preserving textile heritage.
             </p>
           </div>
 
@@ -2557,7 +2656,7 @@
            <div class="footer-column">
               <span class="footer-title">Navigation</span>
               <ul class="footer-links">
-                <li><a onclick="showView('home')" class="footer-link">Countries</a></li>
+                <li><a onclick="goCountries()" class="footer-link">Countries</a></li>
                 <li><a onclick="showView('all-workshops')" class="footer-link">Workshops</a></li>
                 <li><a onclick="showView('all-partners')" class="footer-link">Partners</a></li>
                 <li><a onclick="showView('patterns')" class="footer-link">Patterns</a></li>
@@ -2585,7 +2684,7 @@
 
        <div class="footer-bottom">
           <span>&copy; 2026 KATUN Index. All rights reserved.</span>
-          <span>Museum Catalogue Edition No. 01</span>
+          
         </div>
       </div>
     </footer>
@@ -2618,7 +2717,21 @@
               patternRegion: 'Durmitor Highlands',
               storyP1: 'Organized as a rural collective of high-altitude sheep herders in Žabljak, the Durmitor Craft Circle preserves traditional winter garments built to withstand sub-zero karst gales.',
               storyP2: 'Using unbleached local mountain wool spun on hand-carved wooden spindles, each garment is hand-knitted without modern synthetics, maintaining ancestral thermal properties.',
-              websiteUrl: null
+              websiteUrl: null,
+              events: [
+                {
+                  id: 'ev-mn-01',
+                  title: 'Two-strand knitting, first steps',
+                  date: '19 September 2026, 11:00',
+                  place: 'Žabljak',
+                  duration: '3 hours',
+                  desc: 'You cast on, learn the two-strand hold and leave with a finished band in a Durmitor pattern. Wool and needles provided.',
+                  price: 45,
+                  spots: 8,
+                  spotsLeft: 8,
+                  payUrl: null
+                }
+              ]
             }
           ],
           partners: [], // Empty partners test state for Montenegro
@@ -3242,16 +3355,28 @@
       // Breadcrumbs
       document.getElementById('partner-breadcrumb-country').innerText = foundCountry.name;
       document.getElementById('partner-breadcrumb-name').innerText = foundEntity.name;
+      document.getElementById('partner-breadcrumb-type').innerText =
+        (foundEntity.type === 'PARTNER') ? 'Partners' : 'Workshops';
 
       // Banner Color Block
-      document.getElementById('partner-banner-media').innerHTML = `
-       <div class="color-block" style="background-color: ${foundEntity.color}; color: #F7F3ED;">${foundEntity.name} Studio</div>
-      `;
+      const bannerMedia = document.getElementById('partner-banner-media');
+      if (foundEntity.photo) {
+        bannerMedia.style.backgroundImage = `url('${foundEntity.photo}')`;
+        bannerMedia.innerHTML = '';
+      } else {
+        bannerMedia.style.backgroundImage = '';
+        bannerMedia.innerHTML = `<div class="color-block" style="background-color: ${foundEntity.color}; color: #F7F3ED;">${foundEntity.name}</div>`;
+      }
 
       // Text Fields
       document.getElementById('partner-title').innerText = foundEntity.name;
       document.getElementById('partner-type-tag').innerText = foundEntity.type || 'WORKSHOP';
-      document.getElementById('partner-meta-row').innerText = `${foundEntity.city}, ${foundCountry.name} · Est. ${foundEntity.foundedYear} · ${foundEntity.technique}`;
+      let facts = `
+        <div><span class="fact-label">Where</span><span class="fact-value">${foundEntity.city}, ${foundCountry.name}</span></div>
+        <div><span class="fact-label">Since</span><span class="fact-value">${foundEntity.foundedYear}</span></div>
+        <div><span class="fact-label">Technique</span><span class="fact-value">${foundEntity.technique}</span></div>`;
+    
+      document.getElementById('partner-meta-row').innerHTML = facts;
       
       document.getElementById('partner-p1').innerText = foundEntity.storyP1;
       document.getElementById('partner-p2').innerText = foundEntity.storyP2;
@@ -3264,15 +3389,10 @@
       } else {
         patternLine.style.display = 'none';
       }
-
+renderWorkshopEvents(foundEntity);
       // External website link
-      const siteBtn = document.getElementById('partner-website-link');
-      if (foundEntity.websiteUrl) {
-        siteBtn.href = foundEntity.websiteUrl;
-        siteBtn.style.display = 'inline-block';
-      } else {
-        siteBtn.style.display = 'none';
-      }
+const siteBtn = document.getElementById('partner-website-link');
+      if (siteBtn) siteBtn.style.display = 'none';
 
       // Render Catalogue Grid
       const catGrid = document.getElementById('partner-products-grid');
@@ -3493,6 +3613,43 @@
         }
       }
     }
+function goCountries() {
+  showView('home');
+  setTimeout(function () {
+    var el = document.getElementById('countries');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+}
+    function openCountryTab(countryId, tab) {
+  openCountry(countryId);
+  switchTab(tab);
+}
+function renderWorkshopEvents(entity) {
+  const box = document.getElementById('workshop-events');
+  const list = document.getElementById('events-list');
+  if (!box || !list) return;
+  const evs = (entity.type === 'WORKSHOP' && entity.events) ? entity.events : [];
+  if (evs.length === 0) { box.style.display = 'none'; return; }
+  box.style.display = 'block';
+  list.innerHTML = evs.map(e => {
+    const out = e.spotsLeft === 0;
+    return `
+      <div class="event-card">
+        <div class="event-main">
+          <h3 class="serif">${e.title}</h3>
+          <div class="event-meta">${e.date} &middot; ${e.place} &middot; ${e.duration}</div>
+          <p class="event-desc">${e.desc}</p>
+          <div class="event-spots">${out ? 'Fully booked' : e.spotsLeft + ' of ' + e.spots + ' places left'}</div>
+        </div>
+        <div class="event-buy">
+          <div class="event-price">&euro;${e.price}</div>
+          ${out ? '<span class="event-sold">Sold out</span>'
+                : `<button class="btn-madder" onclick="addToCart('event','${e.id}')">Reserve a place</button>`}
+          ${(!out && e.payUrl) ? `<a class="btn-outline-madder" href="${e.payUrl}" target="_blank" rel="noopener">Pay now</a>` : ''}
+        </div>
+      </div>`;
+  }).join('');
+}
 function toggleJoin(e) {
   e.stopPropagation();
   document.getElementById('join-dropdown').classList.toggle('open');
@@ -3586,6 +3743,11 @@ function findItem(entry){
     if (entry.type === 'product') {
       const p = c.products.find(x => x.id === entry.id);
       if (p) found = { title:p.title, price:p.price, meta:p.workshop + ' · ' + p.region, color:p.color };
+    } else if (entry.type === 'event') {
+      (c.workshops || []).forEach(w => {
+        const e = (w.events || []).find(x => x.id === entry.id);
+        if (e) found = { title:e.title, price:e.price, meta:w.name + ' · ' + e.date, color:w.color };
+      });
     } else {
       const s = c.schemes.find(x => x.id === entry.id);
       if (s) found = { title:s.name, price:s.price, meta:'Digital chart · ' + s.region, color:'#B8A597' };
