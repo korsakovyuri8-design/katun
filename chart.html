@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>KATUN — Chart editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F3ED; --card:#EBE3D6; --ink:#1A1614; --madder:#7B1612; --rule:#B8A597;
+  --serif:'EB Garamond',Georgia,serif; --sans:'Inter',-apple-system,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;padding:20px 16px 64px}
+.wrap{max-width:900px;margin:0 auto}
+
+header{border-bottom:1px solid var(--rule);padding-bottom:16px;margin-bottom:24px}
+h1{font-family:var(--serif);font-weight:500;font-size:26px;letter-spacing:.16em;text-transform:uppercase}
+.sub{font-size:13px;color:#665E58;margin-top:4px}
+
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:16px;margin-bottom:20px}
+.panel-title{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#665E58;margin-bottom:12px}
+
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+label.field{display:flex;align-items:center;gap:8px;font-size:13px}
+input[type=number]{width:64px;padding:8px 10px;background:var(--bg);border:1px solid var(--rule);border-radius:2px;font-family:var(--sans);font-size:14px;color:var(--ink)}
+input[type=number]:focus,button:focus-visible{outline:2px solid var(--madder);outline-offset:2px}
+
+button{font-family:var(--sans);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;border-radius:2px;cursor:pointer;border:1px solid var(--ink);background:transparent;color:var(--ink);transition:background .15s,color .15s}
+button:hover{background:var(--ink);color:var(--bg)}
+button.solid{background:var(--madder);border-color:var(--madder);color:var(--bg)}
+button.solid:hover{opacity:.9;background:var(--madder);color:var(--bg)}
+button.tool{display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:13px}
+button.tool.on{background:var(--ink);color:var(--bg)}
+.swatch{width:18px;height:18px;border:1px solid var(--rule);flex-shrink:0;background:var(--bg)}
+.swatch.f{background:var(--ink)}
+.swatch.x{background:var(--bg);position:relative}
+.swatch.x::after{content:'';position:absolute;inset:2px;background:
+  linear-gradient(to bottom right,transparent 44%,var(--ink) 44%,var(--ink) 56%,transparent 56%),
+  linear-gradient(to bottom left,transparent 44%,var(--ink) 44%,var(--ink) 56%,transparent 56%)}
+
+.board-wrap{overflow-x:auto;padding-bottom:8px}
+.board{display:inline-grid;background:var(--bg);border:1px solid var(--rule);touch-action:none;user-select:none}
+.cell{background:var(--bg);box-shadow:inset 0 0 0 .5px var(--rule);position:relative}
+.cell.f{background:var(--ink)}
+.cell.x::after{content:'';position:absolute;inset:12%;background:
+  linear-gradient(to bottom right,transparent 44%,var(--ink) 44%,var(--ink) 56%,transparent 56%),
+  linear-gradient(to bottom left,transparent 44%,var(--ink) 44%,var(--ink) 56%,transparent 56%)}
+.cell.tenth{box-shadow:inset 0 0 0 .5px var(--rule),inset -1.5px 0 0 0 var(--madder)}
+.cell.tenthrow{box-shadow:inset 0 0 0 .5px var(--rule),inset 0 -1.5px 0 0 var(--madder)}
+.cell.tenth.tenthrow{box-shadow:inset 0 0 0 .5px var(--rule),inset -1.5px 0 0 0 var(--madder),inset 0 -1.5px 0 0 var(--madder)}
+
+.legend{font-size:12px;color:#665E58;margin-top:10px}
+textarea{width:100%;min-height:110px;padding:12px;background:var(--bg);border:1px solid var(--rule);border-radius:2px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;line-height:1.6;color:var(--ink);resize:vertical}
+.hint{font-size:12px;color:#665E58;margin-top:8px}
+.count{font-family:var(--serif);font-size:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Katun</h1>
+    <div class="sub">Chart editor — перенеси схему с бумаги в сетку</div>
+  </header>
+
+  <div class="panel">
+    <div class="panel-title">Размер</div>
+    <div class="row">
+      <label class="field">Петель <input type="number" id="cols" value="20" min="4" max="60"></label>
+      <label class="field">Рядов <input type="number" id="rows" value="20" min="4" max="60"></label>
+      <button id="resize">Применить</button>
+      <label class="field" style="margin-left:auto">
+        <input type="checkbox" id="prop"> Пропорция петли
+      </label>
+    </div>
+    <div class="hint">Пропорция петли показывает схему такой, какой она выйдет в вязании: петля шире, чем выше. Снимешь галочку — вернётся клетчатая бумага.</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Чем рисуем</div>
+    <div class="row">
+      <button class="tool on" data-state="1"><span class="swatch f"></span>Заливка</button>
+      <button class="tool" data-state="2"><span class="swatch x"></span>Крестик</button>
+      <button class="tool" data-state="0"><span class="swatch"></span>Стереть</button>
+      <button id="undo" style="margin-left:auto">Шаг назад</button>
+      <button id="clear">Очистить</button>
+    </div>
+    <div class="hint">Веди пальцем — закрашивается подряд. Красные линии каждые 10 клеток, чтобы не сбиться со счёта.</div>
+  </div>
+
+  <div class="board-wrap">
+    <div class="board" id="board"></div>
+  </div>
+  <div class="legend">Закрашено: <span class="count" id="stat">0</span></div>
+
+  <div class="panel" style="margin-top:24px">
+    <div class="panel-title">Готовая схема</div>
+    <div class="row" style="margin-bottom:12px">
+      <button class="solid" id="copy">Скопировать код</button>
+      <button id="png">Скачать картинку</button>
+      <button id="load">Загрузить из кода</button>
+    </div>
+    <textarea id="out" spellcheck="false"></textarea>
+    <div class="hint">Код вставляешь в схему на сайте. Чтобы вернуться к работе завтра — сохрани этот текст себе, вставь обратно и нажми «Загрузить из кода».</div>
+  </div>
+
+  <div class="panel" id="imgbox" style="display:none">
+    <div class="panel-title">Картинка</div>
+    <div class="hint" style="margin:0 0 12px">Если файл не скачался сам — долгое нажатие на картинку, затем «Сохранить изображение».</div>
+    <img id="shot" alt="Схема" style="width:100%;border:1px solid var(--rule);border-radius:2px;background:var(--bg)">
+  </div>
+
+</div>
+
+<script>
+let COLS = 20, ROWS = 20;
+let grid = [];
+let paint = 1;
+let history = [];
+const boardEl = document.getElementById('board');
+
+function blank(){ return Array.from({length:ROWS},()=>Array(COLS).fill(0)); }
+
+function push(){
+  history.push(grid.map(r=>r.slice()));
+  if (history.length > 60) history.shift();
+}
+
+function draw(){
+  const prop = document.getElementById('prop').checked;
+  const avail = Math.min(document.querySelector('.wrap').clientWidth, 860) - 4;
+  let w = Math.floor(avail / COLS);
+  w = Math.max(14, Math.min(w, 34));
+  const h = prop ? Math.round(w / 0.78) : w;
+
+  boardEl.style.gridTemplateColumns = `repeat(${COLS}, ${w}px)`;
+  boardEl.style.gridTemplateRows = `repeat(${ROWS}, ${h}px)`;
+  boardEl.innerHTML = '';
+
+  for (let r = 0; r < ROWS; r++){
+    for (let c = 0; c < COLS; c++){
+      const d = document.createElement('div');
+      let cls = 'cell';
+      if (grid[r][c] === 1) cls += ' f';
+      if (grid[r][c] === 2) cls += ' x';
+      if ((COLS - c) % 10 === 1 && c !== COLS - 1) cls += ' tenth';
+      if ((ROWS - r) % 10 === 0 && r !== ROWS - 1) cls += ' tenthrow';
+      d.className = cls;
+      d.dataset.r = r; d.dataset.c = c;
+      boardEl.appendChild(d);
+    }
+  }
+  stat();
+}
+
+function stat(){
+  let n = 0;
+  grid.forEach(row => row.forEach(v => { if (v) n++; }));
+  document.getElementById('stat').textContent = n + ' из ' + (COLS*ROWS);
+}
+
+let down = false, started = false;
+function apply(t){
+  if (!t || !t.dataset || t.dataset.r === undefined) return;
+  const r = +t.dataset.r, c = +t.dataset.c;
+  if (grid[r][c] === paint) return;
+  if (!started){ push(); started = true; }
+  grid[r][c] = paint;
+  t.className = 'cell' + (paint===1?' f':paint===2?' x':'')
+    + (((COLS - c) % 10 === 1 && c !== COLS-1) ? ' tenth':'')
+    + (((ROWS - r) % 10 === 0 && r !== ROWS-1) ? ' tenthrow':'');
+  stat();
+}
+boardEl.addEventListener('pointerdown', e => {
+  down = true; started = false;
+  boardEl.setPointerCapture(e.pointerId);
+  apply(e.target);
+});
+boardEl.addEventListener('pointermove', e => {
+  if (!down) return;
+  apply(document.elementFromPoint(e.clientX, e.clientY));
+});
+['pointerup','pointercancel'].forEach(ev =>
+  boardEl.addEventListener(ev, () => { down = false; started = false; })
+);
+
+document.querySelectorAll('.tool').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('.tool').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    paint = +b.dataset.state;
+  };
+});
+
+document.getElementById('undo').onclick = () => {
+  if (!history.length) return;
+  grid = history.pop();
+  draw();
+};
+document.getElementById('clear').onclick = () => {
+  push(); grid = blank(); draw();
+};
+document.getElementById('prop').onchange = draw;
+window.addEventListener('resize', draw);
+
+document.getElementById('resize').onclick = () => {
+  const nc = Math.max(4, Math.min(60, +document.getElementById('cols').value || 20));
+  const nr = Math.max(4, Math.min(60, +document.getElementById('rows').value || 20));
+  push();
+  const old = grid;
+  COLS = nc; ROWS = nr;
+  grid = blank();
+  for (let r = 0; r < Math.min(nr, old.length); r++)
+    for (let c = 0; c < Math.min(nc, old[0].length); c++)
+      grid[r][c] = old[r][c];
+  document.getElementById('cols').value = COLS;
+  document.getElementById('rows').value = ROWS;
+  draw();
+};
+
+function code(){
+  return 'chart: [\n' + grid.map(r => '  "' + r.join('') + '"').join(',\n') + '\n]';
+}
+document.getElementById('copy').onclick = async () => {
+  const t = code();
+  document.getElementById('out').value = t;
+  const btn = document.getElementById('copy');
+  try {
+    await navigator.clipboard.writeText(t);
+    btn.textContent = 'Скопировано';
+  } catch {
+    document.getElementById('out').select();
+    btn.textContent = 'Выдели и скопируй';
+  }
+  setTimeout(() => btn.textContent = 'Скопировать код', 1800);
+};
+
+document.getElementById('load').onclick = () => {
+  const raw = document.getElementById('out').value;
+  const found = raw.match(/"[0-2]+"/g);
+  if (!found || !found.length){
+    document.getElementById('out').value = 'Не нашёл строк вида "0110". Вставь код целиком и нажми ещё раз.';
+    return;
+  }
+  const rows = found.map(s => s.replace(/"/g,'').split('').map(Number));
+  const w = Math.max(...rows.map(r => r.length));
+  push();
+  ROWS = rows.length; COLS = w;
+  grid = rows.map(r => { while (r.length < w) r.push(0); return r; });
+  document.getElementById('cols').value = COLS;
+  document.getElementById('rows').value = ROWS;
+  draw();
+};
+
+document.getElementById('png').onclick = () => {
+  const s = 60, pad = s;
+  const prop = document.getElementById('prop').checked;
+  const ch = prop ? Math.round(s / 0.78) : s;
+  const cv = document.createElement('canvas');
+  cv.width = COLS * s + pad * 2;
+  cv.height = ROWS * ch + pad * 2;
+  const x = cv.getContext('2d');
+
+  x.fillStyle = '#F7F3ED'; x.fillRect(0, 0, cv.width, cv.height);
+
+  for (let r = 0; r < ROWS; r++){
+    for (let c = 0; c < COLS; c++){
+      const px = pad + c * s, py = pad + r * ch;
+      if (grid[r][c] === 1){ x.fillStyle = '#1A1614'; x.fillRect(px, py, s, ch); }
+      if (grid[r][c] === 2){
+        x.strokeStyle = '#1A1614'; x.lineWidth = 4;
+        x.beginPath();
+        x.moveTo(px+s*.2, py+ch*.2); x.lineTo(px+s*.8, py+ch*.8);
+        x.moveTo(px+s*.8, py+ch*.2); x.lineTo(px+s*.2, py+ch*.8);
+        x.stroke();
+      }
+      x.strokeStyle = '#B8A597'; x.lineWidth = 1;
+      x.strokeRect(px + .5, py + .5, s, ch);
+    }
+  }
+  x.strokeStyle = '#7B1612'; x.lineWidth = 3;
+  for (let c = 0; c <= COLS; c++){
+    if ((COLS - c) % 10) continue;
+    x.beginPath(); x.moveTo(pad + c*s, pad); x.lineTo(pad + c*s, pad + ROWS*ch); x.stroke();
+  }
+  for (let r = 0; r <= ROWS; r++){
+    if ((ROWS - r) % 10) continue;
+    x.beginPath(); x.moveTo(pad, pad + r*ch); x.lineTo(pad + COLS*s, pad + r*ch); x.stroke();
+  }
+
+  x.fillStyle = '#1A1614';
+  x.font = '500 34px Georgia, serif';
+  x.fillText('KATUN', pad, pad - 22);
+  x.fillStyle = '#665E58';
+  x.font = '22px Helvetica, Arial, sans-serif';
+  x.fillText(COLS + ' × ' + ROWS, cv.width - pad - 110, cv.height - pad + 40);
+
+  const url = cv.toDataURL('image/png');
+  const box = document.getElementById('imgbox');
+  box.style.display = 'block';
+  document.getElementById('shot').src = url;
+
+  const a = document.createElement('a');
+  a.download = 'katun-chart-' + COLS + 'x' + ROWS + '.png';
+  a.href = url;
+  a.click();
+  box.scrollIntoView({behavior:'smooth', block:'start'});
+};
+
+grid = blank();
+draw();
+</script>
+</body>
+</html>
