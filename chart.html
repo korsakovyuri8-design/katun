@@ -52,6 +52,15 @@ button.tool.on{background:var(--ink);color:var(--bg)}
 .cell.tenthrow{box-shadow:inset 0 0 0 .5px var(--rule),inset 0 -1.5px 0 0 var(--madder)}
 .cell.tenth.tenthrow{box-shadow:inset 0 0 0 .5px var(--rule),inset -1.5px 0 0 0 var(--madder),inset 0 -1.5px 0 0 var(--madder)}
 
+  .cell.v::after,.cell.h::after,.cell.w::after{content:'';position:absolute;inset:12%}
+.cell.v::after{background:linear-gradient(to right,transparent 42%,var(--ink) 42%,var(--ink) 58%,transparent 58%)}
+.cell.h::after{background:linear-gradient(to bottom,transparent 42%,var(--ink) 42%,var(--ink) 58%,transparent 58%)}
+.cell.w::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M0 8 Q3 2 6 8 T12 8' fill='none' stroke='%231A1614' stroke-width='1.8'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.swatch.v,.swatch.h,.swatch.w{position:relative}
+.swatch.v::after,.swatch.h::after,.swatch.w::after{content:'';position:absolute;inset:3px}
+.swatch.v::after{background:linear-gradient(to right,transparent 42%,var(--ink) 42%,var(--ink) 58%,transparent 58%)}
+.swatch.h::after{background:linear-gradient(to bottom,transparent 42%,var(--ink) 42%,var(--ink) 58%,transparent 58%)}
+.swatch.w::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M0 8 Q3 2 6 8 T12 8' fill='none' stroke='%231A1614' stroke-width='1.8'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 .legend{font-size:12px;color:#665E58;margin-top:10px}
 textarea{width:100%;min-height:110px;padding:12px;background:var(--bg);border:1px solid var(--rule);border-radius:2px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;line-height:1.6;color:var(--ink);resize:vertical}
 .hint{font-size:12px;color:#665E58;margin-top:8px}
@@ -84,6 +93,9 @@ textarea{width:100%;min-height:110px;padding:12px;background:var(--bg);border:1p
     <div class="row">
       <button class="tool on" data-state="1"><span class="swatch f"></span>Заливка</button>
       <button class="tool" data-state="2"><span class="swatch x"></span>Крестик</button>
+      <button class="tool" data-state="3"><span class="swatch v"></span>Черта</button>
+      <button class="tool" data-state="4"><span class="swatch h"></span>Полоса</button>
+      <button class="tool" data-state="5"><span class="swatch w"></span>Волна</button>
       <button class="tool" data-state="0"><span class="swatch"></span>Стереть</button>
       <button id="undo" style="margin-left:auto">Шаг назад</button>
       <button id="clear">Очистить</button>
@@ -124,6 +136,8 @@ const boardEl = document.getElementById('board');
 
 function blank(){ return Array.from({length:ROWS},()=>Array(COLS).fill(0)); }
 
+function sym(v){ return v===1?' f':v===2?' x':v===3?' v':v===4?' h':v===5?' w':''; }
+
 function push(){
   history.push(grid.map(r=>r.slice()));
   if (history.length > 60) history.shift();
@@ -144,8 +158,7 @@ function draw(){
     for (let c = 0; c < COLS; c++){
       const d = document.createElement('div');
       let cls = 'cell';
-      if (grid[r][c] === 1) cls += ' f';
-      if (grid[r][c] === 2) cls += ' x';
+      cls += sym(grid[r][c]);
       if ((COLS - c) % 10 === 1 && c !== COLS - 1) cls += ' tenth';
       if ((ROWS - r) % 10 === 0 && r !== ROWS - 1) cls += ' tenthrow';
       d.className = cls;
@@ -169,7 +182,7 @@ function apply(t){
   if (grid[r][c] === paint) return;
   if (!started){ push(); started = true; }
   grid[r][c] = paint;
-  t.className = 'cell' + (paint===1?' f':paint===2?' x':'')
+  t.className = 'cell' + sym(paint)
     + (((COLS - c) % 10 === 1 && c !== COLS-1) ? ' tenth':'')
     + (((ROWS - r) % 10 === 0 && r !== ROWS-1) ? ' tenthrow':'');
   stat();
@@ -240,7 +253,7 @@ document.getElementById('copy').onclick = async () => {
 
 document.getElementById('load').onclick = () => {
   const raw = document.getElementById('out').value;
-  const found = raw.match(/"[0-2]+"/g);
+  const found = raw.match(/"[0-5]+"/g);
   if (!found || !found.length){
     document.getElementById('out').value = 'Не нашёл строк вида "0110". Вставь код целиком и нажми ещё раз.';
     return;
@@ -275,6 +288,15 @@ document.getElementById('png').onclick = () => {
         x.beginPath();
         x.moveTo(px+s*.2, py+ch*.2); x.lineTo(px+s*.8, py+ch*.8);
         x.moveTo(px+s*.8, py+ch*.2); x.lineTo(px+s*.2, py+ch*.8);
+        x.stroke();
+      }
+      if (grid[r][c] === 3){ x.fillStyle = '#1A1614'; x.fillRect(px+s*.42, py+ch*.12, s*.16, ch*.76); }
+      if (grid[r][c] === 4){ x.fillStyle = '#1A1614'; x.fillRect(px+s*.12, py+ch*.42, s*.76, ch*.16); }
+      if (grid[r][c] === 5){
+        x.strokeStyle = '#1A1614'; x.lineWidth = 4; x.beginPath();
+        x.moveTo(px+s*.12, py+ch*.62);
+        x.quadraticCurveTo(px+s*.31, py+ch*.22, px+s*.5, py+ch*.62);
+        x.quadraticCurveTo(px+s*.69, py+ch*1.02, px+s*.88, py+ch*.62);
         x.stroke();
       }
       x.strokeStyle = '#B8A597'; x.lineWidth = 1;
