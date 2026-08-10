@@ -2850,6 +2850,7 @@
               region: 'All Regions',
               color: '#6E6350',
               photo: 'knee-warmers.jpg',
+              photos: ['knee-warmers.jpg', 'knee-2.jpg', 'knee-3.jpg'],
               thumbColors: ['#6E6350', '#7C7160', '#5C5344'],
               material: '100% Montenegrin wool, undyed',
               size: 'One size · knee 32–42 cm',
@@ -3566,13 +3567,21 @@ currentView = viewId;
       // Thumbnails
       const thumbContainer = document.getElementById('product-thumbnails');
       thumbContainer.innerHTML = '';
-      foundProd.thumbColors.forEach((col, idx) => {
-        thumbContainer.innerHTML += `
-         <div class="product-thumb-media ${idx === 0 ? 'active' : ''}">
-           <div class="color-block" style="background-color: ${col}; font-size: 9px; color: #F7F3ED;">View ${idx+1}</div>
-          </div>
-        `;
-      });
+      if (foundProd.photos && foundProd.photos.length > 1) {
+        foundProd.photos.forEach((src, idx) => {
+          thumbContainer.innerHTML += `
+           <div class="product-thumb-media ${idx === 0 ? 'active' : ''}" onclick="swapPhoto(this,'${src}')">
+             <div class="photo-block" style="background-image:url('${src}')"></div>
+            </div>`;
+        });
+      } else if (!foundProd.photo) {
+        foundProd.thumbColors.forEach((col, idx) => {
+          thumbContainer.innerHTML += `
+           <div class="product-thumb-media ${idx === 0 ? 'active' : ''}">
+             <div class="color-block" style="background-color: ${col}; font-size: 9px; color: #F7F3ED;">View ${idx+1}</div>
+            </div>`;
+        });
+      }
 
       // UPDATE TEASER BLOCK (NO VISIBLE CHART)
       document.getElementById('teaser-pattern-heading').innerText = foundProd.patternName || 'Traditional Regional Pattern';
@@ -3598,7 +3607,13 @@ currentView = viewId;
 setHash('/item/' + productId);
       showView('product');
     }
-
+function swapPhoto(el, src) {
+      document.getElementById('product-main-media').innerHTML =
+        `<div class="photo-block" style="background-image:url('${src}')"></div>`;
+      document.querySelectorAll('#product-thumbnails .product-thumb-media')
+        .forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+    }
     /* RENDER BLURRED TEASER GRID FOR PRODUCT PAGE */
     function renderTeaserGrid() {
       const container = document.getElementById('chart-teaser-grid');
