@@ -3491,7 +3491,7 @@ currentView = viewId;
           prodGrid.innerHTML += `
            <div class="product-card" onclick="openProduct('${p.id}')">
              <div class="product-card-media">
-               <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
+               ${p.photo ? `<div class="photo-block" style="background-image:url('${p.photo}')"></div>` : `<div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>`}
               </div>
              <div class="product-card-body">
                 <h3 class="product-card-title serif">${p.title}</h3>
@@ -4163,7 +4163,12 @@ function orderEmail(){
     // INIT DEFAULT STATE
     window.addEventListener('DOMContentLoaded', () => {
       loadCart();
-      if (new URLSearchParams(location.search).get('thanks') === '1') {
+      const q = new URLSearchParams(location.search);
+      const thanks = q.get('thanks') === '1';
+      if (q.has('thanks')) {
+        history.replaceState(null, '', location.pathname + location.hash);
+      }
+      if (thanks && !location.hash) {
         showView('thanks');
       } else {
         applyHash();
