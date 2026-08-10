@@ -2095,7 +2095,7 @@
           <!-- TAB SWITCHER ROW (4 TABS) -->
          <div class="tabs-row" id="country-tabs-row">
             <button class="tab-btn active" onclick="switchTab('items')">Items</button>
-            <button class="tab-btn" onclick="switchTab('workshops')">Workshops</button>
+<button class="tab-btn" onclick="switchTab('workshops')">Makers</button>
             <button class="tab-btn" onclick="switchTab('partners')">Partners</button>
             <button class="tab-btn" onclick="switchTab('schemes')">Schemes</button>
           </div>
@@ -2271,8 +2271,6 @@
               <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
               <span>/</span>
               <span class="breadcrumb-item" id="partner-breadcrumb-country" onclick="openCountry(currentEntity.countryId)">Country</span>
-              <span>/</span>
-              <span class="breadcrumb-item" id="partner-breadcrumb-type" onclick="openCountryTab(currentEntity.countryId, currentEntity.type === 'PARTNER' ? 'partners' : 'workshops')">Workshops</span>
               <span>/</span>
               <span class="breadcrumb-current" id="partner-breadcrumb-name">Entity Name</span>
             </div>
@@ -3728,8 +3726,6 @@ function swapPhoto(el, src) {
       // Breadcrumbs
       document.getElementById('partner-breadcrumb-country').innerText = foundCountry.name;
       document.getElementById('partner-breadcrumb-name').innerText = foundEntity.name;
-      document.getElementById('partner-breadcrumb-type').innerText =
-        (foundEntity.type === 'PARTNER') ? 'Partners' : 'Workshops';
 
       // Banner Color Block
       const bannerMedia = document.getElementById('partner-banner-media');
@@ -3743,7 +3739,8 @@ function swapPhoto(el, src) {
 
       // Text Fields
       document.getElementById('partner-title').innerText = foundEntity.name;
-      document.getElementById('partner-type-tag').innerText = foundEntity.type || 'WORKSHOP';
+      document.getElementById('partner-type-tag').innerText =
+        (foundEntity.type === 'PARTNER') ? 'PARTNER' : 'MAKER';
       let facts = `
         <div><span class="fact-label">Where</span><span class="fact-value">${foundEntity.city}, ${foundCountry.name}</span></div>
         <div><span class="fact-label">Since</span><span class="fact-value">${foundEntity.foundedYear}</span></div>
