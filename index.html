@@ -917,6 +917,24 @@
       text-align: right;
     }
 
+    .product-desc {
+      font-size: 16px;
+      line-height: 1.65;
+      color: #38322E;
+      margin-bottom: 28px;
+      max-width: 34em;
+    }
+
+    @media (min-width: 1024px) {
+      .product-title { font-size: 48px; }
+      .product-price { font-size: 26px; margin-bottom: 16px; }
+      .product-origin { font-size: 14px; }
+      .product-desc { font-size: 18px; line-height: 1.7; }
+      .spec-row { padding: 18px 0; font-size: 16px; }
+      .spec-label { font-size: 12px; }
+      .spec-value { font-size: 17px; }
+    }
+
     /* Pattern Section (Product Teaser) */
     .pattern-section {
       padding-top: 48px;
@@ -2175,6 +2193,8 @@
                 Made by <span id="product-origin-link" class="product-origin-link">Workshop</span>, <span id="product-origin-region">Region</span>, <span id="product-origin-country">Country</span>
               </div>
 
+              <p class="product-desc" id="product-desc"></p>
+
               <button class="btn-madder add-to-cart-btn" onclick="addToCart('product', currentProduct.id)">Add to cart</button>
 
              <div class="spec-table">
@@ -2901,6 +2921,7 @@
               size: 'One size · knee 32–42 cm',
               care: 'Hand wash cold',
               days: '16 hours of work',
+              description: 'Thick ribbed knee warmers in undyed Montenegrin wool, straight from local flocks - the natural grey-brown is the colour of the sheep, not of dye. Worn over tights in winter or under trousers in a cold house. They stretch to the knee and stay put. Made in one piece, without seams, and each pair takes about two days of work.',
               schemeId: null,
               patternName: '',
               patternOrigin: '',
@@ -3599,6 +3620,10 @@ currentView = viewId;
       document.getElementById('product-origin-country').innerText = foundCountry.name;
 
       // Specs
+      const descEl = document.getElementById('product-desc');
+      descEl.innerText = foundProd.description || '';
+      descEl.style.display = foundProd.description ? 'block' : 'none';
+
       document.getElementById('spec-material').innerText = foundProd.material;
       document.getElementById('spec-size').innerText = foundProd.size;
       document.getElementById('spec-care').innerText = foundProd.care;
