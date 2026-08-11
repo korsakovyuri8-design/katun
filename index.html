@@ -26,7 +26,7 @@
   <!-- EB Garamond & Inter Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     .photo-block {
@@ -1892,6 +1892,33 @@
     .team-card h3{font-size:24px;line-height:1.2;margin-bottom:4px}
     .team-role{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--madder);margin-bottom:12px}
     .team-card p{font-size:15px;line-height:1.6;color:#38322E}
+    :root { --font-mono: 'Space Mono', ui-monospace, monospace; --hair: rgba(102,94,88,.18); }
+
+    .spec-label, .fact-label, .card-type-label, .country-card-caption,
+    .product-card-meta, .scheme-card-meta, .event-meta, .event-spots,
+    .partner-type-tag, .trust-strip-inner, .breadcrumbs, .split-note,
+    .product-origin, .pattern-meta-sub, .text-badge {
+      font-family: var(--font-mono);
+      letter-spacing: .08em;
+    }
+    .spec-label, .fact-label, .card-type-label { font-size: 10px; }
+    .breadcrumbs, .product-card-meta, .scheme-card-meta { font-size: 11px; }
+    .trust-strip-inner { font-size: 10px; }
+
+    header, .trust-strip, .product-card, .country-card, .scheme-card,
+    .workshop-card, .partner-card, .event-card, .spec-row, .split-table td,
+    .partner-meta-row, .tabs-row, .section-divider, .full-chart-box,
+    .honest-block, .team-photo, .form-group input, .scheme-chart-preview,
+    .chart-teaser-container, .product-origin, .patterns-empty-state {
+      border-color: var(--hair);
+    }
+
+    @media (min-width: 1100px) {
+      .countries-section, .featured-section, .for-makers-section {
+        padding-top: 120px;
+        padding-bottom: 120px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2008,7 +2035,7 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Serbia</h2>
-            <span class="country-card-caption">Opening soon</span>
+            <span class="country-card-caption">1 maker &middot; 3 items</span>
           </div>
         </div>
 
@@ -2218,6 +2245,10 @@
                <div class="spec-row">
                   <span class="spec-label">Care</span>
                   <span class="spec-value" id="spec-care">Hand wash cold with wool detergent</span>
+                </div>
+<div class="spec-row" id="spec-credit-row">
+                  <span class="spec-label">Pattern</span>
+                  <span class="spec-value" id="spec-credit"></span>
                 </div>
                <div class="spec-row">
                   <span class="spec-label">Made in</span>
@@ -3098,16 +3129,105 @@ text: [
             }
           ]
         },
-        serbia: {
+serbia: {
           id: 'serbia',
           name: 'Serbia',
           color: '#3B4836',
-          isOpeningSoon: true,
-          desc: 'Serbian folk textiles are world-renowned for the intricate Sirogojno floral motifs and the dense geometric rug-knitting styles of Zlatibor.',
-          regions: ['Zlatibor', 'Pirot'],
-          workshops: [],
+          isOpeningSoon: false,
+          desc: 'Serbia is known for its textile work - the kilims of Pirot, the knitted sweaters of Sirogojno in the Zlatibor hills. Our Serbian direction begins further north, in Subotica, with one maker working in mosaic crochet.',
+regions: ['Subotica'],
+          workshops: [
+            {
+              id: 'w-anna',
+              type: 'WORKSHOP',
+              countryId: 'serbia',
+              name: 'Anna Ananskaja',
+              city: 'Subotica',
+              itemsCount: 3,
+              color: '#3B4836',
+              foundedYear: '—',
+              technique: 'Mosaic crochet',
+              patternRegion: '',
+              storyP1: 'Anna works in mosaic crochet, building the pattern row by row so that it appears on both sides of the piece.',
+              storyP2: 'PLACEHOLDER — её история: откуда, у кого училась, почему mosaic crochet.',
+              websiteUrl: null
+            }
+          ],
           partners: [],
-          products: [],
+          products: [
+            {
+              id: 'rs-znak',
+              countryId: 'serbia',
+              title: 'Znak cushion',
+              price: 20,
+              workshopId: 'w-anna',
+              workshop: 'Anna Ananskaja',
+city: 'Subotica',
+              region: 'Subotica',
+color: '#3B4836',
+              photo: 'znak-1.jpg',
+              photos: ['znak-1.jpg', 'znak-2.jpg', 'znak-3.jpg'],
+              thumbColors: ['#333F2F', '#465438', '#2A3325'],
+              material: 'Cotton and acrylic · PLACEHOLDER — filling',
+              size: '30 × 30 cm',
+              care: 'Dry clean',
+              patternCredit: 'Chart by Yulia Gendina',
+              days: '4 working days from yarn in stock, 3 weeks more if the yarn is ordered in',
+              description: 'The "Znak" decorative pillow is a striking interior accent featuring a distinct graphic pattern, handcrafted using the intricate mosaic crochet technique. The bold contrast between deep teal and cream highlights the raised, tactile texture of the fabric, creating an eye-catching geometric motif. This piece brings character and warmth to any space, making it a perfect fit for modern, Scandinavian, boho, or ethnically inspired interiors.',
+              schemeId: null,
+              patternName: '',
+              patternOrigin: '',
+              patternRevived: ''
+            },
+            {
+              id: 'rs-nitj',
+              countryId: 'serbia',
+              title: 'Nitj cushion',
+              price: 27,
+              workshopId: 'w-anna',
+              workshop: 'Anna Ananskaja',
+              city: 'Subotica',
+              region: 'Subotica',
+              color: '#465438',
+              photo: 'nitj-1.jpg',
+              photos: ['nitj-1.jpg', 'nitj-2.jpg', 'nitj-3.jpg'],
+              thumbColors: ['#3B4836', '#556346', '#333F2F'],
+              material: 'Bamboo and silk · PLACEHOLDER — filling',
+              size: '40 × 40 cm',
+              care: 'Dry clean',
+              patternCredit: 'Chart by Yulia Gendina',
+              days: '5 working days from yarn in stock, 3 weeks more if the yarn is ordered in',
+              description: 'The "Nitj" decorative pillow is an exquisite artisan accent handcrafted using the intricate mosaic crochet technique. Featuring a striking geometric pattern in deep teal, rich charcoal, and soft cream, its raised texture creates a bold, tactile statement for any interior space. Crafted from a luxurious blend of bamboo and silk, this pillow offers a silky-soft touch with a subtle, elegant sheen. Designed to deliver both physical comfort and refined aesthetics, it serves as a sophisticated addition to modern, Scandinavian, or bohemian-inspired decor.',
+              schemeId: null,
+              patternName: '',
+              patternOrigin: '',
+              patternRevived: ''
+            },
+            {
+              id: 'rs-slavic',
+              countryId: 'serbia',
+              title: 'Slavic blanket',
+              price: 110,
+              workshopId: 'w-anna',
+              workshop: 'Anna Ananskaja',
+              city: 'Subotica',
+              region: 'Subotica',
+              color: '#333F2F',
+              photo: 'slavic-1.jpg',
+              photos: ['slavic-1.jpg', 'slavic-2.jpg', 'slavic-3.jpg'],
+              thumbColors: ['#2A3325', '#3B4836', '#232B1F'],
+              material: 'Bamboo and silk',
+              size: '170 × 120 cm',
+              care: 'Machine wash at 30°, dry flat',
+              patternCredit: 'Chart by Yulia Gendina',
+              days: '4 weeks from yarn in stock, 3 weeks more if the yarn is ordered in',
+              description: 'The "Slavic" throw blanket is a premium handcrafted piece created using the intricate mosaic crochet technique. A harmonious blend of rich ethnic motifs, terracotta, deep teal, and cream tones comes together to form a deeply textured, expressive geometric design. Crafted from a luxurious blend of bamboo and silk, this throw features an exceptionally soft, fluid drape with a subtle natural sheen. It brings tactile comfort, warmth, and timeless artisan aesthetics to any living room or bedroom setting.',
+              schemeId: null,
+              patternName: '',
+              patternOrigin: '',
+              patternRevived: ''
+            }
+          ],
           schemes: []
         },
         georgia: {
@@ -3670,6 +3790,14 @@ currentView = viewId;
       document.getElementById('spec-size').innerText = foundProd.size;
       document.getElementById('spec-care').innerText = foundProd.care;
       document.getElementById('spec-days').innerText = foundProd.days;
+
+      const creditRow = document.getElementById('spec-credit-row');
+      if (foundProd.patternCredit) {
+        document.getElementById('spec-credit').innerText = foundProd.patternCredit;
+        creditRow.style.display = '';
+      } else {
+        creditRow.style.display = 'none';
+      }
 
       // Main Media Block
       document.getElementById('product-main-media').innerHTML = foundProd.photo
