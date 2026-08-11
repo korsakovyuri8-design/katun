@@ -2259,7 +2259,7 @@
                 </div>
                <div class="spec-row">
                   <span class="spec-label">Shipping</span>
-                  <span class="spec-value" id="spec-shipping">From Montenegro, tracked · <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">rates</a></span>
+<span class="spec-value" id="spec-shipping"></span>
                 </div>
               </div>
             </div>
@@ -2438,7 +2438,7 @@
        <div class="container">
          <div class="breadcrumbs-bar">
            <div class="breadcrumbs">
-              <span class="breadcrumb-item" onclick="showView('home')">Patterns</span>
+<span class="breadcrumb-item" onclick="showView('patterns')">Patterns</span>
               <span>/</span>
               <span class="breadcrumb-current" id="pattern-breadcrumb-name">Pattern Name</span>
             </div>
@@ -3128,7 +3128,7 @@ text: [
                 'On the last round increase: k5, make 1. Repeat 12 times. 84 stitches.',
                 'Lower rib: 1×1 for 25 rounds, about 10 cm. Cast off loosely.'
               ],
-              originStory: 'Elena\'s way of making knee warmers, written down step by step as she knits them. Worked from the top down in undyed Montenegrin wool: a wide rib that sits on the thigh and holds the piece in place, decreases to the knee, then two mirrored cups shaped with short rows so the knitting follows the knee instead of pulling across it, and a narrower rib at the bottom. Sixteen steps, with stitch counts at every stage. PLACEHOLDER - one line: where she learned this and how long she has been making them this way.'
+              originStory: 'Elena\'s way of making knee warmers, written down step by step as she knits them. Worked from the top down in undyed Montenegrin wool: a wide rib that sits on the thigh and holds the piece in place, decreases to the knee, then two mirrored cups shaped with short rows so the knitting follows the knee instead of pulling across it, and a narrower rib at the bottom. Sixteen steps, with stitch counts at every stage.'
             }
           ]
         },
@@ -3175,6 +3175,7 @@ color: '#3B4836',
               size: '30 × 30 cm',
               care: 'Dry clean',
               patternCredit: 'Chart by Yulia Gendina',
+              shipsFrom: 'Serbia',
               days: '4 working days from yarn in stock, 3 weeks more if the yarn is ordered in',
               description: 'The "Znak" decorative pillow is a striking interior accent featuring a distinct graphic pattern, handcrafted using the intricate mosaic crochet technique. The bold contrast between deep teal and cream highlights the raised, tactile texture of the fabric, creating an eye-catching geometric motif. This piece brings character and warmth to any space, making it a perfect fit for modern, Scandinavian, boho, or ethnically inspired interiors.',
               schemeId: null,
@@ -3199,6 +3200,7 @@ color: '#3B4836',
               size: '40 × 40 cm',
               care: 'Dry clean',
               patternCredit: 'Chart by Yulia Gendina',
+              shipsFrom: 'Serbia',
               days: '5 working days from yarn in stock, 3 weeks more if the yarn is ordered in',
               description: 'The "Nitj" decorative pillow is an exquisite artisan accent handcrafted using the intricate mosaic crochet technique. Featuring a striking geometric pattern in deep teal, rich charcoal, and soft cream, its raised texture creates a bold, tactile statement for any interior space. Crafted from a luxurious blend of bamboo and silk, this pillow offers a silky-soft touch with a subtle, elegant sheen. Designed to deliver both physical comfort and refined aesthetics, it serves as a sophisticated addition to modern, Scandinavian, or bohemian-inspired decor.',
               schemeId: null,
@@ -3223,6 +3225,7 @@ color: '#3B4836',
               size: '170 × 120 cm',
               care: 'Machine wash at 30°, dry flat',
               patternCredit: 'Chart by Yulia Gendina',
+              shipsFrom: 'Serbia',
               days: '4 weeks from yarn in stock, 3 weeks more if the yarn is ordered in',
               description: 'The "Slavic" throw blanket is a premium handcrafted piece created using the intricate mosaic crochet technique. A harmonious blend of rich ethnic motifs, terracotta, deep teal, and cream tones comes together to form a deeply textured, expressive geometric design. Crafted from a luxurious blend of bamboo and silk, this throw features an exceptionally soft, fluid drape with a subtle natural sheen. It brings tactile comfort, warmth, and timeless artisan aesthetics to any living room or bedroom setting.',
               schemeId: null,
@@ -3797,6 +3800,9 @@ currentView = viewId;
       document.getElementById('spec-size').innerText = foundProd.size;
       document.getElementById('spec-care').innerText = foundProd.care;
       document.getElementById('spec-days').innerText = foundProd.days;
+      document.getElementById('spec-shipping').innerHTML =
+        'From ' + (foundProd.shipsFrom || 'Montenegro') +
+        ', tracked &middot; <a onclick="showView(\'terms\')" style="color:var(--madder);cursor:pointer;">rates</a>';
 
       const creditRow = document.getElementById('spec-credit-row');
       if (foundProd.patternCredit) {
@@ -3841,7 +3847,7 @@ currentView = viewId;
       if (targetScheme) {
         patternPrice = targetScheme.price;
       }
-      document.getElementById('get-full-chart-btn').innerText = `Get the full chart — €${patternPrice}`;
+      document.getElementById('get-full-chart-btn').innerText = `Get the full chart - €${patternPrice}`;
 
       const teaser = document.querySelector('#view-product .pattern-section');
       if (foundProd.schemeId && schemeVisible(targetScheme)) {
@@ -4154,24 +4160,18 @@ function renderFullPatternChart() {
       const box = chart.closest('.full-chart-box');
       const layout = document.querySelector('.pattern-view-layout');
       chart.innerHTML = '';
-      const old = box.querySelector('.pattern-text');
-      if (old) old.remove();
+      box.querySelectorAll('.pattern-text, .pattern-locked').forEach(el => el.remove());
 
       const isText = currentPattern && currentPattern.format === 'text';
       if (layout) layout.classList.toggle('text-mode', !!isText);
 
       if (isText) {
-        chart.style.display = 'none';
-        const steps = (currentPattern.text || []).length;
-        const d = document.createElement('div');
-        d.className = 'pattern-locked';
-        d.innerHTML = '<span class="text-badge">Written pattern</span>' +
-          '<span class="pattern-locked-count">' + steps + ' steps &middot; in English</span>' +
-          Array.from({length: 7}, (_, i) =>
-            '<div class="locked-line" style="width:' + (240 - i * 22) + 'px"></div>').join('');
-        box.appendChild(d);
+        if (box) box.style.display = 'none';
+        if (layout) layout.style.gridTemplateColumns = '1fr';
         return;
       }
+      if (box) box.style.display = '';
+      if (layout) layout.style.gridTemplateColumns = '';
 
       chart.style.display = '';
       const data = (currentPattern && currentPattern.chart) ? currentPattern.chart : [];
