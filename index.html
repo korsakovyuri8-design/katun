@@ -1244,6 +1244,15 @@
         linear-gradient(to bottom left, transparent 44%, var(--ink) 44%, var(--ink) 56%, transparent 56%);
     }
 
+    .pattern-text { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+    .pattern-row { display: flex; gap: 14px; font-size: 15px; line-height: 1.6; color: #38322E; }
+    .pattern-row-n { font-family: var(--font-serif); font-size: 15px; color: var(--madder); min-width: 22px; flex-shrink: 0; }
+    .text-badge { display: inline-block; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--madder); border: 1px solid var(--madder); border-radius: 2px; padding: 3px 8px; }
+    .text-preview { display: flex; flex-direction: column; gap: 6px; padding: 10px 4px; width: 100%; }
+    .text-preview-line { height: 6px; background: var(--rule); border-radius: 1px; opacity: .55; }
+    @media (min-width: 768px) {
+      .pattern-view-layout.text-mode { grid-template-columns: 1fr 1fr; }
+    }
     .pattern-info-panel h1 {
       font-size: 40px;
       line-height: 1.1;
@@ -2920,10 +2929,10 @@
               care: 'Hand wash cold',
               days: '16 hours of work',
               description: 'Thick ribbed knee warmers in undyed Montenegrin wool, straight from local flocks - the natural grey-brown is the colour of the sheep, not of dye. Worn over tights in winter or under trousers in a cold house. They stretch to the knee and stay put. Made in one piece, without seams, and each pair takes about two days of work.',
-              schemeId: null,
-              patternName: '',
-              patternOrigin: '',
-              patternRevived: ''
+              schemeId: 'sch-mn-knee',
+patternName: 'Knee warmers, written pattern',
+              patternOrigin: 'PLACEHOLDER — one line: where this way of knitting them comes from.',
+              patternRevived: 'PLACEHOLDER — one line: what makes this pattern worth writing down.'
             },
             {
               id: 'mn-01',
@@ -3058,6 +3067,34 @@
               price: 12,
               seed: 2,
               originStory: 'Documented in Kolašin valley settlements, this heavy cable grid emulates the winding glacial streams of the Bjelasica range. The double-stranded draft creates insulating air pockets within thick mountain cardigans.'
+            },
+            {
+              id: 'sch-mn-knee',
+              name: 'Knee warmers, written pattern',
+              region: 'Budva',
+              countryId: 'montenegro',
+              countryName: 'Montenegro',
+              price: 8,
+              format: 'text',
+text: [
+                'Needles 3 mm. 100% Montenegrin wool.',
+                'Worked from the top down. The upper edge sits on the thigh and has the wider rib, which holds the warmer in place; the lower edge has the narrower one.',
+                'Cast on 100 stitches and join in the round.',
+                'Upper rib: 1×1 — k1, p1 — for 25 rounds, about 10 cm.',
+                'On the last round decrease: p2, k2tog, k1, k2tog. Repeat 12 times.',
+                'Over the remaining 16 stitches: k1, k2tog. Repeat 4 times, then knit the last 4 stitches. 72 stitches remain.',
+                'Knit 5 rounds in stocking stitch, about 2 cm.',
+                'Now the two cups. Divide the 72 stitches in half — 36 and 36 — and shape one cup on each side, mirroring the other around the centre of the work. Both are made with short rows.',
+                'First cup: knit 33 stitches, turn the work, make a yarn over using the yarn of the previous row, then knit the yarn over and the next stitch together.',
+                'Keep working back and forth this way until 3 stitches are left on the needle. Turn, make a yarn over, knit it together with the stitch.',
+                'Second cup, on the other 36 stitches: the same short rows in the opposite order, so that the two cups mirror each other. Knit 21, turn, yarn over, knit it together with the stitch. Knit 6, turn, yarn over, knit it together with the stitch, and carry on working 3 stitches more each time.',
+                'Work both cups until they are as deep as you need them.',
+                'Return to four needles and knit in stocking stitch to the length you need.',
+                'Return to four needles and knit 5 rounds, about 2 cm.',
+                'On the last round increase: k5, make 1. Repeat 12 times. 84 stitches.',
+                'Lower rib: 1×1 for 25 rounds, about 10 cm. Cast off loosely.'
+              ],
+              originStory: 'PLACEHOLDER — where this way of making them comes from and who Elena learned it from.'
             }
           ]
         },
@@ -3578,6 +3615,13 @@ currentView = viewId;
     }
 
     function chartPreview(s, box) {
+      if (s.format === 'text') {
+        const n = Math.min(6, (s.text || []).length || 4);
+        return '<div class="text-preview">' +
+          Array.from({length: n}, (_, i) =>
+            '<div class="text-preview-line" style="width:' + (95 - i * 9) + '%"></div>').join('') +
+          '</div>';
+      }
       if (!s.chart || !s.chart.length) return '<div class="empty-tab-msg">Chart in preparation</div>';
       const cols = s.chart[0].length, rows = s.chart.length;
       const size = Math.max(3, Math.min(11, Math.floor(box / cols)));
@@ -3667,7 +3711,13 @@ currentView = viewId;
       const teaser = document.querySelector('#view-product .pattern-section');
       if (foundProd.schemeId) {
         if (teaser) teaser.style.display = '';
-        renderTeaserGrid();
+        const tz = document.querySelector('.chart-teaser-container');
+        if (targetScheme && targetScheme.format === 'text') {
+          if (tz) tz.style.display = 'none';
+        } else {
+          if (tz) tz.style.display = '';
+          renderTeaserGrid();
+        }
       } else {
         if (teaser) teaser.style.display = 'none';
       }
@@ -3966,7 +4016,28 @@ setHash('/pattern/' + schemeId);
     /* RENDER FULL 20x20 CHART GRID ON PATTERN PAGE */
 function renderFullPatternChart() {
       const chart = document.getElementById('full-knitting-chart');
+      const box = chart.closest('.full-chart-box');
+      const layout = document.querySelector('.pattern-view-layout');
       chart.innerHTML = '';
+      const old = box.querySelector('.pattern-text');
+      if (old) old.remove();
+
+      const isText = currentPattern && currentPattern.format === 'text';
+      if (layout) layout.classList.toggle('text-mode', !!isText);
+
+      if (isText) {
+        chart.style.display = 'none';
+        const d = document.createElement('div');
+        d.className = 'pattern-text';
+        d.innerHTML = '<span class="text-badge" style="margin-bottom:8px;">Written pattern</span>' +
+          (currentPattern.text || []).map((line, i) =>
+            '<div class="pattern-row"><span class="pattern-row-n">' + (i + 1) + '</span><span>' + line + '</span></div>'
+          ).join('');
+        box.appendChild(d);
+        return;
+      }
+
+      chart.style.display = '';
       const data = (currentPattern && currentPattern.chart) ? currentPattern.chart : [];
       if (!data.length) return;
       const cols = data[0].length, rows = data.length;
