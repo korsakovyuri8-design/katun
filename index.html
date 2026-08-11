@@ -1253,6 +1253,9 @@
     @media (min-width: 768px) {
       .pattern-view-layout.text-mode { grid-template-columns: 1fr 1fr; }
     }
+    .pattern-locked { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; padding: 8px 4px; }
+    .pattern-locked-count { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #665E58; }
+    .locked-line { height: 7px; background: var(--rule); border-radius: 1px; opacity: .4; }
     .pattern-info-panel h1 {
       font-size: 40px;
       line-height: 1.1;
@@ -2962,8 +2965,8 @@
               description: 'Thick ribbed knee warmers in undyed Montenegrin wool, straight from local flocks - the natural grey-brown is the colour of the sheep, not of dye. Worn over tights in winter or under trousers in a cold house. They stretch to the knee and stay put. Made in one piece, without seams, and each pair takes about two days of work.',
               schemeId: 'sch-mn-knee',
 patternName: 'Knee warmers, written pattern',
-              patternOrigin: 'PLACEHOLDER — one line: where this way of knitting them comes from.',
-              patternRevived: 'PLACEHOLDER — one line: what makes this pattern worth writing down.'
+              patternOrigin: 'Elena\'s own way of making them, worked from the top down and written out step by step as she knits.',
+              patternRevived: 'The two cups are shaped with short rows, so the knitting follows the knee instead of pulling across it. Sixteen steps with stitch counts at every stage.'
             },
             {
               id: 'mn-01',
@@ -3125,7 +3128,7 @@ text: [
                 'On the last round increase: k5, make 1. Repeat 12 times. 84 stitches.',
                 'Lower rib: 1×1 for 25 rounds, about 10 cm. Cast off loosely.'
               ],
-              originStory: 'PLACEHOLDER — where this way of making them comes from and who Elena learned it from.'
+              originStory: 'Elena\'s way of making knee warmers, written down step by step as she knits them. Worked from the top down in undyed Montenegrin wool: a wide rib that sits on the thigh and holds the piece in place, decreases to the knee, then two mirrored cups shaped with short rows so the knitting follows the knee instead of pulling across it, and a narrower rib at the bottom. Sixteen steps, with stitch counts at every stage. PLACEHOLDER - one line: where she learned this and how long she has been making them this way.'
             }
           ]
         },
@@ -3189,8 +3192,8 @@ color: '#3B4836',
               city: 'Subotica',
               region: 'Subotica',
               color: '#465438',
-              photo: 'nitj-1.png',
-              photos: ['nitj-1.png', 'nitj-2.jpg', 'nitj-3.jpg'],
+              photo: 'nitj-1.jpg',
+              photos: ['nitj-1.jpg', 'nitj-2.jpg', 'nitj-3.jpg'],
               thumbColors: ['#3B4836', '#556346', '#333F2F'],
               material: 'Bamboo and silk · PLACEHOLDER — filling',
               size: '40 × 40 cm',
@@ -3214,7 +3217,7 @@ color: '#3B4836',
               region: 'Subotica',
               color: '#333F2F',
               photo: 'slavic-1.jpg',
-              photos: ['slavic-1.jpg', 'slavic-2.jpg', 'slavic-3.png'],
+              photos: ['slavic-1.jpg', 'slavic-2.jpg', 'slavic-3.jpg'],
               thumbColors: ['#2A3325', '#3B4836', '#232B1F'],
               material: 'Bamboo and silk',
               size: '170 × 120 cm',
@@ -3672,8 +3675,9 @@ currentView = viewId;
         // 4. Schemes Tab
         const schGrid = document.getElementById('country-schemes-grid');
         schGrid.innerHTML = '';
-        if (c.schemes && c.schemes.length > 0) {
-          c.schemes.forEach(s => {
+        const schemeList = (c.schemes || []).filter(schemeVisible);
+        if (schemeList.length > 0) {
+          schemeList.forEach(s => {
             schGrid.innerHTML += `
              <div class="scheme-card" onclick="openPatternPage('${s.id}')">
                <div class="scheme-chart-preview">
@@ -3734,6 +3738,9 @@ currentView = viewId;
       ).join('')).join('');
     }
 
+    function schemeVisible(s) {
+      return !!s && (s.published === true || s.format === 'text');
+    }
     function chartPreview(s, box) {
       if (s.format === 'text') {
         const n = Math.min(6, (s.text || []).length || 4);
@@ -3837,7 +3844,7 @@ currentView = viewId;
       document.getElementById('get-full-chart-btn').innerText = `Get the full chart — €${patternPrice}`;
 
       const teaser = document.querySelector('#view-product .pattern-section');
-      if (foundProd.schemeId) {
+      if (foundProd.schemeId && schemeVisible(targetScheme)) {
         if (teaser) teaser.style.display = '';
         const tz = document.querySelector('.chart-teaser-container');
         if (targetScheme && targetScheme.format === 'text') {
@@ -4123,7 +4130,7 @@ setHash('/maker/' + entityId);
           relGrid.innerHTML += `
            <div class="product-card" onclick="openProduct('${p.id}')">
              <div class="product-card-media">
-               <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
+               ${p.photo ? `<div class="photo-block" style="background-image:url('${p.photo}')"></div>` : `<div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>`}
               </div>
              <div class="product-card-body">
                 <h3 class="product-card-title serif">${p.title}</h3>
@@ -4155,12 +4162,13 @@ function renderFullPatternChart() {
 
       if (isText) {
         chart.style.display = 'none';
+        const steps = (currentPattern.text || []).length;
         const d = document.createElement('div');
-        d.className = 'pattern-text';
-        d.innerHTML = '<span class="text-badge" style="margin-bottom:8px;">Written pattern</span>' +
-          (currentPattern.text || []).map((line, i) =>
-            '<div class="pattern-row"><span class="pattern-row-n">' + (i + 1) + '</span><span>' + line + '</span></div>'
-          ).join('');
+        d.className = 'pattern-locked';
+        d.innerHTML = '<span class="text-badge">Written pattern</span>' +
+          '<span class="pattern-locked-count">' + steps + ' steps &middot; in English</span>' +
+          Array.from({length: 7}, (_, i) =>
+            '<div class="locked-line" style="width:' + (240 - i * 22) + 'px"></div>').join('');
         box.appendChild(d);
         return;
       }
@@ -4268,6 +4276,8 @@ function renderPatterns(filterCountry = 'all') {
       }
     }
   });
+
+  allSchemes = allSchemes.filter(schemeVisible);
 
   if (allSchemes.length === 0) {
     container.innerHTML = `<div class="empty-tab-msg">No pattern charts in this direction yet</div>`;
