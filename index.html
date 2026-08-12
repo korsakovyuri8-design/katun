@@ -988,13 +988,13 @@
        VIEW 4: WORKSHOP / PARTNER DETAIL PAGE
        ========================================== */
     .partner-page-section {
-      padding-top: 16px;
+      padding-top: 0;
       padding-bottom: 80px;
     }
 
 .partner-banner {
-      padding-top: 32px;
-      padding-bottom: 48px;
+      padding-top: 0;
+      padding-bottom: 0;
     }
 
     .partner-banner-content {
@@ -1933,7 +1933,7 @@
      <div class="container">
        <div class="header-inner">
           <a onclick="showView('home')" class="wordmark">KATUN</a>
-          <nav class="nav">
+<nav class="nav">
 <a onclick="showView('all-workshops')" class="nav-link">Workshops</a>
   <a onclick="showView('all-partners')" class="nav-link">Partners</a>
   <span class="nav-join">
@@ -2313,7 +2313,7 @@
            <div class="breadcrumbs">
               <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
               <span>/</span>
-              <span class="breadcrumb-item" id="partner-breadcrumb-country" onclick="openCountry(currentEntity.countryId)">Country</span>
+              <span class="breadcrumb-item" onclick="showView('all-workshops')">Workshops</span>
               <span>/</span>
               <span class="breadcrumb-current" id="partner-breadcrumb-name">Entity Name</span>
             </div>
@@ -2321,19 +2321,19 @@
 
          <div class="partner-page-section">
            <div class="partner-banner">
-             <div class="partner-banner-content">
-               <div class="partner-banner-media" id="partner-banner-media">
+             <div class="partner-banner-content" style="display:block">
+               <div class="partner-banner-media" id="partner-banner-media" style="display:none">
                   <!-- Color block -->
                 </div>
                <div class="partner-banner-text">
-                  <h1 id="partner-title" class="serif">Entity Name</h1>
-                  <span id="partner-type-tag" class="partner-type-tag">WORKSHOP</span>
+                  <h1 id="partner-title" class="serif" style="display:none">Entity Name</h1>
+                  <span id="partner-type-tag" class="partner-type-tag" style="display:none">WORKSHOP</span>
                   
-                 <div class="partner-meta-row" id="partner-meta-row">
+                 <div class="partner-meta-row" id="partner-meta-row" style="display:none">
                     City, Country · Founded Year · Technique
                   </div>
 
-                 <div class="partner-story">
+                 <div class="partner-story" style="display:none">
                     <p id="partner-p1">Paragraph 1 story...</p>
                     <p id="partner-p2">Paragraph 2 story...</p>
                     <p id="partner-pattern-line" class="partner-pattern-line" style="display: none;">
@@ -2344,26 +2344,27 @@
               </div>
             </div>
 
-            <hr class="section-divider" style="margin-top: 40px; margin-bottom: 40px;" />
+<hr class="section-divider" style="display:none" />
 
             <!-- CATALOGUE SECTION -->
-           <div class="partner-catalogue-area">
+           <div class="partner-catalogue-area" style="display:none">
               <h2 class="partner-catalogue-title serif">Catalogue</h2>
              <div class="products-grid" id="partner-products-grid">
                 <!-- Products for this workshop/partner -->
               </div>
             </div>
-<div id="workshop-events" style="display:none;margin-top:56px;">
-             <hr class="section-divider" style="margin-bottom:40px;" />
+<div id="workshop-events" style="display:none;margin-top:0;">
+             <hr class="section-divider" style="display:none" />
              <h2 class="serif" style="font-size:28px;margin-bottom:8px;">Upcoming sessions</h2>
              <p style="font-size:15px;color:#665E58;margin-bottom:28px;max-width:560px;">Small groups. Everything is provided, and you leave with what you made.</p>
-             <div id="events-list"></div>
+<div id="events-list"></div>
+             <p style="margin-top:24px;"><a class="back-link" onclick="showView('all-workshops')">← Back to workshops</a></p>
            </div>
            <div class="partner-actions-bottom">
               <div id="partner-website-container">
                 <a id="partner-website-link" href="#" target="_blank" class="btn-outline" style="display: none;">Visit their own site</a>
               </div>
-              <a id="partner-back-country-link" class="back-link" onclick="openCountry(currentEntity.countryId)">← Back to Country Page</a>
+              <a class="back-link" onclick="showView('all-workshops')">← Back to workshops</a>
             </div>
 
           </div>
@@ -2932,6 +2933,7 @@
               type: 'WORKSHOP',
               countryId: 'montenegro',
               name: 'Elena',
+              soloMaker: true,
               city: 'Budva',
               itemsCount: 1,
               color: '#6E6350',
@@ -2972,13 +2974,13 @@ patternName: 'Knee warmers, written pattern',
               id: 'mn-mittens',
               countryId: 'montenegro',
               title: 'Rukavice · Shepherd\'s Path',
-              price: 78,
+              price: 45,
               workshopId: 'w-elena',
               workshop: 'Elena',
               city: 'Budva',
               region: 'All Regions',
               color: '#2A2C3E',
-              photo: 'mittens-1.jpg',
+              photo: 'mittens-2.jpg',
               photos: ['mittens-1.jpg', 'mittens-2.jpg','mittens-3.jpg'],
               thumbColors: ['#2A2C3E', '#3A3C50', '#1F2130'],
               material: '75% wool, 25% polyamide',
@@ -3193,6 +3195,7 @@ regions: ['Subotica'],
               type: 'WORKSHOP',
               countryId: 'serbia',
               name: 'Anna Ananskaja',
+              soloMaker: true,
               city: 'Subotica',
               itemsCount: 3,
               color: '#3B4836',
@@ -3210,7 +3213,7 @@ regions: ['Subotica'],
               id: 'rs-znak',
               countryId: 'serbia',
               title: 'Znak cushion',
-              price: 20,
+              price: 27,
               workshopId: 'w-anna',
               workshop: 'Anna Ananskaja',
 city: 'Subotica',
@@ -3235,7 +3238,7 @@ color: '#3B4836',
               id: 'rs-nitj',
               countryId: 'serbia',
               title: 'Nitj cushion',
-              price: 27,
+              price: 32,
               workshopId: 'w-anna',
               workshop: 'Anna Ananskaja',
               city: 'Subotica',
@@ -3257,10 +3260,60 @@ color: '#3B4836',
               patternRevived: ''
             },
             {
+              id: 'rs-kuka',
+              countryId: 'serbia',
+              title: 'Kuka cushion',
+              price: 27,
+              workshopId: 'w-anna',
+              workshop: 'Anna Ananskaja',
+              city: 'Subotica',
+              region: 'Subotica',
+              color: '#3B4836',
+              photo: 'kuka-1.jpg',
+              photos: ['kuka-1.jpg', 'kuka-2.jpg', 'kuka-3.jpg'],
+              thumbColors: ['#333F2F', '#465438', '#2A3325'],
+              material: 'Cotton and acrylic · PLACEHOLDER - filling',
+              size: '30 × 30 cm',
+              care: 'Dry clean',
+              patternCredit: 'Chart by Yulia Gendina',
+              shipsFrom: 'Serbia',
+              days: '4 working days from yarn in stock, 3 weeks more if the yarn is ordered in',
+              description: 'PLACEHOLDER — what the Kuka pattern means and where it comes from.',
+              schemeId: null,
+              patternName: '',
+              patternOrigin: '',
+              patternRevived: ''
+            },
+            {
+              id: 'rs-graf',
+              countryId: 'serbia',
+              title: 'Graf blanket',
+              price: 260,
+              workshopId: 'w-anna',
+              workshop: 'Anna Ananskaja',
+              city: 'Subotica',
+              region: 'Subotica',
+              color: '#2A3325',
+              photo: 'graf-1.jpg',
+              photos: ['graf-1.jpg', 'graf-2.jpg', 'graf-3.jpg'],
+              thumbColors: ['#232B1F', '#3B4836', '#1B2118'],
+              material: 'Bamboo and silk',
+              size: '140 × 120 cm',
+              care: 'Machine wash at 30°, dry flat',
+              patternCredit: 'Chart by Yulia Gendina',
+              shipsFrom: 'Serbia',
+              days: '4 weeks from yarn in stock, 3 weeks more if the yarn is ordered in',
+              description: 'PLACEHOLDER — what the Graf pattern means and where it comes from.',
+              schemeId: null,
+              patternName: '',
+              patternOrigin: '',
+              patternRevived: ''
+            },
+            {
               id: 'rs-slavic',
               countryId: 'serbia',
               title: 'Slavic blanket',
-              price: 110,
+              price: 290,
               workshopId: 'w-anna',
               workshop: 'Anna Ananskaja',
               city: 'Subotica',
@@ -3305,7 +3358,33 @@ color: '#3B4836',
               patternRegion: 'Tusheti High Passes',
               storyP1: 'Located in the remote mountain settlement of Omalo, reachable only a few months a year, the Tusheti Women Guild keeps alive the intricate stranded sock-knitting traditions of northern Georgia.',
               storyP2: 'The wool is dyed using wild madder roots, walnut husks, and onion skins gathered in the alpine valleys, creating deep earthy tones that do not fade.',
-              websiteUrl: null
+              websiteUrl: null,
+              events: [
+                {
+                  id: 'ev-ge-01',
+                  title: 'Dyeing wool with plants',
+                  date: 'PLACEHOLDER — date and time',
+                  place: 'Omalo',
+                  duration: '5 hours',
+                  desc: 'Madder root, walnut husk, onion skin. You prepare the baths, dye your own skeins and take them home. Wool and dyestuffs provided.',
+                  price: 55,
+                  spots: 8,
+                  spotsLeft: 8,
+                  payUrl: null
+                },
+                {
+                  id: 'ev-ge-02',
+                  title: 'Stranded colourwork, first steps',
+                  date: 'PLACEHOLDER — date and time',
+                  place: 'Omalo',
+                  duration: '3 hours',
+                  desc: 'Two colours carried at once. You learn to hold both yarns, keep the tension even and read a chart, and leave with a knitted band. Wool and needles provided.',
+                  price: 45,
+                  spots: 8,
+                  spotsLeft: 8,
+                  payUrl: null
+                }
+              ]
             }
           ],
           partners: [
@@ -3451,7 +3530,21 @@ color: '#3B4836',
               patternRegion: 'Naryn Valley',
               storyP1: 'A group of women in Naryn working with wool from local flocks, knitting and felting through the winter months.',
               storyP2: 'PLACEHOLDER — replace with the real story once the direction opens: who they are, how they learned, what they still make.',
-              websiteUrl: null
+              websiteUrl: null,
+              events: [
+                {
+                  id: 'ev-kg-01',
+                  title: 'Felting with sheep wool',
+                  date: 'PLACEHOLDER — date and time',
+                  place: 'Naryn',
+                  duration: '4 hours',
+                  desc: 'Raw wool, hot water and your hands. You lay out the fibres, felt them down and leave with a small finished piece. Wool and tools provided.',
+                  price: 40,
+                  spots: 6,
+                  spotsLeft: 6,
+                  payUrl: null
+                }
+              ]
             }
           ],
           partners: [
@@ -3963,7 +4056,6 @@ function swapPhoto(el, src) {
       currentEntity = foundEntity;
 
       // Breadcrumbs
-      document.getElementById('partner-breadcrumb-country').innerText = foundCountry.name;
       document.getElementById('partner-breadcrumb-name').innerText = foundEntity.name;
 
       // Banner Color Block
@@ -4061,6 +4153,8 @@ setHash('/maker/' + entityId);
           });
         }
       });
+
+list = list.filter(item => !item.soloMaker);
 
       if (activeWorkshopsFilter !== 'ALL') {
         list = list.filter(item => item.countryName.toLowerCase() === activeWorkshopsFilter.toLowerCase());
