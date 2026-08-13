@@ -1922,6 +1922,105 @@
         padding-bottom: 120px;
       }
     }
+    /* CENTRED LAYOUT FOR JOIN PAGES */
+    #view-for-makers .directory-section,
+    #view-for-shops .directory-section {
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #view-for-makers .directory-section > p,
+    #view-for-shops .directory-section > p,
+    #view-for-makers .split-table,
+    #view-for-shops .split-table,
+    #view-for-makers .honest-block,
+    #view-for-shops .honest-block,
+    #view-for-makers .opening-form,
+    #view-for-shops .opening-form {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #view-for-makers .pillars-grid,
+    #view-for-shops .pillars-grid {
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #view-for-makers .directory-section,
+    #view-for-shops .directory-section {
+      text-align: center;
+    }
+
+      #view-for-makers .directory-section .split-table,
+    #view-for-shops .directory-section .split-table,
+    #view-for-makers .directory-section .opening-form,
+    #view-for-shops .directory-section .opening-form,
+    #view-for-makers .directory-section .breadcrumbs,
+    #view-for-shops .directory-section .breadcrumbs {
+      text-align: left;
+    }
+
+    #view-for-makers .directory-section .split-share,
+    #view-for-shops .directory-section .split-share {
+      text-align: right;
+    }
+    .join-photo {
+      width: 100%;
+      max-width: 860px;
+      aspect-ratio: 16 / 9;
+      margin-left: auto;
+      margin-right: auto;
+      background-image: url('for-makers.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: var(--card);
+      border-radius: 2px;
+    }
+    .join-hero {
+      width: 100%;
+      min-height: 60vh;
+      background-image: url('for-makers.png');
+      background-size: cover;
+      background-position: center;
+      background-color: var(--card);
+      border-radius: 2px;
+      overflow: hidden;
+      display: flex;
+      margin-bottom: 64px;
+    }
+    .join-hero-overlay {
+      width: 100%;
+      background-color: rgba(26, 22, 20, 0.45);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .join-hero h1 {
+      font-size: 36px;
+      line-height: 1.15;
+      color: var(--bg-cream);
+      margin: 0;
+    }
+    .join-hero p {
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 300;
+      color: var(--bg-cream);
+      max-width: 560px;
+      margin: 0;
+    }
+    @media (min-width: 768px) {
+      .join-hero-overlay { padding: 64px 48px; }
+      .join-hero h1 { font-size: 52px; }
+      .join-hero p { font-size: 18px; }
+    }
   </style>
 </head>
 <body>
@@ -2515,11 +2614,13 @@
     </div>
 
     <div class="directory-section">
-      <h1 class="serif" style="font-size:40px;margin-bottom:12px;">You make. We handle the rest.</h1>
-      <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;">
-        You don't need English, a camera, or a shop to sell what you make. You need someone to do that part for you. That's us.
-      </p>
-      <a class="btn-madder" href="#join-form" style="margin-bottom:56px;">Join us</a>
+      <div class="join-hero">
+        <div class="join-hero-overlay">
+          <h1 class="serif">You make. We handle the rest.</h1>
+          <p>You don't need English, a camera, or a shop to sell what you make. You need someone to do that part for you. That's us.</p>
+          <div><a class="btn-madder" href="#join-form">Join us</a></div>
+        </div>
+      </div>
 
       <div class="pillars-grid" style="margin-top:56px;margin-bottom:64px;">
         <div class="pillar-card">
@@ -2630,11 +2731,13 @@
     </div>
 
     <div class="directory-section">
-      <h1 class="serif" style="font-size:40px;margin-bottom:12px;">For workshops and brands</h1>
-      <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;">
-        You already make the work. We give you a page, put it in front of people who came looking for exactly this, and take care of everything that isn't making.
-      </p>
-      <a class="btn-madder" href="#shops-form" style="margin-bottom:56px;">Talk to us</a>
+      <div class="join-hero" style="background-image:url('for-shops.png')">
+        <div class="join-hero-overlay">
+          <h1 class="serif">For workshops and brands</h1>
+          <p>You already make the work. We give you a page, put it in front of people who came looking for exactly this, and take care of everything that isn't making.</p>
+          <div><a class="btn-madder" href="#shops-form">Talk to us</a></div>
+        </div>
+      </div>
 
       <div class="pillars-grid" style="margin-top:56px;margin-bottom:40px;">
         <div class="pillar-card">
@@ -3269,8 +3372,8 @@ color: '#3B4836',
               city: 'Subotica',
               region: 'Subotica',
               color: '#3B4836',
-              photo: 'kuka-1.png',
-              photos: ['kuka-1.png', 'kuka-2.jpg', 'kuka-3.jpg'],
+              photo: 'kuka-1.jpg',
+              photos: ['kuka-1.jpg', 'kuka-2.jpg', 'kuka-3.jpg'],
               thumbColors: ['#333F2F', '#465438', '#2A3325'],
               material: 'Cotton and acrylic · PLACEHOLDER - filling',
               size: '30 × 30 cm',
