@@ -2165,25 +2165,6 @@
       </div>
     </div>
   </section>
-  <!-- 6. FEATURED ITEM -->
-  <section class="featured-section">
-    <div class="container">
-      <div class="featured-grid">
-        <div class="featured-content">
-          <h2 class="serif">Durmitor Socks</h2>
-          <p>Two-strand knitting in undyed mountain wool. Pattern revived from a piece in the Cetinje collection.</p>
-          <div class="featured-price-line">
-            <span class="featured-price">€-</span>
-            <span class="featured-meta">made in 5 days</span>
-          </div>
-          <div>
-            <a class="btn-madder" onclick="openProduct('mn-04')">Buy</a>
-          </div>
-        </div>
-        <div class="featured-photo"></div>
-      </div>
-    </div>
-  </section>
 
   <!-- 7. FOR MAKERS -->
   <section class="for-makers-section">
@@ -2412,7 +2393,7 @@
            <div class="breadcrumbs">
               <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
               <span>/</span>
-              <span class="breadcrumb-item" onclick="showView('all-workshops')">Workshops</span>
+              <span class="breadcrumb-item" id="partner-breadcrumb-type" onclick="showView(currentEntity.type === 'PARTNER' ? 'all-partners' : 'all-workshops')">Workshops</span>
               <span>/</span>
               <span class="breadcrumb-current" id="partner-breadcrumb-name">Entity Name</span>
             </div>
@@ -2421,18 +2402,18 @@
          <div class="partner-page-section">
            <div class="partner-banner">
              <div class="partner-banner-content" style="display:block">
-               <div class="partner-banner-media" id="partner-banner-media" style="display:none">
+               <div class="partner-banner-media" id="partner-banner-media"
                   <!-- Color block -->
                 </div>
                <div class="partner-banner-text">
-                  <h1 id="partner-title" class="serif" style="display:none">Entity Name</h1>
-                  <span id="partner-type-tag" class="partner-type-tag" style="display:none">WORKSHOP</span>
+                  <h1 id="partner-title" class="serif">Entity Name</h1>
+                  <span id="partner-type-tag" class="partner-type-tag">WORKSHOP</span>
                   
-                 <div class="partner-meta-row" id="partner-meta-row" style="display:none">
+                 <div class="partner-meta-row" id="partner-meta-row">
                     City, Country · Founded Year · Technique
                   </div>
 
-                 <div class="partner-story" style="display:none">
+                 <div class="partner-story">
                     <p id="partner-p1">Paragraph 1 story...</p>
                     <p id="partner-p2">Paragraph 2 story...</p>
                     <p id="partner-pattern-line" class="partner-pattern-line" style="display: none;">
@@ -2443,10 +2424,10 @@
               </div>
             </div>
 
-<hr class="section-divider" style="display:none" />
+<hr class="section-divider" style="margin-top:40px;margin-bottom:40px;" />
 
             <!-- CATALOGUE SECTION -->
-           <div class="partner-catalogue-area" style="display:none">
+           <div class="partner-catalogue-area">
               <h2 class="partner-catalogue-title serif">Catalogue</h2>
              <div class="products-grid" id="partner-products-grid">
                 <!-- Products for this workshop/partner -->
@@ -3504,7 +3485,28 @@ color: '#3B4836',
               patternRegion: 'Kakheti & Old Tbilisi Revival',
               storyP1: 'Tbilisi Tapestry & Atelier is an independent design studio collaborating with master weavers from eastern Georgia to adapt museum flat-knit motifs into modern functional home textiles.',
               storyP2: 'Operating out of an restored 19th-century courtyard in Sololaki, the studio documents historic Georgian ornament catalogs and translates them onto hand-loom wool rugs and wall panels.',
-              websiteUrl: 'https://example.com/tbilisi-tapestry'
+              websiteUrl: 'https://example.com/tbilisi-tapestry',
+              products: [
+                {
+                  id: 'p-tbilisi-01',
+                  title: 'PLACEHOLDER — item name',
+                  price: 0,
+                  workshop: 'Tbilisi Tapestry & Atelier',
+                  region: 'Tbilisi',
+                  color: '#B57C48',
+                  thumbColors: ['#A06B3E', '#C68B54', '#8C5A2B'],
+                  material: 'PLACEHOLDER',
+                  size: 'PLACEHOLDER',
+                  care: 'PLACEHOLDER',
+                  days: 'PLACEHOLDER',
+                  shipsFrom: 'Georgia',
+                  description: 'PLACEHOLDER',
+                  schemeId: null,
+                  patternName: '',
+                  patternOrigin: '',
+                  patternRevived: ''
+                }
+              ]
             }
           ],
           products: [
@@ -4003,18 +4005,21 @@ currentView = viewId;
         'px);grid-template-rows:repeat(' + rows + ',' + size + 'px)">' + chartCells(s.chart) + '</div>';
     }
 
+    function findProductAnywhere(id) {
+      let res = null;
+      Object.values(DATA.countries).forEach(c => {
+        (c.products || []).forEach(p => { if (p.id === id) res = { p: p, c: c }; });
+        (c.partners || []).forEach(pt => (pt.products || []).forEach(p => { if (p.id === id) res = { p: p, c: c }; }));
+      });
+      return res;
+    }
     /* OPEN PRODUCT VIEW (WITH PATTERN TEASER) */
     function openProduct(productId) {
       let foundProd = null;
       let foundCountry = null;
 
-      Object.values(DATA.countries).forEach(c => {
-        const p = c.products.find(item => item.id === productId);
-        if (p) {
-          foundProd = p;
-          foundCountry = c;
-        }
-      });
+      const hit = findProductAnywhere(productId);
+      if (hit) { foundProd = hit.p; foundCountry = hit.c; }
 
       if (!foundProd) return;
       currentProduct = foundProd;
@@ -4193,7 +4198,16 @@ function swapPhoto(el, src) {
       } else {
         patternLine.style.display = 'none';
       }
-renderWorkshopEvents(foundEntity);
+const isPartner = foundEntity.type === 'PARTNER';
+      document.getElementById('partner-breadcrumb-type').innerText = isPartner ? 'Partners' : 'Workshops';
+      document.getElementById('partner-banner-media').style.display = isPartner ? '' : 'none';
+      document.getElementById('partner-title').style.display = isPartner ? '' : 'none';
+      document.getElementById('partner-type-tag').style.display = isPartner ? 'inline-block' : 'none';
+      document.getElementById('partner-meta-row').style.display = isPartner ? 'grid' : 'none';
+      document.querySelector('#view-partner-detail .partner-story').style.display = isPartner ? 'flex' : 'none';
+      document.querySelector('#view-partner-detail .partner-catalogue-area').style.display = isPartner ? '' : 'none';
+
+      renderWorkshopEvents(foundEntity);
       // External website link
 const siteBtn = document.getElementById('partner-website-link');
       if (siteBtn) siteBtn.style.display = 'none';
@@ -4201,7 +4215,9 @@ const siteBtn = document.getElementById('partner-website-link');
       // Render Catalogue Grid
       const catGrid = document.getElementById('partner-products-grid');
       catGrid.innerHTML = '';
-      const entityProducts = foundCountry.products.filter(p => p.workshopId === foundEntity.id || p.partnerId === foundEntity.id);
+      const entityProducts = (foundEntity.products && foundEntity.products.length)
+        ? foundEntity.products
+        : foundCountry.products.filter(p => p.workshopId === foundEntity.id || p.partnerId === foundEntity.id);
 
       if (entityProducts.length > 0) {
         entityProducts.forEach(p => {
@@ -4598,8 +4614,8 @@ function findItem(entry){
   let found = null;
   Object.values(DATA.countries).forEach(c => {
     if (entry.type === 'product') {
-      const p = c.products.find(x => x.id === entry.id);
-      if (p) found = { title:p.title, price:p.price, meta:p.workshop + ' · ' + p.region, color:p.color };
+      const hit = findProductAnywhere(entry.id);
+      if (hit) { const q = hit.p; found = { title:q.title, price:q.price, meta:q.workshop + ' · ' + q.region, color:q.color, from: q.shipsFrom || 'Montenegro' }; }
     } else if (entry.type === 'event') {
       (c.workshops || []).forEach(w => {
         const e = (w.events || []).find(x => x.id === entry.id);
