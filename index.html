@@ -998,22 +998,18 @@
     }
 
     .partner-banner-content {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 28px;
-      align-items: start;
+      display: block;
     }
 
-    @media (min-width: 900px) {
-      .partner-banner-content {
-        grid-template-columns: 420px 1fr;
-        gap: 56px;
-      }
+    .partner-banner-media {
+      float: left;
+      margin: 0 28px 20px 0;
     }
 
     .partner-banner-media {
       width: 100%;
-      aspect-ratio: 4 / 5;
+      max-width: 280px;
+      aspect-ratio: 1 / 1;
       height: auto;
       border-radius: 2px;
       overflow: hidden;
