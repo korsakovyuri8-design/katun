@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KATUN — folk knitwear made by hand</title>
-  <meta name="description" content="Folk crafts from around the world: things made by hand from ornaments that almost fell out of use. Every piece carries the name of the person who made it.">
+<title>KATUN - what a country made by hand, brought to those far from home</title>
+  <meta name="description" content="Ornaments found in museums and archives, written down and made again by hand. Every piece carries the name of the maker and the origin of the pattern.">
 
   <link rel="canonical" href="https://korsakovyuri8-design.github.io/katun/">
   <link rel="icon" href="favicon.png">
@@ -26,7 +26,7 @@
   <!-- EB Garamond & Inter Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     .photo-block {
@@ -178,11 +178,16 @@
       .header-inner {
         height: auto;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 10px;
         padding-top: 14px;
         padding-bottom: 14px;
       }
+.wordmark {
+        display: block;
+        text-align: center;
+      }
+
       .wordmark {
         font-size: 20px;
       }
@@ -988,28 +993,32 @@
        VIEW 4: WORKSHOP / PARTNER DETAIL PAGE
        ========================================== */
     .partner-page-section {
-      padding-top: 0;
+      padding-top: 16px;
       padding-bottom: 80px;
     }
 
 .partner-banner {
-      padding-top: 0;
-      padding-bottom: 0;
+      padding-top: 32px;
+      padding-bottom: 48px;
     }
 
     .partner-banner-content {
-      display: block;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: start;
     }
 
-    .partner-banner-media {
-      float: left;
-      margin: 0 28px 20px 0;
+    @media (min-width: 900px) {
+      .partner-banner-content {
+        grid-template-columns: 420px 1fr;
+        gap: 56px;
+      }
     }
 
     .partner-banner-media {
       width: 100%;
-      max-width: 280px;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 4 / 5;
       height: auto;
       border-radius: 2px;
       overflow: hidden;
@@ -1249,9 +1258,6 @@
     @media (min-width: 768px) {
       .pattern-view-layout.text-mode { grid-template-columns: 1fr 1fr; }
     }
-    .pattern-locked { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; padding: 8px 4px; }
-    .pattern-locked-count { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #665E58; }
-    .locked-line { height: 7px; background: var(--rule); border-radius: 1px; opacity: .4; }
     .pattern-info-panel h1 {
       font-size: 40px;
       line-height: 1.1;
@@ -1891,132 +1897,106 @@
     .team-card h3{font-size:24px;line-height:1.2;margin-bottom:4px}
     .team-role{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--madder);margin-bottom:12px}
     .team-card p{font-size:15px;line-height:1.6;color:#38322E}
-    :root { --font-mono: 'Space Mono', ui-monospace, monospace; --hair: rgba(102,94,88,.18); }
-
-    .spec-label, .fact-label, .card-type-label, .country-card-caption,
-    .product-card-meta, .scheme-card-meta, .event-meta, .event-spots,
-    .partner-type-tag, .trust-strip-inner, .breadcrumbs, .split-note,
-    .product-origin, .pattern-meta-sub, .text-badge {
-      font-family: var(--font-mono);
-      letter-spacing: .08em;
+/* FOOTER */
+    .footer { position: relative; }
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 18px;
+      background-image:
+        linear-gradient(45deg, var(--bg-cream) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--bg-cream) 25%, transparent 25%);
+      background-size: 18px 18px;
+      background-position: 0 0;
+      opacity: .28;
     }
-    .spec-label, .fact-label, .card-type-label { font-size: 10px; }
-    .breadcrumbs, .product-card-meta, .scheme-card-meta { font-size: 11px; }
-    .trust-strip-inner { font-size: 10px; }
-
-    header, .trust-strip, .product-card, .country-card, .scheme-card,
-    .workshop-card, .partner-card, .event-card, .spec-row, .split-table td,
-    .partner-meta-row, .tabs-row, .section-divider, .full-chart-box,
-    .honest-block, .team-photo, .form-group input, .scheme-chart-preview,
-    .chart-teaser-container, .product-origin, .patterns-empty-state {
-      border-color: var(--hair);
+    .footer-wordmark { font-size: 34px; letter-spacing: .22em; }
+    .footer-brand { gap: 16px; max-width: 380px; }
+    .footer-desc {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.45;
+      font-weight: 400;
+      color: var(--bg-cream);
+      opacity: .92;
     }
-
-    @media (min-width: 1100px) {
-      .countries-section, .featured-section, .for-makers-section {
-        padding-top: 120px;
-        padding-bottom: 120px;
+    .footer-link { transition: opacity .15s ease, letter-spacing .15s ease; }
+    .footer-link:hover { opacity: 1; letter-spacing: .02em; }
+    .footer-contact a {
+      color: var(--bg-cream);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(247,243,237,.35);
+      font-size: 13px;
+      font-weight: 300;
+    }
+    @media (max-width: 639px) {
+      .footer { padding-top: 48px; }
+      .footer-wordmark { font-size: 26px; }
+      .footer-desc { font-size: 17px; }
+      .footer-nav-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 20px;
+        width: 100%;
       }
     }
-    /* CENTRED LAYOUT FOR JOIN PAGES */
-    #view-for-makers .directory-section,
-    #view-for-shops .directory-section {
-      max-width: 860px;
-      margin-left: auto;
-      margin-right: auto;
+@media (max-width: 639px) {
+      .hero-overlay {
+        align-items: center;
+        justify-content: center;
+        padding-top: 56px;
+        padding-bottom: 56px;
+      }
+      .hero-content {
+        align-items: center;
+        text-align: center;
+        gap: 18px;
+      }
+      .hero-content h1 { font-size: 32px; }
+      .hero-subline { font-size: 16px; margin: 0 auto; }
+    }
+@media (max-width: 639px) {
+      .pillar-card,
+      .pillar-card h3,
+      .pillar-card p {
+        text-align: center;
+      }
+      .pillar-card { border-right: none; }
+    }
+@media (max-width: 639px) {
+      .section-title,
+      .countries-sub,
+      .story-block,
+      .story-block h2,
+      .story-block p,
+      #view-for-makers .directory-section,
+      #view-for-shops .directory-section,
+      #view-for-makers .honest-block,
+      #view-for-shops .honest-block,
+      #view-for-makers .honest-block h2,
+      #view-for-shops .honest-block h2,
+      #view-for-makers .opening-form,
+      #view-for-shops .opening-form,
+      #view-for-makers h1,
+      #view-for-shops h1,
+      #view-for-makers h2,
+      #view-for-shops h2,
+      #view-for-makers h3,
+      #view-for-shops h3 {
+        text-align: center;
+      }
+      #view-for-makers .split-table td,
+      #view-for-shops .split-table td {
+        text-align: left;
+      }
+      #view-for-makers .split-share,
+      #view-for-shops .split-share {
+        text-align: right;
+      }
+      .form-group input { text-align: center; }
     }
 
-    #view-for-makers .directory-section > p,
-    #view-for-shops .directory-section > p,
-    #view-for-makers .split-table,
-    #view-for-shops .split-table,
-    #view-for-makers .honest-block,
-    #view-for-shops .honest-block,
-    #view-for-makers .opening-form,
-    #view-for-shops .opening-form {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    #view-for-makers .pillars-grid,
-    #view-for-shops .pillars-grid {
-      max-width: 860px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    #view-for-makers .directory-section,
-    #view-for-shops .directory-section {
-      text-align: center;
-    }
-
-      #view-for-makers .directory-section .split-table,
-    #view-for-shops .directory-section .split-table,
-    #view-for-makers .directory-section .opening-form,
-    #view-for-shops .directory-section .opening-form,
-    #view-for-makers .directory-section .breadcrumbs,
-    #view-for-shops .directory-section .breadcrumbs {
-      text-align: left;
-    }
-
-    #view-for-makers .directory-section .split-share,
-    #view-for-shops .directory-section .split-share {
-      text-align: right;
-    }
-    .join-photo {
-      width: 100%;
-      max-width: 860px;
-      aspect-ratio: 16 / 9;
-      margin-left: auto;
-      margin-right: auto;
-      background-image: url('for-makers.jpg');
-      background-size: cover;
-      background-position: center;
-      background-color: var(--card);
-      border-radius: 2px;
-    }
-    .join-hero {
-      width: 100%;
-      min-height: 60vh;
-      background-image: url('for-makers.png');
-      background-size: cover;
-      background-position: center;
-      background-color: var(--card);
-      border-radius: 2px;
-      overflow: hidden;
-      display: flex;
-      margin-bottom: 64px;
-    }
-    .join-hero-overlay {
-      width: 100%;
-      background-color: rgba(26, 22, 20, 0.45);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      padding: 40px 24px;
-      text-align: center;
-    }
-    .join-hero h1 {
-      font-size: 36px;
-      line-height: 1.15;
-      color: var(--bg-cream);
-      margin: 0;
-    }
-    .join-hero p {
-      font-size: 16px;
-      line-height: 1.5;
-      font-weight: 300;
-      color: var(--bg-cream);
-      max-width: 560px;
-      margin: 0;
-    }
-    @media (min-width: 768px) {
-      .join-hero-overlay { padding: 64px 48px; }
-      .join-hero h1 { font-size: 52px; }
-      .join-hero p { font-size: 18px; }
-    }
   </style>
 </head>
 <body>
@@ -2028,7 +2008,7 @@
      <div class="container">
        <div class="header-inner">
           <a onclick="showView('home')" class="wordmark">KATUN</a>
-<nav class="nav">
+          <nav class="nav">
 <a onclick="showView('all-workshops')" class="nav-link">Workshops</a>
   <a onclick="showView('all-partners')" class="nav-link">Partners</a>
   <span class="nav-join">
@@ -2055,8 +2035,8 @@
   <div class="hero-photo">
     <div class="hero-overlay">
       <div class="container hero-content">
-        <h1 class="serif">Patterns that stopped being made, we make again</h1>
-        <p class="hero-subline">Folk crafts from around the world: things made by hand from ornaments that almost fell out of use.</p>
+<h1 class="serif">We bring back what a country made by hand - and carry it to those far from home.</h1>
+        <p class="hero-subline">Ornaments found in museums, archives and family chests. Written down, and made again by the people who still know how.</p>
         <div>
           <a class="btn-madder" href="#countries">See the pieces</a>
         </div>
@@ -2068,7 +2048,7 @@
   <div class="trust-strip">
     <div class="container">
       <div class="trust-strip-inner">
-        Made by hand &middot; Small batches &middot; Ships from Montenegro &middot; 14-day returns
+        Found in museums &middot; Made by hand &middot; Sent by the maker &middot; 14-day returns
       </div>
     </div>
   </div>
@@ -2079,9 +2059,9 @@
       <div class="story-grid">
         <div class="story-photo"></div>
         <div class="story-text">
-          <h2 class="serif">From a grandmother's chest</h2>
-          <p>It started with socks my grandmother knitted. Things like these still lie in chests around the world, but almost no one is left who knows how to make them.</p>
-          <p>We find these patterns in museums and with the makers themselves, turn them into charts, and put them back to work. Not as a museum piece, but as something people actually use.</p>
+          <h2 class="serif">First we find it, then we write it down</h2>
+          <p>An ornament is knowledge, not a product. It sits in a museum drawer, in an album nobody has opened for forty years, or in the hands of one woman who still remembers how it goes.</p>
+          <p>We go and find it. We record where it came from - the museum, the inventory number, the region - and turn it into a chart. That record is what we are really building. The pieces come after it.</p>
         </div>
       </div>
     </div>
@@ -2092,16 +2072,16 @@
     <div class="container">
       <div class="pillars-grid">
         <div class="pillar-card">
-          <h3 class="serif">A piece with an author</h3>
-          <p>Every item is made by a specific person. We show their name, their region and the technique they use.</p>
+          <h3 class="serif">Found and written down</h3>
+          <p>Every ornament comes from somewhere: a museum, an archive, a person who still remembers it. We record where, and we keep the record.</p>
         </div>
         <div class="pillar-card">
-          <h3 class="serif">A pattern with an address</h3>
-          <p>We say which region the pattern comes from and what was revived in it.</p>
+          <h3 class="serif">The maker keeps what she makes</h3>
+          <p>We don't produce and we don't own. The piece belongs to the woman who knitted it, the recipe to the woman who cooks it. Her name stays on it.</p>
         </div>
         <div class="pillar-card">
-          <h3 class="serif">Small batches</h3>
-          <p>Small differences come with handwork. They're what tells you a person made it.</p>
+          <h3 class="serif">Handed on, not just sold</h3>
+          <p>Craft passes from hands to hands. That is why our workshops - knitting and cooking - are the point of this, not an extra.</p>
         </div>
       </div>
     </div>
@@ -2111,8 +2091,8 @@
   <section class="countries-section" id="countries">
     <div class="container">
       <div class="countries-header">
-        <h2 class="serif">Craft without borders</h2>
-        <p class="countries-sub">Every region has its own ornament. Choose a direction.</p>
+        <h2 class="serif">Every country made something of its own</h2>
+        <p class="countries-sub">Choose the one you come from - or the one someone you love comes from.</p>
       </div>
 <div class="country-home-grid">
         <!-- Montenegro -->
@@ -2335,7 +2315,7 @@
                 </div>
                <div class="spec-row">
                   <span class="spec-label">Shipping</span>
-<span class="spec-value" id="spec-shipping"></span>
+                  <span class="spec-value" id="spec-shipping">From Montenegro, tracked · <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">rates</a></span>
                 </div>
               </div>
             </div>
@@ -2389,7 +2369,7 @@
            <div class="breadcrumbs">
               <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
               <span>/</span>
-              <span class="breadcrumb-item" id="partner-breadcrumb-type" onclick="showView(currentEntity.type === 'PARTNER' ? 'all-partners' : 'all-workshops')">Workshops</span>
+              <span class="breadcrumb-item" id="partner-breadcrumb-country" onclick="openCountry(currentEntity.countryId)">Country</span>
               <span>/</span>
               <span class="breadcrumb-current" id="partner-breadcrumb-name">Entity Name</span>
             </div>
@@ -2397,8 +2377,8 @@
 
          <div class="partner-page-section">
            <div class="partner-banner">
-             <div class="partner-banner-content" style="display:block">
-               <div class="partner-banner-media" id="partner-banner-media"
+             <div class="partner-banner-content">
+               <div class="partner-banner-media" id="partner-banner-media">
                   <!-- Color block -->
                 </div>
                <div class="partner-banner-text">
@@ -2420,7 +2400,7 @@
               </div>
             </div>
 
-<hr class="section-divider" style="margin-top:40px;margin-bottom:40px;" />
+            <hr class="section-divider" style="margin-top: 40px; margin-bottom: 40px;" />
 
             <!-- CATALOGUE SECTION -->
            <div class="partner-catalogue-area">
@@ -2429,18 +2409,17 @@
                 <!-- Products for this workshop/partner -->
               </div>
             </div>
-<div id="workshop-events" style="display:none;margin-top:0;">
-             <hr class="section-divider" style="display:none" />
+<div id="workshop-events" style="display:none;margin-top:56px;">
+             <hr class="section-divider" style="margin-bottom:40px;" />
              <h2 class="serif" style="font-size:28px;margin-bottom:8px;">Upcoming sessions</h2>
              <p style="font-size:15px;color:#665E58;margin-bottom:28px;max-width:560px;">Small groups. Everything is provided, and you leave with what you made.</p>
-<div id="events-list"></div>
-             <p style="margin-top:24px;"><a class="back-link" onclick="showView('all-workshops')">← Back to workshops</a></p>
+             <div id="events-list"></div>
            </div>
            <div class="partner-actions-bottom">
               <div id="partner-website-container">
                 <a id="partner-website-link" href="#" target="_blank" class="btn-outline" style="display: none;">Visit their own site</a>
               </div>
-              <a class="back-link" onclick="showView('all-workshops')">← Back to workshops</a>
+              <a id="partner-back-country-link" class="back-link" onclick="openCountry(currentEntity.countryId)">← Back to Country Page</a>
             </div>
 
           </div>
@@ -2515,7 +2494,7 @@
        <div class="container">
          <div class="breadcrumbs-bar">
            <div class="breadcrumbs">
-<span class="breadcrumb-item" onclick="showView('patterns')">Patterns</span>
+              <span class="breadcrumb-item" onclick="showView('home')">Patterns</span>
               <span>/</span>
               <span class="breadcrumb-current" id="pattern-breadcrumb-name">Pattern Name</span>
             </div>
@@ -2591,26 +2570,24 @@
     </div>
 
     <div class="directory-section">
-      <div class="join-hero">
-        <div class="join-hero-overlay">
-          <h1 class="serif">You make. We handle the rest.</h1>
-          <p>You don't need English, a camera, or a shop to sell what you make. You need someone to do that part for you. That's us.</p>
-          <div><a class="btn-madder" href="#join-form">Join us</a></div>
-        </div>
-      </div>
+      <h1 class="serif" style="font-size:40px;margin-bottom:12px;">You make. We handle the rest.</h1>
+      <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;">
+        You don't need English, a camera, or a shop to sell what you make. You need someone to do that part for you. That's us.
+      </p>
+      <a class="btn-madder" href="#join-form" style="margin-bottom:56px;">Join us</a>
 
       <div class="pillars-grid" style="margin-top:56px;margin-bottom:64px;">
         <div class="pillar-card">
-          <h3 class="serif">You're not on your own</h3>
-          <p>Photography, descriptions, translation, shipping, talking to the buyer, handling returns. All of it is ours. You make the piece and hand it over.</p>
+          <h3 class="serif">The piece stays yours</h3>
+          <p>We don't buy your work and we don't own it. It is yours until it sells, you send it to the buyer yourself, and your name goes on it.</p>
         </div>
         <div class="pillar-card">
-          <h3 class="serif">Your name stays on it</h3>
-          <p>Not an anonymous seller ID. Your name, your region, your technique - on the page and on the tag. People buy from you, not from a platform.</p>
+          <h3 class="serif">You're not on your own</h3>
+          <p>Photography, descriptions, translation, talking to the buyer, handling returns. All of it is ours. You make the piece.</p>
         </div>
         <div class="pillar-card">
           <h3 class="serif">You know your share before you start</h3>
-          <p>No listing fees. No paying to be seen. No money held for months. A fixed amount per piece, agreed before you cast on.</p>
+          <p>No listing fees. No paying to be seen. A fixed share of the price the buyer pays, agreed before you cast on.</p>
         </div>
       </div>
 
@@ -2618,14 +2595,12 @@
 
       <h2 class="serif" style="font-size:32px;margin-bottom:8px;">Where the money goes</h2>
       <p style="font-size:15px;color:#665E58;margin-bottom:28px;max-width:600px;">
-        We take the sale price as 100% and split it. Same for everyone, every country, every piece.
+        The buyer pays one price, and most of it is yours. Until 1 December 2026 our share is 25%, so you keep 75%. Coordinators and museums are paid out of our share, never out of yours.
       </p>
 
       <table class="split-table">
-        <tr><td>Materials</td><td class="split-share">7%</td><td class="split-note">yarn and supplies</td></tr>
-        <tr class="split-highlight"><td>Maker</td><td class="split-share">40%</td><td class="split-note">your work</td></tr>
-        <tr><td>Country coordinator</td><td class="split-share">12%</td><td class="split-note">the person running your direction</td></tr>
-        <tr><td>KATUN</td><td class="split-share">41%</td><td class="split-note">brand, promotion, logistics, shipping</td></tr>
+        <tr class="split-highlight"><td>You</td><td class="split-share">65%</td><td class="split-note">your materials and your work</td></tr>
+        <tr><td>KATUN</td><td class="split-share">35%</td><td class="split-note">page, photography, words, translation, promotion, the buyer</td></tr>
       </table>
 
       <p style="font-size:15px;color:#38322E;margin-top:20px;margin-bottom:56px;max-width:620px;line-height:1.6;">
@@ -2708,13 +2683,11 @@
     </div>
 
     <div class="directory-section">
-      <div class="join-hero" style="background-image:url('for-shops.png')">
-        <div class="join-hero-overlay">
-          <h1 class="serif">For workshops and brands</h1>
-          <p>You already make the work. We give you a page, put it in front of people who came looking for exactly this, and take care of everything that isn't making.</p>
-          <div><a class="btn-madder" href="#shops-form">Talk to us</a></div>
-        </div>
-      </div>
+      <h1 class="serif" style="font-size:40px;margin-bottom:12px;">For workshops and brands</h1>
+      <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;">
+        You already make the work. We give you a page, put it in front of people who came looking for exactly this, and take care of everything that isn't making.
+      </p>
+      <a class="btn-madder" href="#shops-form" style="margin-bottom:56px;">Talk to us</a>
 
       <div class="pillars-grid" style="margin-top:56px;margin-bottom:40px;">
         <div class="pillar-card">
@@ -2750,13 +2723,12 @@
       </p>
 
       <table class="split-table">
-        <tr class="split-highlight"><td>Your workshop</td><td class="split-share">47%</td><td class="split-note">materials and your work</td></tr>
-        <tr><td>Country coordinator</td><td class="split-share">12%</td><td class="split-note">the person running your direction</td></tr>
-        <tr><td>KATUN</td><td class="split-share">41%</td><td class="split-note">photo prep, copy, translation, promotion, logistics</td></tr>
+        <tr class="split-highlight"><td>Your shop</td><td class="split-share">65%</td><td class="split-note">materials and your work</td></tr>
+        <tr><td>KATUN</td><td class="split-share">35%</td><td class="split-note">page, photo prep, copy, translation, promotion, the buyer</td></tr>
       </table>
 
       <p style="font-size:15px;color:#38322E;margin-top:20px;margin-bottom:56px;max-width:620px;line-height:1.6;">
-        You tell us the price you need for a piece. We build ours on top of it, so what reaches you doesn't shrink.
+        You set the price the buyer sees. Our share comes out of it, never on top of it. Until 1 December 2026 that share is 25%, so you keep 75%.
       </p>
 
       <hr class="section-divider" style="margin-bottom:48px;" />
@@ -2809,15 +2781,17 @@
       <h1 class="serif" style="font-size:40px;margin-bottom:24px;">About KATUN</h1>
 
       <div class="about-text">
-        <p>It started with a pair of socks. Thick, two-strand, knitted by a grandmother in a house where nobody thought of them as anything but socks. Things like these still lie in chests all over the world - and almost no one is left who knows how to make them.</p>
+        <p>KATUN brings back what a country made by hand, and carries it to the people who live far from it.</p>
 
-        <p>The people who still know how are fewer every year, and almost no one is learning. Nothing was written down: the patterns lived in hands, not on paper, and they end when the hands stop.</p>
+        <p>An ornament is knowledge, not a product. It survives in a museum drawer, in an album nobody has opened in forty years, or in the hands of one woman who still remembers how it goes. When she stops, it goes with her. We go and find it before that happens: we record the museum, the inventory number, the region, and turn it into a chart. That record is the real work. The pieces come after it.</p>
 
-        <p>KATUN exists to keep the making alive, not just the memory of it. We find these patterns - in regional museums, in family chests, with the makers themselves - turn them into charts, and put them back into work that people wear and use. Every piece carries the name of the person who made it, the region it comes from and the technique behind it.</p>
+        <p>We don't produce anything and we don't own anything. The piece belongs to the woman who knitted it. The recipe belongs to the woman who cooks it. We give the page, the photographs, the words, the translation and the buyer - and her name stays on the piece.</p>
 
-        <p>We're not simply a marketplace. We choose what goes on this site, we know every maker by name, and we take care of everything that isn't making: the photography, the writing, the translation, the shipping, the buyer. The maker makes. That's the whole arrangement.</p>
+        <p>Craft passes from hands to hands, never from paper. That is why our workshops - knitting and cooking - are not an extra service. They are the same work as the archive, done in person.</p>
 
-        <p>This project started in Montenegro. Everywhere else, the same thing is true: somewhere in every corner of the world there's a person who still knows a pattern nobody else does, working alone, unasked. Georgia, Serbia and Kyrgyzstan come next, and after that the map just keeps going. We'd like to reach them while there's still time.</p>
+        <p>And it is addressed to people who are far from home. For someone who lives where the ornament came from, it is ordinary. For her daughter in Munich, it is the thing she recognises. That recognition is what we carry.</p>
+
+        <p>We started in Montenegro, because that is where we live. Serbia came next, then Georgia and Kyrgyzstan. There is no edge to the map: every country made something of its own, and in every one of them someone still knows how.</p>
       </div>
 
       <hr class="section-divider" style="margin:56px 0 48px;" />
@@ -2922,7 +2896,7 @@
          <div class="footer-brand">
             <span class="footer-wordmark">KATUN</span>
             <p class="footer-desc">
-              Documenting and preserving textile heritage.
+              We find what a country made by hand, write it down, and bring it to those far from home.
             </p>
           </div>
 
@@ -2951,6 +2925,14 @@
               <ul class="footer-links">
                 <li><a onclick="showView('terms')" class="footer-link">Terms & returns</a></li>
                 <li><a onclick="showView('privacy')" class="footer-link">Privacy</a></li>
+              </ul>
+            </div>
+
+           <div class="footer-column footer-contact">
+              <span class="footer-title">Write to us</span>
+              <ul class="footer-links">
+                <li><a href="mailto:katun.montenegro@gmail.com">katun.montenegro@gmail.com</a></li>
+                <li><a href="https://instagram.com/katunknitwear" target="_blank" rel="noopener">@katunknitwear</a></li>
               </ul>
             </div>
           </div>
@@ -3013,7 +2995,6 @@
               type: 'WORKSHOP',
               countryId: 'montenegro',
               name: 'Elena',
-              soloMaker: true,
               city: 'Budva',
               itemsCount: 1,
               color: '#6E6350',
@@ -3047,56 +3028,8 @@
               description: 'Thick ribbed knee warmers in undyed Montenegrin wool, straight from local flocks - the natural grey-brown is the colour of the sheep, not of dye. Worn over tights in winter or under trousers in a cold house. They stretch to the knee and stay put. Made in one piece, without seams, and each pair takes about two days of work.',
               schemeId: 'sch-mn-knee',
 patternName: 'Knee warmers, written pattern',
-              patternOrigin: 'Elena\'s own way of making them, worked from the top down and written out step by step as she knits.',
-              patternRevived: 'The two cups are shaped with short rows, so the knitting follows the knee instead of pulling across it. Sixteen steps with stitch counts at every stage.'
-            },
-            {
-              id: 'mn-mittens',
-              countryId: 'montenegro',
-              title: 'Rukavice · Shepherd\'s Path',
-              price: 45,
-              workshopId: 'w-elena',
-              workshop: 'Elena',
-              city: 'Budva',
-              region: 'All Regions',
-              color: '#2A2C3E',
-              photo: 'mittens-2.jpg',
-              photos: ['mittens-1.jpg', 'mittens-2.jpg','mittens-3.jpg'],
-              thumbColors: ['#2A2C3E', '#3A3C50', '#1F2130'],
-              material: '75% wool, 25% polyamide',
-              size: 'Size 7 · hand circumference about 18–19 cm',
-              care: 'Hand wash cold',
-              days: '26 hours of work',
-              shipsFrom: 'Montenegro',
-              description: 'Mittens in the same pattern as the socks, worked in stranded colourwork on five needles. Deep navy ground with madder red and ochre. The ornament sits in bands across the back of the hand, above a long ribbed cuff that covers the wrist. The palm is left plain, so the mitten stays thin where you hold things.',
-              schemeId: null,
-              patternName: 'Shepherd\'s Path, from the Obereg series',
-              patternOrigin: 'Recorded from a piece in the ethnographic collection of the National Museum in Cetinje.',
-              patternRevived: 'Worked in stranded knitting on five needles, in the colours it was found in.'
-            },
-            {
-              id: 'mn-carape',
-              countryId: 'montenegro',
-              title: 'Čarape · Shepherd\'s Path',
-              price: 48,
-              workshopId: 'w-elena',
-              workshop: 'Elena',
-              city: 'Budva',
-              region: 'All Regions',
-              color: '#6E6350',
-              photo: 'carape-1.jpg',
-              photos: ['carape-1.jpg', 'carape-2.jpg', 'carape-3.jpg'],
-              thumbColors: ['#6E6350', '#7C7160', '#5C5344'],
-              material: '75% wool, 25% polyamide',
-              size: 'Foot 25 cm · about EU 39-40',
-              care: 'Hand wash cold',
-              days: '16 hours of work',
-              shipsFrom: 'Montenegro',
-              description: 'Knitted on double-pointed needles in stranded colourwork - two and three colours carried at once, so the pattern is worked into the fabric rather than sewn on. Black ground, ochre and madder red. The leg carries the ornament in bands, the foot repeats it smaller, and the heel and toe are reinforced in plain black where socks wear through first.',
-              schemeId: null,
-              patternName: 'Shepherd\'s Path, from the Obereg series',
-              patternOrigin: 'Recorded from a piece in the ethnographic collection of the National Museum in Cetinje.',
-              patternRevived: 'Worked in stranded knitting on five needles, in the colours it was found in.'
+              patternOrigin: 'PLACEHOLDER — one line: where this way of knitting them comes from.',
+              patternRevived: 'PLACEHOLDER — one line: what makes this pattern worth writing down.'
             },
             {
               id: 'mn-01',
@@ -3258,7 +3191,7 @@ text: [
                 'On the last round increase: k5, make 1. Repeat 12 times. 84 stitches.',
                 'Lower rib: 1×1 for 25 rounds, about 10 cm. Cast off loosely.'
               ],
-              originStory: 'Elena\'s way of making knee warmers, written down step by step as she knits them. Worked from the top down in undyed Montenegrin wool: a wide rib that sits on the thigh and holds the piece in place, decreases to the knee, then two mirrored cups shaped with short rows so the knitting follows the knee instead of pulling across it, and a narrower rib at the bottom. Sixteen steps, with stitch counts at every stage.'
+              originStory: 'PLACEHOLDER — where this way of making them comes from and who Elena learned it from.'
             }
           ]
         },
@@ -3275,7 +3208,6 @@ regions: ['Subotica'],
               type: 'WORKSHOP',
               countryId: 'serbia',
               name: 'Anna Ananskaja',
-              soloMaker: true,
               city: 'Subotica',
               itemsCount: 3,
               color: '#3B4836',
@@ -3293,7 +3225,7 @@ regions: ['Subotica'],
               id: 'rs-znak',
               countryId: 'serbia',
               title: 'Znak cushion',
-              price: 27,
+              price: 20,
               workshopId: 'w-anna',
               workshop: 'Anna Ananskaja',
 city: 'Subotica',
@@ -3306,7 +3238,6 @@ color: '#3B4836',
               size: '30 × 30 cm',
               care: 'Dry clean',
               patternCredit: 'Chart by Yulia Gendina',
-              shipsFrom: 'Serbia',
               days: '4 working days from yarn in stock, 3 weeks more if the yarn is ordered in',
               description: 'The "Znak" decorative pillow is a striking interior accent featuring a distinct graphic pattern, handcrafted using the intricate mosaic crochet technique. The bold contrast between deep teal and cream highlights the raised, tactile texture of the fabric, creating an eye-catching geometric motif. This piece brings character and warmth to any space, making it a perfect fit for modern, Scandinavian, boho, or ethnically inspired interiors.',
               schemeId: null,
@@ -3318,72 +3249,21 @@ color: '#3B4836',
               id: 'rs-nitj',
               countryId: 'serbia',
               title: 'Nitj cushion',
-              price: 32,
-              workshopId: 'w-anna',
-              workshop: 'Anna Ananskaja',
-              city: 'Subotica',
-              region: 'Subotica',
-              color: '#465438',
-              photo: 'nitj-1.png',
-              photos: ['nitj-1.png', 'nitj-2.jpg', 'nitj-3.jpg'],
-              thumbColors: ['#3B4836', '#556346', '#333F2F'],
-              material: 'Bamboo and silk · PLACEHOLDER — filling',
-              size: '40 × 40 cm',
-              care: 'Dry clean',
-              patternCredit: 'Chart by Yulia Gendina',
-              shipsFrom: 'Serbia',
-              days: '5 working days from yarn in stock, 3 weeks more if the yarn is ordered in',
-              description: 'The "Nitj" decorative pillow is an exquisite artisan accent handcrafted using the intricate mosaic crochet technique. Featuring a striking geometric pattern in deep teal, rich charcoal, and soft cream, its raised texture creates a bold, tactile statement for any interior space. Crafted from a luxurious blend of bamboo and silk, this pillow offers a silky-soft touch with a subtle, elegant sheen. Designed to deliver both physical comfort and refined aesthetics, it serves as a sophisticated addition to modern, Scandinavian, or bohemian-inspired decor.',
-              schemeId: null,
-              patternName: '',
-              patternOrigin: '',
-              patternRevived: ''
-            },
-            {
-              id: 'rs-kuka',
-              countryId: 'serbia',
-              title: 'Kuka cushion',
               price: 27,
               workshopId: 'w-anna',
               workshop: 'Anna Ananskaja',
               city: 'Subotica',
               region: 'Subotica',
-              color: '#3B4836',
-              photo: 'kuka-1.jpg',
-              photos: ['kuka-1.jpg', 'kuka-2.jpg', 'kuka-3.jpg'],
-              thumbColors: ['#333F2F', '#465438', '#2A3325'],
-              material: 'Cotton and acrylic · PLACEHOLDER - filling',
-              size: '30 × 30 cm',
+              color: '#465438',
+              photo: 'nitj-1.jpg',
+              photos: ['nitj-1.jpg', 'nitj-2.jpg', 'nitj-3.jpg'],
+              thumbColors: ['#3B4836', '#556346', '#333F2F'],
+              material: 'Bamboo and silk · PLACEHOLDER — filling',
+              size: '40 × 40 cm',
               care: 'Dry clean',
               patternCredit: 'Chart by Yulia Gendina',
-              shipsFrom: 'Serbia',
-              days: '4 working days from yarn in stock, 3 weeks more if the yarn is ordered in',
-              description: 'PLACEHOLDER — what the Kuka pattern means and where it comes from.',
-              schemeId: null,
-              patternName: '',
-              patternOrigin: '',
-              patternRevived: ''
-            },
-            {
-              id: 'rs-graf',
-              countryId: 'serbia',
-              title: 'Graf blanket',
-              price: 260,
-              workshopId: 'w-anna',
-              workshop: 'Anna Ananskaja',
-              city: 'Subotica',
-              region: 'Subotica',
-              color: '#2A3325',
-              photo: 'graf-1.jpg',
-              photos: ['graf-1.jpg', 'graf-2.jpg', 'graf-3.jpg'],
-              thumbColors: ['#232B1F', '#3B4836', '#1B2118'],
-              material: 'Bamboo and silk',
-              size: '140 × 120 cm',
-              care: 'Machine wash at 30°, dry flat',
-              patternCredit: 'Chart by Yulia Gendina',
-              shipsFrom: 'Serbia',
-              days: '4 weeks from yarn in stock, 3 weeks more if the yarn is ordered in',
-              description: 'PLACEHOLDER — what the Graf pattern means and where it comes from.',
+              days: '5 working days from yarn in stock, 3 weeks more if the yarn is ordered in',
+              description: 'The "Nitj" decorative pillow is an exquisite artisan accent handcrafted using the intricate mosaic crochet technique. Featuring a striking geometric pattern in deep teal, rich charcoal, and soft cream, its raised texture creates a bold, tactile statement for any interior space. Crafted from a luxurious blend of bamboo and silk, this pillow offers a silky-soft touch with a subtle, elegant sheen. Designed to deliver both physical comfort and refined aesthetics, it serves as a sophisticated addition to modern, Scandinavian, or bohemian-inspired decor.',
               schemeId: null,
               patternName: '',
               patternOrigin: '',
@@ -3393,7 +3273,7 @@ color: '#3B4836',
               id: 'rs-slavic',
               countryId: 'serbia',
               title: 'Slavic blanket',
-              price: 290,
+              price: 110,
               workshopId: 'w-anna',
               workshop: 'Anna Ananskaja',
               city: 'Subotica',
@@ -3406,7 +3286,6 @@ color: '#3B4836',
               size: '170 × 120 cm',
               care: 'Machine wash at 30°, dry flat',
               patternCredit: 'Chart by Yulia Gendina',
-              shipsFrom: 'Serbia',
               days: '4 weeks from yarn in stock, 3 weeks more if the yarn is ordered in',
               description: 'The "Slavic" throw blanket is a premium handcrafted piece created using the intricate mosaic crochet technique. A harmonious blend of rich ethnic motifs, terracotta, deep teal, and cream tones comes together to form a deeply textured, expressive geometric design. Crafted from a luxurious blend of bamboo and silk, this throw features an exceptionally soft, fluid drape with a subtle natural sheen. It brings tactile comfort, warmth, and timeless artisan aesthetics to any living room or bedroom setting.',
               schemeId: null,
@@ -3438,33 +3317,7 @@ color: '#3B4836',
               patternRegion: 'Tusheti High Passes',
               storyP1: 'Located in the remote mountain settlement of Omalo, reachable only a few months a year, the Tusheti Women Guild keeps alive the intricate stranded sock-knitting traditions of northern Georgia.',
               storyP2: 'The wool is dyed using wild madder roots, walnut husks, and onion skins gathered in the alpine valleys, creating deep earthy tones that do not fade.',
-              websiteUrl: null,
-              events: [
-                {
-                  id: 'ev-ge-01',
-                  title: 'Dyeing wool with plants',
-                  date: 'PLACEHOLDER — date and time',
-                  place: 'Omalo',
-                  duration: '5 hours',
-                  desc: 'Madder root, walnut husk, onion skin. You prepare the baths, dye your own skeins and take them home. Wool and dyestuffs provided.',
-                  price: 55,
-                  spots: 8,
-                  spotsLeft: 8,
-                  payUrl: null
-                },
-                {
-                  id: 'ev-ge-02',
-                  title: 'Stranded colourwork, first steps',
-                  date: 'PLACEHOLDER — date and time',
-                  place: 'Omalo',
-                  duration: '3 hours',
-                  desc: 'Two colours carried at once. You learn to hold both yarns, keep the tension even and read a chart, and leave with a knitted band. Wool and needles provided.',
-                  price: 45,
-                  spots: 8,
-                  spotsLeft: 8,
-                  payUrl: null
-                }
-              ]
+              websiteUrl: null
             }
           ],
           partners: [
@@ -3481,28 +3334,7 @@ color: '#3B4836',
               patternRegion: 'Kakheti & Old Tbilisi Revival',
               storyP1: 'Tbilisi Tapestry & Atelier is an independent design studio collaborating with master weavers from eastern Georgia to adapt museum flat-knit motifs into modern functional home textiles.',
               storyP2: 'Operating out of an restored 19th-century courtyard in Sololaki, the studio documents historic Georgian ornament catalogs and translates them onto hand-loom wool rugs and wall panels.',
-              websiteUrl: 'https://example.com/tbilisi-tapestry',
-              products: [
-                {
-                  id: 'p-tbilisi-01',
-                  title: 'PLACEHOLDER — item name',
-                  price: 0,
-                  workshop: 'Tbilisi Tapestry & Atelier',
-                  region: 'Tbilisi',
-                  color: '#B57C48',
-                  thumbColors: ['#A06B3E', '#C68B54', '#8C5A2B'],
-                  material: 'PLACEHOLDER',
-                  size: 'PLACEHOLDER',
-                  care: 'PLACEHOLDER',
-                  days: 'PLACEHOLDER',
-                  shipsFrom: 'Georgia',
-                  description: 'PLACEHOLDER',
-                  schemeId: null,
-                  patternName: '',
-                  patternOrigin: '',
-                  patternRevived: ''
-                }
-              ]
+              websiteUrl: 'https://example.com/tbilisi-tapestry'
             }
           ],
           products: [
@@ -3631,21 +3463,7 @@ color: '#3B4836',
               patternRegion: 'Naryn Valley',
               storyP1: 'A group of women in Naryn working with wool from local flocks, knitting and felting through the winter months.',
               storyP2: 'PLACEHOLDER — replace with the real story once the direction opens: who they are, how they learned, what they still make.',
-              websiteUrl: null,
-              events: [
-                {
-                  id: 'ev-kg-01',
-                  title: 'Felting with sheep wool',
-                  date: 'PLACEHOLDER — date and time',
-                  place: 'Naryn',
-                  duration: '4 hours',
-                  desc: 'Raw wool, hot water and your hands. You lay out the fibres, felt them down and leave with a small finished piece. Wool and tools provided.',
-                  price: 40,
-                  spots: 6,
-                  spotsLeft: 6,
-                  payUrl: null
-                }
-              ]
+              websiteUrl: null
             }
           ],
           partners: [
@@ -3920,9 +3738,8 @@ currentView = viewId;
         // 4. Schemes Tab
         const schGrid = document.getElementById('country-schemes-grid');
         schGrid.innerHTML = '';
-        const schemeList = (c.schemes || []).filter(schemeVisible);
-        if (schemeList.length > 0) {
-          schemeList.forEach(s => {
+        if (c.schemes && c.schemes.length > 0) {
+          c.schemes.forEach(s => {
             schGrid.innerHTML += `
              <div class="scheme-card" onclick="openPatternPage('${s.id}')">
                <div class="scheme-chart-preview">
@@ -3983,9 +3800,6 @@ currentView = viewId;
       ).join('')).join('');
     }
 
-    function schemeVisible(s) {
-      return !!s && (s.published === true || s.format === 'text');
-    }
     function chartPreview(s, box) {
       if (s.format === 'text') {
         const n = Math.min(6, (s.text || []).length || 4);
@@ -4001,21 +3815,18 @@ currentView = viewId;
         'px);grid-template-rows:repeat(' + rows + ',' + size + 'px)">' + chartCells(s.chart) + '</div>';
     }
 
-    function findProductAnywhere(id) {
-      let res = null;
-      Object.values(DATA.countries).forEach(c => {
-        (c.products || []).forEach(p => { if (p.id === id) res = { p: p, c: c }; });
-        (c.partners || []).forEach(pt => (pt.products || []).forEach(p => { if (p.id === id) res = { p: p, c: c }; }));
-      });
-      return res;
-    }
     /* OPEN PRODUCT VIEW (WITH PATTERN TEASER) */
     function openProduct(productId) {
       let foundProd = null;
       let foundCountry = null;
 
-      const hit = findProductAnywhere(productId);
-      if (hit) { foundProd = hit.p; foundCountry = hit.c; }
+      Object.values(DATA.countries).forEach(c => {
+        const p = c.products.find(item => item.id === productId);
+        if (p) {
+          foundProd = p;
+          foundCountry = c;
+        }
+      });
 
       if (!foundProd) return;
       currentProduct = foundProd;
@@ -4045,9 +3856,6 @@ currentView = viewId;
       document.getElementById('spec-size').innerText = foundProd.size;
       document.getElementById('spec-care').innerText = foundProd.care;
       document.getElementById('spec-days').innerText = foundProd.days;
-      document.getElementById('spec-shipping').innerHTML =
-        'From ' + (foundProd.shipsFrom || 'Montenegro') +
-        ', tracked &middot; <a onclick="showView(\'terms\')" style="color:var(--madder);cursor:pointer;">rates</a>';
 
       const creditRow = document.getElementById('spec-credit-row');
       if (foundProd.patternCredit) {
@@ -4092,10 +3900,10 @@ currentView = viewId;
       if (targetScheme) {
         patternPrice = targetScheme.price;
       }
-      document.getElementById('get-full-chart-btn').innerText = `Get the full chart - €${patternPrice}`;
+      document.getElementById('get-full-chart-btn').innerText = `Get the full chart — €${patternPrice}`;
 
       const teaser = document.querySelector('#view-product .pattern-section');
-      if (foundProd.schemeId && schemeVisible(targetScheme)) {
+      if (foundProd.schemeId) {
         if (teaser) teaser.style.display = '';
         const tz = document.querySelector('.chart-teaser-container');
         if (targetScheme && targetScheme.format === 'text') {
@@ -4160,6 +3968,7 @@ function swapPhoto(el, src) {
       currentEntity = foundEntity;
 
       // Breadcrumbs
+      document.getElementById('partner-breadcrumb-country').innerText = foundCountry.name;
       document.getElementById('partner-breadcrumb-name').innerText = foundEntity.name;
 
       // Banner Color Block
@@ -4194,16 +4003,7 @@ function swapPhoto(el, src) {
       } else {
         patternLine.style.display = 'none';
       }
-const isPartner = foundEntity.type === 'PARTNER';
-      document.getElementById('partner-breadcrumb-type').innerText = isPartner ? 'Partners' : 'Workshops';
-      document.getElementById('partner-banner-media').style.display = isPartner ? '' : 'none';
-      document.getElementById('partner-title').style.display = isPartner ? '' : 'none';
-      document.getElementById('partner-type-tag').style.display = isPartner ? 'inline-block' : 'none';
-      document.getElementById('partner-meta-row').style.display = isPartner ? 'grid' : 'none';
-      document.querySelector('#view-partner-detail .partner-story').style.display = isPartner ? 'flex' : 'none';
-      document.querySelector('#view-partner-detail .partner-catalogue-area').style.display = isPartner ? '' : 'none';
-
-      renderWorkshopEvents(foundEntity);
+renderWorkshopEvents(foundEntity);
       // External website link
 const siteBtn = document.getElementById('partner-website-link');
       if (siteBtn) siteBtn.style.display = 'none';
@@ -4211,9 +4011,7 @@ const siteBtn = document.getElementById('partner-website-link');
       // Render Catalogue Grid
       const catGrid = document.getElementById('partner-products-grid');
       catGrid.innerHTML = '';
-      const entityProducts = (foundEntity.products && foundEntity.products.length)
-        ? foundEntity.products
-        : foundCountry.products.filter(p => p.workshopId === foundEntity.id || p.partnerId === foundEntity.id);
+      const entityProducts = foundCountry.products.filter(p => p.workshopId === foundEntity.id || p.partnerId === foundEntity.id);
 
       if (entityProducts.length > 0) {
         entityProducts.forEach(p => {
@@ -4268,8 +4066,6 @@ setHash('/maker/' + entityId);
           });
         }
       });
-
-list = list.filter(item => !item.soloMaker);
 
       if (activeWorkshopsFilter !== 'ALL') {
         list = list.filter(item => item.countryName.toLowerCase() === activeWorkshopsFilter.toLowerCase());
@@ -4393,7 +4189,7 @@ list = list.filter(item => !item.soloMaker);
           relGrid.innerHTML += `
            <div class="product-card" onclick="openProduct('${p.id}')">
              <div class="product-card-media">
-               ${p.photo ? `<div class="photo-block" style="background-image:url('${p.photo}')"></div>` : `<div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>`}
+               <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
               </div>
              <div class="product-card-body">
                 <h3 class="product-card-title serif">${p.title}</h3>
@@ -4417,18 +4213,23 @@ function renderFullPatternChart() {
       const box = chart.closest('.full-chart-box');
       const layout = document.querySelector('.pattern-view-layout');
       chart.innerHTML = '';
-      box.querySelectorAll('.pattern-text, .pattern-locked').forEach(el => el.remove());
+      const old = box.querySelector('.pattern-text');
+      if (old) old.remove();
 
       const isText = currentPattern && currentPattern.format === 'text';
       if (layout) layout.classList.toggle('text-mode', !!isText);
 
       if (isText) {
-        if (box) box.style.display = 'none';
-        if (layout) layout.style.gridTemplateColumns = '1fr';
+        chart.style.display = 'none';
+        const d = document.createElement('div');
+        d.className = 'pattern-text';
+        d.innerHTML = '<span class="text-badge" style="margin-bottom:8px;">Written pattern</span>' +
+          (currentPattern.text || []).map((line, i) =>
+            '<div class="pattern-row"><span class="pattern-row-n">' + (i + 1) + '</span><span>' + line + '</span></div>'
+          ).join('');
+        box.appendChild(d);
         return;
       }
-      if (box) box.style.display = '';
-      if (layout) layout.style.gridTemplateColumns = '';
 
       chart.style.display = '';
       const data = (currentPattern && currentPattern.chart) ? currentPattern.chart : [];
@@ -4534,8 +4335,6 @@ function renderPatterns(filterCountry = 'all') {
     }
   });
 
-  allSchemes = allSchemes.filter(schemeVisible);
-
   if (allSchemes.length === 0) {
     container.innerHTML = `<div class="empty-tab-msg">No pattern charts in this direction yet</div>`;
     return;
@@ -4610,8 +4409,8 @@ function findItem(entry){
   let found = null;
   Object.values(DATA.countries).forEach(c => {
     if (entry.type === 'product') {
-      const hit = findProductAnywhere(entry.id);
-      if (hit) { const q = hit.p; found = { title:q.title, price:q.price, meta:q.workshop + ' · ' + q.region, color:q.color, from: q.shipsFrom || 'Montenegro' }; }
+      const p = c.products.find(x => x.id === entry.id);
+      if (p) found = { title:p.title, price:p.price, meta:p.workshop + ' · ' + p.region, color:p.color };
     } else if (entry.type === 'event') {
       (c.workshops || []).forEach(w => {
         const e = (w.events || []).find(x => x.id === entry.id);
