@@ -354,6 +354,39 @@
       color: #665E58;
     }
 
+    .country-card.soon {
+      cursor: default;
+    }
+
+    .country-card.soon:hover {
+      border-color: var(--rule);
+    }
+
+    .country-card.soon .country-card-media {
+      opacity: 0.62;
+    }
+
+    .country-card.soon .country-card-caption {
+      color: var(--madder);
+    }
+
+    .page-header-photo {
+      width: 100%;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--card);
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .page-header-photo {
+        height: 320px;
+        margin-bottom: 40px;
+      }
+    }
+
     /* ==========================================
        VIEW 2: COUNTRY PAGE
        ========================================== */
@@ -2047,6 +2080,50 @@
             <span class="country-card-caption">1 workshop &middot; 1 partner &middot; 4 items</span>
           </div>
         </div>
+
+        <!-- Italy -->
+        <div class="country-card soon">
+          <div class="country-card-media">
+            <div class="photo-block" style="background-image: url('italy.jpg')"></div>
+          </div>
+          <div class="country-card-body">
+            <h2 class="country-card-title serif">Italy</h2>
+            <span class="country-card-caption">Opening soon</span>
+          </div>
+        </div>
+
+        <!-- Armenia -->
+        <div class="country-card soon">
+          <div class="country-card-media">
+            <div class="photo-block" style="background-image: url('armenia.jpg')"></div>
+          </div>
+          <div class="country-card-body">
+            <h2 class="country-card-title serif">Armenia</h2>
+            <span class="country-card-caption">Opening soon</span>
+          </div>
+        </div>
+
+        <!-- Turkey -->
+        <div class="country-card soon">
+          <div class="country-card-media">
+            <div class="photo-block" style="background-image: url('turkey.jpg')"></div>
+          </div>
+          <div class="country-card-body">
+            <h2 class="country-card-title serif">Turkey</h2>
+            <span class="country-card-caption">Opening soon</span>
+          </div>
+        </div>
+
+        <!-- Spain -->
+        <div class="country-card soon">
+          <div class="country-card-media">
+            <div class="photo-block" style="background-image: url('spain.jpg')"></div>
+          </div>
+          <div class="country-card-body">
+            <h2 class="country-card-title serif">Spain</h2>
+            <span class="country-card-caption">Opening soon</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2502,6 +2579,8 @@
     </div>
 
     <div class="directory-section">
+      <div class="page-header-photo" style="background-image: url('for-makers.jpg')"></div>
+
       <h1 class="serif" style="font-size:40px;margin-bottom:12px;">You make. We handle the rest.</h1>
       <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;">
         You don't need English, a camera, or a shop to sell what you make. You need someone to do that part for you. That's us.
@@ -2615,6 +2694,8 @@
     </div>
 
     <div class="directory-section">
+      <div class="page-header-photo" style="background-image: url('for-shops.jpg')"></div>
+
       <h1 class="serif" style="font-size:40px;margin-bottom:12px;">For workshops and brands</h1>
       <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;">
         You already make the work. We give you a page, put it in front of people who came looking for exactly this, and take care of everything that isn't making.
