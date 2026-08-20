@@ -8,6 +8,8 @@
 
   <link rel="canonical" href="https://katunheritage.com/">
   <link rel="icon" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#7B1612">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="KATUN">
@@ -1430,7 +1432,7 @@
     .hero-photo {
       width: 100%;
       min-height: 80vh;
-      background-image: url('hero.png');
+      background-image: url('hero.jpg');
       background-size: cover;
       background-position: center;
       background-color: var(--card);
@@ -1514,7 +1516,7 @@
     .story-photo {
       width: 100%;
       aspect-ratio: 4 / 3;
-      background-image: url('story.png');
+      background-image: url('story.jpg');
       background-size: cover;
       background-position: center;
       background-color: var(--card);
@@ -2053,10 +2055,10 @@
     <div class="container">
       <div class="featured-grid">
         <div class="featured-content">
-          <h2 class="serif">Durmitor Socks</h2>
-          <p>Two-strand knitting in undyed mountain wool. Pattern revived from a piece in the Cetinje collection.</p>
+          <h2 class="serif">Prokletije Patterned Socks</h2>
+          <p>Stranded hand-knitting in dense highland sheep wool. Solar-star motif recorded in the border-pass costume collection.</p>
           <div class="featured-price-line">
-            <span class="featured-price">€-</span>
+            <span class="featured-price">€55</span>
             <span class="featured-meta">made in 5 days</span>
           </div>
           <div>
@@ -2727,14 +2729,14 @@
 
       <div class="team-grid">
         <div class="team-card">
-          <div class="team-photo" data-label="Фото"></div>
+          <div class="team-photo" data-label="Photo"></div>
           <h3 class="serif">Name Surname</h3>
           <div class="team-role">Founder</div>
           <p>Short paragraph: where they're from, what they did before, why this project.</p>
         </div>
 
         <div class="team-card">
-          <div class="team-photo" data-label="Фото"></div>
+          <div class="team-photo" data-label="Photo"></div>
           <h3 class="serif">Name Surname</h3>
           <div class="team-role">Lead maker</div>
           <p>Short paragraph: where they're from, what they make, how long they've been doing it.</p>
@@ -2937,8 +2939,8 @@
               city: 'Kolashin',
               region: 'Budva',
               color: '#6E6350',
-              photo: 'mittens-1',
-              photos: ['mittens-1', 'mittens-2', 'mittens-3'],
+              photo: 'mittens-1.jpg',
+              photos: ['mittens-1.jpg', 'mittens-2.jpg', 'mittens-3.jpg'],
               thumbColors: ['#6E6350', '#7C7160', '#5C5344'],
               material: '75% wool, 25% polyamide',
               size: 'Size 7 · a pair',
@@ -3175,7 +3177,7 @@ city: 'Subotica',
               region: 'Subotica',
 color: '#3B4836',
               photo: 'znak-1.jpg',
-              photos: ['znak-1.jpg', 'znak-2.jpg', 'znak-3.jpg'],
+              photos: ['znak-1.jpg', 'znak-2.jpg'],
               thumbColors: ['#333F2F', '#465438', '#2A3325'],
               material: 'Cotton and acrylic · PLACEHOLDER — filling',
               size: '30 × 30 cm',
@@ -3199,7 +3201,7 @@ color: '#3B4836',
               region: 'Subotica',
               color: '#465438',
               photo: 'nitj-1.jpg',
-              photos: ['nitj-1.jpg', 'nitj-2.jpg', 'nitj-3.jpg'],
+              photos: ['nitj-1.jpg'],
               thumbColors: ['#3B4836', '#556346', '#333F2F'],
               material: 'Bamboo and silk · PLACEHOLDER — filling',
               size: '40 × 40 cm',
@@ -4326,12 +4328,18 @@ function filterPatterns(countryKey) {
 let cart = [];
 
 function loadCart(){
-  const s = localStorage.getItem('katun-cart');
-  cart = s ? JSON.parse(s) : [];
+  try {
+    const s = localStorage.getItem('katun-cart');
+    const parsed = s ? JSON.parse(s) : [];
+    cart = Array.isArray(parsed) ? parsed.filter(e => e && e.type && e.id) : [];
+  } catch (err) {
+    cart = [];
+    try { localStorage.removeItem('katun-cart'); } catch (e) {}
+  }
   updateCartCount();
 }
 function saveCart(){
-  localStorage.setItem('katun-cart', JSON.stringify(cart));
+  try { localStorage.setItem('katun-cart', JSON.stringify(cart)); } catch (e) {}
   updateCartCount();
 }
 function updateCartCount(){
@@ -4416,22 +4424,24 @@ function renderCart(){
       </p>
     </div>`;
 }
-function orderText(){
-  let t = 'KATUN order:%0A';
+function orderLines(){
+  const lines = ['KATUN order:'];
   let total = 0;
   cart.forEach(e => {
     const it = findItem(e);
-    if (it){ t += '- ' + it.title + ' (€' + it.price + ')%0A'; total += it.price; }
+    if (it){ lines.push('- ' + it.title + ' (\u20ac' + it.price + ')'); total += it.price; }
   });
-  t += 'Total: €' + total;
-  return t;
+  lines.push('Total: \u20ac' + total);
+  return lines;
 }
 function orderWhatsApp(){
-  window.open('https://wa.me/38267804046?text=' + orderText(), '_blank');
+  window.open('https://wa.me/38267804046?text=' +
+    encodeURIComponent(orderLines().join('\n')), '_blank');
 }
 function orderEmail(){
-  window.location.href = 'mailto:katun.montenegro@gmail.com?subject=KATUN order&body=' +
-    orderText().replace(/%0A/g,'%0D%0A');
+  window.location.href = 'mailto:katun.montenegro@gmail.com?subject=' +
+    encodeURIComponent('KATUN order') + '&body=' +
+    encodeURIComponent(orderLines().join('\r\n'));
 }
 
 
