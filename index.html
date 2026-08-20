@@ -935,6 +935,7 @@
     .spec-row {
       display: flex;
       justify-content: space-between;
+      gap: 24px;
       padding: 12px 0;
       border-bottom: 1px solid var(--rule);
       font-size: 13px;
@@ -945,6 +946,7 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
       font-size: 11px;
+      flex-shrink: 0;
     }
 
     .spec-value {
@@ -4229,7 +4231,7 @@ setHash('/maker/' + entityId);
           relGrid.innerHTML += `
            <div class="product-card" onclick="openProduct('${p.id}')">
              <div class="product-card-media">
-               <div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>
+               ${p.photo ? `<div class="photo-block" style="background-image:url('${p.photo}')"></div>` : `<div class="color-block" style="background-color: ${p.color}; color: #F7F3ED;">${p.title}</div>`}
               </div>
              <div class="product-card-body">
                 <h3 class="product-card-title serif">${p.title}</h3>
