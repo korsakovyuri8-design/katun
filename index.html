@@ -1249,6 +1249,36 @@
       margin: 0 auto;
     }
 
+    .full-chart-box.locked {
+      position: relative;
+    }
+
+    .full-chart-box.locked .full-knitting-chart,
+    .full-chart-box.locked .pattern-text {
+      filter: blur(9px);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .chart-lock-note {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: max-content;
+      max-width: 88%;
+      padding: 12px 20px;
+      background-color: rgba(247, 243, 237, 0.94);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #665E58;
+      text-align: center;
+      line-height: 1.5;
+    }
+
     .full-knitting-chart {
       display: grid;
       grid-template-columns: repeat(20, 12px);
@@ -3001,6 +3031,7 @@
 ,
             {
               id: 'w-elena',
+              soloMaker: true,
               type: 'WORKSHOP',
               countryId: 'montenegro',
               name: 'Elena',
@@ -3239,6 +3270,7 @@ regions: ['Subotica'],
           workshops: [
             {
               id: 'w-anna',
+              soloMaker: true,
               type: 'WORKSHOP',
               countryId: 'serbia',
               name: 'Anna Ananskaja',
@@ -4104,6 +4136,7 @@ setHash('/maker/' + entityId);
       Object.values(DATA.countries).forEach(c => {
         if (c.workshops) {
           c.workshops.forEach(w => {
+            if (w.soloMaker) return;
             list.push({ ...w, countryName: c.name });
           });
         }
@@ -4258,6 +4291,10 @@ function renderFullPatternChart() {
       const old = box.querySelector('.pattern-text');
       if (old) old.remove();
 
+      box.classList.remove('locked');
+      const oldNote = box.querySelector('.chart-lock-note');
+      if (oldNote) oldNote.remove();
+
       const isText = currentPattern && currentPattern.format === 'text';
       if (layout) layout.classList.toggle('text-mode', !!isText);
 
@@ -4270,6 +4307,7 @@ function renderFullPatternChart() {
             '<div class="pattern-row"><span class="pattern-row-n">' + (i + 1) + '</span><span>' + line + '</span></div>'
           ).join('');
         box.appendChild(d);
+        lockChartBox(box);
         return;
       }
 
@@ -4281,6 +4319,15 @@ function renderFullPatternChart() {
       chart.style.gridTemplateColumns = 'repeat(' + cols + ',' + size + 'px)';
       chart.style.gridTemplateRows = 'repeat(' + rows + ',' + size + 'px)';
       chart.innerHTML = chartCells(data);
+      lockChartBox(box);
+    }
+
+    function lockChartBox(box) {
+      box.classList.add('locked');
+      const note = document.createElement('div');
+      note.className = 'chart-lock-note';
+      note.innerText = 'The full record comes with purchase';
+      box.appendChild(note);
     }
 function goCountries() {
   showView('home');
