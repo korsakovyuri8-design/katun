@@ -2237,6 +2237,10 @@
                   <span class="spec-label">Pattern</span>
                   <span class="spec-value" id="spec-credit"></span>
                 </div>
+               <div class="spec-row" id="spec-reading-row">
+                  <span class="spec-label">Reading</span>
+                  <span class="spec-value" id="spec-reading"></span>
+                </div>
                <div class="spec-row">
                   <span class="spec-label">Made in</span>
                   <span class="spec-value" id="spec-days">14 days</span>
@@ -2949,6 +2953,7 @@
               days: '26 hours of work',
               description: 'PLACEHOLDER — 3-4 предложения: как выглядят, для кого, почему двадцать шесть часов.',
               patternCredit: 'Recorded in the ethnographic museum in Cetinje',
+              patternReading: 'PLACEHOLDER — уровень (По записи / Прочтение / По мотивам) и одна фраза Елены: что она изменила',
               schemeId: 'sch-mn-01',
               patternName: "Shepherd's Path",
               patternOrigin: 'Recorded in the ethnographic museum in Cetinje, from the protective series.',
@@ -3802,6 +3807,14 @@ currentView = viewId;
       document.getElementById('spec-size').innerText = foundProd.size;
       document.getElementById('spec-care').innerText = foundProd.care;
       document.getElementById('spec-days').innerText = foundProd.days;
+
+      const readingRow = document.getElementById('spec-reading-row');
+      if (foundProd.patternReading) {
+        document.getElementById('spec-reading').innerText = foundProd.patternReading;
+        readingRow.style.display = '';
+      } else {
+        readingRow.style.display = 'none';
+      }
 
       const creditRow = document.getElementById('spec-credit-row');
       if (foundProd.patternCredit) {
