@@ -2022,7 +2022,7 @@
   <div class="trust-strip">
     <div class="container">
       <div class="trust-strip-inner">
-        Made by hand &middot; A named maker &middot; A recorded origin &middot; 14-day returns
+        Made by hand &middot; A named maker &middot; Shipping included &middot; 14-day returns
       </div>
     </div>
   </div>
@@ -2389,7 +2389,7 @@
                 </div>
                <div class="spec-row">
                   <span class="spec-label">Shipping</span>
-                  <span class="spec-value" id="spec-shipping">From Montenegro, tracked · <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">rates</a></span>
+                  <span class="spec-value" id="spec-shipping">Included, worldwide, tracked · <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">customs</a></span>
                 </div>
               </div>
             </div>
@@ -2908,13 +2908,13 @@
       <p>[Legal name], registered in [city, country] under number [registration number]. Address: [address]. Email: katun.montenegro@gmail.com.</p>
 
       <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Prices</h2>
-      <p>All prices are in euro. Shipping is charged separately and shown before you pay. Customs charges in your own country are not included: parcels entering the EU are subject to import VAT from the first euro and, since 1 July 2026, to a small fixed customs duty. These are paid by you on delivery.</p>
+      <p>All prices are in euro and include worldwide shipping. Customs charges in your own country are not included: parcels entering the EU are subject to import VAT from the first euro and, since 1 July 2026, to a small fixed customs duty. These are paid by you on delivery.</p>
 
       <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">How an order works</h2>
-      <p>You add pieces to the cart and send us the order by WhatsApp or email. We reply with availability, the shipping cost and payment details. Your order is confirmed once payment reaches us — not before. Most pieces are made to order, and the making time is shown on each piece.</p>
+      <p>You add pieces to the cart and send us the order by WhatsApp or email. We reply with availability and payment details. Your order is confirmed once payment reaches us — not before. Most pieces are made to order, and the making time is shown on each piece.</p>
 
       <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Shipping</h2>
-      <p>We ship worldwide with tracking. A parcel up to 2 kg costs €15.20 to anywhere in Europe, €19 to the United States and Canada, €36 elsewhere. Delivery normally takes 7–14 working days in Europe after the piece is finished. We send you the tracking number the day it leaves. If a parcel is lost in transit, we replace it or refund you in full.</p>
+      <p>We ship worldwide with tracking, and shipping is included in the price of every piece. Delivery normally takes 7–14 working days in Europe after the piece is finished. We send you the tracking number the day it leaves. If a parcel is lost in transit, we replace it or refund you in full.</p>
 
       <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Returns</h2>
       <p>You have 14 days from the day the parcel reaches you to tell us you want to return it. Write to katun.montenegro@gmail.com. Send the piece back unworn and in the condition it arrived, and we refund the price within 14 days of receiving it. Return postage is yours unless the piece arrived faulty or wrong.</p>
@@ -4589,15 +4589,14 @@ function renderCart(){
     ${cart.some(e => e.type === 'product') ? `
     <div style="margin-bottom:32px;">
       <h3 class="serif" style="font-size:22px;margin-bottom:6px;">Shipping</h3>
-      <p style="font-size:14px;color:#665E58;margin-bottom:16px;">Sent from Montenegro with tracking. Charts are digital and workshop places need no delivery.</p>
-      <table class="split-table">${shippingRows()}</table>
+      <p style="font-size:14px;color:#665E58;margin-bottom:16px;">Included in the price. Sent with tracking, 7–14 working days in Europe. Records are digital and workshop places need no delivery.</p>
       <p style="font-size:13px;color:#665E58;margin-top:12px;">Customs charges in your country are yours to pay. In the EU that means import VAT and a small customs charge on arrival. <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">Terms &amp; returns</a></p>
     </div>` : ''}
     <div class="cart-actions">
       <a class="btn-madder" onclick="orderWhatsApp()">Order via WhatsApp</a>
       <a class="btn-outline" onclick="orderEmail()">Order by email</a>
       <p style="font-size:13px;color:#665E58;line-height:1.5;margin-top:8px;">
-        We'll confirm availability and shipping cost, then send payment details.
+        We'll confirm availability, then send payment details.
       </p>
     </div>`;
 }
