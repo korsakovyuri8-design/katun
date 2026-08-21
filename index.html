@@ -2908,13 +2908,13 @@
       <p>[Legal name], registered in [city, country] under number [registration number]. Address: [address]. Email: katun.montenegro@gmail.com.</p>
 
       <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Prices</h2>
-      <p>All prices are in euro and include [VAT / no VAT — state which]. Shipping is charged separately and confirmed before you pay. Import duties in your country, if any, are yours to pay.</p>
+      <p>All prices are in euro. Shipping is charged separately and shown before you pay. Customs charges in your own country are not included: parcels entering the EU are subject to import VAT from the first euro and, since 1 July 2026, to a small fixed customs duty. These are paid by you on delivery.</p>
 
       <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">How an order works</h2>
       <p>You add pieces to the cart and send us the order by WhatsApp or email. We reply with availability, the shipping cost and payment details. Your order is confirmed once payment reaches us — not before. Most pieces are made to order, and the making time is shown on each piece.</p>
 
       <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Shipping</h2>
-      <p>We ship from [country] worldwide. Delivery normally takes [X–Y] working days after the piece is finished. We send you the tracking number the day it leaves. If a parcel is lost in transit, we replace it or refund you in full.</p>
+      <p>We ship worldwide with tracking. A parcel up to 2 kg costs €15.20 to anywhere in Europe, €19 to the United States and Canada, €36 elsewhere. Delivery normally takes 7–14 working days in Europe after the piece is finished. We send you the tracking number the day it leaves. If a parcel is lost in transit, we replace it or refund you in full.</p>
 
       <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Returns</h2>
       <p>You have 14 days from the day the parcel reaches you to tell us you want to return it. Write to katun.montenegro@gmail.com. Send the piece back unworn and in the condition it arrived, and we refund the price within 14 days of receiving it. Return postage is yours unless the piece arrived faulty or wrong.</p>
@@ -4481,17 +4481,18 @@ function renderPatterns(filterCountry = 'all') {
 
 /* ===== SHIPPING ===== */
 const SHIPPING = [
-  { zone: 'Montenegro',                      price: null, days: null },
-  { zone: 'Serbia, Bosnia, Croatia, Albania', price: null, days: null },
-  { zone: 'European Union',                  price: null, days: null },
-  { zone: 'Rest of the world',               price: null, days: null }
+  { zone: 'Montenegro',                       price: 3,     days: '1–2' },
+  { zone: 'Serbia, Bosnia, Croatia, Albania', price: 15.20, days: '5–10' },
+  { zone: 'European Union, UK, Switzerland',  price: 15.20, days: '7–14' },
+  { zone: 'United States, Canada',            price: 19,    days: '10–20' },
+  { zone: 'Rest of the world',                price: 36,    days: '14–25' }
 ];
 
 function shippingRows() {
   return SHIPPING.map(s => `
     <tr>
       <td>${s.zone}</td>
-      <td class="split-share">${s.price === null ? '—' : '€' + s.price}</td>
+      <td class="split-share">${s.price === null ? '—' : '€' + (Number.isInteger(s.price) ? s.price : s.price.toFixed(2))}</td>
       <td class="split-note">${s.days === null ? 'confirmed before you pay' : s.days + ' working days'}</td>
     </tr>`).join('');
 }
@@ -4590,7 +4591,7 @@ function renderCart(){
       <h3 class="serif" style="font-size:22px;margin-bottom:6px;">Shipping</h3>
       <p style="font-size:14px;color:#665E58;margin-bottom:16px;">Sent from Montenegro with tracking. Charts are digital and workshop places need no delivery.</p>
       <table class="split-table">${shippingRows()}</table>
-      <p style="font-size:13px;color:#665E58;margin-top:12px;">Import duties outside the EU are yours to pay. <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">Terms &amp; returns</a></p>
+      <p style="font-size:13px;color:#665E58;margin-top:12px;">Customs charges in your country are yours to pay. In the EU that means import VAT and a small customs charge on arrival. <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">Terms &amp; returns</a></p>
     </div>` : ''}
     <div class="cart-actions">
       <a class="btn-madder" onclick="orderWhatsApp()">Order via WhatsApp</a>
