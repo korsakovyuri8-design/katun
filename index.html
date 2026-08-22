@@ -2161,7 +2161,7 @@
   <section class="countries-section" id="countries">
     <div class="container">
       <div class="countries-header">
-        <h2 class="serif">Craft without borders</h2>
+        <h2 class="serif" data-i18n="countries.title">Craft without borders</h2>
         <p class="countries-sub" data-i18n="countries.sub">Every region has its own ornament. Choose a direction.</p>
       </div>
 <div class="country-home-grid">
@@ -2311,7 +2311,7 @@
        <div class="container">
          <div class="breadcrumbs-bar">
            <div class="breadcrumbs">
-              <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
+              <span class="breadcrumb-item" onclick="showView('home')" data-i18n="footer.countries">Countries</span>
               <span>/</span>
               <span class="breadcrumb-current" id="country-breadcrumb-name">Country</span>
             </div>
@@ -2383,8 +2383,8 @@
           <!-- OPENING SOON STATE (SERBIA & KYRGYZSTAN) -->
           <div id="country-opening-content" style="display: none;">
            <div class="opening-soon-block">
-              <h2 class="opening-soon-title serif">This direction is opening</h2>
-<p class="opening-soon-desc">We're looking for makers in this region — in any material — and putting its ornaments on record. If you work here, or know someone who does, write to us.</p>
+              <h2 class="opening-soon-title serif" data-i18n="soon.title">This direction is opening</h2>
+<p class="opening-soon-desc" data-i18n="soon.desc">We're looking for makers in this region — in any material — and putting its ornaments on record. If you work here, or know someone who does, write to us.</p>
 <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
                 <a class="btn-madder" onclick="showView('for-makers')">Join us as a maker</a>
                 <a class="btn-outline" onclick="showView('for-shops')">Join us as a shop</a>
@@ -2414,7 +2414,7 @@
        <div class="container">
          <div class="breadcrumbs-bar">
            <div class="breadcrumbs">
-              <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
+              <span class="breadcrumb-item" onclick="showView('home')" data-i18n="footer.countries">Countries</span>
               <span>/</span>
               <span class="breadcrumb-item" id="product-breadcrumb-country" onclick="openCountry(currentProduct.countryId)">Country</span>
               <span>/</span>
@@ -2534,7 +2534,7 @@
        <div class="container">
          <div class="breadcrumbs-bar">
            <div class="breadcrumbs">
-              <span class="breadcrumb-item" onclick="showView('home')">Countries</span>
+              <span class="breadcrumb-item" onclick="showView('home')" data-i18n="footer.countries">Countries</span>
               <span>/</span>
               <span class="breadcrumb-item" id="partner-breadcrumb-country" onclick="openCountry(currentEntity.countryId)">Country</span>
               <span>/</span>
@@ -2578,7 +2578,7 @@
             </div>
 <div id="workshop-events" style="display:none;margin-top:56px;">
              <hr class="section-divider" style="margin-bottom:40px;" />
-             <h2 class="serif" style="font-size:28px;margin-bottom:8px;">Upcoming sessions</h2>
+             <h2 class="serif" style="font-size:28px;margin-bottom:8px;" data-i18n="events.upcoming">Upcoming sessions</h2>
              <p style="font-size:15px;color:#665E58;margin-bottom:28px;max-width:560px;">Small groups. Everything is provided, and you leave with what you made.</p>
              <div id="events-list"></div>
            </div>
@@ -2601,16 +2601,16 @@
        <div class="container">
          <div class="breadcrumbs-bar">
            <div class="breadcrumbs">
-              <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+              <span class="breadcrumb-item" onclick="showView('home')" data-i18n="nav.home">Home</span>
               <span>/</span>
-              <span class="breadcrumb-current">Workshops</span>
+              <span class="breadcrumb-current" data-i18n="nav.workshops">Workshops</span>
             </div>
           </div>
 
          <div class="directory-section">
            <div class="directory-header">
-              <h1 class="serif">Workshops</h1>
-              <p style="color: #665E58; font-size: 15px;">Makers working from the records we've collected, in every material.</p>
+              <h1 class="serif" data-i18n="dir.workshops">Workshops</h1>
+              <p style="color: #665E58; font-size: 15px;" data-i18n="dir.workshopsSub">Makers working from the records we've collected, in every material.</p>
             </div>
 
            <div class="directory-filters" id="workshops-filter-pills">
@@ -2631,16 +2631,16 @@
        <div class="container">
          <div class="breadcrumbs-bar">
            <div class="breadcrumbs">
-              <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+              <span class="breadcrumb-item" onclick="showView('home')" data-i18n="nav.home">Home</span>
               <span>/</span>
-              <span class="breadcrumb-current">Partners</span>
+              <span class="breadcrumb-current" data-i18n="nav.partners">Partners</span>
             </div>
           </div>
 
          <div class="directory-section">
            <div class="directory-header">
-              <h1 class="serif">Partner Brands</h1>
-              <p style="color: #665E58; font-size: 15px;">Independent workshops and studios with their own collections.</p>
+              <h1 class="serif" data-i18n="dir.partners">Partner Brands</h1>
+              <p style="color: #665E58; font-size: 15px;" data-i18n="dir.partnersSub">Independent workshops and studios with their own collections.</p>
             </div>
 
            <div class="directory-filters" id="partners-filter-pills">
@@ -2661,7 +2661,7 @@
        <div class="container">
          <div class="breadcrumbs-bar">
            <div class="breadcrumbs">
-              <span class="breadcrumb-item" onclick="showView('home')">Patterns</span>
+              <span class="breadcrumb-item" onclick="showView('home')" data-i18n="footer.patterns">Patterns</span>
               <span>/</span>
               <span class="breadcrumb-current" id="pattern-breadcrumb-name">Pattern Name</span>
             </div>
@@ -2695,7 +2695,7 @@
 
           <!-- Related Items Section -->
          <div class="related-items-section">
-            <h2 class="related-items-title serif">Made from this record</h2>
+            <h2 class="related-items-title serif" data-i18n="product.related">Made from this record</h2>
            <div class="products-grid" id="pattern-related-products-grid">
               <!-- Grid of products using this pattern -->
             </div>
@@ -2710,8 +2710,8 @@
       <a onclick="showView('home')">Home</a> / Patterns
     </div>
     <div class="view-header" style="margin-bottom: 24px;">
-      <h1 class="serif" style="font-size: 36px; margin-bottom: 8px;">The record</h1>
-      <p style="color: #665E58; font-size: 16px; max-width: 600px;">Ornaments recovered from museum collections and from the makers themselves, written down so they can be worked again. Each one names the object it came from and where it was found.</p>
+      <h1 class="serif" style="font-size: 36px; margin-bottom: 8px;" data-i18n="patterns.title">The record</h1>
+      <p style="color: #665E58; font-size: 16px; max-width: 600px;" data-i18n="patterns.sub">Ornaments recovered from museum collections and from the makers themselves, written down so they can be worked again. Each one names the object it came from and where it was found.</p>
     </div>
 
     <div class="filter-pills" id="patterns-country-filters" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px;">
@@ -2731,45 +2731,45 @@
   <div class="container">
     <div class="breadcrumbs-bar">
       <div class="breadcrumbs">
-        <span class="breadcrumb-item" onclick="showView('home')">Home</span>
-        <span>/</span><span class="breadcrumb-current">For Makers</span>
+        <span class="breadcrumb-item" onclick="showView('home')" data-i18n="nav.home">Home</span>
+        <span>/</span><span class="breadcrumb-current" data-i18n="nav.forMakers">For Makers</span>
       </div>
     </div>
 
     <div class="directory-section">
       <div class="page-header-photo" style="background-image: url('for-makers.jpg')"></div>
 
-      <h1 class="serif" style="font-size:40px;margin-bottom:12px;">You make. We handle the rest.</h1>
+      <h1 class="serif" style="font-size:40px;margin-bottom:12px;" data-i18n="join.title">You make. We handle the rest.</h1>
       <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;">
-        Whatever you work in - wool, clay, metal, wood - you don't need English, a camera or a shop to sell what you make. You need someone to do that part for you. That's us.
+        <span data-i18n="fm.sub">Whatever you work in - wool, clay, metal, wood - you don't need English, a camera or a shop to sell what you make. You need someone to do that part for you. That's us.</span>
       </p>
-      <a class="btn-madder" href="#join-form" style="margin-bottom:56px;">Join us</a>
+      <a class="btn-madder" href="#join-form" style="margin-bottom:56px;" data-i18n="fm.cta">Join us</a>
 
       <div class="pillars-grid" style="margin-top:56px;margin-bottom:64px;">
         <div class="pillar-card">
-          <h3 class="serif">You're not on your own</h3>
-          <p>Photography, descriptions, translation, shipping, talking to the buyer, handling returns. All of it is ours - including how to pack what you make, so it arrives the way it left.</p>
+          <h3 class="serif" data-i18n="fm.p1t">You're not on your own</h3>
+          <p data-i18n="fm.p1p">Photography, descriptions, translation, shipping, talking to the buyer, handling returns. All of it is ours - including how to pack what you make, so it arrives the way it left.</p>
         </div>
         <div class="pillar-card">
-          <h3 class="serif">Your name stays on it</h3>
-          <p>Not an anonymous seller ID. Your name, your region, your technique - on the page and on the tag. And what you changed in the pattern is written there as yours, not hidden.</p>
+          <h3 class="serif" data-i18n="fm.p2t">Your name stays on it</h3>
+          <p data-i18n="fm.p2p">Not an anonymous seller ID. Your name, your region, your technique - on the page and on the tag. And what you changed in the pattern is written there as yours, not hidden.</p>
         </div>
         <div class="pillar-card">
-          <h3 class="serif">You know your share before you start</h3>
-          <p>No listing fees. No paying to be seen. No money held for months. A fixed share of the price the buyer pays, agreed before you cast on.</p>
+          <h3 class="serif" data-i18n="fm.p3t">You know your share before you start</h3>
+          <p data-i18n="fm.p3p">No listing fees. No paying to be seen. No money held for months. A fixed share of the price the buyer pays, agreed before you cast on.</p>
         </div>
       </div>
 
       <hr class="section-divider" style="margin-bottom:48px;" />
 
-      <h2 class="serif" style="font-size:32px;margin-bottom:8px;">Where the money goes</h2>
+      <h2 class="serif" style="font-size:32px;margin-bottom:8px;" data-i18n="fm.money.t">Where the money goes</h2>
       <p style="font-size:15px;color:#665E58;margin-bottom:28px;max-width:600px;">
-        The buyer pays one price, and most of it is yours. Until 1 December 2026 our share is 25%, so you keep 75%. Coordinators and museums are paid out of our share, never out of yours.
+        <span data-i18n="fm.money.p">The buyer pays one price, and most of it is yours. Until 1 December 2026 our share is 25%, so you keep 75%. Coordinators and museums are paid out of our share, never out of yours.</span>
       </p>
 
       <table class="split-table">
-        <tr class="split-highlight"><td>You</td><td class="split-share">65%</td><td class="split-note">your materials and your work</td></tr>
-        <tr><td>KATUN</td><td class="split-share">35%</td><td class="split-note">page, photography, words, translation, promotion, the buyer</td></tr>
+        <tr class="split-highlight"><td data-i18n="fm.split.you">You</td><td class="split-share">65%</td><td class="split-note" data-i18n="fm.split.youNote">your materials and your work</td></tr>
+        <tr><td>KATUN</td><td class="split-share">35%</td><td class="split-note" data-i18n="fm.split.katunNote">page, photography, words, translation, promotion, the buyer</td></tr>
       </table>
 
       <p style="font-size:15px;color:#38322E;margin-top:20px;margin-bottom:56px;max-width:620px;line-height:1.6;">
@@ -2778,21 +2778,21 @@
       <hr class="section-divider" style="margin-bottom:48px;" />
 
       <div class="honest-block">
-        <h2 class="serif" style="font-size:28px;margin-bottom:12px;">What we can't promise</h2>
-        <p>We're at the start. There are no sales yet, so we can't promise you a number. What we can promise is a share you know in advance and conditions that don't change behind your back.</p>
-        <p>If you're looking for a guaranteed salary, this isn't the place, and we'd rather say so now.</p>
+        <h2 class="serif" style="font-size:28px;margin-bottom:12px;" data-i18n="fm.promise.t">What we can't promise</h2>
+        <p data-i18n="fm.promise.p1">We're at the start. There are no sales yet, so we can't promise you a number. What we can promise is a share you know in advance and conditions that don't change behind your back.</p>
+        <p data-i18n="fm.promise.p2">If you're looking for a guaranteed salary, this isn't the place, and we'd rather say so now.</p>
       </div>
 
-      <h2 class="serif" style="font-size:28px;margin-top:56px;margin-bottom:12px;">Beyond selling</h2>
+      <h2 class="serif" style="font-size:28px;margin-top:56px;margin-bottom:12px;" data-i18n="fm.beyond.t">Beyond selling</h2>
       <p style="font-size:15px;color:#38322E;max-width:640px;line-height:1.6;margin-bottom:56px;">
-        The ornaments you work with become records we sell - and you get a share of every record sold, not just every piece. Later: in-person workshops in your region, recorded courses, and a permanent archive of what you know.
+        <span data-i18n="fm.beyond.p">The ornaments you work with become records we sell - and you get a share of every record sold, not just every piece. Later: in-person workshops in your region, recorded courses, and a permanent archive of what you know.</span>
       </p>
 
       <hr class="section-divider" style="margin-bottom:40px;" />
 
-      <h2 class="serif" id="join-form" style="font-size:28px;margin-bottom:8px;">Write to us</h2>
+      <h2 class="serif" id="join-form" style="font-size:28px;margin-bottom:8px;" data-i18n="fm.form.t">Write to us</h2>
       <p style="font-size:15px;color:#665E58;margin-bottom:24px;">
-        Tell us what you make and where. We answer every message ourselves.
+        <span data-i18n="fm.form.sub">Tell us what you make and where. We answer every message ourselves.</span>
       </p>
 
       <form action="https://formsubmit.co/2feab7b04843c7149994ef40ce4df0ff" method="POST"
@@ -2802,12 +2802,12 @@
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://katunheritage.com/?thanks=1">
         <p style="display:none"><input name="_honey"></p>
-        <div class="form-group"><input type="text" name="name" placeholder="Your name" required></div>
-        <div class="form-group"><input type="text" name="country" placeholder="Country" required></div>
-        <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
-        <div class="form-group"><input type="text" name="technique" placeholder="What you make and what you work in"></div>
-        <div class="form-group"><input type="text" name="message" placeholder="Message"></div>
-        <button type="submit" class="btn-madder">Send</button>
+        <div class="form-group"><input type="text" name="name" placeholder="Your name" data-i18n-ph="form.name" required></div>
+        <div class="form-group"><input type="text" name="country" placeholder="Country" data-i18n-ph="form.country" required></div>
+        <div class="form-group"><input type="email" name="email" placeholder="Email" data-i18n-ph="form.email" required></div>
+        <div class="form-group"><input type="text" name="technique" placeholder="What you make and what you work in" data-i18n-ph="form.what"></div>
+        <div class="form-group"><input type="text" name="message" placeholder="Message" data-i18n-ph="form.message"></div>
+        <button type="submit" class="btn-madder" data-i18n="form.send">Send</button>
       </form>
     </div>
   </div>
@@ -2818,7 +2818,7 @@
 <!-- VIEW D: THANK YOU -->
 <section id="view-thanks" class="view-section">
   <div class="container" style="max-width: 600px; text-align: center; padding-top: 60px; padding-bottom: 60px;">
-    <h1 class="serif" style="font-size: 40px; margin-bottom: 16px;">Thank you</h1>
+    <h1 class="serif" style="font-size: 40px; margin-bottom: 16px;" data-i18n="thanks.title">Thank you</h1>
     <p style="font-size: 16px; line-height: 1.6; color: #38322E; margin-bottom: 32px;">We've got your message. We answer from katun.montenegro@gmail.com, usually within a few days.</p>
     <a class="btn-madder" onclick="showView('home')">Back to Home</a>
   </div>
@@ -2827,8 +2827,8 @@
   <div class="container">
     <div class="breadcrumbs-bar">
       <div class="breadcrumbs">
-        <span class="breadcrumb-item" onclick="showView('home')">Home</span>
-        <span>/</span><span class="breadcrumb-current">Cart</span>
+        <span class="breadcrumb-item" onclick="showView('home')" data-i18n="nav.home">Home</span>
+        <span>/</span><span class="breadcrumb-current" data-i18n="nav.cart">Cart</span>
       </div>
     </div>
     <div class="directory-section">
@@ -2846,83 +2846,83 @@
   <div class="container">
     <div class="breadcrumbs-bar">
       <div class="breadcrumbs">
-        <span class="breadcrumb-item" onclick="showView('home')">Home</span>
-        <span>/</span><span class="breadcrumb-current">For Shops</span>
+        <span class="breadcrumb-item" onclick="showView('home')" data-i18n="nav.home">Home</span>
+        <span>/</span><span class="breadcrumb-current" data-i18n="nav.forShops">For Shops</span>
       </div>
     </div>
 
     <div class="directory-section">
       <div class="page-header-photo" style="background-image: url('for-shops.jpg')"></div>
 
-      <h1 class="serif" style="font-size:40px;margin-bottom:12px;">For workshops, studios and brands</h1>
+      <h1 class="serif" style="font-size:40px;margin-bottom:12px;" data-i18n="fs.title">For workshops, studios and brands</h1>
       <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;">
-        You already make the work. We give you a page, put it in front of people who came looking for exactly this, and take care of everything that isn't making.
+        <span data-i18n="fs.sub">You already make the work. We give you a page, put it in front of people who came looking for exactly this, and take care of everything that isn't making.</span>
       </p>
       <a class="btn-madder" href="#shops-form" style="margin-bottom:56px;">Talk to us</a>
 
       <div class="pillars-grid" style="margin-top:56px;margin-bottom:40px;">
         <div class="pillar-card">
-          <h3 class="serif">Your own page</h3>
-          <p>Your name, your city, your story and your full catalogue - with a link out to your own site. You keep your brand. You don't dissolve into a marketplace.</p>
+          <h3 class="serif" data-i18n="fs.p1t">Your own page</h3>
+          <p data-i18n="fs.p1p">Your name, your city, your story and your full catalogue - with a link out to your own site. You keep your brand. You don't dissolve into a marketplace.</p>
         </div>
         <div class="pillar-card">
-          <h3 class="serif">We make your photos work</h3>
-          <p>Send us what you have, even from a phone. We crop, colour-correct and prepare them for the site - and you get the files back for your own use.</p>
+          <h3 class="serif" data-i18n="fs.p2t">We make your photos work</h3>
+          <p data-i18n="fs.p2p">Send us what you have, even from a phone. We crop, colour-correct and prepare them for the site - and you get the files back for your own use.</p>
         </div>
         <div class="pillar-card">
-          <h3 class="serif">Written and translated</h3>
-          <p>Descriptions, captions and messages with buyers, in English. The barrier that keeps most workshops from ever selling outside their own country.</p>
+          <h3 class="serif" data-i18n="fs.p3t">Written and translated</h3>
+          <p data-i18n="fs.p3p">Descriptions, captions and messages with buyers, in English. The barrier that keeps most workshops from ever selling outside their own country.</p>
         </div>
       </div>
 
       <div class="pillars-grid pillars-two" style="margin-bottom:64px;">
         <div class="pillar-card">
-          <h3 class="serif">Nothing to pay to be here</h3>
-          <p>No listing fees, no ads you have to buy, no charge for a place on the site. A share of what actually sells, and nothing before that.</p>
+          <h3 class="serif" data-i18n="fs.p4t">Nothing to pay to be here</h3>
+          <p data-i18n="fs.p4p">No listing fees, no ads you have to buy, no charge for a place on the site. A share of what actually sells, and nothing before that.</p>
         </div>
         <div class="pillar-card">
-          <h3 class="serif">Your ornaments on record</h3>
-          <p>We document where each ornament comes from - in textile, clay, metal or wood - and keep it. If a workshop closes, what it knew doesn't disappear with it. That's the part museums and archives talk to us about.</p>
+          <h3 class="serif" data-i18n="fs.p5t">Your ornaments on record</h3>
+          <p data-i18n="fs.p5p">We document where each ornament comes from - in textile, clay, metal or wood - and keep it. If a workshop closes, what it knew doesn't disappear with it. That's the part museums and archives talk to us about.</p>
         </div>
       </div>
 
       <hr class="section-divider" style="margin-bottom:48px;" />
 
-      <h2 class="serif" style="font-size:32px;margin-bottom:8px;">What we take, and for what</h2>
+      <h2 class="serif" style="font-size:32px;margin-bottom:8px;" data-i18n="fs.take.t">What we take, and for what</h2>
       <p style="font-size:15px;color:#665E58;margin-bottom:28px;max-width:600px;">
-        We take the sale price as 100%. Nothing else.
+        <span data-i18n="fs.take.p">We take the sale price as 100%. Nothing else.</span>
       </p>
 
       <table class="split-table">
-        <tr class="split-highlight"><td>Your shop</td><td class="split-share">65%</td><td class="split-note">materials and your work</td></tr>
-        <tr><td>KATUN</td><td class="split-share">35%</td><td class="split-note">page, photo prep, copy, translation, promotion, the buyer</td></tr>
+        <tr class="split-highlight"><td data-i18n="fs.shop">Your shop</td><td class="split-share">65%</td><td class="split-note" data-i18n="fs.shopNote">materials and your work</td></tr>
+        <tr><td>KATUN</td><td class="split-share">35%</td><td class="split-note" data-i18n="fs.katunNote">page, photo prep, copy, translation, promotion, the buyer</td></tr>
       </table>
 
       <p style="font-size:15px;color:#38322E;margin-top:20px;margin-bottom:0;max-width:620px;line-height:1.6;">
-        This is a commission, not a wholesale discount. We don't buy your stock - your pieces stay yours until they reach the customer.
+        <span data-i18n="fs.commission">This is a commission, not a wholesale discount. We don't buy your stock - your pieces stay yours until they reach the customer.</span>
       </p>
 
       <p style="font-size:15px;color:#38322E;margin-top:12px;margin-bottom:56px;max-width:620px;line-height:1.6;">
-        You set the price the buyer sees. Our share comes out of it, never on top of it. Until 1 December 2026 that share is 25%, so you keep 75%.
+        <span data-i18n="fs.price">You set the price the buyer sees. Our share comes out of it, never on top of it. Until 1 December 2026 that share is 25%, so you keep 75%.</span>
       </p>
 
       <hr class="section-divider" style="margin-bottom:48px;" />
 
       <div class="honest-block">
-        <h2 class="serif" style="font-size:28px;margin-bottom:12px;">Where we are now</h2>
-        <p>What's real today: the page, the photo prep, the writing, the translation, the fairs in Montenegro, and terms that cost you nothing until something sells. You keep your own shop and lose nothing by being here too.</p>
+        <h2 class="serif" style="font-size:28px;margin-bottom:12px;" data-i18n="fs.now.t">Where we are now</h2>
+        <p data-i18n="fs.now.p2">What's real today: the page, the photo prep, the writing, the translation, the fairs in Montenegro, and terms that cost you nothing until something sells. You keep your own shop and lose nothing by being here too.</p>
       </div>
 
-      <h2 class="serif" style="font-size:28px;margin-top:56px;margin-bottom:12px;">Where this is going</h2>
+      <h2 class="serif" style="font-size:28px;margin-top:56px;margin-bottom:12px;" data-i18n="fs.going.t">Where this is going</h2>
       <p style="font-size:15px;color:#38322E;max-width:640px;line-height:1.6;margin-bottom:56px;">
-        A base inside the EU, so parcels from outside it stop being expensive and unpredictable for everyone we work with. In-person workshops in your region. And a growing record of the ornaments each direction is built on.
+        <span data-i18n="fs.going.p">A base inside the EU, so parcels from outside it stop being expensive and unpredictable for everyone we work with. In-person workshops in your region. And a growing record of the ornaments each direction is built on.</span>
       </p>
 
       <hr class="section-divider" style="margin-bottom:40px;" />
 
-      <h2 class="serif" id="shops-form" style="font-size:28px;margin-bottom:8px;">Talk to us</h2>
+      <h2 class="serif" id="shops-form" style="font-size:28px;margin-bottom:8px;" data-i18n="fs.form.t">Talk to us</h2>
       <p style="font-size:15px;color:#665E58;margin-bottom:24px;">
-        Send us a link to your work and we'll come back to you.
+        <span data-i18n="fs.form.sub">Send us a link to your work and we'll come back to you.</span>
       </p>
 
       <form action="https://formsubmit.co/2feab7b04843c7149994ef40ce4df0ff" method="POST"
@@ -2932,12 +2932,12 @@
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://katunheritage.com/?thanks=1">
         <p style="display:none"><input name="_honey"></p>
-        <div class="form-group"><input type="text" name="brand" placeholder="Brand or workshop name" required></div>
-        <div class="form-group"><input type="text" name="country" placeholder="Country" required></div>
-        <div class="form-group"><input type="text" name="link" placeholder="Website or Instagram"></div>
-        <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
-        <div class="form-group"><input type="text" name="message" placeholder="Message"></div>
-        <button type="submit" class="btn-madder">Send</button>
+        <div class="form-group"><input type="text" name="brand" placeholder="Brand or workshop name" data-i18n-ph="form.brand" required></div>
+        <div class="form-group"><input type="text" name="country" placeholder="Country" data-i18n-ph="form.country" required></div>
+        <div class="form-group"><input type="text" name="link" placeholder="Website or Instagram" data-i18n-ph="form.web"></div>
+        <div class="form-group"><input type="email" name="email" placeholder="Email" data-i18n-ph="form.email" required></div>
+        <div class="form-group"><input type="text" name="message" placeholder="Message" data-i18n-ph="form.message"></div>
+        <button type="submit" class="btn-madder" data-i18n="form.send">Send</button>
       </form>
     </div>
   </div>
@@ -2946,42 +2946,42 @@
   <div class="container">
     <div class="breadcrumbs-bar">
       <div class="breadcrumbs">
-        <span class="breadcrumb-item" onclick="showView('home')">Home</span>
-        <span>/</span><span class="breadcrumb-current">About us</span>
+        <span class="breadcrumb-item" onclick="showView('home')" data-i18n="nav.home">Home</span>
+        <span>/</span><span class="breadcrumb-current" data-i18n="footer.about">About us</span>
       </div>
     </div>
 
     <div class="directory-section">
-      <h1 class="serif" style="font-size:40px;margin-bottom:24px;">About KATUN</h1>
+      <h1 class="serif" style="font-size:40px;margin-bottom:24px;" data-i18n="about.title">About KATUN</h1>
 
       <div class="about-text">
-        <p>Somewhere in every country there is a person who still knows how a thing was made — a pattern, a glaze, a way of forging or carving that nobody wrote down. Almost none of it was written down. The knowledge lived in hands, and it ends when the hands stop.</p>
+        <p data-i18n="about.p1">Somewhere in every country there is a person who still knows how a thing was made — a pattern, a glaze, a way of forging or carving that nobody wrote down. Almost none of it was written down. The knowledge lived in hands, and it ends when the hands stop.</p>
 
-        <p>KATUN exists to keep the making alive, not just the memory of it. We find the object — in a regional museum, in a family chest, with the last person still working that way — record its ornament and where it comes from, and put it back into production with a maker who can carry it.</p>
+        <p data-i18n="about.p2">KATUN exists to keep the making alive, not just the memory of it. We find the object — in a regional museum, in a family chest, with the last person still working that way — record its ornament and where it comes from, and put it back into production with a maker who can carry it.</p>
 
-        <p>The record is exact: the object, the collection, the region, the motif. The piece is not. A maker reads the record through their own hands, changes the scale, the material, sometimes the composition — and we say on every page what they changed. That is how this knowledge always travelled. A copy belongs under glass; a reading belongs in use.</p>
+        <p data-i18n="about.p3">The record is exact: the object, the collection, the region, the motif. The piece is not. A maker reads the record through their own hands, changes the scale, the material, sometimes the composition — and we say on every page what they changed. That is how this knowledge always travelled. A copy belongs under glass; a reading belongs in use.</p>
 
-        <p>It started with textile in Montenegro, because that is where we live and where the first record came from. It doesn't end there. Clay, metal, wood, weaving, embroidery — different materials, the same method: find it, record it, make it again.</p>
+        <p data-i18n="about.p4">It started with textile in Montenegro, because that is where we live and where the first record came from. It doesn't end there. Clay, metal, wood, weaving, embroidery — different materials, the same method: find it, record it, make it again.</p>
 
-        <p>We're not a marketplace. We choose what goes on this site, we know every maker by name, and we take care of everything that isn't making: the photography, the writing, the translation, the shipping, the buyer. The maker makes. That's the whole arrangement.</p>
+        <p data-i18n="about.p5">We're not a marketplace. We choose what goes on this site, we know every maker by name, and we take care of everything that isn't making: the photography, the writing, the translation, the shipping, the buyer. The maker makes. That's the whole arrangement.</p>
       </div>
 
       <hr class="section-divider" style="margin:56px 0 48px;" />
 
-      <h2 class="serif" style="font-size:32px;margin-bottom:32px;">Who we are</h2>
+      <h2 class="serif" style="font-size:32px;margin-bottom:32px;" data-i18n="about.team">Who we are</h2>
 
       <div class="team-grid">
         <div class="team-card">
           <div class="team-photo" data-label="Photo"></div>
           <h3 class="serif">Name Surname</h3>
-          <div class="team-role">Founder</div>
+          <div class="team-role" data-i18n="role.founder">Founder</div>
           <p>Short paragraph: where they're from, what they did before, why this project.</p>
         </div>
 
         <div class="team-card">
           <div class="team-photo" data-label="Photo"></div>
           <h3 class="serif">Name Surname</h3>
-          <div class="team-role">Maker</div>
+          <div class="team-role" data-i18n="role.maker">Maker</div>
           <p>Short paragraph: where they're from, what they make, how long they've been doing it.</p>
         </div>
       </div>
@@ -2991,7 +2991,7 @@
 <section id="view-terms" class="view-section">
   <div class="container">
     <div class="breadcrumbs-bar"><div class="breadcrumbs">
-      <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+      <span class="breadcrumb-item" onclick="showView('home')" data-i18n="nav.home">Home</span>
       <span>/</span><span class="breadcrumb-current">Terms &amp; returns</span>
     </div></div>
     <div class="directory-section about-text">
@@ -3029,7 +3029,7 @@
 <section id="view-privacy" class="view-section">
   <div class="container">
     <div class="breadcrumbs-bar"><div class="breadcrumbs">
-      <span class="breadcrumb-item" onclick="showView('home')">Home</span>
+      <span class="breadcrumb-item" onclick="showView('home')" data-i18n="nav.home">Home</span>
       <span>/</span><span class="breadcrumb-current">Privacy</span>
     </div></div>
     <div class="directory-section about-text">
@@ -3376,6 +3376,675 @@
       }
     };
 
+    function addStrings(more) {
+      Object.keys(more).forEach(code => {
+        I18N[code] = Object.assign(I18N[code] || {}, more[code]);
+      });
+    }
+
+    addStrings({
+      en: {
+        'countries.title':'Craft without borders',
+        'dir.workshops':'Workshops','dir.workshopsSub':"Makers working from the records we've collected, in every material.",
+        'dir.partners':'Partner Brands','dir.partnersSub':'Independent workshops and studios with their own collections.',
+        'patterns.title':'The record','patterns.sub':'Ornaments recovered from museum collections and from the makers themselves, written down so they can be worked again. Each one names the object it came from and where it was found.',
+        'empty.workshops':'No makers in this direction yet','empty.partners':'No partners in this direction yet',
+        'empty.schemes':'Nothing recorded in this direction yet','empty.museums':'No museum collections recorded in this direction yet',
+        'empty.items':'No pieces in this direction yet','empty.products':'No pieces in this catalogue yet',
+        'empty.chart':'Record in preparation','empty.cart':'Your cart is empty',
+        'meta.digitalRecord':'Digital record','meta.items':'pieces','meta.workshop':'Maker','meta.partner':'Partner',
+        'meta.collection':'Collection','meta.partnerMuseum':'Partner museum','meta.record':'record','meta.records':'records','meta.piece':'piece','meta.pieces':'pieces',
+        'soon.title':'This direction is opening','soon.desc':"We're looking for makers in this region - in any material - and putting its ornaments on record. If you work here, or know someone who does, write to us.",
+        'events.upcoming':'Upcoming sessions','events.soldOut':'Sold out','events.full':'Fully booked','events.reserve':'Reserve a place','events.pay':'Pay now','events.left':'places left',
+        'product.related':'Made from this record','pattern.lock':'The full record comes with purchase',
+        'thanks.title':'Thank you','cart.note':"We'll confirm availability, then send payment details."
+      },
+      de: {
+        'countries.title':'Handwerk ohne Grenzen',
+        'dir.workshops':'Werkstätten','dir.workshopsSub':'Handwerkerinnen, die nach unseren Aufzeichnungen arbeiten, in jedem Material.',
+        'dir.partners':'Partnermarken','dir.partnersSub':'Unabhängige Werkstätten und Studios mit eigenen Kollektionen.',
+        'patterns.title':'Die Aufzeichnung','patterns.sub':'Ornamente aus Museumssammlungen und von den Handwerkerinnen selbst, aufgeschrieben, damit wieder danach gearbeitet werden kann. Jedes nennt das Objekt, von dem es stammt, und wo es gefunden wurde.',
+        'empty.workshops':'Noch keine Handwerkerinnen in dieser Richtung','empty.partners':'Noch keine Partner in dieser Richtung',
+        'empty.schemes':'In dieser Richtung ist noch nichts aufgezeichnet','empty.museums':'In dieser Richtung ist noch keine Museumssammlung erfasst',
+        'empty.items':'Noch keine Stücke in dieser Richtung','empty.products':'Noch keine Stücke in diesem Katalog',
+        'empty.chart':'Aufzeichnung in Vorbereitung','empty.cart':'Ihr Warenkorb ist leer',
+        'meta.digitalRecord':'Digitale Aufzeichnung','meta.items':'Stücke','meta.workshop':'Handwerkerin','meta.partner':'Partner',
+        'meta.collection':'Sammlung','meta.partnerMuseum':'Partnermuseum','meta.record':'Aufzeichnung','meta.records':'Aufzeichnungen','meta.piece':'Stück','meta.pieces':'Stücke',
+        'soon.title':'Diese Richtung öffnet','soon.desc':'Wir suchen Handwerkerinnen in dieser Region - in jedem Material - und zeichnen ihre Ornamente auf. Wenn Sie hier arbeiten oder jemanden kennen, schreiben Sie uns.',
+        'events.upcoming':'Kommende Termine','events.soldOut':'Ausverkauft','events.full':'Ausgebucht','events.reserve':'Platz reservieren','events.pay':'Jetzt bezahlen','events.left':'Plätze frei',
+        'product.related':'Nach dieser Aufzeichnung gemacht','pattern.lock':'Die vollständige Aufzeichnung gibt es beim Kauf',
+        'thanks.title':'Danke','cart.note':'Wir bestätigen die Verfügbarkeit und senden dann die Zahlungsdaten.'
+      },
+      ru: {
+        'countries.title':'Ремесло без границ',
+        'dir.workshops':'Мастерские','dir.workshopsSub':'Мастера, работающие по нашим записям, в любом материале.',
+        'dir.partners':'Партнёрские марки','dir.partnersSub':'Независимые мастерские и студии со своими коллекциями.',
+        'patterns.title':'Записи','patterns.sub':'Орнаменты, поднятые из музейных собраний и у самих мастеров, записанные так, чтобы по ним можно было работать снова. У каждого назван предмет, с которого он снят, и место, где найден.',
+        'empty.workshops':'В этом направлении пока нет мастеров','empty.partners':'В этом направлении пока нет партнёров',
+        'empty.schemes':'В этом направлении пока ничего не записано','empty.museums':'В этом направлении пока нет музейных собраний',
+        'empty.items':'В этом направлении пока нет вещей','empty.products':'В этом каталоге пока нет вещей',
+        'empty.chart':'Запись готовится','empty.cart':'Корзина пуста',
+        'meta.digitalRecord':'Цифровая запись','meta.items':'вещей','meta.workshop':'Мастер','meta.partner':'Партнёр',
+        'meta.collection':'Собрание','meta.partnerMuseum':'Партнёрский музей','meta.record':'запись','meta.records':'записей','meta.piece':'вещь','meta.pieces':'вещей',
+        'soon.title':'Это направление открывается','soon.desc':'Мы ищем мастеров в этом регионе — в любом материале — и записываем его орнаменты. Если вы работаете здесь или знаете того, кто работает, напишите нам.',
+        'events.upcoming':'Ближайшие занятия','events.soldOut':'Мест нет','events.full':'Всё занято','events.reserve':'Забронировать место','events.pay':'Оплатить','events.left':'мест свободно',
+        'product.related':'Сделано по этой записи','pattern.lock':'Полная запись — при покупке',
+        'thanks.title':'Спасибо','cart.note':'Мы подтвердим наличие и пришлём реквизиты для оплаты.'
+      },
+      fr: {
+        'countries.title':'Artisanat sans frontières',
+        'dir.workshops':'Ateliers','dir.workshopsSub':'Des artisanes qui travaillent à partir des notices que nous avons réunies, dans toutes les matières.',
+        'dir.partners':'Marques partenaires','dir.partnersSub':'Ateliers et studios indépendants avec leurs propres collections.',
+        'patterns.title':'Les notices','patterns.sub':"Des ornements retrouvés dans les collections de musée et chez les artisanes elles-mêmes, consignés pour pouvoir être travaillés à nouveau. Chacun nomme l'objet dont il provient et le lieu où il a été trouvé.",
+        'empty.workshops':'Pas encore d’artisanes dans cette direction','empty.partners':'Pas encore de partenaires dans cette direction',
+        'empty.schemes':'Rien de consigné dans cette direction pour le moment','empty.museums':'Aucune collection de musée consignée dans cette direction',
+        'empty.items':'Pas encore de pièces dans cette direction','empty.products':'Pas encore de pièces dans ce catalogue',
+        'empty.chart':'Notice en préparation','empty.cart':'Votre panier est vide',
+        'meta.digitalRecord':'Notice numérique','meta.items':'pièces','meta.workshop':'Artisane','meta.partner':'Partenaire',
+        'meta.collection':'Collection','meta.partnerMuseum':'Musée partenaire','meta.record':'notice','meta.records':'notices','meta.piece':'pièce','meta.pieces':'pièces',
+        'soon.title':'Cette direction ouvre','soon.desc':"Nous cherchons des artisanes dans cette région - dans toutes les matières - et nous consignons ses ornements. Si vous travaillez ici, ou si vous connaissez quelqu'un, écrivez-nous.",
+        'events.upcoming':'Prochaines séances','events.soldOut':'Complet','events.full':'Complet','events.reserve':'Réserver une place','events.pay':'Payer maintenant','events.left':'places restantes',
+        'product.related':'Fait à partir de cette notice','pattern.lock':"La notice complète vient avec l'achat",
+        'thanks.title':'Merci','cart.note':'Nous confirmons la disponibilité, puis nous envoyons les coordonnées de paiement.'
+      },
+      it: {
+        'countries.title':'Artigianato senza confini',
+        'dir.workshops':'Laboratori','dir.workshopsSub':'Artigiane che lavorano a partire dalle registrazioni che abbiamo raccolto, in ogni materiale.',
+        'dir.partners':'Marchi partner','dir.partnersSub':'Laboratori e studi indipendenti con collezioni proprie.',
+        'patterns.title':'Le registrazioni','patterns.sub':"Ornamenti recuperati da collezioni museali e dalle artigiane stesse, messi per iscritto perché si possa lavorarci di nuovo. Ognuno nomina l'oggetto da cui proviene e il luogo in cui è stato trovato.",
+        'empty.workshops':'Ancora nessuna artigiana in questa direzione','empty.partners':'Ancora nessun partner in questa direzione',
+        'empty.schemes':'In questa direzione non è ancora registrato nulla','empty.museums':'Nessuna collezione museale registrata in questa direzione',
+        'empty.items':'Ancora nessun pezzo in questa direzione','empty.products':'Ancora nessun pezzo in questo catalogo',
+        'empty.chart':'Registrazione in preparazione','empty.cart':'Il carrello è vuoto',
+        'meta.digitalRecord':'Registrazione digitale','meta.items':'pezzi','meta.workshop':'Artigiana','meta.partner':'Partner',
+        'meta.collection':'Collezione','meta.partnerMuseum':'Museo partner','meta.record':'registrazione','meta.records':'registrazioni','meta.piece':'pezzo','meta.pieces':'pezzi',
+        'soon.title':'Questa direzione sta aprendo','soon.desc':'Cerchiamo artigiane in questa regione - in ogni materiale - e ne registriamo gli ornamenti. Se lavorate qui, o conoscete qualcuno, scriveteci.',
+        'events.upcoming':'Prossimi incontri','events.soldOut':'Esaurito','events.full':'Al completo','events.reserve':'Prenota un posto','events.pay':'Paga ora','events.left':'posti liberi',
+        'product.related':'Fatto da questa registrazione','pattern.lock':"La registrazione completa arriva con l'acquisto",
+        'thanks.title':'Grazie','cart.note':'Confermiamo la disponibilità e poi inviamo i dati per il pagamento.'
+      },
+      es: {
+        'countries.title':'Artesanía sin fronteras',
+        'dir.workshops':'Talleres','dir.workshopsSub':'Artesanas que trabajan a partir de los registros que hemos reunido, en cualquier material.',
+        'dir.partners':'Marcas asociadas','dir.partnersSub':'Talleres y estudios independientes con colecciones propias.',
+        'patterns.title':'Los registros','patterns.sub':'Ornamentos recuperados de colecciones de museo y de las propias artesanas, puestos por escrito para poder volver a trabajarlos. Cada uno nombra el objeto del que procede y el lugar donde se encontró.',
+        'empty.workshops':'Todavía no hay artesanas en esta dirección','empty.partners':'Todavía no hay socios en esta dirección',
+        'empty.schemes':'Todavía no hay nada registrado en esta dirección','empty.museums':'No hay colecciones de museo registradas en esta dirección',
+        'empty.items':'Todavía no hay piezas en esta dirección','empty.products':'Todavía no hay piezas en este catálogo',
+        'empty.chart':'Registro en preparación','empty.cart':'Tu cesta está vacía',
+        'meta.digitalRecord':'Registro digital','meta.items':'piezas','meta.workshop':'Artesana','meta.partner':'Socio',
+        'meta.collection':'Colección','meta.partnerMuseum':'Museo asociado','meta.record':'registro','meta.records':'registros','meta.piece':'pieza','meta.pieces':'piezas',
+        'soon.title':'Esta dirección está abriendo','soon.desc':'Buscamos artesanas en esta región - en cualquier material - y registramos sus ornamentos. Si trabajas aquí, o conoces a alguien, escríbenos.',
+        'events.upcoming':'Próximas sesiones','events.soldOut':'Agotado','events.full':'Completo','events.reserve':'Reservar plaza','events.pay':'Pagar ahora','events.left':'plazas libres',
+        'product.related':'Hecho a partir de este registro','pattern.lock':'El registro completo llega con la compra',
+        'thanks.title':'Gracias','cart.note':'Confirmamos la disponibilidad y luego enviamos los datos de pago.'
+      },
+      pt: {
+        'countries.title':'Ofício sem fronteiras',
+        'dir.workshops':'Oficinas','dir.workshopsSub':'Artesãs que trabalham a partir dos registos que reunimos, em qualquer material.',
+        'dir.partners':'Marcas parceiras','dir.partnersSub':'Oficinas e estúdios independentes com coleções próprias.',
+        'patterns.title':'Os registos','patterns.sub':'Ornamentos recuperados de coleções de museu e das próprias artesãs, postos por escrito para poderem ser trabalhados de novo. Cada um nomeia o objeto de onde veio e o lugar onde foi encontrado.',
+        'empty.workshops':'Ainda não há artesãs nesta direção','empty.partners':'Ainda não há parceiros nesta direção',
+        'empty.schemes':'Ainda não há nada registado nesta direção','empty.museums':'Não há coleções de museu registadas nesta direção',
+        'empty.items':'Ainda não há peças nesta direção','empty.products':'Ainda não há peças neste catálogo',
+        'empty.chart':'Registo em preparação','empty.cart':'O seu carrinho está vazio',
+        'meta.digitalRecord':'Registo digital','meta.items':'peças','meta.workshop':'Artesã','meta.partner':'Parceiro',
+        'meta.collection':'Coleção','meta.partnerMuseum':'Museu parceiro','meta.record':'registo','meta.records':'registos','meta.piece':'peça','meta.pieces':'peças',
+        'soon.title':'Esta direção está a abrir','soon.desc':'Procuramos artesãs nesta região - em qualquer material - e registamos os seus ornamentos. Se trabalha aqui, ou conhece alguém, escreva-nos.',
+        'events.upcoming':'Próximas sessões','events.soldOut':'Esgotado','events.full':'Lotado','events.reserve':'Reservar lugar','events.pay':'Pagar agora','events.left':'lugares livres',
+        'product.related':'Feito a partir deste registo','pattern.lock':'O registo completo vem com a compra',
+        'thanks.title':'Obrigado','cart.note':'Confirmamos a disponibilidade e depois enviamos os dados de pagamento.'
+      },
+      nl: {
+        'countries.title':'Handwerk zonder grenzen',
+        'dir.workshops':'Werkplaatsen','dir.workshopsSub':'Makers die werken vanuit de vastleggingen die we verzameld hebben, in elk materiaal.',
+        'dir.partners':'Partnermerken','dir.partnersSub':'Onafhankelijke werkplaatsen en studios met eigen collecties.',
+        'patterns.title':'De vastleggingen','patterns.sub':'Ornamenten teruggehaald uit museumcollecties en bij de makers zelf, vastgelegd zodat er weer naar gewerkt kan worden. Elk noemt het voorwerp waar het vandaan komt en waar het gevonden is.',
+        'empty.workshops':'Nog geen makers in deze richting','empty.partners':'Nog geen partners in deze richting',
+        'empty.schemes':'Nog niets vastgelegd in deze richting','empty.museums':'Nog geen museumcollecties vastgelegd in deze richting',
+        'empty.items':'Nog geen stukken in deze richting','empty.products':'Nog geen stukken in deze catalogus',
+        'empty.chart':'Vastlegging in voorbereiding','empty.cart':'Je winkelwagen is leeg',
+        'meta.digitalRecord':'Digitale vastlegging','meta.items':'stukken','meta.workshop':'Maker','meta.partner':'Partner',
+        'meta.collection':'Collectie','meta.partnerMuseum':'Partnermuseum','meta.record':'vastlegging','meta.records':'vastleggingen','meta.piece':'stuk','meta.pieces':'stukken',
+        'soon.title':'Deze richting gaat open','soon.desc':'We zoeken makers in deze streek - in elk materiaal - en leggen haar ornamenten vast. Werk je hier, of ken je iemand, schrijf ons dan.',
+        'events.upcoming':'Komende sessies','events.soldOut':'Uitverkocht','events.full':'Volgeboekt','events.reserve':'Plaats reserveren','events.pay':'Nu betalen','events.left':'plaatsen vrij',
+        'product.related':'Gemaakt naar deze vastlegging','pattern.lock':'De volledige vastlegging krijg je bij aankoop',
+        'thanks.title':'Dank je','cart.note':'We bevestigen de beschikbaarheid en sturen daarna de betaalgegevens.'
+      },
+      sv: {
+        'countries.title':'Hantverk utan gränser',
+        'dir.workshops':'Verkstäder','dir.workshopsSub':'Hantverkare som arbetar utifrån dokumentationen vi samlat, i alla material.',
+        'dir.partners':'Partnermärken','dir.partnersSub':'Fristående verkstäder och studios med egna kollektioner.',
+        'patterns.title':'Dokumentationen','patterns.sub':'Ornament återfunna i museisamlingar och hos hantverkarna själva, nedskrivna så att de kan arbetas igen. Varje ett namnger föremålet det kommer från och platsen där det hittades.',
+        'empty.workshops':'Inga hantverkare i den här riktningen ännu','empty.partners':'Inga partner i den här riktningen ännu',
+        'empty.schemes':'Inget dokumenterat i den här riktningen ännu','empty.museums':'Inga museisamlingar dokumenterade i den här riktningen',
+        'empty.items':'Inga plagg i den här riktningen ännu','empty.products':'Inga plagg i den här katalogen ännu',
+        'empty.chart':'Dokumentation under arbete','empty.cart':'Din varukorg är tom',
+        'meta.digitalRecord':'Digital dokumentation','meta.items':'plagg','meta.workshop':'Hantverkare','meta.partner':'Partner',
+        'meta.collection':'Samling','meta.partnerMuseum':'Partnermuseum','meta.record':'dokumentation','meta.records':'dokumentationer','meta.piece':'plagg','meta.pieces':'plagg',
+        'soon.title':'Den här riktningen öppnar','soon.desc':'Vi söker hantverkare i den här regionen - i alla material - och dokumenterar dess ornament. Arbetar du här, eller känner du någon, skriv till oss.',
+        'events.upcoming':'Kommande tillfällen','events.soldOut':'Slutsålt','events.full':'Fullbokat','events.reserve':'Boka en plats','events.pay':'Betala nu','events.left':'platser kvar',
+        'product.related':'Gjort efter denna dokumentation','pattern.lock':'Hela dokumentationen ingår i köpet',
+        'thanks.title':'Tack','cart.note':'Vi bekräftar tillgången och skickar sedan betalningsuppgifterna.'
+      },
+      pl: {
+        'countries.title':'Rzemiosło bez granic',
+        'dir.workshops':'Pracownie','dir.workshopsSub':'Twórczynie pracujące na podstawie zebranych przez nas zapisów, w każdym materiale.',
+        'dir.partners':'Marki partnerskie','dir.partnersSub':'Niezależne pracownie i studia z własnymi kolekcjami.',
+        'patterns.title':'Zapisy','patterns.sub':'Ornamenty odzyskane ze zbiorów muzealnych i od samych twórczyń, zapisane tak, aby można było znów według nich pracować. Każdy wskazuje przedmiot, z którego pochodzi, i miejsce, gdzie go znaleziono.',
+        'empty.workshops':'W tym kierunku nie ma jeszcze twórczyń','empty.partners':'W tym kierunku nie ma jeszcze partnerów',
+        'empty.schemes':'W tym kierunku nic jeszcze nie zapisano','empty.museums':'W tym kierunku nie zapisano jeszcze zbiorów muzealnych',
+        'empty.items':'W tym kierunku nie ma jeszcze wyrobów','empty.products':'W tym katalogu nie ma jeszcze wyrobów',
+        'empty.chart':'Zapis w przygotowaniu','empty.cart':'Twój koszyk jest pusty',
+        'meta.digitalRecord':'Zapis cyfrowy','meta.items':'wyrobów','meta.workshop':'Twórczyni','meta.partner':'Partner',
+        'meta.collection':'Zbiór','meta.partnerMuseum':'Muzeum partnerskie','meta.record':'zapis','meta.records':'zapisów','meta.piece':'wyrób','meta.pieces':'wyrobów',
+        'soon.title':'Ten kierunek się otwiera','soon.desc':'Szukamy twórczyń w tym regionie - w każdym materiale - i zapisujemy jego ornamenty. Jeśli tu pracujesz albo kogoś znasz, napisz do nas.',
+        'events.upcoming':'Najbliższe zajęcia','events.soldOut':'Brak miejsc','events.full':'Komplet','events.reserve':'Zarezerwuj miejsce','events.pay':'Zapłać teraz','events.left':'wolnych miejsc',
+        'product.related':'Zrobione według tego zapisu','pattern.lock':'Pełny zapis otrzymujesz przy zakupie',
+        'thanks.title':'Dziękujemy','cart.note':'Potwierdzimy dostępność, a potem prześlemy dane do zapłaty.'
+      },
+      sr: {
+        'countries.title':'Zanat bez granica',
+        'dir.workshops':'Radionice','dir.workshopsSub':'Majstorice koje rade po zapisima koje smo sakupili, u svakom materijalu.',
+        'dir.partners':'Partnerske marke','dir.partnersSub':'Nezavisne radionice i studiji sa sopstvenim kolekcijama.',
+        'patterns.title':'Zapisi','patterns.sub':'Ornamenti izvučeni iz muzejskih zbirki i od samih majstorica, zapisani tako da se po njima ponovo može raditi. Svaki imenuje predmet sa kog je snimljen i mesto gde je nađen.',
+        'empty.workshops':'U ovom pravcu još nema majstorica','empty.partners':'U ovom pravcu još nema partnera',
+        'empty.schemes':'U ovom pravcu još ništa nije zapisano','empty.museums':'U ovom pravcu još nema zabeleženih muzejskih zbirki',
+        'empty.items':'U ovom pravcu još nema radova','empty.products':'U ovom katalogu još nema radova',
+        'empty.chart':'Zapis u pripremi','empty.cart':'Vaša korpa je prazna',
+        'meta.digitalRecord':'Digitalni zapis','meta.items':'radova','meta.workshop':'Majstorica','meta.partner':'Partner',
+        'meta.collection':'Zbirka','meta.partnerMuseum':'Partnerski muzej','meta.record':'zapis','meta.records':'zapisa','meta.piece':'rad','meta.pieces':'radova',
+        'soon.title':'Ovaj pravac se otvara','soon.desc':'Tražimo majstorice u ovom regionu - u svakom materijalu - i zapisujemo njegove ornamente. Ako radite ovde ili znate nekoga, pišite nam.',
+        'events.upcoming':'Naredni termini','events.soldOut':'Rasprodato','events.full':'Popunjeno','events.reserve':'Rezerviši mesto','events.pay':'Plati odmah','events.left':'slobodnih mesta',
+        'product.related':'Napravljeno po ovom zapisu','pattern.lock':'Ceo zapis dobijate kupovinom',
+        'thanks.title':'Hvala','cart.note':'Potvrdićemo dostupnost, pa poslati podatke za plaćanje.'
+      },
+      tr: {
+        'countries.title':'Sınırsız zanaat',
+        'dir.workshops':'Atölyeler','dir.workshopsSub':'Topladığımız kayıtlara göre çalışan ustalar, her malzemede.',
+        'dir.partners':'Ortak markalar','dir.partnersSub':'Kendi koleksiyonları olan bağımsız atölyeler ve stüdyolar.',
+        'patterns.title':'Kayıtlar','patterns.sub':'Müze koleksiyonlarından ve ustaların kendilerinden çıkarılmış, yeniden çalışılabilsin diye yazıya geçirilmiş motifler. Her biri geldiği nesneyi ve bulunduğu yeri adıyla anar.',
+        'empty.workshops':'Bu yönde henüz usta yok','empty.partners':'Bu yönde henüz ortak yok',
+        'empty.schemes':'Bu yönde henüz bir kayıt yok','empty.museums':'Bu yönde henüz müze koleksiyonu kaydı yok',
+        'empty.items':'Bu yönde henüz parça yok','empty.products':'Bu katalogda henüz parça yok',
+        'empty.chart':'Kayıt hazırlanıyor','empty.cart':'Sepetiniz boş',
+        'meta.digitalRecord':'Dijital kayıt','meta.items':'parça','meta.workshop':'Usta','meta.partner':'Ortak',
+        'meta.collection':'Koleksiyon','meta.partnerMuseum':'Ortak müze','meta.record':'kayıt','meta.records':'kayıt','meta.piece':'parça','meta.pieces':'parça',
+        'soon.title':'Bu yön açılıyor','soon.desc':'Bu bölgede usta arıyoruz - her malzemede - ve buranın motiflerini kayda geçiriyoruz. Burada çalışıyorsanız ya da birini tanıyorsanız, bize yazın.',
+        'events.upcoming':'Yaklaşan oturumlar','events.soldOut':'Tükendi','events.full':'Kontenjan dolu','events.reserve':'Yer ayırt','events.pay':'Şimdi öde','events.left':'yer kaldı',
+        'product.related':'Bu kayıttan yapıldı','pattern.lock':'Tam kayıt satın alımla birlikte gelir',
+        'thanks.title':'Teşekkürler','cart.note':'Uygunluğu onaylayıp ardından ödeme bilgilerini göndeririz.'
+      }
+    });
+
+    addStrings({
+      en: {
+        'about.title':'About KATUN','about.team':'Who we are','role.founder':'Founder','role.maker':'Maker',
+        'fm.cta':'Join us','fm.money.t':'Where the money goes','fm.split.you':'You','fm.split.youNote':'your materials and your work','fm.split.katunNote':'page, photography, words, translation, promotion, the buyer',
+        'fm.promise.t':"What we can't promise",'fm.beyond.t':'Beyond selling','fm.form.t':'Write to us','fm.form.sub':'Tell us what you make and where. We answer every message ourselves.',
+        'form.name':'Your name','form.country':'Country','form.email':'Email','form.what':'What you make and what you work in','form.message':'Message','form.send':'Send',
+        'form.brand':'Brand or workshop name','form.web':'Website or Instagram'
+      },
+      de: {
+        'about.title':'Über KATUN','about.team':'Wer wir sind','role.founder':'Gründer','role.maker':'Handwerkerin',
+        'fm.cta':'Mitmachen','fm.money.t':'Wohin das Geld geht','fm.split.you':'Sie','fm.split.youNote':'Ihr Material und Ihre Arbeit','fm.split.katunNote':'Seite, Fotografie, Texte, Übersetzung, Werbung, der Käufer',
+        'fm.promise.t':'Was wir nicht versprechen können','fm.beyond.t':'Über den Verkauf hinaus','fm.form.t':'Schreiben Sie uns','fm.form.sub':'Erzählen Sie uns, was Sie machen und wo. Wir beantworten jede Nachricht selbst.',
+        'form.name':'Ihr Name','form.country':'Land','form.email':'E-Mail','form.what':'Was Sie machen und womit Sie arbeiten','form.message':'Nachricht','form.send':'Senden',
+        'form.brand':'Marke oder Werkstatt','form.web':'Website oder Instagram'
+      },
+      ru: {
+        'about.title':'О KATUN','about.team':'Кто мы','role.founder':'Основатель','role.maker':'Мастер',
+        'fm.cta':'Присоединиться','fm.money.t':'Куда идут деньги','fm.split.you':'Вам','fm.split.youNote':'ваш материал и ваша работа','fm.split.katunNote':'страница, съёмка, тексты, перевод, продвижение, покупатель',
+        'fm.promise.t':'Чего мы не можем обещать','fm.beyond.t':'Не только продажа','fm.form.t':'Напишите нам','fm.form.sub':'Расскажите, что вы делаете и где. Мы отвечаем на каждое письмо сами.',
+        'form.name':'Ваше имя','form.country':'Страна','form.email':'Почта','form.what':'Что вы делаете и в каком материале','form.message':'Сообщение','form.send':'Отправить',
+        'form.brand':'Марка или мастерская','form.web':'Сайт или Instagram'
+      },
+      fr: {
+        'about.title':'À propos de KATUN','about.team':'Qui nous sommes','role.founder':'Fondateur','role.maker':'Artisane',
+        'fm.cta':'Nous rejoindre','fm.money.t':"Où va l'argent",'fm.split.you':'Vous','fm.split.youNote':'vos matières et votre travail','fm.split.katunNote':"la page, la photo, les textes, la traduction, la promotion, l'acheteur",
+        'fm.promise.t':'Ce que nous ne pouvons pas promettre','fm.beyond.t':'Au-delà de la vente','fm.form.t':'Écrivez-nous','fm.form.sub':'Dites-nous ce que vous faites et où. Nous répondons nous-mêmes à chaque message.',
+        'form.name':'Votre nom','form.country':'Pays','form.email':'E-mail','form.what':'Ce que vous faites et la matière','form.message':'Message','form.send':'Envoyer',
+        'form.brand':'Marque ou atelier','form.web':'Site ou Instagram'
+      },
+      it: {
+        'about.title':'Chi è KATUN','about.team':'Chi siamo','role.founder':'Fondatore','role.maker':'Artigiana',
+        'fm.cta':'Unisciti','fm.money.t':'Dove vanno i soldi','fm.split.you':'A te','fm.split.youNote':'i tuoi materiali e il tuo lavoro','fm.split.katunNote':"la pagina, le foto, i testi, la traduzione, la promozione, l'acquirente",
+        'fm.promise.t':'Cosa non possiamo promettere','fm.beyond.t':'Oltre la vendita','fm.form.t':'Scrivici','fm.form.sub':'Dicci cosa fai e dove. Rispondiamo noi stessi a ogni messaggio.',
+        'form.name':'Il tuo nome','form.country':'Paese','form.email':'E-mail','form.what':'Cosa fai e in quale materiale','form.message':'Messaggio','form.send':'Invia',
+        'form.brand':'Marchio o laboratorio','form.web':'Sito o Instagram'
+      },
+      es: {
+        'about.title':'Sobre KATUN','about.team':'Quiénes somos','role.founder':'Fundador','role.maker':'Artesana',
+        'fm.cta':'Únete','fm.money.t':'Adónde va el dinero','fm.split.you':'Para ti','fm.split.youNote':'tus materiales y tu trabajo','fm.split.katunNote':'la página, la fotografía, los textos, la traducción, la difusión, el comprador',
+        'fm.promise.t':'Lo que no podemos prometer','fm.beyond.t':'Más allá de vender','fm.form.t':'Escríbenos','fm.form.sub':'Cuéntanos qué haces y dónde. Respondemos cada mensaje nosotros mismos.',
+        'form.name':'Tu nombre','form.country':'País','form.email':'Correo','form.what':'Qué haces y en qué material','form.message':'Mensaje','form.send':'Enviar',
+        'form.brand':'Marca o taller','form.web':'Web o Instagram'
+      },
+      pt: {
+        'about.title':'Sobre a KATUN','about.team':'Quem somos','role.founder':'Fundador','role.maker':'Artesã',
+        'fm.cta':'Junte-se','fm.money.t':'Para onde vai o dinheiro','fm.split.you':'Para si','fm.split.youNote':'os seus materiais e o seu trabalho','fm.split.katunNote':'a página, a fotografia, os textos, a tradução, a divulgação, o comprador',
+        'fm.promise.t':'O que não podemos prometer','fm.beyond.t':'Para além da venda','fm.form.t':'Escreva-nos','fm.form.sub':'Diga-nos o que faz e onde. Respondemos nós próprios a cada mensagem.',
+        'form.name':'O seu nome','form.country':'País','form.email':'E-mail','form.what':'O que faz e em que material','form.message':'Mensagem','form.send':'Enviar',
+        'form.brand':'Marca ou oficina','form.web':'Site ou Instagram'
+      },
+      nl: {
+        'about.title':'Over KATUN','about.team':'Wie we zijn','role.founder':'Oprichter','role.maker':'Maker',
+        'fm.cta':'Meedoen','fm.money.t':'Waar het geld heen gaat','fm.split.you':'Jij','fm.split.youNote':'jouw materiaal en jouw werk','fm.split.katunNote':'de pagina, fotografie, teksten, vertaling, promotie, de koper',
+        'fm.promise.t':'Wat we niet kunnen beloven','fm.beyond.t':'Meer dan verkopen','fm.form.t':'Schrijf ons','fm.form.sub':'Vertel ons wat je maakt en waar. We beantwoorden elk bericht zelf.',
+        'form.name':'Je naam','form.country':'Land','form.email':'E-mail','form.what':'Wat je maakt en waarin je werkt','form.message':'Bericht','form.send':'Versturen',
+        'form.brand':'Merk of werkplaats','form.web':'Website of Instagram'
+      },
+      sv: {
+        'about.title':'Om KATUN','about.team':'Vilka vi är','role.founder':'Grundare','role.maker':'Hantverkare',
+        'fm.cta':'Gå med','fm.money.t':'Vart pengarna går','fm.split.you':'Du','fm.split.youNote':'ditt material och ditt arbete','fm.split.katunNote':'sidan, fotografering, texter, översättning, spridning, köparen',
+        'fm.promise.t':'Vad vi inte kan lova','fm.beyond.t':'Mer än försäljning','fm.form.t':'Skriv till oss','fm.form.sub':'Berätta vad du gör och var. Vi svarar själva på varje meddelande.',
+        'form.name':'Ditt namn','form.country':'Land','form.email':'E-post','form.what':'Vad du gör och i vilket material','form.message':'Meddelande','form.send':'Skicka',
+        'form.brand':'Märke eller verkstad','form.web':'Webbplats eller Instagram'
+      },
+      pl: {
+        'about.title':'O KATUN','about.team':'Kim jesteśmy','role.founder':'Założyciel','role.maker':'Twórczyni',
+        'fm.cta':'Dołącz','fm.money.t':'Dokąd idą pieniądze','fm.split.you':'Ty','fm.split.youNote':'twój materiał i twoja praca','fm.split.katunNote':'strona, zdjęcia, teksty, tłumaczenie, promocja, kupujący',
+        'fm.promise.t':'Czego nie możemy obiecać','fm.beyond.t':'Więcej niż sprzedaż','fm.form.t':'Napisz do nas','fm.form.sub':'Napisz, co robisz i gdzie. Na każdą wiadomość odpowiadamy sami.',
+        'form.name':'Twoje imię','form.country':'Kraj','form.email':'E-mail','form.what':'Co robisz i w jakim materiale','form.message':'Wiadomość','form.send':'Wyślij',
+        'form.brand':'Marka lub pracownia','form.web':'Strona lub Instagram'
+      },
+      sr: {
+        'about.title':'O KATUN-u','about.team':'Ko smo mi','role.founder':'Osnivač','role.maker':'Majstorica',
+        'fm.cta':'Pridruži se','fm.money.t':'Kuda ide novac','fm.split.you':'Vama','fm.split.youNote':'vaš materijal i vaš rad','fm.split.katunNote':'stranica, fotografija, tekstovi, prevod, promocija, kupac',
+        'fm.promise.t':'Šta ne možemo da obećamo','fm.beyond.t':'Više od prodaje','fm.form.t':'Pišite nam','fm.form.sub':'Recite nam šta radite i gde. Na svaku poruku odgovaramo sami.',
+        'form.name':'Vaše ime','form.country':'Zemlja','form.email':'Imejl','form.what':'Šta radite i u kom materijalu','form.message':'Poruka','form.send':'Pošalji',
+        'form.brand':'Marka ili radionica','form.web':'Sajt ili Instagram'
+      },
+      tr: {
+        'about.title':'KATUN hakkında','about.team':'Biz kimiz','role.founder':'Kurucu','role.maker':'Usta',
+        'fm.cta':'Katıl','fm.money.t':'Para nereye gidiyor','fm.split.you':'Size','fm.split.youNote':'malzemeniz ve emeğiniz','fm.split.katunNote':'sayfa, fotoğraf, metin, çeviri, tanıtım, alıcı',
+        'fm.promise.t':'Söz veremediğimiz şey','fm.beyond.t':'Satışın ötesinde','fm.form.t':'Bize yazın','fm.form.sub':'Ne yaptığınızı ve nerede yaptığınızı yazın. Her mesaja kendimiz cevap veriyoruz.',
+        'form.name':'Adınız','form.country':'Ülke','form.email':'E-posta','form.what':'Ne yaptığınız ve hangi malzemeyle','form.message':'Mesaj','form.send':'Gönder',
+        'form.brand':'Marka veya atölye','form.web':'Web sitesi veya Instagram'
+      }
+    });
+
+    addStrings({
+      en: {
+        'about.p1':'Somewhere in every country there is a person who still knows how a thing was made - a pattern, a glaze, a way of forging or carving that nobody wrote down. Almost none of it was written down. The knowledge lived in hands, and it ends when the hands stop.',
+        'about.p2':'KATUN exists to keep the making alive, not just the memory of it. We find the object - in a regional museum, in a family chest, with the last person still working that way - record its ornament and where it comes from, and put it back into production with a maker who can carry it.',
+        'about.p3':'The record is exact: the object, the collection, the region, the motif. The piece is not. A maker reads the record through their own hands, changes the scale, the material, sometimes the composition - and we say on every page what they changed. That is how this knowledge always travelled. A copy belongs under glass; a reading belongs in use.',
+        'about.p4':"It started with textile in Montenegro, because that is where we live and where the first record came from. It doesn't end there. Clay, metal, wood, weaving, embroidery - different materials, the same method: find it, record it, make it again.",
+        'about.p5':"We're not a marketplace. We choose what goes on this site, we know every maker by name, and we take care of everything that isn't making: the photography, the writing, the translation, the shipping, the buyer. The maker makes. That's the whole arrangement.",
+        'fm.sub':"Whatever you work in - wool, clay, metal, wood - you don't need English, a camera or a shop to sell what you make. You need someone to do that part for you. That's us.",
+        'fm.p1t':"You're not on your own",'fm.p1p':'Photography, descriptions, translation, shipping, talking to the buyer, handling returns. All of it is ours - including how to pack what you make, so it arrives the way it left.',
+        'fm.p2t':'Your name stays on it','fm.p2p':'Not an anonymous seller ID. Your name, your region, your technique - on the page and on the tag. And what you changed in the pattern is written there as yours, not hidden.',
+        'fm.p3t':'You know your share before you start','fm.p3p':'No listing fees. No paying to be seen. No money held for months. A fixed share of the price the buyer pays, agreed before you cast on.',
+        'fm.money.p':'The buyer pays one price, and most of it is yours. Until 1 December 2026 our share is 25%, so you keep 75%. Coordinators and museums are paid out of our share, never out of yours.',
+        'fm.promise.p1':"We're at the start. There are no sales yet, so we can't promise you a number. What we can promise is a share you know in advance and conditions that don't change behind your back.",
+        'fm.promise.p2':"If you're looking for a guaranteed salary, this isn't the place, and we'd rather say so now.",
+        'fm.beyond.p':'The ornaments you work with become records we sell - and you get a share of every record sold, not just every piece. Later: in-person workshops in your region, recorded courses, and a permanent archive of what you know.',
+        'fs.title':'For workshops, studios and brands',
+        'fs.sub':"You already make the work. We give you a page, put it in front of people who came looking for exactly this, and take care of everything that isn't making.",
+        'fs.p1t':'Your own page','fs.p1p':"Your name, your city, your story and your full catalogue - with a link out to your own site. You keep your brand. You don't dissolve into a marketplace.",
+        'fs.p2t':'We make your photos work','fs.p2p':'Send us what you have, even from a phone. We crop, colour-correct and prepare them for the site - and you get the files back for your own use.',
+        'fs.p3t':'Written and translated','fs.p3p':'Descriptions, captions and messages with buyers, in English. The barrier that keeps most workshops from ever selling outside their own country.',
+        'fs.p4t':'Nothing to pay to be here','fs.p4p':'No listing fees, no ads you have to buy, no charge for a place on the site. A share of what actually sells, and nothing before that.',
+        'fs.p5t':'Your ornaments on record','fs.p5p':"We document where each ornament comes from - in textile, clay, metal or wood - and keep it. If a workshop closes, what it knew doesn't disappear with it. That's the part museums and archives talk to us about.",
+        'fs.take.t':'What we take, and for what','fs.take.p':'We take the sale price as 100%. Nothing else.',
+        'fs.shop':'Your shop','fs.shopNote':'materials and your work','fs.katunNote':'page, photo prep, copy, translation, promotion, the buyer',
+        'fs.commission':"This is a commission, not a wholesale discount. We don't buy your stock - your pieces stay yours until they reach the customer.",
+        'fs.price':'You set the price the buyer sees. Our share comes out of it, never on top of it. Until 1 December 2026 that share is 25%, so you keep 75%.',
+        'fs.now.t':'Where we are now','fs.going.t':'Where this is going',
+        'fs.going.p':'A base inside the EU, so parcels from outside it stop being expensive and unpredictable for everyone we work with. In-person workshops in your region. And a growing record of the ornaments each direction is built on.',
+        'fs.form.t':'Talk to us','fs.form.sub':"Send us a link to your work and we'll come back to you."
+      },
+      de: {
+        'about.p1':'Irgendwo in jedem Land gibt es einen Menschen, der noch weiß, wie eine Sache gemacht wurde - ein Muster, eine Glasur, eine Art zu schmieden oder zu schnitzen, die niemand aufgeschrieben hat. Fast nichts davon wurde aufgeschrieben. Das Wissen lebte in den Händen, und es endet, wenn die Hände aufhören.',
+        'about.p2':'KATUN gibt es, um das Machen am Leben zu halten, nicht nur die Erinnerung daran. Wir finden das Objekt - in einem regionalen Museum, in einer Familientruhe, bei der letzten Person, die noch so arbeitet - halten sein Ornament und seine Herkunft fest und geben es mit einer Handwerkerin, die es weitertragen kann, zurück in die Herstellung.',
+        'about.p3':'Die Aufzeichnung ist genau: das Objekt, die Sammlung, die Region, das Motiv. Das Stück ist es nicht. Eine Handwerkerin liest die Aufzeichnung durch ihre eigenen Hände, ändert den Maßstab, das Material, manchmal die Komposition - und wir schreiben auf jeder Seite, was sie geändert hat. So ist dieses Wissen immer gewandert. Eine Kopie gehört unter Glas, eine Lesart gehört in Gebrauch.',
+        'about.p4':'Angefangen hat es mit Textil in Montenegro, weil wir dort leben und die erste Aufzeichnung von dort kam. Dabei bleibt es nicht. Ton, Metall, Holz, Weben, Stickerei - andere Materialien, dieselbe Methode: finden, aufzeichnen, wieder machen.',
+        'about.p5':'Wir sind kein Marktplatz. Wir wählen aus, was auf diese Seite kommt, wir kennen jede Handwerkerin beim Namen, und wir kümmern uns um alles, was nicht das Machen ist: Fotografie, Texte, Übersetzung, Versand, den Käufer. Die Handwerkerin macht. Das ist die ganze Abmachung.',
+        'fm.sub':'Womit Sie auch arbeiten - Wolle, Ton, Metall, Holz - Sie brauchen kein Englisch, keine Kamera und keinen Laden, um zu verkaufen, was Sie machen. Sie brauchen jemanden, der diesen Teil übernimmt. Das sind wir.',
+        'fm.p1t':'Sie sind nicht allein','fm.p1p':'Fotografie, Beschreibungen, Übersetzung, Versand, Gespräche mit dem Käufer, Rücksendungen. All das ist unsere Sache - auch wie man verpackt, was Sie machen, damit es so ankommt, wie es losging.',
+        'fm.p2t':'Ihr Name bleibt darauf','fm.p2p':'Keine anonyme Verkäufernummer. Ihr Name, Ihre Region, Ihre Technik - auf der Seite und auf dem Anhänger. Und was Sie am Muster verändert haben, steht dort als Ihres, nicht versteckt.',
+        'fm.p3t':'Sie kennen Ihren Anteil, bevor Sie anfangen','fm.p3p':'Keine Einstellgebühren. Kein Bezahlen für Sichtbarkeit. Kein Geld, das monatelang liegt. Ein fester Anteil am Preis, den der Käufer zahlt, vereinbart, bevor Sie anschlagen.',
+        'fm.money.p':'Der Käufer zahlt einen Preis, und das meiste davon gehört Ihnen. Bis zum 1. Dezember 2026 beträgt unser Anteil 25 %, Sie behalten also 75 %. Koordinatoren und Museen werden aus unserem Anteil bezahlt, nie aus Ihrem.',
+        'fm.promise.p1':'Wir stehen am Anfang. Es gibt noch keine Verkäufe, also können wir Ihnen keine Zahl versprechen. Versprechen können wir einen Anteil, den Sie vorher kennen, und Bedingungen, die sich nicht hinter Ihrem Rücken ändern.',
+        'fm.promise.p2':'Wenn Sie ein garantiertes Gehalt suchen, ist das hier nicht der richtige Ort, und das sagen wir lieber jetzt.',
+        'fm.beyond.p':'Die Ornamente, mit denen Sie arbeiten, werden zu Aufzeichnungen, die wir verkaufen - und Sie bekommen einen Anteil an jeder verkauften Aufzeichnung, nicht nur an jedem Stück. Später: Kurse vor Ort in Ihrer Region, aufgezeichnete Kurse und ein dauerhaftes Archiv dessen, was Sie können.',
+        'fs.title':'Für Werkstätten, Studios und Marken',
+        'fs.sub':'Sie machen die Arbeit bereits. Wir geben Ihnen eine Seite, stellen sie vor Menschen, die genau danach gesucht haben, und kümmern uns um alles, was nicht das Machen ist.',
+        'fs.p1t':'Ihre eigene Seite','fs.p1p':'Ihr Name, Ihre Stadt, Ihre Geschichte und Ihr ganzer Katalog - mit einem Link zu Ihrer eigenen Seite. Ihre Marke bleibt Ihre. Sie lösen sich nicht in einem Marktplatz auf.',
+        'fs.p2t':'Wir machen Ihre Fotos brauchbar','fs.p2p':'Schicken Sie uns, was Sie haben, auch vom Telefon. Wir schneiden zu, korrigieren die Farben und bereiten sie für die Seite auf - und Sie bekommen die Dateien für den eigenen Gebrauch zurück.',
+        'fs.p3t':'Geschrieben und übersetzt','fs.p3p':'Beschreibungen, Bildtexte und die Korrespondenz mit Käufern, auf Englisch. Genau die Hürde, an der die meisten Werkstätten scheitern, wenn sie außerhalb des eigenen Landes verkaufen wollen.',
+        'fs.p4t':'Nichts zu zahlen, um hier zu sein','fs.p4p':'Keine Einstellgebühren, keine Anzeigen, die Sie kaufen müssen, keine Gebühr für einen Platz auf der Seite. Ein Anteil an dem, was tatsächlich verkauft wird, und davor nichts.',
+        'fs.p5t':'Ihre Ornamente aufgezeichnet','fs.p5p':'Wir halten fest, woher jedes Ornament kommt - in Textil, Ton, Metall oder Holz - und bewahren es. Wenn eine Werkstatt schließt, verschwindet ihr Wissen nicht mit ihr. Genau darüber sprechen Museen und Archive mit uns.',
+        'fs.take.t':'Was wir nehmen, und wofür','fs.take.p':'Wir nehmen den Verkaufspreis als 100 %. Sonst nichts.',
+        'fs.shop':'Ihr Laden','fs.shopNote':'Material und Ihre Arbeit','fs.katunNote':'Seite, Bildbearbeitung, Texte, Übersetzung, Werbung, der Käufer',
+        'fs.commission':'Das ist eine Provision, kein Großhandelsrabatt. Wir kaufen Ihre Ware nicht - Ihre Stücke bleiben Ihre, bis sie beim Kunden sind.',
+        'fs.price':'Sie legen den Preis fest, den der Käufer sieht. Unser Anteil kommt daraus, nie obendrauf. Bis zum 1. Dezember 2026 beträgt dieser Anteil 25 %, Sie behalten also 75 %.',
+        'fs.now.t':'Wo wir gerade stehen','fs.going.t':'Wohin das geht',
+        'fs.going.p':'Ein Standort innerhalb der EU, damit Pakete von außerhalb für alle, mit denen wir arbeiten, nicht mehr teuer und unberechenbar sind. Kurse vor Ort in Ihrer Region. Und ein wachsendes Verzeichnis der Ornamente, auf denen jede Richtung aufbaut.',
+        'fs.form.t':'Sprechen Sie uns an','fs.form.sub':'Schicken Sie uns einen Link zu Ihrer Arbeit, wir melden uns.'
+      },
+      ru: {
+        'about.p1':'В каждой стране есть человек, который ещё помнит, как делалась вещь, — узор, глазурь, приём ковки или резьбы, который никто не записал. Почти ничего из этого не записано. Знание жило в руках и заканчивается, когда руки останавливаются.',
+        'about.p2':'KATUN существует, чтобы сохранить само делание, а не только память о нём. Мы находим предмет — в областном музее, в семейном сундуке, у последнего человека, который ещё так работает, — записываем его орнамент и происхождение и возвращаем в работу с мастером, который сможет его вести.',
+        'about.p3':'Запись точна: предмет, собрание, регион, мотив. Вещь — нет. Мастер читает запись своими руками, меняет масштаб, материал, иногда композицию — и мы на каждой странице говорим, что он изменил. Так это знание всегда и передавалось. Копия лежит под стеклом, прочтение живёт в употреблении.',
+        'about.p4':'Началось с текстиля в Черногории, потому что мы здесь живём и отсюда пришла первая запись. Этим не заканчивается. Глина, металл, дерево, ткачество, вышивка — разные материалы, тот же метод: найти, записать, сделать снова.',
+        'about.p5':'Мы не маркетплейс. Мы выбираем, что попадает на этот сайт, знаем каждого мастера по имени и берём на себя всё, что не является деланием: съёмку, тексты, перевод, доставку, покупателя. Мастер делает. В этом всё соглашение.',
+        'fm.sub':'В каком бы материале вы ни работали — шерсть, глина, металл, дерево — вам не нужен английский, камера или магазин, чтобы продать то, что вы делаете. Вам нужен тот, кто возьмёт эту часть на себя. Это мы.',
+        'fm.p1t':'Вы не одна','fm.p1p':'Съёмка, описания, перевод, доставка, разговор с покупателем, возвраты. Всё это наше — включая то, как упаковать сделанное, чтобы оно доехало таким, каким уехало.',
+        'fm.p2t':'Ваше имя остаётся на вещи','fm.p2p':'Не безличный номер продавца. Ваше имя, ваш регион, ваша техника — на странице и на бирке. И то, что вы изменили в узоре, записано там как ваше, а не спрятано.',
+        'fm.p3t':'Вы знаете свою долю до начала работы','fm.p3p':'Никакой платы за размещение. Никакой платы за то, чтобы вас увидели. Никаких денег, замороженных на месяцы. Твёрдая доля от цены, которую платит покупатель, оговорённая до того, как вы наберёте петли.',
+        'fm.money.p':'Покупатель платит одну цену, и большая её часть ваша. До 1 декабря 2026 года наша доля 25%, то есть вы оставляете себе 75%. Координаторы и музеи получают из нашей доли, никогда из вашей.',
+        'fm.promise.p1':'Мы в самом начале. Продаж пока нет, поэтому мы не можем обещать вам цифру. Что мы можем обещать — это доля, известная заранее, и условия, которые не меняются за вашей спиной.',
+        'fm.promise.p2':'Если вы ищете гарантированную зарплату, это не то место, и мы лучше скажем об этом сразу.',
+        'fm.beyond.p':'Орнаменты, с которыми вы работаете, становятся записями, которые мы продаём, — и вы получаете долю с каждой проданной записи, а не только с каждой вещи. Позже: очные занятия в вашем регионе, записанные курсы и постоянный архив того, что вы знаете.',
+        'fs.title':'Мастерским, студиям и маркам',
+        'fs.sub':'Работу вы уже делаете. Мы даём вам страницу, показываем её людям, которые пришли именно за этим, и берём на себя всё, что не является деланием.',
+        'fs.p1t':'Своя страница','fs.p1p':'Ваше имя, ваш город, ваша история и весь ваш каталог — со ссылкой на ваш собственный сайт. Марка остаётся вашей. Вы не растворяетесь в маркетплейсе.',
+        'fs.p2t':'Мы доводим ваши фотографии','fs.p2p':'Пришлите что есть, хоть с телефона. Мы кадрируем, поправим цвет и подготовим для сайта — а файлы вернём вам для собственного использования.',
+        'fs.p3t':'Написано и переведено','fs.p3p':'Описания, подписи и переписка с покупателями, на английском. Тот самый барьер, из-за которого большинство мастерских так и не начинают продавать за пределами своей страны.',
+        'fs.p4t':'За присутствие здесь платить не нужно','fs.p4p':'Ни платы за размещение, ни рекламы, которую надо выкупать, ни платы за место на сайте. Доля с того, что действительно продалось, и ничего до этого.',
+        'fs.p5t':'Ваши орнаменты записаны','fs.p5p':'Мы фиксируем, откуда взялся каждый орнамент — в текстиле, глине, металле или дереве, — и храним это. Если мастерская закроется, её знание не исчезнет вместе с ней. Именно об этом с нами говорят музеи и архивы.',
+        'fs.take.t':'Что мы берём и за что','fs.take.p':'Мы берём цену продажи за 100%. Больше ничего.',
+        'fs.shop':'Вашей мастерской','fs.shopNote':'материалы и ваша работа','fs.katunNote':'страница, подготовка фото, тексты, перевод, продвижение, покупатель',
+        'fs.commission':'Это комиссия, а не оптовая скидка. Мы не выкупаем товар — вещи остаются вашими, пока не дойдут до покупателя.',
+        'fs.price':'Цену, которую видит покупатель, назначаете вы. Наша доля выходит из неё, а не добавляется сверху. До 1 декабря 2026 года эта доля 25%, то есть вы оставляете себе 75%.',
+        'fs.now.t':'Где мы сейчас','fs.going.t':'Куда это идёт',
+        'fs.going.p':'База внутри ЕС, чтобы посылки извне перестали быть дорогими и непредсказуемыми для всех, с кем мы работаем. Очные занятия в вашем регионе. И растущий свод орнаментов, на которых стоит каждое направление.',
+        'fs.form.t':'Поговорите с нами','fs.form.sub':'Пришлите ссылку на свои работы, и мы вам ответим.'
+      },
+      fr: {
+        'about.p1':"Dans chaque pays, quelque part, il y a une personne qui sait encore comment une chose se faisait - un motif, un émail, une façon de forger ou de sculpter que personne n'a écrite. Presque rien n'a été écrit. Le savoir vivait dans les mains, et il s'arrête quand les mains s'arrêtent.",
+        'about.p2':"KATUN existe pour garder le faire vivant, pas seulement son souvenir. Nous trouvons l'objet - dans un musée régional, dans un coffre de famille, chez la dernière personne qui travaille encore ainsi - nous consignons son ornement et son origine, et nous le remettons en production avec une artisane capable de le porter.",
+        'about.p3':"La notice est exacte : l'objet, la collection, la région, le motif. La pièce ne l'est pas. Une artisane lit la notice avec ses propres mains, change l'échelle, la matière, parfois la composition - et nous disons sur chaque page ce qu'elle a changé. C'est ainsi que ce savoir a toujours voyagé. Une copie est faite pour la vitrine ; une lecture est faite pour l'usage.",
+        'about.p4':"Cela a commencé par le textile au Monténégro, parce que c'est là que nous vivons et que la première notice en vient. Cela ne s'arrête pas là. Argile, métal, bois, tissage, broderie - des matières différentes, la même méthode : trouver, consigner, refaire.",
+        'about.p5':"Nous ne sommes pas une place de marché. Nous choisissons ce qui figure sur ce site, nous connaissons chaque artisane par son nom, et nous prenons en charge tout ce qui n'est pas le faire : la photographie, les textes, la traduction, l'expédition, l'acheteur. L'artisane fait. C'est tout l'accord.",
+        'fm.sub':"Quelle que soit votre matière - laine, argile, métal, bois - vous n'avez besoin ni d'anglais, ni d'appareil photo, ni de boutique pour vendre ce que vous faites. Vous avez besoin de quelqu'un pour cette partie. C'est nous.",
+        'fm.p1t':"Vous n'êtes pas seule",'fm.p1p':"Photographie, descriptions, traduction, expédition, échanges avec l'acheteur, retours. Tout cela est à nous - y compris la façon d'emballer ce que vous faites, pour qu'il arrive comme il est parti.",
+        'fm.p2t':'Votre nom reste dessus','fm.p2p':"Pas un identifiant de vendeur anonyme. Votre nom, votre région, votre technique - sur la page et sur l'étiquette. Et ce que vous avez changé au motif y est écrit comme vôtre, pas dissimulé.",
+        'fm.p3t':'Vous connaissez votre part avant de commencer','fm.p3p':"Pas de frais de mise en ligne. Rien à payer pour être vue. Pas d'argent bloqué pendant des mois. Une part fixe du prix que paie l'acheteur, convenue avant que vous ne montiez vos mailles.",
+        'fm.money.p':"L'acheteur paie un prix, et l'essentiel vous revient. Jusqu'au 1er décembre 2026 notre part est de 25 %, vous gardez donc 75 %. Les coordinateurs et les musées sont payés sur notre part, jamais sur la vôtre.",
+        'fm.promise.p1':"Nous débutons. Il n'y a pas encore de ventes, nous ne pouvons donc pas vous promettre un chiffre. Ce que nous pouvons promettre, c'est une part connue d'avance et des conditions qui ne changent pas dans votre dos.",
+        'fm.promise.p2':"Si vous cherchez un salaire garanti, ce n'est pas le bon endroit, et nous préférons le dire maintenant.",
+        'fm.beyond.p':"Les ornements avec lesquels vous travaillez deviennent des notices que nous vendons - et vous touchez une part sur chaque notice vendue, pas seulement sur chaque pièce. Plus tard : des ateliers en présentiel dans votre région, des cours enregistrés, et une archive durable de ce que vous savez.",
+        'fs.title':'Pour les ateliers, les studios et les marques',
+        'fs.sub':"Vous faites déjà le travail. Nous vous donnons une page, la mettons devant des gens venus chercher exactement cela, et prenons en charge tout ce qui n'est pas le faire.",
+        'fs.p1t':'Votre propre page','fs.p1p':'Votre nom, votre ville, votre histoire et tout votre catalogue - avec un lien vers votre propre site. Vous gardez votre marque. Vous ne vous diluez pas dans une place de marché.',
+        'fs.p2t':'Nous rendons vos photos utilisables','fs.p2p':'Envoyez ce que vous avez, même pris au téléphone. Nous recadrons, corrigeons les couleurs et préparons les images pour le site - et vous récupérez les fichiers pour votre propre usage.',
+        'fs.p3t':'Écrit et traduit','fs.p3p':"Descriptions, légendes et échanges avec les acheteurs, en anglais. C'est la barrière qui empêche la plupart des ateliers de vendre hors de leur pays.",
+        'fs.p4t':'Rien à payer pour être ici','fs.p4p':"Pas de frais de mise en ligne, pas de publicité à acheter, rien à payer pour une place sur le site. Une part sur ce qui se vend réellement, et rien avant.",
+        'fs.p5t':'Vos ornements consignés','fs.p5p':"Nous documentons d'où vient chaque ornement - textile, argile, métal ou bois - et nous le conservons. Si un atelier ferme, ce qu'il savait ne disparaît pas avec lui. C'est de cela que les musées et les archives nous parlent.",
+        'fs.take.t':'Ce que nous prenons, et pour quoi','fs.take.p':'Nous prenons le prix de vente comme 100 %. Rien de plus.',
+        'fs.shop':'Votre atelier','fs.shopNote':'matières et votre travail','fs.katunNote':"page, préparation des photos, textes, traduction, promotion, l'acheteur",
+        'fs.commission':"C'est une commission, pas une remise de gros. Nous n'achetons pas votre stock - vos pièces restent les vôtres jusqu'à ce qu'elles arrivent chez le client.",
+        'fs.price':"C'est vous qui fixez le prix que voit l'acheteur. Notre part en sort, jamais en plus. Jusqu'au 1er décembre 2026 cette part est de 25 %, vous gardez donc 75 %.",
+        'fs.now.t':'Où nous en sommes','fs.going.t':'Où cela va',
+        'fs.going.p':"Une base à l'intérieur de l'UE, pour que les colis venus de l'extérieur cessent d'être coûteux et imprévisibles pour tous ceux avec qui nous travaillons. Des ateliers en présentiel dans votre région. Et un relevé grandissant des ornements sur lesquels chaque direction se construit.",
+        'fs.form.t':'Parlons-en','fs.form.sub':'Envoyez-nous un lien vers votre travail et nous reviendrons vers vous.'
+      },
+      it: {
+        'about.p1':"In ogni paese, da qualche parte, c'è una persona che sa ancora come si faceva una cosa - un motivo, uno smalto, un modo di forgiare o intagliare che nessuno ha messo per iscritto. Quasi nulla è stato scritto. Il sapere viveva nelle mani, e finisce quando le mani si fermano.",
+        'about.p2':"KATUN esiste per tenere vivo il fare, non solo il suo ricordo. Troviamo l'oggetto - in un museo regionale, in un baule di famiglia, dall'ultima persona che lavora ancora così - registriamo il suo ornamento e la sua provenienza e lo rimettiamo in produzione con un'artigiana capace di portarlo avanti.",
+        'about.p3':"La registrazione è esatta: l'oggetto, la collezione, la regione, il motivo. Il pezzo no. Un'artigiana legge la registrazione con le proprie mani, cambia la scala, il materiale, a volte la composizione - e noi diciamo su ogni pagina che cosa ha cambiato. È così che questo sapere ha sempre viaggiato. Una copia sta sotto vetro; una lettura sta nell'uso.",
+        'about.p4':"È cominciata con il tessuto in Montenegro, perché è dove viviamo e da dove è venuta la prima registrazione. Non finisce lì. Argilla, metallo, legno, tessitura, ricamo - materiali diversi, lo stesso metodo: trovare, registrare, rifare.",
+        'about.p5':"Non siamo un marketplace. Scegliamo cosa va su questo sito, conosciamo ogni artigiana per nome e ci occupiamo di tutto ciò che non è fare: la fotografia, i testi, la traduzione, la spedizione, l'acquirente. L'artigiana fa. L'accordo è tutto qui.",
+        'fm.sub':"Qualunque sia il tuo materiale - lana, argilla, metallo, legno - non ti servono l'inglese, una macchina fotografica o un negozio per vendere ciò che fai. Ti serve qualcuno che si occupi di quella parte. Siamo noi.",
+        'fm.p1t':'Non sei sola','fm.p1p':"Fotografia, descrizioni, traduzione, spedizione, dialogo con l'acquirente, resi. Tutto questo è nostro - compreso come imballare ciò che fai, perché arrivi come è partito.",
+        'fm.p2t':'Il tuo nome resta sul pezzo','fm.p2p':"Non un codice venditore anonimo. Il tuo nome, la tua regione, la tua tecnica - sulla pagina e sull'etichetta. E ciò che hai cambiato nel motivo è scritto lì come tuo, non nascosto.",
+        'fm.p3t':'Sai la tua quota prima di iniziare','fm.p3p':"Nessun costo di inserimento. Nessun pagamento per essere vista. Nessun denaro trattenuto per mesi. Una quota fissa del prezzo che paga l'acquirente, concordata prima che tu avvii le maglie.",
+        'fm.money.p':"L'acquirente paga un prezzo, e la maggior parte è tua. Fino al 1 dicembre 2026 la nostra quota è il 25%, quindi ne tieni il 75%. Coordinatori e musei sono pagati dalla nostra quota, mai dalla tua.",
+        'fm.promise.p1':'Siamo all\'inizio. Non ci sono ancora vendite, quindi non possiamo prometterti un numero. Possiamo prometterti una quota che conosci in anticipo e condizioni che non cambiano alle tue spalle.',
+        'fm.promise.p2':'Se cerchi uno stipendio garantito, questo non è il posto, e preferiamo dirlo subito.',
+        'fm.beyond.p':'Gli ornamenti con cui lavori diventano registrazioni che vendiamo - e ricevi una quota su ogni registrazione venduta, non solo su ogni pezzo. Più avanti: corsi dal vivo nella tua regione, corsi registrati e un archivio permanente di ciò che sai.',
+        'fs.title':'Per laboratori, studi e marchi',
+        'fs.sub':'Il lavoro lo fai già. Noi ti diamo una pagina, la mettiamo davanti a chi cercava esattamente questo, e ci occupiamo di tutto ciò che non è fare.',
+        'fs.p1t':'Una pagina tutta tua','fs.p1p':'Il tuo nome, la tua città, la tua storia e il tuo catalogo completo - con un link al tuo sito. Il marchio resta tuo. Non ti dissolvi in un marketplace.',
+        'fs.p2t':'Rendiamo utilizzabili le tue foto','fs.p2p':'Mandaci quello che hai, anche dal telefono. Ritagliamo, correggiamo i colori e le prepariamo per il sito - e i file tornano a te per il tuo uso.',
+        'fs.p3t':'Scritto e tradotto','fs.p3p':'Descrizioni, didascalie e messaggi con gli acquirenti, in inglese. È la barriera che impedisce alla maggior parte dei laboratori di vendere fuori dal proprio paese.',
+        'fs.p4t':'Non paghi nulla per essere qui','fs.p4p':'Nessun costo di inserimento, nessuna pubblicità da comprare, nessun canone per un posto sul sito. Una quota su ciò che si vende davvero, e nulla prima.',
+        'fs.p5t':'I tuoi ornamenti registrati','fs.p5p':'Documentiamo da dove viene ogni ornamento - nel tessuto, nell\'argilla, nel metallo o nel legno - e lo conserviamo. Se un laboratorio chiude, ciò che sapeva non sparisce con lui. È di questo che musei e archivi ci parlano.',
+        'fs.take.t':'Cosa prendiamo, e per cosa','fs.take.p':'Prendiamo il prezzo di vendita come 100%. Nient\'altro.',
+        'fs.shop':'Al tuo laboratorio','fs.shopNote':'materiali e il tuo lavoro','fs.katunNote':'pagina, preparazione foto, testi, traduzione, promozione, l\'acquirente',
+        'fs.commission':'È una commissione, non uno sconto all\'ingrosso. Non compriamo la tua merce - i tuoi pezzi restano tuoi finché non arrivano al cliente.',
+        'fs.price':'Il prezzo che vede l\'acquirente lo stabilisci tu. La nostra quota esce da lì, mai in aggiunta. Fino al 1 dicembre 2026 quella quota è il 25%, quindi ne tieni il 75%.',
+        'fs.now.t':'Dove siamo ora','fs.going.t':'Dove sta andando',
+        'fs.going.p':'Una base dentro l\'UE, perché i pacchi che vengono da fuori smettano di essere costosi e imprevedibili per tutti quelli con cui lavoriamo. Corsi dal vivo nella tua regione. E un registro crescente degli ornamenti su cui ogni direzione si costruisce.',
+        'fs.form.t':'Parliamone','fs.form.sub':'Mandaci un link al tuo lavoro e ti risponderemo.'
+      },
+      es: {
+        'about.p1':'En cada país, en algún sitio, hay una persona que aún sabe cómo se hacía una cosa: un motivo, un esmalte, una forma de forjar o tallar que nadie escribió. Casi nada de eso se escribió. El saber vivía en las manos, y se acaba cuando las manos paran.',
+        'about.p2':'KATUN existe para mantener vivo el hacer, no solo su recuerdo. Encontramos el objeto - en un museo regional, en un arcón familiar, con la última persona que aún trabaja así - registramos su ornamento y su procedencia y lo devolvemos a la producción con una artesana capaz de sostenerlo.',
+        'about.p3':'El registro es exacto: el objeto, la colección, la región, el motivo. La pieza no lo es. Una artesana lee el registro con sus propias manos, cambia la escala, el material, a veces la composición - y decimos en cada página qué cambió. Así ha viajado siempre este saber. Una copia va bajo cristal; una lectura va en uso.',
+        'about.p4':'Empezó con el textil en Montenegro, porque es donde vivimos y de donde vino el primer registro. No termina ahí. Barro, metal, madera, tejido, bordado: materiales distintos, el mismo método: encontrarlo, registrarlo, volver a hacerlo.',
+        'about.p5':'No somos un marketplace. Elegimos qué entra en este sitio, conocemos a cada artesana por su nombre y nos ocupamos de todo lo que no es hacer: la fotografía, los textos, la traducción, el envío, el comprador. La artesana hace. Ese es todo el acuerdo.',
+        'fm.sub':'Trabajes con lo que trabajes - lana, barro, metal, madera - no necesitas inglés, ni cámara, ni tienda para vender lo que haces. Necesitas a alguien que se ocupe de esa parte. Esos somos nosotros.',
+        'fm.p1t':'No estás sola','fm.p1p':'Fotografía, descripciones, traducción, envío, hablar con el comprador, gestionar devoluciones. Todo eso es nuestro, incluido cómo embalar lo que haces para que llegue como salió.',
+        'fm.p2t':'Tu nombre se queda en la pieza','fm.p2p':'No un identificador de vendedor anónimo. Tu nombre, tu región, tu técnica: en la página y en la etiqueta. Y lo que cambiaste en el motivo está escrito ahí como tuyo, no escondido.',
+        'fm.p3t':'Sabes tu parte antes de empezar','fm.p3p':'Sin cuotas por publicar. Sin pagar por que te vean. Sin dinero retenido durante meses. Una parte fija del precio que paga el comprador, acordada antes de que montes los puntos.',
+        'fm.money.p':'El comprador paga un precio, y la mayor parte es tuya. Hasta el 1 de diciembre de 2026 nuestra parte es del 25%, así que te quedas el 75%. Los coordinadores y los museos se pagan de nuestra parte, nunca de la tuya.',
+        'fm.promise.p1':'Estamos empezando. Todavía no hay ventas, así que no podemos prometerte una cifra. Lo que sí prometemos es una parte que conoces de antemano y condiciones que no cambian a tus espaldas.',
+        'fm.promise.p2':'Si buscas un sueldo garantizado, este no es el sitio, y preferimos decirlo ya.',
+        'fm.beyond.p':'Los ornamentos con los que trabajas se convierten en registros que vendemos, y recibes una parte de cada registro vendido, no solo de cada pieza. Más adelante: talleres presenciales en tu región, cursos grabados y un archivo permanente de lo que sabes.',
+        'fs.title':'Para talleres, estudios y marcas',
+        'fs.sub':'El trabajo ya lo haces tú. Nosotros te damos una página, la ponemos delante de quien vino buscando justo esto, y nos ocupamos de todo lo que no es hacer.',
+        'fs.p1t':'Tu propia página','fs.p1p':'Tu nombre, tu ciudad, tu historia y todo tu catálogo, con enlace a tu propia web. Conservas tu marca. No te diluyes en un marketplace.',
+        'fs.p2t':'Hacemos que tus fotos funcionen','fs.p2p':'Mándanos lo que tengas, aunque sea del móvil. Recortamos, corregimos color y las preparamos para el sitio, y te devolvemos los archivos para tu propio uso.',
+        'fs.p3t':'Escrito y traducido','fs.p3p':'Descripciones, pies de foto y mensajes con los compradores, en inglés. La barrera que impide a la mayoría de los talleres vender fuera de su país.',
+        'fs.p4t':'Nada que pagar por estar aquí','fs.p4p':'Sin cuotas por publicar, sin anuncios que comprar, sin cargo por un sitio en la web. Una parte de lo que se vende de verdad, y nada antes.',
+        'fs.p5t':'Tus ornamentos registrados','fs.p5p':'Documentamos de dónde viene cada ornamento - en tejido, barro, metal o madera - y lo guardamos. Si un taller cierra, lo que sabía no desaparece con él. De eso es de lo que nos hablan museos y archivos.',
+        'fs.take.t':'Qué tomamos, y por qué','fs.take.p':'Tomamos el precio de venta como 100%. Nada más.',
+        'fs.shop':'Tu taller','fs.shopNote':'materiales y tu trabajo','fs.katunNote':'página, preparación de fotos, textos, traducción, difusión, el comprador',
+        'fs.commission':'Es una comisión, no un descuento mayorista. No compramos tu stock: tus piezas siguen siendo tuyas hasta que llegan al cliente.',
+        'fs.price':'El precio que ve el comprador lo pones tú. Nuestra parte sale de ahí, nunca se añade encima. Hasta el 1 de diciembre de 2026 esa parte es del 25%, así que te quedas el 75%.',
+        'fs.now.t':'Dónde estamos ahora','fs.going.t':'Hacia dónde va esto',
+        'fs.going.p':'Una base dentro de la UE, para que los paquetes de fuera dejen de ser caros e imprevisibles para todos con quienes trabajamos. Talleres presenciales en tu región. Y un registro creciente de los ornamentos sobre los que se levanta cada dirección.',
+        'fs.form.t':'Hablemos','fs.form.sub':'Mándanos un enlace a tu trabajo y te contestamos.'
+      },
+      pt: {
+        'about.p1':'Em cada país, algures, há uma pessoa que ainda sabe como uma coisa era feita: um motivo, um vidrado, uma maneira de forjar ou entalhar que ninguém escreveu. Quase nada disso foi escrito. O saber vivia nas mãos, e acaba quando as mãos param.',
+        'about.p2':'A KATUN existe para manter vivo o fazer, não apenas a memória dele. Encontramos o objeto - num museu regional, numa arca de família, com a última pessoa que ainda trabalha assim - registamos o seu ornamento e a sua origem e devolvemo-lo à produção com uma artesã capaz de o levar adiante.',
+        'about.p3':'O registo é exato: o objeto, a coleção, a região, o motivo. A peça não é. Uma artesã lê o registo pelas próprias mãos, muda a escala, o material, por vezes a composição - e dizemos em cada página o que ela mudou. Foi sempre assim que este saber viajou. Uma cópia fica sob vidro; uma leitura fica em uso.',
+        'about.p4':'Começou com o têxtil em Montenegro, porque é onde vivemos e de onde veio o primeiro registo. Não acaba aí. Barro, metal, madeira, tecelagem, bordado: materiais diferentes, o mesmo método: encontrar, registar, fazer de novo.',
+        'about.p5':'Não somos um marketplace. Escolhemos o que entra neste site, conhecemos cada artesã pelo nome e tratamos de tudo o que não é fazer: a fotografia, os textos, a tradução, o envio, o comprador. A artesã faz. É esse todo o acordo.',
+        'fm.sub':'Seja qual for o seu material - lã, barro, metal, madeira - não precisa de inglês, de câmara nem de loja para vender o que faz. Precisa de alguém que trate dessa parte. Somos nós.',
+        'fm.p1t':'Não está sozinha','fm.p1p':'Fotografia, descrições, tradução, envio, falar com o comprador, tratar devoluções. Tudo isso é nosso - incluindo como embalar o que faz, para que chegue como saiu.',
+        'fm.p2t':'O seu nome fica na peça','fm.p2p':'Não um número de vendedor anónimo. O seu nome, a sua região, a sua técnica - na página e na etiqueta. E o que mudou no motivo está escrito ali como seu, não escondido.',
+        'fm.p3t':'Sabe a sua parte antes de começar','fm.p3p':'Sem taxas de publicação. Sem pagar para ser vista. Sem dinheiro retido durante meses. Uma parte fixa do preço que o comprador paga, combinada antes de montar as malhas.',
+        'fm.money.p':'O comprador paga um preço, e a maior parte é sua. Até 1 de dezembro de 2026 a nossa parte é 25%, por isso fica com 75%. Coordenadores e museus são pagos da nossa parte, nunca da sua.',
+        'fm.promise.p1':'Estamos no início. Ainda não há vendas, por isso não podemos prometer-lhe um número. O que podemos prometer é uma parte conhecida de antemão e condições que não mudam nas suas costas.',
+        'fm.promise.p2':'Se procura um salário garantido, este não é o lugar, e preferimos dizê-lo agora.',
+        'fm.beyond.p':'Os ornamentos com que trabalha tornam-se registos que vendemos - e recebe uma parte de cada registo vendido, não só de cada peça. Mais tarde: oficinas presenciais na sua região, cursos gravados e um arquivo permanente do que sabe.',
+        'fs.title':'Para oficinas, estúdios e marcas',
+        'fs.sub':'O trabalho já o faz. Nós damos-lhe uma página, colocamo-la diante de quem procurava exatamente isto, e tratamos de tudo o que não é fazer.',
+        'fs.p1t':'A sua própria página','fs.p1p':'O seu nome, a sua cidade, a sua história e todo o seu catálogo - com uma ligação para o seu próprio site. Mantém a sua marca. Não se dilui num marketplace.',
+        'fs.p2t':'Fazemos as suas fotografias funcionar','fs.p2p':'Envie o que tiver, mesmo do telemóvel. Cortamos, corrigimos a cor e preparamos para o site - e devolvemos-lhe os ficheiros para o seu uso.',
+        'fs.p3t':'Escrito e traduzido','fs.p3p':'Descrições, legendas e mensagens com compradores, em inglês. A barreira que impede a maioria das oficinas de vender fora do seu país.',
+        'fs.p4t':'Nada a pagar para estar aqui','fs.p4p':'Sem taxas de publicação, sem anúncios para comprar, sem custo por um lugar no site. Uma parte do que realmente se vende, e nada antes disso.',
+        'fs.p5t':'Os seus ornamentos registados','fs.p5p':'Documentamos de onde vem cada ornamento - em têxtil, barro, metal ou madeira - e guardamo-lo. Se uma oficina fechar, o que sabia não desaparece com ela. É disso que museus e arquivos nos falam.',
+        'fs.take.t':'O que levamos, e por quê','fs.take.p':'Tomamos o preço de venda como 100%. Mais nada.',
+        'fs.shop':'A sua oficina','fs.shopNote':'materiais e o seu trabalho','fs.katunNote':'página, preparação de fotos, textos, tradução, divulgação, o comprador',
+        'fs.commission':'Isto é uma comissão, não um desconto de grosso. Não compramos o seu stock - as suas peças continuam suas até chegarem ao cliente.',
+        'fs.price':'O preço que o comprador vê é definido por si. A nossa parte sai dele, nunca é acrescentada por cima. Até 1 de dezembro de 2026 essa parte é 25%, por isso fica com 75%.',
+        'fs.now.t':'Onde estamos agora','fs.going.t':'Para onde isto vai',
+        'fs.going.p':'Uma base dentro da UE, para que as encomendas vindas de fora deixem de ser caras e imprevisíveis para todos com quem trabalhamos. Oficinas presenciais na sua região. E um registo crescente dos ornamentos sobre os quais cada direção se constrói.',
+        'fs.form.t':'Fale connosco','fs.form.sub':'Envie-nos uma ligação para o seu trabalho e voltaremos a contactá-lo.'
+      },
+      nl: {
+        'about.p1':'Ergens in elk land is er iemand die nog weet hoe iets gemaakt werd - een patroon, een glazuur, een manier van smeden of snijden die niemand heeft opgeschreven. Bijna niets daarvan is opgeschreven. De kennis leefde in handen, en houdt op als de handen stoppen.',
+        'about.p2':'KATUN bestaat om het maken levend te houden, niet alleen de herinnering eraan. We vinden het voorwerp - in een streekmuseum, in een familiekist, bij de laatste persoon die nog zo werkt - leggen het ornament en de herkomst vast en brengen het terug in productie bij een maker die het kan dragen.',
+        'about.p3':'De vastlegging is exact: het voorwerp, de collectie, de streek, het motief. Het stuk is dat niet. Een maker leest de vastlegging met haar eigen handen, verandert de schaal, het materiaal, soms de compositie - en wij zeggen op elke pagina wat zij veranderd heeft. Zo heeft deze kennis altijd gereisd. Een kopie hoort onder glas; een lezing hoort in gebruik.',
+        'about.p4':'Het begon met textiel in Montenegro, omdat we daar wonen en de eerste vastlegging vandaan kwam. Daar houdt het niet op. Klei, metaal, hout, weven, borduren - andere materialen, dezelfde methode: vinden, vastleggen, opnieuw maken.',
+        'about.p5':'We zijn geen marktplaats. Wij kiezen wat op deze site komt, we kennen elke maker bij naam, en we zorgen voor alles wat niet het maken is: de fotografie, de teksten, de vertaling, de verzending, de koper. De maker maakt. Dat is de hele afspraak.',
+        'fm.sub':'Waarin je ook werkt - wol, klei, metaal, hout - je hebt geen Engels, camera of winkel nodig om te verkopen wat je maakt. Je hebt iemand nodig die dat deel doet. Dat zijn wij.',
+        'fm.p1t':'Je staat er niet alleen voor','fm.p1p':'Fotografie, beschrijvingen, vertaling, verzending, contact met de koper, retouren afhandelen. Dat is allemaal van ons - inclusief hoe je verpakt wat je maakt, zodat het aankomt zoals het vertrok.',
+        'fm.p2t':'Je naam blijft erop','fm.p2p':'Geen anoniem verkopersnummer. Je naam, je streek, je techniek - op de pagina en op het label. En wat je aan het patroon veranderd hebt staat er als het jouwe, niet verstopt.',
+        'fm.p3t':'Je kent je aandeel voor je begint','fm.p3p':'Geen plaatsingskosten. Niet betalen om gezien te worden. Geen geld dat maanden vastzit. Een vast aandeel van de prijs die de koper betaalt, afgesproken voordat je opzet.',
+        'fm.money.p':'De koper betaalt één prijs, en het grootste deel is van jou. Tot 1 december 2026 is ons aandeel 25%, dus jij houdt 75%. Coördinatoren en musea worden uit ons aandeel betaald, nooit uit dat van jou.',
+        'fm.promise.p1':'We staan aan het begin. Er zijn nog geen verkopen, dus we kunnen je geen bedrag beloven. Wat we wel beloven is een aandeel dat je vooraf kent en voorwaarden die niet achter je rug om veranderen.',
+        'fm.promise.p2':'Zoek je een gegarandeerd salaris, dan is dit niet de plek, en dat zeggen we liever nu.',
+        'fm.beyond.p':'De ornamenten waarmee je werkt worden vastleggingen die wij verkopen - en je krijgt een aandeel van elke verkochte vastlegging, niet alleen van elk stuk. Later: cursussen ter plaatse in jouw streek, opgenomen cursussen, en een blijvend archief van wat jij weet.',
+        'fs.title':'Voor werkplaatsen, studios en merken',
+        'fs.sub':'Het werk maak je al. Wij geven je een pagina, zetten die voor mensen die precies hiernaar zochten, en zorgen voor alles wat niet het maken is.',
+        'fs.p1t':'Je eigen pagina','fs.p1p':'Je naam, je stad, je verhaal en je hele catalogus - met een link naar je eigen site. Je houdt je merk. Je lost niet op in een marktplaats.',
+        'fs.p2t':'Wij maken je foto\'s bruikbaar','fs.p2p':'Stuur wat je hebt, ook van de telefoon. Wij snijden bij, corrigeren de kleur en maken ze klaar voor de site - en je krijgt de bestanden terug voor eigen gebruik.',
+        'fs.p3t':'Geschreven en vertaald','fs.p3p':'Beschrijvingen, bijschriften en berichten met kopers, in het Engels. De drempel die de meeste werkplaatsen belet ooit buiten het eigen land te verkopen.',
+        'fs.p4t':'Niets te betalen om hier te zijn','fs.p4p':'Geen plaatsingskosten, geen advertenties die je moet kopen, geen kosten voor een plek op de site. Een aandeel van wat er echt verkocht wordt, en daarvoor niets.',
+        'fs.p5t':'Je ornamenten vastgelegd','fs.p5p':'We leggen vast waar elk ornament vandaan komt - in textiel, klei, metaal of hout - en bewaren het. Sluit een werkplaats, dan verdwijnt wat zij wist niet met haar mee. Daar praten musea en archieven met ons over.',
+        'fs.take.t':'Wat wij nemen, en waarvoor','fs.take.p':'We nemen de verkoopprijs als 100%. Verder niets.',
+        'fs.shop':'Jouw werkplaats','fs.shopNote':'materiaal en jouw werk','fs.katunNote':'pagina, fotobewerking, teksten, vertaling, promotie, de koper',
+        'fs.commission':'Dit is een commissie, geen groothandelskorting. We kopen je voorraad niet - je stukken blijven van jou tot ze bij de klant zijn.',
+        'fs.price':'Jij bepaalt de prijs die de koper ziet. Ons aandeel komt daaruit, nooit erbovenop. Tot 1 december 2026 is dat aandeel 25%, dus jij houdt 75%.',
+        'fs.now.t':'Waar we nu staan','fs.going.t':'Waar dit heen gaat',
+        'fs.going.p':'Een basis binnen de EU, zodat pakketten van buiten niet langer duur en onvoorspelbaar zijn voor iedereen met wie we werken. Cursussen ter plaatse in jouw streek. En een groeiend register van de ornamenten waarop elke richting gebouwd is.',
+        'fs.form.t':'Praat met ons','fs.form.sub':'Stuur ons een link naar je werk, dan komen we bij je terug.'
+      },
+      sv: {
+        'about.p1':'Någonstans i varje land finns en människa som fortfarande vet hur en sak gjordes - ett mönster, en glasyr, ett sätt att smida eller tälja som ingen skrivit ner. Nästan inget av det skrevs ner. Kunskapen levde i händerna och tar slut när händerna stannar.',
+        'about.p2':'KATUN finns för att hålla görandet levande, inte bara minnet av det. Vi hittar föremålet - i ett regionalt museum, i en familjekista, hos den sista personen som fortfarande arbetar så - dokumenterar dess ornament och varifrån det kommer, och lämnar tillbaka det i produktion hos en hantverkare som kan bära det vidare.',
+        'about.p3':'Dokumentationen är exakt: föremålet, samlingen, regionen, motivet. Plagget är det inte. En hantverkare läser dokumentationen genom sina egna händer, ändrar skalan, materialet, ibland kompositionen - och vi skriver på varje sida vad hon ändrat. Så har den här kunskapen alltid rest. En kopia hör hemma under glas; en läsning hör hemma i bruk.',
+        'about.p4':'Det började med textil i Montenegro, för det är där vi bor och därifrån den första dokumentationen kom. Det slutar inte där. Lera, metall, trä, vävning, broderi - andra material, samma metod: hitta, dokumentera, göra igen.',
+        'about.p5':'Vi är ingen marknadsplats. Vi väljer vad som kommer in på den här sidan, vi känner varje hantverkare vid namn, och vi tar hand om allt som inte är själva görandet: fotografering, texter, översättning, frakt, köparen. Hantverkaren gör. Det är hela överenskommelsen.',
+        'fm.sub':'Vad du än arbetar i - ull, lera, metall, trä - behöver du varken engelska, kamera eller butik för att sälja det du gör. Du behöver någon som tar den delen. Det är vi.',
+        'fm.p1t':'Du är inte ensam','fm.p1p':'Fotografering, beskrivningar, översättning, frakt, samtal med köparen, returer. Allt det är vårt - även hur man packar det du gör, så att det kommer fram som det lämnade dig.',
+        'fm.p2t':'Ditt namn stannar på plagget','fm.p2p':'Inget anonymt säljar-ID. Ditt namn, din region, din teknik - på sidan och på etiketten. Och det du ändrat i mönstret står där som ditt, inte dolt.',
+        'fm.p3t':'Du vet din andel innan du börjar','fm.p3p':'Inga avgifter för att lägga upp. Inget betalande för att synas. Inga pengar som ligger i månader. En fast andel av priset köparen betalar, överenskommen innan du lägger upp maskorna.',
+        'fm.money.p':'Köparen betalar ett pris, och det mesta är ditt. Fram till 1 december 2026 är vår andel 25 %, så du behåller 75 %. Koordinatorer och museer betalas ur vår andel, aldrig ur din.',
+        'fm.promise.p1':'Vi är i början. Det finns inga försäljningar ännu, så vi kan inte lova dig en siffra. Vad vi kan lova är en andel du känner i förväg och villkor som inte ändras bakom ryggen på dig.',
+        'fm.promise.p2':'Söker du en garanterad lön är det här fel plats, och det säger vi hellre nu.',
+        'fm.beyond.p':'Ornamenten du arbetar med blir dokumentationer som vi säljer - och du får en andel av varje såld dokumentation, inte bara av varje plagg. Senare: kurser på plats i din region, inspelade kurser och ett bestående arkiv över det du kan.',
+        'fs.title':'För verkstäder, studios och märken',
+        'fs.sub':'Arbetet gör du redan. Vi ger dig en sida, sätter den framför människor som kom och letade efter precis detta, och tar hand om allt som inte är själva görandet.',
+        'fs.p1t':'En egen sida','fs.p1p':'Ditt namn, din stad, din historia och hela din katalog - med länk till din egen sida. Du behåller ditt märke. Du löses inte upp i en marknadsplats.',
+        'fs.p2t':'Vi får dina foton att fungera','fs.p2p':'Skicka det du har, även från telefonen. Vi beskär, färgkorrigerar och förbereder dem för sidan - och du får filerna tillbaka för eget bruk.',
+        'fs.p3t':'Skrivet och översatt','fs.p3p':'Beskrivningar, bildtexter och meddelanden med köpare, på engelska. Just den tröskel som hindrar de flesta verkstäder från att någonsin sälja utanför sitt eget land.',
+        'fs.p4t':'Inget att betala för att vara här','fs.p4p':'Inga uppläggningsavgifter, inga annonser du måste köpa, ingen avgift för en plats på sidan. En andel av det som faktiskt säljs, och inget dessförinnan.',
+        'fs.p5t':'Dina ornament dokumenterade','fs.p5p':'Vi dokumenterar varifrån varje ornament kommer - i textil, lera, metall eller trä - och bevarar det. Om en verkstad stänger försvinner inte det den kunde med den. Det är den delen museer och arkiv talar med oss om.',
+        'fs.take.t':'Vad vi tar, och för vad','fs.take.p':'Vi tar försäljningspriset som 100 %. Inget annat.',
+        'fs.shop':'Din verkstad','fs.shopNote':'material och ditt arbete','fs.katunNote':'sidan, bildarbete, texter, översättning, spridning, köparen',
+        'fs.commission':'Det här är en provision, inte en grossistrabatt. Vi köper inte ditt lager - dina plagg är dina tills de når kunden.',
+        'fs.price':'Priset köparen ser sätter du. Vår andel tas ur det, aldrig ovanpå. Fram till 1 december 2026 är den andelen 25 %, så du behåller 75 %.',
+        'fs.now.t':'Var vi står nu','fs.going.t':'Vart det här är på väg',
+        'fs.going.p':'En bas inom EU, så att paket utifrån slutar vara dyra och oförutsägbara för alla vi arbetar med. Kurser på plats i din region. Och ett växande register över de ornament varje riktning vilar på.',
+        'fs.form.t':'Hör av dig','fs.form.sub':'Skicka en länk till ditt arbete så återkommer vi.'
+      },
+      pl: {
+        'about.p1':'W każdym kraju gdzieś jest człowiek, który wciąż wie, jak robiło się daną rzecz - wzór, szkliwo, sposób kucia albo rzeźbienia, którego nikt nie zapisał. Prawie nic z tego nie zostało zapisane. Wiedza żyła w rękach i kończy się, gdy ręce się zatrzymują.',
+        'about.p2':'KATUN istnieje po to, by utrzymać przy życiu samo robienie, a nie tylko pamięć o nim. Znajdujemy przedmiot - w muzeum regionalnym, w rodzinnej skrzyni, u ostatniej osoby, która wciąż tak pracuje - zapisujemy jego ornament i pochodzenie i wracamy z nim do produkcji z twórczynią, która go poprowadzi.',
+        'about.p3':'Zapis jest dokładny: przedmiot, zbiór, region, motyw. Wyrób już nie. Twórczyni czyta zapis własnymi rękami, zmienia skalę, materiał, czasem kompozycję - a my na każdej stronie mówimy, co zmieniła. Tak ta wiedza zawsze wędrowała. Kopia leży pod szkłem; odczytanie żyje w użyciu.',
+        'about.p4':'Zaczęło się od tkaniny w Czarnogórze, bo tam mieszkamy i stamtąd przyszedł pierwszy zapis. Na tym się nie kończy. Glina, metal, drewno, tkactwo, haft - inne materiały, ta sama metoda: znaleźć, zapisać, zrobić na nowo.',
+        'about.p5':'Nie jesteśmy marketplace\'em. Wybieramy, co trafia na tę stronę, znamy każdą twórczynię z imienia i bierzemy na siebie wszystko, co nie jest robieniem: zdjęcia, teksty, tłumaczenie, wysyłkę, kupującego. Twórczyni robi. Na tym polega cała umowa.',
+        'fm.sub':'W czymkolwiek pracujesz - wełna, glina, metal, drewno - nie potrzebujesz angielskiego, aparatu ani sklepu, żeby sprzedać to, co robisz. Potrzebujesz kogoś, kto weźmie tę część na siebie. To my.',
+        'fm.p1t':'Nie jesteś sama','fm.p1p':'Zdjęcia, opisy, tłumaczenie, wysyłka, rozmowa z kupującym, zwroty. To wszystko jest nasze - łącznie z tym, jak zapakować to, co robisz, żeby dotarło takie, jakie wyjechało.',
+        'fm.p2t':'Twoje nazwisko zostaje na wyrobie','fm.p2p':'Nie anonimowy numer sprzedawcy. Twoje imię, twój region, twoja technika - na stronie i na metce. A to, co zmieniłaś we wzorze, jest tam zapisane jako twoje, nie ukryte.',
+        'fm.p3t':'Znasz swój udział, zanim zaczniesz','fm.p3p':'Żadnych opłat za wystawienie. Żadnego płacenia za widoczność. Żadnych pieniędzy zamrożonych na miesiące. Stały udział w cenie, którą płaci kupujący, ustalony zanim nabierzesz oczka.',
+        'fm.money.p':'Kupujący płaci jedną cenę i większość z niej jest twoja. Do 1 grudnia 2026 nasz udział wynosi 25%, więc zostaje ci 75%. Koordynatorzy i muzea są opłacani z naszego udziału, nigdy z twojego.',
+        'fm.promise.p1':'Jesteśmy na początku. Sprzedaży jeszcze nie ma, więc nie możemy obiecać ci liczby. Możemy obiecać udział znany z góry i warunki, które nie zmieniają się za twoimi plecami.',
+        'fm.promise.p2':'Jeśli szukasz gwarantowanej pensji, to nie jest to miejsce, i wolimy powiedzieć to od razu.',
+        'fm.beyond.p':'Ornamenty, z którymi pracujesz, stają się zapisami, które sprzedajemy - i dostajesz udział z każdego sprzedanego zapisu, nie tylko z każdego wyrobu. Później: zajęcia na żywo w twoim regionie, nagrane kursy i trwałe archiwum tego, co umiesz.',
+        'fs.title':'Dla pracowni, studiów i marek',
+        'fs.sub':'Pracę już wykonujesz. My dajemy ci stronę, stawiamy ją przed ludźmi, którzy przyszli właśnie po to, i bierzemy na siebie wszystko, co nie jest robieniem.',
+        'fs.p1t':'Własna strona','fs.p1p':'Twoja nazwa, twoje miasto, twoja historia i cały katalog - z odnośnikiem do twojej własnej strony. Zachowujesz swoją markę. Nie rozpływasz się w marketplace\'ie.',
+        'fs.p2t':'Sprawiamy, że twoje zdjęcia działają','fs.p2p':'Przyślij, co masz, choćby z telefonu. Kadrujemy, poprawiamy kolor i przygotowujemy je na stronę - a pliki wracają do ciebie do własnego użytku.',
+        'fs.p3t':'Napisane i przetłumaczone','fs.p3p':'Opisy, podpisy i korespondencja z kupującymi, po angielsku. Właśnie ta bariera powstrzymuje większość pracowni przed sprzedażą poza własnym krajem.',
+        'fs.p4t':'Nic nie płacisz za obecność','fs.p4p':'Żadnych opłat za wystawienie, żadnych reklam do wykupienia, żadnej opłaty za miejsce na stronie. Udział w tym, co naprawdę się sprzeda, i nic wcześniej.',
+        'fs.p5t':'Twoje ornamenty zapisane','fs.p5p':'Dokumentujemy, skąd pochodzi każdy ornament - w tkaninie, glinie, metalu czy drewnie - i to przechowujemy. Jeśli pracownia się zamknie, jej wiedza nie zniknie razem z nią. Właśnie o tym rozmawiają z nami muzea i archiwa.',
+        'fs.take.t':'Co bierzemy i za co','fs.take.p':'Bierzemy cenę sprzedaży jako 100%. Nic więcej.',
+        'fs.shop':'Twoja pracownia','fs.shopNote':'materiały i twoja praca','fs.katunNote':'strona, obróbka zdjęć, teksty, tłumaczenie, promocja, kupujący',
+        'fs.commission':'To prowizja, a nie rabat hurtowy. Nie skupujemy twojego towaru - twoje wyroby pozostają twoje, dopóki nie dotrą do klienta.',
+        'fs.price':'Cenę, którą widzi kupujący, ustalasz ty. Nasz udział wychodzi z niej, nigdy nie dokłada się z wierzchu. Do 1 grudnia 2026 ten udział wynosi 25%, więc zostaje ci 75%.',
+        'fs.now.t':'Gdzie jesteśmy teraz','fs.going.t':'Dokąd to zmierza',
+        'fs.going.p':'Baza wewnątrz UE, żeby paczki spoza niej przestały być drogie i nieprzewidywalne dla wszystkich, z którymi pracujemy. Zajęcia na żywo w twoim regionie. I rosnący rejestr ornamentów, na których opiera się każdy kierunek.',
+        'fs.form.t':'Porozmawiajmy','fs.form.sub':'Prześlij nam link do swoich prac, a się odezwiemy.'
+      },
+      sr: {
+        'about.p1':'U svakoj zemlji negde postoji čovek koji još zna kako se neka stvar pravila - šara, glazura, način kovanja ili rezbarenja koji niko nije zapisao. Gotovo ništa od toga nije zapisano. Znanje je živelo u rukama i prestaje kada ruke stanu.',
+        'about.p2':'KATUN postoji da bi održao samu izradu živom, a ne samo sećanje na nju. Nalazimo predmet - u zavičajnom muzeju, u porodičnom sanduku, kod poslednje osobe koja još tako radi - zapisujemo njegov ornament i poreklo i vraćamo ga u izradu sa majstoricom koja može da ga ponese.',
+        'about.p3':'Zapis je tačan: predmet, zbirka, region, motiv. Rad nije. Majstorica čita zapis sopstvenim rukama, menja razmeru, materijal, ponekad kompoziciju - a mi na svakoj stranici kažemo šta je promenila. Tako je ovo znanje oduvek putovalo. Kopija stoji pod staklom; čitanje stoji u upotrebi.',
+        'about.p4':'Počelo je tekstilom u Crnoj Gori, jer tu živimo i odatle je došao prvi zapis. Tu se ne završava. Glina, metal, drvo, tkanje, vez - drugi materijali, isti metod: naći, zapisati, napraviti ponovo.',
+        'about.p5':'Nismo marketplace. Biramo šta ide na ovaj sajt, znamo svaku majstoricu po imenu i preuzimamo sve što nije izrada: fotografiju, tekstove, prevod, dostavu, kupca. Majstorica pravi. To je cela pogodba.',
+        'fm.sub':'U čemu god radili - vuna, glina, metal, drvo - ne treba vam engleski, fotoaparat ni prodavnica da biste prodali ono što pravite. Treba vam neko ko će preuzeti taj deo. To smo mi.',
+        'fm.p1t':'Niste sami','fm.p1p':'Fotografija, opisi, prevod, dostava, razgovor sa kupcem, povraćaji. Sve je to naše - uključujući i kako se pakuje ono što pravite, da stigne onako kako je krenulo.',
+        'fm.p2t':'Vaše ime ostaje na radu','fm.p2p':'Ne anonimni broj prodavca. Vaše ime, vaš region, vaša tehnika - na stranici i na etiketi. I ono što ste promenili u ornamentu piše tamo kao vaše, ne skriveno.',
+        'fm.p3t':'Znate svoj udeo pre nego što počnete','fm.p3p':'Bez naknada za objavljivanje. Bez plaćanja da biste bili viđeni. Bez novca koji stoji mesecima. Fiksni udeo u ceni koju kupac plaća, dogovoren pre nego što nabacite prve petlje.',
+        'fm.money.p':'Kupac plaća jednu cenu i veći deo je vaš. Do 1. decembra 2026. naš udeo je 25%, dakle vama ostaje 75%. Koordinatori i muzeji se plaćaju iz našeg udela, nikada iz vašeg.',
+        'fm.promise.p1':'Na početku smo. Prodaje još nema, pa vam ne možemo obećati cifru. Možemo obećati udeo koji znate unapred i uslove koji se ne menjaju iza vaših leđa.',
+        'fm.promise.p2':'Ako tražite zagarantovanu platu, ovo nije to mesto, i radije to kažemo odmah.',
+        'fm.beyond.p':'Ornamenti sa kojima radite postaju zapisi koje prodajemo - i dobijate udeo od svakog prodatog zapisa, ne samo od svakog rada. Kasnije: radionice uživo u vašem regionu, snimljeni kursevi i trajna arhiva onoga što znate.',
+        'fs.title':'Za radionice, studije i marke',
+        'fs.sub':'Posao već radite. Mi vam dajemo stranicu, stavljamo je pred ljude koji su došli baš po to, i preuzimamo sve što nije izrada.',
+        'fs.p1t':'Sopstvena stranica','fs.p1p':'Vaše ime, vaš grad, vaša priča i ceo katalog - sa linkom ka vašem sajtu. Marka ostaje vaša. Ne rastapate se u marketplace-u.',
+        'fs.p2t':'Činimo da vaše fotografije rade','fs.p2p':'Pošaljite šta imate, i sa telefona. Kadriramo, korigujemo boju i pripremamo ih za sajt - a fajlove vraćamo vama za sopstvenu upotrebu.',
+        'fs.p3t':'Napisano i prevedeno','fs.p3p':'Opisi, potpisi i prepiska sa kupcima, na engleskom. Upravo ta prepreka sprečava većinu radionica da ikada prodaju van svoje zemlje.',
+        'fs.p4t':'Ništa se ne plaća za mesto ovde','fs.p4p':'Bez naknada za objavljivanje, bez reklama koje morate kupiti, bez naplate mesta na sajtu. Udeo u onome što se stvarno proda, i ništa pre toga.',
+        'fs.p5t':'Vaši ornamenti zapisani','fs.p5p':'Beležimo odakle svaki ornament dolazi - u tekstilu, glini, metalu ili drvetu - i to čuvamo. Ako se radionica zatvori, ono što je znala ne nestaje sa njom. Baš o tome muzeji i arhivi razgovaraju sa nama.',
+        'fs.take.t':'Šta uzimamo i za šta','fs.take.p':'Uzimamo prodajnu cenu kao 100%. Ništa drugo.',
+        'fs.shop':'Vašoj radionici','fs.shopNote':'materijal i vaš rad','fs.katunNote':'stranica, priprema fotografija, tekstovi, prevod, promocija, kupac',
+        'fs.commission':'Ovo je provizija, a ne veleprodajni popust. Ne otkupljujemo vašu robu - vaši radovi ostaju vaši dok ne stignu do kupca.',
+        'fs.price':'Cenu koju kupac vidi određujete vi. Naš udeo izlazi iz nje, nikada se ne dodaje odozgo. Do 1. decembra 2026. taj udeo je 25%, dakle vama ostaje 75%.',
+        'fs.now.t':'Gde smo sada','fs.going.t':'Kuda ovo ide',
+        'fs.going.p':'Baza unutar EU, da paketi spolja prestanu da budu skupi i nepredvidivi za sve sa kojima radimo. Radionice uživo u vašem regionu. I sve veći popis ornamenata na kojima svaki pravac počiva.',
+        'fs.form.t':'Javite nam se','fs.form.sub':'Pošaljite nam link ka svom radu i javićemo vam se.'
+      },
+      tr: {
+        'about.p1':'Her ülkede bir yerde, bir şeyin nasıl yapıldığını hâlâ bilen biri vardır - bir motif, bir sır, kimsenin yazıya geçirmediği bir dövme ya da oyma biçimi. Bunların neredeyse hiçbiri yazılmadı. Bilgi ellerde yaşıyordu ve eller durunca bitiyor.',
+        'about.p2':'KATUN, yalnızca anısını değil, yapmanın kendisini yaşatmak için var. Nesneyi buluyoruz - bir bölge müzesinde, bir aile sandığında, hâlâ o şekilde çalışan son kişide - motifini ve nereden geldiğini kayda geçiriyor ve onu taşıyabilecek bir ustayla yeniden üretime sokuyoruz.',
+        'about.p3':'Kayıt kesindir: nesne, koleksiyon, bölge, motif. Parça değildir. Usta kaydı kendi elleriyle okur, ölçeği, malzemeyi, bazen kompozisyonu değiştirir - ve biz her sayfada neyi değiştirdiğini söyleriz. Bu bilgi hep böyle yol aldı. Kopya camın altına aittir; okuma kullanıma aittir.',
+        'about.p4':'Karadağ\'da tekstille başladı, çünkü orada yaşıyoruz ve ilk kayıt oradan geldi. Orada bitmiyor. Kil, metal, ahşap, dokuma, işleme - farklı malzemeler, aynı yöntem: bul, kaydet, yeniden yap.',
+        'about.p5':'Biz bir pazar yeri değiliz. Bu siteye ne gireceğini biz seçiyoruz, her ustayı adıyla tanıyoruz ve yapmak dışındaki her şeyi üstleniyoruz: fotoğrafı, metni, çeviriyi, kargoyu, alıcıyı. Usta yapar. Anlaşmanın tamamı bu.',
+        'fm.sub':'Hangi malzemeyle çalışırsanız çalışın - yün, kil, metal, ahşap - yaptığınızı satmak için İngilizceye, fotoğraf makinesine ya da dükkâna ihtiyacınız yok. O kısmı üstlenecek birine ihtiyacınız var. O biziz.',
+        'fm.p1t':'Yalnız değilsiniz','fm.p1p':'Fotoğraf, açıklamalar, çeviri, kargo, alıcıyla konuşmak, iadeleri halletmek. Hepsi bizde - yaptığınızı nasıl paketleyeceğiniz de dahil, çıktığı gibi ulaşsın diye.',
+        'fm.p2t':'Adınız üzerinde kalır','fm.p2p':'Anonim bir satıcı numarası değil. Adınız, bölgeniz, tekniğiniz - sayfada ve etikette. Motifte neyi değiştirdiğiniz de orada sizin olarak yazar, gizlenmez.',
+        'fm.p3t':'Payınızı başlamadan önce bilirsiniz','fm.p3p':'Listeleme ücreti yok. Görünmek için ödeme yok. Aylarca bekletilen para yok. Alıcının ödediği fiyattan sabit bir pay, siz ilmekleri atmadan önce kararlaştırılmış.',
+        'fm.money.p':'Alıcı tek bir fiyat öder ve büyük kısmı sizindir. 1 Aralık 2026\'ya kadar bizim payımız %25, yani siz %75 alırsınız. Koordinatörler ve müzeler bizim payımızdan ödenir, hiçbir zaman sizinkinden değil.',
+        'fm.promise.p1':'Henüz başlangıçtayız. Satış yok, bu yüzden size bir rakam söz veremeyiz. Söz verebileceğimiz şey, önceden bildiğiniz bir pay ve arkanızdan değişmeyen koşullar.',
+        'fm.promise.p2':'Garantili maaş arıyorsanız burası doğru yer değil, bunu şimdi söylemeyi tercih ederiz.',
+        'fm.beyond.p':'Çalıştığınız motifler bizim sattığımız kayıtlara dönüşür - ve yalnızca her parçadan değil, satılan her kayıttan da pay alırsınız. İleride: bölgenizde yüz yüze atölyeler, kaydedilmiş dersler ve bildiklerinizin kalıcı bir arşivi.',
+        'fs.title':'Atölyeler, stüdyolar ve markalar için',
+        'fs.sub':'İşi zaten siz yapıyorsunuz. Biz size bir sayfa veriyor, onu tam da bunu arayan insanların önüne koyuyor ve yapmak dışındaki her şeyi üstleniyoruz.',
+        'fs.p1t':'Kendi sayfanız','fs.p1p':'Adınız, şehriniz, hikâyeniz ve tüm kataloğunuz - kendi sitenize bir bağlantıyla. Markanız sizde kalır. Bir pazar yerinin içinde erimezsiniz.',
+        'fs.p2t':'Fotoğraflarınızı işler hale getiriyoruz','fs.p2p':'Elinizde ne varsa gönderin, telefondan bile olur. Kadrajı düzeltir, rengi ayarlar ve site için hazırlarız - dosyaları kendi kullanımınız için size geri veririz.',
+        'fs.p3t':'Yazıldı ve çevrildi','fs.p3p':'Açıklamalar, altyazılar ve alıcılarla yazışmalar, İngilizce. Çoğu atölyenin kendi ülkesi dışında satış yapmasını engelleyen eşik tam da budur.',
+        'fs.p4t':'Burada olmak için ödenecek bir şey yok','fs.p4p':'Listeleme ücreti yok, satın almanız gereken reklam yok, sitede yer için ücret yok. Gerçekten satılandan bir pay, ondan öncesinde hiçbir şey.',
+        'fs.p5t':'Motifleriniz kayıtta','fs.p5p':'Her motifin nereden geldiğini belgeliyor - tekstilde, kilde, metalde ya da ahşapta - ve saklıyoruz. Bir atölye kapanırsa, bildiği şey onunla birlikte kaybolmaz. Müzelerin ve arşivlerin bizimle konuştuğu kısım bu.',
+        'fs.take.t':'Ne alıyoruz, ne karşılığında','fs.take.p':'Satış fiyatını %100 sayıyoruz. Başka bir şey yok.',
+        'fs.shop':'Atölyenize','fs.shopNote':'malzeme ve emeğiniz','fs.katunNote':'sayfa, fotoğraf hazırlığı, metin, çeviri, tanıtım, alıcı',
+        'fs.commission':'Bu bir komisyondur, toptan indirimi değil. Stokunuzu satın almıyoruz - parçalarınız müşteriye ulaşana kadar sizin kalır.',
+        'fs.price':'Alıcının gördüğü fiyatı siz belirlersiniz. Payımız onun içinden çıkar, üstüne eklenmez. 1 Aralık 2026\'ya kadar bu pay %25, yani siz %75 alırsınız.',
+        'fs.now.t':'Şu anda neredeyiz','fs.going.t':'Bu nereye gidiyor',
+        'fs.going.p':'AB içinde bir üs, böylece dışarıdan gelen kargolar birlikte çalıştığımız herkes için pahalı ve öngörülemez olmaktan çıksın. Bölgenizde yüz yüze atölyeler. Ve her yönün üzerine kurulduğu motiflerin büyüyen bir kaydı.',
+        'fs.form.t':'Bizimle konuşun','fs.form.sub':'Çalışmanıza bir bağlantı gönderin, size dönelim.'
+      }
+    });
+
+    addStrings({
+      en: {'fs.now.p1':"We're at the start. We're not going to tell you we'll bring you traffic - we don't have it yet, and you'd hear straight through that.",'fs.now.p2':"What's real today: the page, the photo prep, the writing, the translation, the fairs in Montenegro, and terms that cost you nothing until something sells. You keep your own shop and lose nothing by being here too."},
+      de: {'fs.now.p1':"Wir stehen am Anfang. Wir werden Ihnen nicht erzählen, dass wir Ihnen Besucher bringen - wir haben sie noch nicht, und Sie würden es sofort hören.",'fs.now.p2':"Was heute real ist: die Seite, die Bildaufbereitung, die Texte, die Übersetzung, die Märkte in Montenegro und Bedingungen, die Sie nichts kosten, bis etwas verkauft wird. Ihren eigenen Laden behalten Sie, und Sie verlieren nichts, wenn Sie auch hier sind."},
+      ru: {'fs.now.p1':"Мы в самом начале. Мы не станем рассказывать, что приведём вам трафик, — его у нас пока нет, и вы бы это сразу услышали.",'fs.now.p2':"Что есть на сегодня: страница, подготовка фотографий, тексты, перевод, ярмарки в Черногории и условия, которые ничего вам не стоят, пока ничего не продалось. Свой магазин остаётся вашим, и от присутствия здесь вы ничего не теряете."},
+      fr: {'fs.now.p1':"Nous débutons. Nous n'allons pas vous dire que nous vous amènerons du trafic - nous n'en avons pas encore, et vous l'entendriez tout de suite.",'fs.now.p2':"Ce qui est réel aujourd'hui : la page, la préparation des photos, les textes, la traduction, les foires au Monténégro, et des conditions qui ne vous coûtent rien tant que rien n'est vendu. Vous gardez votre boutique et vous ne perdez rien à être ici aussi."},
+      it: {'fs.now.p1':"Siamo all'inizio. Non verremo a dirvi che vi porteremo traffico: non ce l'abbiamo ancora, e lo sentireste subito.",'fs.now.p2':"Cosa c'è di reale oggi: la pagina, la preparazione delle foto, i testi, la traduzione, le fiere in Montenegro e condizioni che non vi costano nulla finché non si vende. Il vostro negozio resta vostro e a essere anche qui non perdete nulla."},
+      es: {'fs.now.p1':"Estamos empezando. No vamos a decirte que te traeremos tráfico: todavía no lo tenemos, y lo notarías al instante.",'fs.now.p2':"Lo que es real hoy: la página, la preparación de las fotos, los textos, la traducción, las ferias en Montenegro y unas condiciones que no te cuestan nada hasta que algo se vende. Tu tienda sigue siendo tuya y no pierdes nada por estar también aquí."},
+      pt: {'fs.now.p1':"Estamos no início. Não lhe vamos dizer que lhe traremos tráfego: ainda não o temos, e daria para perceber logo.",'fs.now.p2':"O que é real hoje: a página, a preparação das fotografias, os textos, a tradução, as feiras em Montenegro e condições que não lhe custam nada até algo ser vendido. A sua loja continua sua e não perde nada por estar também aqui."},
+      nl: {'fs.now.p1':"We staan aan het begin. We gaan je niet vertellen dat we je bezoekers brengen - die hebben we nog niet, en dat zou je meteen horen.",'fs.now.p2':"Wat vandaag echt is: de pagina, het fotowerk, de teksten, de vertaling, de markten in Montenegro, en voorwaarden die je niets kosten tot er iets verkocht wordt. Je eigen winkel houd je, en je verliest niets door hier ook te zijn."},
+      sv: {'fs.now.p1':"Vi är i början. Vi tänker inte säga att vi ska ge dig trafik - den har vi inte ännu, och det skulle du höra direkt.",'fs.now.p2':"Vad som är verkligt i dag: sidan, bildarbetet, texterna, översättningen, marknaderna i Montenegro, och villkor som inte kostar dig något förrän något säljs. Din egen butik behåller du, och du förlorar inget på att finnas här också."},
+      pl: {'fs.now.p1':"Jesteśmy na początku. Nie będziemy ci mówić, że przyprowadzimy ruch - jeszcze go nie mamy, a ty usłyszałbyś to natychmiast.",'fs.now.p2':"Co jest prawdziwe dzisiaj: strona, obróbka zdjęć, teksty, tłumaczenie, targi w Czarnogórze i warunki, które nic cię nie kosztują, dopóki nic się nie sprzeda. Własny sklep zostaje twój i nic nie tracisz, będąc także tutaj."},
+      sr: {'fs.now.p1':"Na početku smo. Nećemo vam govoriti da ćemo vam dovesti posetu - nemamo je još, i to biste odmah čuli.",'fs.now.p2':"Šta je stvarno danas: stranica, priprema fotografija, tekstovi, prevod, sajmovi u Crnoj Gori i uslovi koji vas ništa ne koštaju dok se nešto ne proda. Svoju prodavnicu zadržavate i ništa ne gubite time što ste i ovde."},
+      tr: {'fs.now.p1':"Henüz başlangıçtayız. Size trafik getireceğimizi söylemeyeceğiz - henüz yok, ve bunu hemen anlardınız.",'fs.now.p2':"Bugün gerçek olan: sayfa, fotoğraf hazırlığı, metinler, çeviri, Karadağ'daki fuarlar ve bir şey satılana kadar size hiçbir şeye mal olmayan koşullar. Kendi dükkânınız sizde kalır ve burada da olmakla hiçbir şey kaybetmezsiniz."}
+    });
+
+    addStrings({
+      en: {'nav.home':"Home"},
+      de: {'nav.home':"Start"},
+      ru: {'nav.home':"Главная"},
+      fr: {'nav.home':"Accueil"},
+      it: {'nav.home':"Home"},
+      es: {'nav.home':"Inicio"},
+      pt: {'nav.home':"Início"},
+      nl: {'nav.home':"Home"},
+      sv: {'nav.home':"Hem"},
+      pl: {'nav.home':"Strona główna"},
+      sr: {'nav.home':"Početna"},
+      tr: {'nav.home':"Ana sayfa"}
+    });
+
     let currentLang = 'en';
 
     function t(key) {
@@ -3391,6 +4060,14 @@
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const v = t(el.getAttribute('data-i18n'));
         if (v) el.textContent = v;
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const v = t(el.getAttribute('data-i18n-ph'));
+        if (v) el.placeholder = v;
+      });
+      document.querySelectorAll('[data-i18n-val]').forEach(el => {
+        const v = t(el.getAttribute('data-i18n-val'));
+        if (v) el.value = v;
       });
       const picker = document.getElementById('lang-picker');
       if (picker) picker.value = code;
@@ -4321,7 +4998,7 @@ currentView = viewId;
                  <div class="color-block" style="background-color: ${w.color}; color: #F7F3ED; font-size: 10px;">${w.name}</div>
                 </div>
                <div class="workshop-info">
-                  <span class="card-type-label">WORKSHOP</span>
+                  <span class="card-type-label">${t('meta.workshop')}</span>
                   <h3 class="serif">${w.name}</h3>
                   <p>${w.city} · ${w.itemsCount} items</p>
                 </div>
@@ -4329,7 +5006,7 @@ currentView = viewId;
             `;
           });
         } else {
-          wsGrid.innerHTML = `<div class="empty-tab-msg">No workshops in this direction yet</div>`;
+          wsGrid.innerHTML = `<div class="empty-tab-msg">${t('empty.workshops')}</div>`;
         }
 
         // 3. Partners Tab (Independent Brands with own catalogue)
@@ -4351,7 +5028,7 @@ currentView = viewId;
             `;
           });
         } else {
-          partGrid.innerHTML = `<div class="empty-tab-msg">No partners in this direction yet</div>`;
+          partGrid.innerHTML = `<div class="empty-tab-msg">${t('empty.partners')}</div>`;
         }
 
         // 4. Schemes Tab
@@ -4367,13 +5044,13 @@ currentView = viewId;
                <div class="scheme-card-body">
                   <h3 class="scheme-card-title serif">${s.name}</h3>
                  <div class="scheme-card-price">€${s.price}</div>
-                 <div class="scheme-card-meta">${s.region} · Digital record</div>
+                 <div class="scheme-card-meta">${s.region} · ${t('meta.digitalRecord')}</div>
                 </div>
               </div>
             `;
           });
         } else {
-          schGrid.innerHTML = `<div class="empty-tab-msg">No schemes in this direction yet</div>`;
+          schGrid.innerHTML = `<div class="empty-tab-msg">${t('empty.schemes')}</div>`;
         }
 
         // 5. Museums Tab
@@ -4393,7 +5070,7 @@ currentView = viewId;
       grid.innerHTML = '';
       const museums = c.museums || [];
       if (!museums.length) {
-        grid.innerHTML = `<div class="empty-tab-msg">No museum collections recorded in this direction yet</div>`;
+        grid.innerHTML = `<div class="empty-tab-msg">${t('empty.museums')}</div>`;
         return;
       }
       museums.forEach(m => {
@@ -4405,9 +5082,9 @@ currentView = viewId;
         const pieces = (c.products || []).filter(p => records.some(s => s.id === p.schemeId)).length;
         grid.innerHTML += `
           <div class="museum-card">
-            <span class="card-type-label">${m.partner ? 'Partner museum' : 'Collection'}</span>
+            <span class="card-type-label">${m.partner ? t('meta.partnerMuseum') : t('meta.collection')}</span>
             <h3 class="serif">${m.name}</h3>
-            <div class="museum-city">${m.city} &middot; ${records.length} ${records.length === 1 ? 'record' : 'records'}${pieces ? ' &middot; ' + pieces + (pieces === 1 ? ' piece' : ' pieces') : ''}</div>
+            <div class="museum-city">${m.city} &middot; ${records.length} ${records.length === 1 ? t('meta.record') : t('meta.records')}${pieces ? ' &middot; ' + pieces + (pieces === 1 ? ' ' + t('meta.piece') : ' ' + t('meta.pieces')) : ''}</div>
             ${m.note ? `<p class="museum-note">${m.note}</p>` : ''}
             ${chips}
           </div>
@@ -4439,7 +5116,7 @@ currentView = viewId;
           `;
         });
       } else {
-        prodGrid.innerHTML = `<div class="empty-tab-msg">No items in this direction yet</div>`;
+        prodGrid.innerHTML = `<div class="empty-tab-msg">${t('empty.items')}</div>`;
       }
     }
 
@@ -4458,7 +5135,7 @@ currentView = viewId;
             '<div class="text-preview-line" style="width:' + (95 - i * 9) + '%"></div>').join('') +
           '</div>';
       }
-      if (!s.chart || !s.chart.length) return '<div class="empty-tab-msg">Chart in preparation</div>';
+      if (!s.chart || !s.chart.length) return '<div class="empty-tab-msg">' + t('empty.chart') + '</div>';
       const cols = s.chart[0].length, rows = s.chart.length;
       const size = Math.max(3, Math.min(11, Math.floor(box / cols)));
       return '<div class="scheme-16-chart" style="grid-template-columns:repeat(' + cols + ',' + size +
@@ -4721,7 +5398,7 @@ ${p.photo ? `<div class="photo-block" style="background-image:url('${p.photo}')"
           `;
         });
       } else {
-        catGrid.innerHTML = `<div class="empty-tab-msg">No products in this catalogue yet</div>`;
+        catGrid.innerHTML = `<div class="empty-tab-msg">${t('empty.products')}</div>`;
       }
 
 setHash('/maker/' + entityId);
@@ -4772,7 +5449,7 @@ setHash('/maker/' + entityId);
                <div class="color-block" style="background-color: ${w.color}; color: #F7F3ED; font-size: 10px;">${w.name}</div>
               </div>
              <div class="workshop-info">
-                <span class="card-type-label">WORKSHOP</span>
+                <span class="card-type-label">${t('meta.workshop')}</span>
                 <h3 class="serif">${w.name}</h3>
                 <p>${w.city}, ${w.countryName} · ${w.itemsCount} items</p>
               </div>
@@ -4780,7 +5457,7 @@ setHash('/maker/' + entityId);
           `;
         });
       } else {
-        grid.innerHTML = `<div class="empty-tab-msg">No workshops in this direction yet</div>`;
+        grid.innerHTML = `<div class="empty-tab-msg">${t('empty.workshops')}</div>`;
       }
     }
 
@@ -4835,7 +5512,7 @@ setHash('/maker/' + entityId);
           `;
         });
       } else {
-        grid.innerHTML = `<div class="empty-tab-msg">No partners in this direction yet</div>`;
+        grid.innerHTML = `<div class="empty-tab-msg">${t('empty.partners')}</div>`;
       }
     }
 
@@ -4944,7 +5621,7 @@ function renderFullPatternChart() {
       box.classList.add('locked');
       const note = document.createElement('div');
       note.className = 'chart-lock-note';
-      note.innerText = 'The full record comes with purchase';
+      note.innerText = t('pattern.lock');
       box.appendChild(note);
     }
 function goCountries() {
@@ -4996,13 +5673,13 @@ function renderWorkshopEvents(entity) {
           <h3 class="serif">${e.title}</h3>
           <div class="event-meta">${e.date} &middot; ${e.place} &middot; ${e.duration}</div>
           <p class="event-desc">${e.desc}</p>
-          <div class="event-spots">${out ? 'Fully booked' : e.spotsLeft + ' of ' + e.spots + ' places left'}</div>
+          <div class="event-spots">${out ? t('events.full') : e.spotsLeft + ' / ' + e.spots + ' ' + t('events.left')}</div>
         </div>
         <div class="event-buy">
           <div class="event-price">&euro;${e.price}</div>
-          ${out ? '<span class="event-sold">Sold out</span>'
-                : `<button class="btn-madder" onclick="addToCart('event','${e.id}')">Reserve a place</button>`}
-          ${(!out && e.payUrl) ? `<a class="btn-outline-madder" href="${e.payUrl}" target="_blank" rel="noopener">Pay now</a>` : ''}
+          ${out ? '<span class="event-sold">' + t('events.soldOut') + '</span>'
+                : `<button class="btn-madder" onclick="addToCart('event','${e.id}')">${t('events.reserve')}</button>`}
+          ${(!out && e.payUrl) ? `<a class="btn-outline-madder" href="${e.payUrl}" target="_blank" rel="noopener">${t('events.pay')}</a>` : ''}
         </div>
       </div>`;
   }).join('');
@@ -5043,7 +5720,7 @@ function renderPatterns(filterCountry = 'all') {
   });
 
   if (allSchemes.length === 0) {
-    container.innerHTML = `<div class="empty-tab-msg">Nothing recorded in this direction yet</div>`;
+    container.innerHTML = `<div class="empty-tab-msg">${t('empty.schemes')}</div>`;
     return;
   }
 
@@ -5136,7 +5813,7 @@ function findItem(entry){
       });
     } else {
       const s = c.schemes.find(x => x.id === entry.id);
-      if (s) found = { title:s.name, price:s.price, meta:'Digital record · ' + s.region, color:'#B8A597' };
+      if (s) found = { title:s.name, price:s.price, meta: t('meta.digitalRecord') + ' · ' + s.region, color:'#B8A597' };
     }
   });
   return found;
@@ -5147,7 +5824,7 @@ function renderCart(){
   if (!box) return;
 
   if (cart.length === 0){
-    box.innerHTML = `<div class="empty-tab-msg">Your cart is empty</div>`;
+    box.innerHTML = `<div class="empty-tab-msg">${t('empty.cart')}</div>`;
     sum.innerHTML = '';
     return;
   }
