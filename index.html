@@ -164,6 +164,23 @@
       color: var(--madder);
     }
 
+    .lang-picker {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      background-color: transparent;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: 4px 6px;
+      cursor: pointer;
+      max-width: 130px;
+    }
+
+    .lang-picker:hover {
+      border-color: var(--madder);
+    }
+
     .nav-link {
       display: inline-block;
       line-height: 1;
@@ -190,9 +207,14 @@
       }
       .nav {
         width: 100%;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        gap: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 14px;
+      }
+      .lang-picker {
+        font-size: 11px;
+        padding: 3px 4px;
+        max-width: 108px;
       }
       .nav-link {
         font-size: 12px;
@@ -2056,16 +2078,17 @@
        <div class="header-inner">
           <a onclick="showView('home')" class="wordmark">KATUN</a>
           <nav class="nav">
-<a onclick="showView('all-workshops')" class="nav-link">Workshops</a>
-  <a onclick="showView('all-partners')" class="nav-link">Partners</a>
+<a onclick="showView('all-workshops')" class="nav-link" data-i18n="nav.workshops">Workshops</a>
+  <a onclick="showView('all-partners')" class="nav-link" data-i18n="nav.partners">Partners</a>
   <span class="nav-join">
-    <a onclick="toggleJoin(event)" class="nav-link">Join ▾</a>
+    <a onclick="toggleJoin(event)" class="nav-link"><span data-i18n="nav.join">Join</span> ▾</a>
     <div id="join-dropdown" class="join-dropdown">
-      <a onclick="showView('for-makers')">For Makers</a>
-      <a onclick="showView('for-shops')">For Shops</a>
+      <a onclick="showView('for-makers')" data-i18n="nav.forMakers">For Makers</a>
+      <a onclick="showView('for-shops')" data-i18n="nav.forShops">For Shops</a>
     </div>
   </span>
   <a id="cart-btn" onclick="showView('cart')" class="nav-link">Cart (0)</a>
+  <select id="lang-picker" class="lang-picker" aria-label="Language"></select>
 </nav>
         </div>
       </div>
@@ -2082,10 +2105,10 @@
   <div class="hero-photo">
     <div class="hero-overlay">
       <div class="container hero-content">
-        <h1 class="serif">What a country made by hand, we make again</h1>
-        <p class="hero-subline">We find vanishing craft in museums and village houses, record how it was made, and put it back into working hands.</p>
+        <h1 class="serif" data-i18n="hero.title">What a country made by hand, we make again</h1>
+        <p class="hero-subline" data-i18n="hero.sub">We find vanishing craft in museums and village houses, record how it was made, and put it back into working hands.</p>
         <div>
-          <a class="btn-madder" href="#countries">See the pieces</a>
+          <a class="btn-madder" href="#countries" data-i18n="hero.cta">See the pieces</a>
         </div>
       </div>
     </div>
@@ -2095,7 +2118,7 @@
   <div class="trust-strip">
     <div class="container">
       <div class="trust-strip-inner">
-        Made by hand &middot; A named maker &middot; Shipping included &middot; 14-day returns
+        <span data-i18n="trust">Made by hand · A named maker · Shipping included · 14-day returns</span>
       </div>
     </div>
   </div>
@@ -2106,9 +2129,9 @@
       <div class="story-grid">
         <div class="story-photo"></div>
         <div class="story-text">
-          <h2 class="serif">First we write it down</h2>
-          <p>Almost none of this was ever written down. The knowledge lived in hands, and it ends when the hands stop.</p>
-          <p>We find the object - in a museum, in a family chest, with the last person who still works this way - record its ornament and where it comes from, and put it back into production with a maker who can carry it.</p>
+          <h2 class="serif" data-i18n="story.title">First we write it down</h2>
+          <p data-i18n="story.p1">Almost none of this was ever written down. The knowledge lived in hands, and it ends when the hands stop.</p>
+          <p data-i18n="story.p2">We find the object - in a museum, in a family chest, with the last person who still works this way - record its ornament and where it comes from, and put it back into production with a maker who can carry it.</p>
         </div>
       </div>
     </div>
@@ -2119,16 +2142,16 @@
     <div class="container">
       <div class="pillars-grid">
         <div class="pillar-card">
-          <h3 class="serif">A record behind every piece</h3>
-          <p>Every ornament gets its own page: the object it came from, the museum or the village, the region, what the motif meant.</p>
+          <h3 class="serif" data-i18n="pillar1.t">A record behind every piece</h3>
+          <p data-i18n="pillar1.p">Every ornament gets its own page: the object it came from, the museum or the village, the region, what the motif meant.</p>
         </div>
         <div class="pillar-card">
-          <h3 class="serif">A piece with an author</h3>
-          <p>Made by a named person in a named place - and we say what they changed. A piece is a reading of the record, not a copy of it.</p>
+          <h3 class="serif" data-i18n="pillar2.t">A piece with an author</h3>
+          <p data-i18n="pillar2.p">Made by a named person in a named place - and we say what they changed. A piece is a reading of the record, not a copy of it.</p>
         </div>
         <div class="pillar-card">
-          <h3 class="serif">Not only wool</h3>
-          <p>Textile, clay, metal, wood. Different hands, the same method: find it, record it, make it again.</p>
+          <h3 class="serif" data-i18n="pillar3.t">Not only wool</h3>
+          <p data-i18n="pillar3.p">Textile, clay, metal, wood. Different hands, the same method: find it, record it, make it again.</p>
         </div>
       </div>
     </div>
@@ -2139,7 +2162,7 @@
     <div class="container">
       <div class="countries-header">
         <h2 class="serif">Craft without borders</h2>
-        <p class="countries-sub">Every region has its own ornament. Choose a direction.</p>
+        <p class="countries-sub" data-i18n="countries.sub">Every region has its own ornament. Choose a direction.</p>
       </div>
 <div class="country-home-grid">
         <!-- Montenegro -->
@@ -2193,7 +2216,7 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Italy</h2>
-            <span class="country-card-caption">Opening soon</span>
+            <span class="country-card-caption" data-i18n="countries.soon">Opening soon</span>
           </div>
         </div>
 
@@ -2204,7 +2227,7 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Armenia</h2>
-            <span class="country-card-caption">Opening soon</span>
+            <span class="country-card-caption" data-i18n="countries.soon">Opening soon</span>
           </div>
         </div>
 
@@ -2215,7 +2238,7 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Turkey</h2>
-            <span class="country-card-caption">Opening soon</span>
+            <span class="country-card-caption" data-i18n="countries.soon">Opening soon</span>
           </div>
         </div>
 
@@ -2226,7 +2249,7 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Spain</h2>
-            <span class="country-card-caption">Opening soon</span>
+            <span class="country-card-caption" data-i18n="countries.soon">Opening soon</span>
           </div>
         </div>
 
@@ -2237,7 +2260,7 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Ukraine</h2>
-            <span class="country-card-caption">Opening soon</span>
+            <span class="country-card-caption" data-i18n="countries.soon">Opening soon</span>
           </div>
         </div>
 
@@ -2248,7 +2271,7 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Portugal</h2>
-            <span class="country-card-caption">Opening soon</span>
+            <span class="country-card-caption" data-i18n="countries.soon">Opening soon</span>
           </div>
         </div>
 
@@ -2259,7 +2282,7 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Russia</h2>
-            <span class="country-card-caption">Opening soon</span>
+            <span class="country-card-caption" data-i18n="countries.soon">Opening soon</span>
           </div>
         </div>
       </div>
@@ -2269,11 +2292,11 @@
   <section class="for-makers-section">
     <div class="container">
       <div class="for-makers-card">
-        <h2 class="serif">You make. We handle the rest.</h2>
-        <p>Photography, copy, translation, shipping, talking to buyers. All you do is work with your hands.</p>
+        <h2 class="serif" data-i18n="join.title">You make. We handle the rest.</h2>
+        <p data-i18n="join.p">Photography, copy, translation, shipping, talking to buyers. All you do is work with your hands.</p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
-          <a class="btn-outline" onclick="showView('for-makers')">Join us as a maker</a>
-          <a class="btn-outline" onclick="showView('for-shops')">Join us as a shop</a>
+          <a class="btn-outline" onclick="showView('for-makers')" data-i18n="join.maker">Join us as a maker</a>
+          <a class="btn-outline" onclick="showView('for-shops')" data-i18n="join.shop">Join us as a shop</a>
         </div>
       </div>
     </div>
@@ -2312,11 +2335,11 @@
 
           <!-- TAB SWITCHER ROW (4 TABS) -->
          <div class="tabs-row" id="country-tabs-row">
-            <button class="tab-btn active" onclick="switchTab('items')">Items</button>
-<button class="tab-btn" onclick="switchTab('workshops')">Makers</button>
-            <button class="tab-btn" onclick="switchTab('partners')">Partners</button>
-            <button class="tab-btn" onclick="switchTab('schemes')">Schemes</button>
-            <button class="tab-btn" onclick="switchTab('museums')">Museums</button>
+            <button class="tab-btn active" onclick="switchTab('items')" data-i18n="tabs.items">Items</button>
+<button class="tab-btn" onclick="switchTab('workshops')" data-i18n="tabs.makers">Makers</button>
+            <button class="tab-btn" onclick="switchTab('partners')" data-i18n="tabs.partners">Partners</button>
+            <button class="tab-btn" onclick="switchTab('schemes')" data-i18n="tabs.schemes">Schemes</button>
+            <button class="tab-btn" onclick="switchTab('museums')" data-i18n="tabs.museums">Museums</button>
           </div>
         </div>
 
@@ -2416,49 +2439,49 @@
               <h1 class="product-title serif" id="product-title">Product Title</h1>
              <div class="product-price" id="product-price">€000</div>
              <div class="product-origin" id="product-origin">
-                Made by <span id="product-origin-link" class="product-origin-link">Workshop</span>, <span id="product-origin-region">Region</span>, <span id="product-origin-country">Country</span>
+                <span data-i18n="product.madeBy">Made by</span> <span id="product-origin-link" class="product-origin-link">Workshop</span>, <span id="product-origin-region">Region</span>, <span id="product-origin-country">Country</span>
               </div>
 
               <p class="product-desc" id="product-desc"></p>
 
               <p id="product-size-note" style="display:none;font-size:13px;color:#665E58;line-height:1.5;margin-bottom:16px;max-width:34em;">Knitted to the measurement you send, so this piece is outside the 14-day return. Measure before you order, and write to us if you are unsure. <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">Terms &amp; returns</a></p>
 
-              <button class="btn-madder add-to-cart-btn" onclick="addToCart('product', currentProduct.id)">Add to cart</button>
-              <a class="btn-madder add-to-cart-btn" id="product-ask" style="display:none;text-align:center;" href="mailto:katun.montenegro@gmail.com?subject=KATUN%20enquiry">Ask about this piece</a>
+              <button class="btn-madder add-to-cart-btn" onclick="addToCart('product', currentProduct.id)" data-i18n="btn.addToCart">Add to cart</button>
+              <a class="btn-madder add-to-cart-btn" id="product-ask" style="display:none;text-align:center;" href="mailto:katun.montenegro@gmail.com?subject=KATUN%20enquiry" data-i18n="btn.ask">Ask about this piece</a>
 
              <div class="spec-table">
                <div class="spec-row">
-                  <span class="spec-label">Material</span>
+                  <span class="spec-label" data-i18n="spec.material">Material</span>
                   <span class="spec-value" id="spec-material">100% Unbleached Mountain Wool</span>
                 </div>
                <div class="spec-row">
-                  <span class="spec-label">Size</span>
+                  <span class="spec-label" data-i18n="spec.size">Size</span>
                   <span class="spec-value" id="spec-size">One Size (Fits M-L)</span>
                 </div>
                <div class="spec-row">
-                  <span class="spec-label">Care</span>
+                  <span class="spec-label" data-i18n="spec.care">Care</span>
                   <span class="spec-value" id="spec-care">Hand wash cold with wool detergent</span>
                 </div>
 <div class="spec-row" id="spec-credit-row">
-                  <span class="spec-label">Pattern</span>
+                  <span class="spec-label" data-i18n="spec.pattern">Pattern</span>
                   <span class="spec-value" id="spec-credit"></span>
                 </div>
                <div class="spec-row" id="spec-reading-row">
-                  <span class="spec-label">Reading</span>
+                  <span class="spec-label" data-i18n="spec.reading">Reading</span>
                   <span class="spec-value" id="spec-reading"></span>
                 </div>
                <div class="spec-row">
-                  <span class="spec-label">Made in</span>
+                  <span class="spec-label" data-i18n="spec.madeIn">Made in</span>
                   <span class="spec-value" id="spec-days">14 days</span>
                 </div>
                <div class="spec-row">
-                  <span class="spec-label">Shipping</span>
+                  <span class="spec-label" data-i18n="spec.shipping">Shipping</span>
                   <span class="spec-value" id="spec-shipping">Included, worldwide, tracked · <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">customs</a></span>
                 </div>
               </div>
 
              <div id="measurements-box" style="display:none;margin-top:32px;">
-                <h3 class="serif" style="font-size:22px;margin-bottom:12px;">Measurements</h3>
+                <h3 class="serif" style="font-size:22px;margin-bottom:12px;" data-i18n="spec.measurements">Measurements</h3>
                 <div id="measurements-diagram"></div>
                 <table class="split-table" id="measurements-list" style="margin-top:16px;"></table>
               </div>
@@ -2809,7 +2832,7 @@
       </div>
     </div>
     <div class="directory-section">
-      <h1 class="serif" style="font-size:40px;margin-bottom:24px;">Your cart</h1>
+      <h1 class="serif" style="font-size:40px;margin-bottom:24px;" data-i18n="cart.title">Your cart</h1>
       <div id="cart-items"></div>
       <div id="cart-summary"></div>
     </div>
@@ -3051,29 +3074,29 @@
 
          <div class="footer-nav-group">
            <div class="footer-column">
-              <span class="footer-title">Navigation</span>
+              <span class="footer-title" data-i18n="footer.nav">Navigation</span>
               <ul class="footer-links">
-                <li><a onclick="goCountries()" class="footer-link">Countries</a></li>
-                <li><a onclick="showView('all-workshops')" class="footer-link">Workshops</a></li>
-                <li><a onclick="showView('all-partners')" class="footer-link">Partners</a></li>
-                <li><a onclick="showView('patterns')" class="footer-link">Patterns</a></li>
-<li><a onclick="showView('about')" class="footer-link">About us</a></li>
+                <li><a onclick="goCountries()" class="footer-link" data-i18n="footer.countries">Countries</a></li>
+                <li><a onclick="showView('all-workshops')" class="footer-link" data-i18n="nav.workshops">Workshops</a></li>
+                <li><a onclick="showView('all-partners')" class="footer-link" data-i18n="nav.partners">Partners</a></li>
+                <li><a onclick="showView('patterns')" class="footer-link" data-i18n="footer.patterns">Patterns</a></li>
+<li><a onclick="showView('about')" class="footer-link" data-i18n="footer.about">About us</a></li>
               </ul>
             </div>
 
            <div class="footer-column">
-              <span class="footer-title">Partnership</span>
+              <span class="footer-title" data-i18n="footer.partnership">Partnership</span>
               <ul class="footer-links">
-                <li><a onclick="showView('for-makers')" class="footer-link">For Makers</a></li>
-                <li><a onclick="showView('for-shops')" class="footer-link">For Shops</a></li>
+                <li><a onclick="showView('for-makers')" class="footer-link" data-i18n="nav.forMakers">For Makers</a></li>
+                <li><a onclick="showView('for-shops')" class="footer-link" data-i18n="nav.forShops">For Shops</a></li>
               </ul>
             </div>
 
            <div class="footer-column">
-              <span class="footer-title">Legal</span>
+              <span class="footer-title" data-i18n="footer.legal">Legal</span>
               <ul class="footer-links">
-                <li><a onclick="showView('terms')" class="footer-link">Terms & returns</a></li>
-                <li><a onclick="showView('privacy')" class="footer-link">Privacy</a></li>
+                <li><a onclick="showView('terms')" class="footer-link" data-i18n="footer.terms">Terms & returns</a></li>
+                <li><a onclick="showView('privacy')" class="footer-link" data-i18n="footer.privacy">Privacy</a></li>
               </ul>
             </div>
           </div>
@@ -3091,6 +3114,315 @@
   <!-- APPLICATION DATA & LOGIC -->
   <script>
     /* DATABASE STRUCTURE WITH SEPARATED WORKSHOPS AND PARTNERS */
+    /* ===== LANGUAGES ===== */
+    const LANGS = [
+      ['en', 'English'], ['de', 'Deutsch'], ['ru', 'Русский'], ['fr', 'Français'],
+      ['it', 'Italiano'], ['es', 'Español'], ['pt', 'Português'], ['nl', 'Nederlands'],
+      ['sv', 'Svenska'], ['pl', 'Polski'], ['sr', 'Srpski'], ['tr', 'Türkçe']
+    ];
+
+    const I18N = {
+      en: {
+        'nav.workshops':'Workshops','nav.partners':'Partners','nav.join':'Join','nav.forMakers':'For Makers','nav.forShops':'For Shops','nav.cart':'Cart',
+        'hero.title':'What a country made by hand, we make again',
+        'hero.sub':'We find vanishing craft in museums and village houses, record how it was made, and put it back into working hands.',
+        'hero.cta':'See the pieces',
+        'trust':'Made by hand · A named maker · Shipping included · 14-day returns',
+        'story.title':'First we write it down',
+        'story.p1':'Almost none of this was ever written down. The knowledge lived in hands, and it ends when the hands stop.',
+        'story.p2':"We find the object - in a museum, in a family chest, with the last person who still works this way - record its ornament and where it comes from, and put it back into production with a maker who can carry it.",
+        'join.p':"Photography, copy, translation, shipping, talking to buyers. All you do is work with your hands.",
+        'pillar1.t':'A record behind every piece','pillar1.p':'Every ornament gets its own page: the object it came from, the museum or the village, the region, what the motif meant.',
+        'pillar2.t':'A piece with an author','pillar2.p':'Made by a named person in a named place - and we say what they changed. A piece is a reading of the record, not a copy of it.',
+        'pillar3.t':'Not only wool','pillar3.p':'Textile, clay, metal, wood. Different hands, the same method: find it, record it, make it again.',
+        'countries.title':'Craft without borders','countries.sub':'Every region has its own ornament. Choose a direction.','countries.soon':'Opening soon',
+        'join.title':'You make. We handle the rest.','join.maker':'Join us as a maker','join.shop':'Join us as a shop',
+        'footer.nav':'Navigation','footer.partnership':'Partnership','footer.legal':'Legal','footer.countries':'Countries','footer.patterns':'Patterns','footer.about':'About us','footer.terms':'Terms & returns','footer.privacy':'Privacy',
+        'tabs.items':'Items','tabs.makers':'Makers','tabs.partners':'Partners','tabs.schemes':'Schemes','tabs.museums':'Museums',
+        'spec.material':'Material','spec.size':'Size','spec.care':'Care','spec.pattern':'Pattern','spec.reading':'Reading','spec.madeIn':'Made in','spec.shipping':'Shipping','spec.measurements':'Measurements',
+        'btn.addToCart':'Add to cart','btn.ask':'Ask about this piece','btn.buy':'Buy','price.onRequest':'Price on request','product.madeBy':'Made by',
+        'cart.title':'Your cart','cart.total':'Total','cart.remove':'Remove','cart.whatsapp':'Order via WhatsApp','cart.email':'Order by email'
+      },
+      de: {
+        'nav.workshops':'Werkstätten','nav.partners':'Partner','nav.join':'Mitmachen','nav.forMakers':'Für Handwerkerinnen','nav.forShops':'Für Läden','nav.cart':'Warenkorb',
+        'hero.title':'Was ein Land von Hand gemacht hat, machen wir wieder',
+        'hero.sub':'Wir finden verschwindendes Handwerk in Museen und Dorfhäusern, halten fest, wie es gemacht wurde, und geben es in arbeitende Hände zurück.',
+        'hero.cta':'Die Stücke ansehen',
+        'trust':'Von Hand gemacht · Eine Handwerkerin mit Namen · Versand inklusive · 14 Tage Rückgabe',
+        'story.title':'Zuerst schreiben wir es auf',
+        'story.p1':'Fast nichts davon wurde je aufgeschrieben. Das Wissen lebte in den Händen, und es endet, wenn die Hände aufhören.',
+        'story.p2':"Wir finden das Objekt - in einem Museum, in einer Familientruhe, bei der letzten Person, die noch so arbeitet - halten sein Ornament und seine Herkunft fest und geben es mit einer Handwerkerin, die es weitertragen kann, zurueck in die Herstellung.",
+        'join.p':"Fotografie, Texte, Uebersetzung, Versand, Gespraeche mit Kaeufern. Sie arbeiten nur mit Ihren Haenden.",
+        'pillar1.t':'Eine Aufzeichnung hinter jedem Stück','pillar1.p':'Jedes Ornament bekommt seine eigene Seite: das Objekt, aus dem es stammt, das Museum oder das Dorf, die Region, was das Motiv bedeutete.',
+        'pillar2.t':'Ein Stück mit einer Urheberin','pillar2.p':'Von einer benannten Person an einem benannten Ort gemacht - und wir sagen, was sie verändert hat. Ein Stück ist eine Lesart der Aufzeichnung, keine Kopie.',
+        'pillar3.t':'Nicht nur Wolle','pillar3.p':'Textil, Ton, Metall, Holz. Andere Hände, dieselbe Methode: finden, aufzeichnen, wieder machen.',
+        'countries.title':'Handwerk ohne Grenzen','countries.sub':'Jede Region hat ihr eigenes Ornament. Wählen Sie eine Richtung.','countries.soon':'Bald verfügbar',
+        'join.title':'Sie machen. Den Rest übernehmen wir.','join.maker':'Als Handwerkerin mitmachen','join.shop':'Als Laden mitmachen',
+        'footer.nav':'Navigation','footer.partnership':'Partnerschaft','footer.legal':'Rechtliches','footer.countries':'Länder','footer.patterns':'Muster','footer.about':'Über uns','footer.terms':'AGB & Rückgabe','footer.privacy':'Datenschutz',
+        'tabs.items':'Stücke','tabs.makers':'Handwerkerinnen','tabs.partners':'Partner','tabs.schemes':'Vorlagen','tabs.museums':'Museen',
+        'spec.material':'Material','spec.size':'Größe','spec.care':'Pflege','spec.pattern':'Muster','spec.reading':'Lesart','spec.madeIn':'Arbeitszeit','spec.shipping':'Versand','spec.measurements':'Maße',
+        'btn.addToCart':'In den Warenkorb','btn.ask':'Nach diesem Stück fragen','btn.buy':'Kaufen','price.onRequest':'Preis auf Anfrage','product.madeBy':'Gemacht von',
+        'cart.title':'Ihr Warenkorb','cart.total':'Gesamt','cart.remove':'Entfernen','cart.whatsapp':'Über WhatsApp bestellen','cart.email':'Per E-Mail bestellen'
+      },
+      ru: {
+        'nav.workshops':'Мастерские','nav.partners':'Партнёры','nav.join':'Присоединиться','nav.forMakers':'Мастерам','nav.forShops':'Магазинам','nav.cart':'Корзина',
+        'hero.title':'То, что страна умела делать руками, мы делаем снова',
+        'hero.sub':'Мы находим исчезающее ремесло в музеях и деревенских домах, записываем, как оно было сделано, и возвращаем в работающие руки.',
+        'hero.cta':'Смотреть вещи',
+        'trust':'Ручная работа · Мастер с именем · Доставка включена · Возврат 14 дней',
+        'story.title':'Сначала мы это записываем',
+        'story.p1':'Почти ничего из этого никогда не было записано. Знание жило в руках и заканчивается, когда руки останавливаются.',
+        'story.p2':"Мы находим предмет — в музее, в семейном сундуке, у последнего человека, который ещё так работает, — записываем его орнамент и происхождение и возвращаем в работу с мастером, который сможет его вести.",
+        'join.p':"Съёмка, тексты, перевод, доставка, разговоры с покупателями. Вы только работаете руками.",
+        'pillar1.t':'За каждой вещью — запись','pillar1.p':'У каждого орнамента своя страница: предмет, с которого он снят, музей или село, регион, что означал мотив.',
+        'pillar2.t':'У вещи есть автор','pillar2.p':'Сделано человеком с именем в названном месте — и мы говорим, что он изменил. Вещь — это прочтение записи, а не её копия.',
+        'pillar3.t':'Не только шерсть','pillar3.p':'Ткань, глина, металл, дерево. Другие руки, тот же метод: найти, записать, сделать снова.',
+        'countries.title':'Ремесло без границ','countries.sub':'У каждого региона свой орнамент. Выберите направление.','countries.soon':'Скоро откроется',
+        'join.title':'Вы делаете. Остальное берём на себя.','join.maker':'Присоединиться как мастер','join.shop':'Присоединиться как магазин',
+        'footer.nav':'Навигация','footer.partnership':'Партнёрство','footer.legal':'Правовое','footer.countries':'Страны','footer.patterns':'Узоры','footer.about':'О нас','footer.terms':'Условия и возврат','footer.privacy':'Конфиденциальность',
+        'tabs.items':'Вещи','tabs.makers':'Мастера','tabs.partners':'Партнёры','tabs.schemes':'Схемы','tabs.museums':'Музеи',
+        'spec.material':'Материал','spec.size':'Размер','spec.care':'Уход','spec.pattern':'Узор','spec.reading':'Прочтение','spec.madeIn':'Срок работы','spec.shipping':'Доставка','spec.measurements':'Мерки',
+        'btn.addToCart':'В корзину','btn.ask':'Спросить об этой вещи','btn.buy':'Купить','price.onRequest':'Цена по запросу','product.madeBy':'Сделано',
+        'cart.title':'Ваша корзина','cart.total':'Итого','cart.remove':'Убрать','cart.whatsapp':'Заказать через WhatsApp','cart.email':'Заказать по почте'
+      },
+      fr: {
+        'nav.workshops':'Ateliers','nav.partners':'Partenaires','nav.join':'Nous rejoindre','nav.forMakers':'Pour les artisanes','nav.forShops':'Pour les boutiques','nav.cart':'Panier',
+        'hero.title':"Ce qu'un pays faisait à la main, nous le refaisons",
+        'hero.sub':'Nous trouvons un artisanat qui disparaît dans les musées et les maisons de village, nous consignons comment il était fait, et nous le remettons entre des mains qui travaillent.',
+        'hero.cta':'Voir les pièces',
+        'trust':'Fait main · Une artisane nommée · Livraison incluse · Retour sous 14 jours',
+        'story.title':"D'abord nous le consignons",
+        'story.p1':"Presque rien de tout cela n'a jamais été écrit. Le savoir vivait dans les mains, et il s'arrête quand les mains s'arrêtent.",
+        'story.p2':"Nous trouvons l'objet - dans un musee, dans un coffre de famille, chez la derniere personne qui travaille encore ainsi - nous consignons son ornement et son origine, et nous le remettons en production avec une artisane capable de le porter.",
+        'join.p':"Photographie, textes, traduction, expedition, echanges avec les acheteurs. Vous ne faites que travailler de vos mains.",
+        'pillar1.t':'Une notice derrière chaque pièce','pillar1.p':"Chaque ornement a sa page : l'objet dont il provient, le musée ou le village, la région, ce que le motif signifiait.",
+        'pillar2.t':'Une pièce avec un auteur','pillar2.p':"Faite par une personne nommée dans un lieu nommé - et nous disons ce qu'elle a changé. Une pièce est une lecture de la notice, pas une copie.",
+        'pillar3.t':'Pas seulement la laine','pillar3.p':'Textile, argile, métal, bois. Des mains différentes, la même méthode : trouver, consigner, refaire.',
+        'countries.title':'Artisanat sans frontières','countries.sub':'Chaque région a son ornement. Choisissez une direction.','countries.soon':'Bientôt',
+        'join.title':'Vous faites. Nous nous occupons du reste.','join.maker':'Nous rejoindre comme artisane','join.shop':'Nous rejoindre comme boutique',
+        'footer.nav':'Navigation','footer.partnership':'Partenariat','footer.legal':'Mentions légales','footer.countries':'Pays','footer.patterns':'Motifs','footer.about':'À propos','footer.terms':'Conditions et retours','footer.privacy':'Confidentialité',
+        'tabs.items':'Pièces','tabs.makers':'Artisanes','tabs.partners':'Partenaires','tabs.schemes':'Grilles','tabs.museums':'Musées',
+        'spec.material':'Matière','spec.size':'Taille','spec.care':'Entretien','spec.pattern':'Motif','spec.reading':'Lecture','spec.madeIn':'Temps de travail','spec.shipping':'Livraison','spec.measurements':'Dimensions',
+        'btn.addToCart':'Ajouter au panier','btn.ask':'Poser une question','btn.buy':'Acheter','price.onRequest':'Prix sur demande','product.madeBy':'Fait par',
+        'cart.title':'Votre panier','cart.total':'Total','cart.remove':'Retirer','cart.whatsapp':'Commander par WhatsApp','cart.email':'Commander par e-mail'
+      },
+      it: {
+        'nav.workshops':'Laboratori','nav.partners':'Partner','nav.join':'Unisciti','nav.forMakers':'Per le artigiane','nav.forShops':'Per i negozi','nav.cart':'Carrello',
+        'hero.title':'Ciò che un paese faceva a mano, lo rifacciamo',
+        'hero.sub':'Troviamo artigianato che sta scomparendo nei musei e nelle case di villaggio, registriamo come veniva fatto e lo restituiamo a mani che lavorano.',
+        'hero.cta':'Vedi i pezzi',
+        'trust':'Fatto a mano · Un’artigiana con un nome · Spedizione inclusa · Reso entro 14 giorni',
+        'story.title':'Prima lo mettiamo per iscritto',
+        'story.p1':'Quasi nulla di tutto questo è mai stato scritto. Il sapere viveva nelle mani, e finisce quando le mani si fermano.',
+        'story.p2':"Troviamo l'oggetto - in un museo, in un baule di famiglia, dall'ultima persona che lavora ancora cosi - registriamo il suo ornamento e la sua provenienza e lo rimettiamo in produzione con un'artigiana capace di portarlo avanti.",
+        'join.p':"Fotografia, testi, traduzione, spedizione, dialogo con chi compra. Tu lavori solo con le mani.",
+        'pillar1.t':'Una registrazione dietro ogni pezzo','pillar1.p':"Ogni ornamento ha la sua pagina: l'oggetto da cui proviene, il museo o il villaggio, la regione, cosa significava il motivo.",
+        'pillar2.t':'Un pezzo con un autore','pillar2.p':'Fatto da una persona con un nome in un luogo con un nome - e diciamo cosa ha cambiato. Un pezzo è una lettura della registrazione, non una copia.',
+        'pillar3.t':'Non solo lana','pillar3.p':'Tessuto, argilla, metallo, legno. Mani diverse, lo stesso metodo: trovare, registrare, rifare.',
+        'countries.title':'Artigianato senza confini','countries.sub':'Ogni regione ha il suo ornamento. Scegli una direzione.','countries.soon':'In arrivo',
+        'join.title':'Tu fai. Al resto pensiamo noi.','join.maker':'Unisciti come artigiana','join.shop':'Unisciti come negozio',
+        'footer.nav':'Navigazione','footer.partnership':'Collaborazione','footer.legal':'Note legali','footer.countries':'Paesi','footer.patterns':'Motivi','footer.about':'Chi siamo','footer.terms':'Condizioni e resi','footer.privacy':'Privacy',
+        'tabs.items':'Pezzi','tabs.makers':'Artigiane','tabs.partners':'Partner','tabs.schemes':'Schemi','tabs.museums':'Musei',
+        'spec.material':'Materiale','spec.size':'Taglia','spec.care':'Cura','spec.pattern':'Motivo','spec.reading':'Lettura','spec.madeIn':'Tempo di lavoro','spec.shipping':'Spedizione','spec.measurements':'Misure',
+        'btn.addToCart':'Aggiungi al carrello','btn.ask':'Chiedi di questo pezzo','btn.buy':'Acquista','price.onRequest':'Prezzo su richiesta','product.madeBy':'Fatto da',
+        'cart.title':'Il tuo carrello','cart.total':'Totale','cart.remove':'Rimuovi','cart.whatsapp':'Ordina su WhatsApp','cart.email':'Ordina via e-mail'
+      },
+      es: {
+        'nav.workshops':'Talleres','nav.partners':'Socios','nav.join':'Únete','nav.forMakers':'Para artesanas','nav.forShops':'Para tiendas','nav.cart':'Cesta',
+        'hero.title':'Lo que un país hacía a mano, lo volvemos a hacer',
+        'hero.sub':'Encontramos oficios que desaparecen en museos y casas de pueblo, registramos cómo se hacían y los devolvemos a manos que trabajan.',
+        'hero.cta':'Ver las piezas',
+        'trust':'Hecho a mano · Una artesana con nombre · Envío incluido · Devolución en 14 días',
+        'story.title':'Primero lo dejamos por escrito',
+        'story.p1':'Casi nada de esto se escribió nunca. El saber vivía en las manos, y se acaba cuando las manos paran.',
+        'story.p2':"Encontramos el objeto - en un museo, en un arcon familiar, con la ultima persona que aun trabaja asi - registramos su ornamento y su procedencia y lo devolvemos a la produccion con una artesana capaz de sostenerlo.",
+        'join.p':"Fotografia, textos, traduccion, envio, hablar con quien compra. Tu solo trabajas con las manos.",
+        'pillar1.t':'Un registro detrás de cada pieza','pillar1.p':'Cada ornamento tiene su página: el objeto del que procede, el museo o el pueblo, la región, qué significaba el motivo.',
+        'pillar2.t':'Una pieza con autor','pillar2.p':'Hecha por una persona con nombre en un lugar con nombre - y decimos qué cambió. Una pieza es una lectura del registro, no una copia.',
+        'pillar3.t':'No solo lana','pillar3.p':'Tejido, barro, metal, madera. Manos distintas, el mismo método: encontrarlo, registrarlo, volver a hacerlo.',
+        'countries.title':'Artesanía sin fronteras','countries.sub':'Cada región tiene su ornamento. Elige una dirección.','countries.soon':'Próximamente',
+        'join.title':'Tú haces. Del resto nos ocupamos nosotros.','join.maker':'Únete como artesana','join.shop':'Únete como tienda',
+        'footer.nav':'Navegación','footer.partnership':'Colaboración','footer.legal':'Legal','footer.countries':'Países','footer.patterns':'Motivos','footer.about':'Sobre nosotros','footer.terms':'Condiciones y devoluciones','footer.privacy':'Privacidad',
+        'tabs.items':'Piezas','tabs.makers':'Artesanas','tabs.partners':'Socios','tabs.schemes':'Patrones','tabs.museums':'Museos',
+        'spec.material':'Material','spec.size':'Talla','spec.care':'Cuidado','spec.pattern':'Motivo','spec.reading':'Lectura','spec.madeIn':'Tiempo de trabajo','spec.shipping':'Envío','spec.measurements':'Medidas',
+        'btn.addToCart':'Añadir a la cesta','btn.ask':'Preguntar por esta pieza','btn.buy':'Comprar','price.onRequest':'Precio a consultar','product.madeBy':'Hecho por',
+        'cart.title':'Tu cesta','cart.total':'Total','cart.remove':'Quitar','cart.whatsapp':'Pedir por WhatsApp','cart.email':'Pedir por correo'
+      },
+      pt: {
+        'nav.workshops':'Oficinas','nav.partners':'Parceiros','nav.join':'Junte-se','nav.forMakers':'Para artesãs','nav.forShops':'Para lojas','nav.cart':'Carrinho',
+        'hero.title':'O que um país fazia à mão, voltamos a fazer',
+        'hero.sub':'Encontramos ofícios que estão a desaparecer em museus e casas de aldeia, registamos como eram feitos e devolvemo-los a mãos que trabalham.',
+        'hero.cta':'Ver as peças',
+        'trust':'Feito à mão · Uma artesã com nome · Envio incluído · Devolução em 14 dias',
+        'story.title':'Primeiro registamos',
+        'story.p1':'Quase nada disto foi alguma vez escrito. O saber vivia nas mãos, e acaba quando as mãos param.',
+        'story.p2':"Encontramos o objeto - num museu, numa arca de familia, com a ultima pessoa que ainda trabalha assim - registamos o seu ornamento e a sua origem e devolvemo-lo a producao com uma artesa capaz de o levar adiante.",
+        'join.p':"Fotografia, textos, traducao, envio, falar com quem compra. Voce so trabalha com as maos.",
+        'pillar1.t':'Um registo por trás de cada peça','pillar1.p':'Cada ornamento tem a sua página: o objeto de onde veio, o museu ou a aldeia, a região, o que o motivo significava.',
+        'pillar2.t':'Uma peça com autor','pillar2.p':'Feita por uma pessoa com nome num lugar com nome - e dizemos o que ela mudou. Uma peça é uma leitura do registo, não uma cópia.',
+        'pillar3.t':'Não só lã','pillar3.p':'Tecido, barro, metal, madeira. Mãos diferentes, o mesmo método: encontrar, registar, fazer de novo.',
+        'countries.title':'Ofício sem fronteiras','countries.sub':'Cada região tem o seu ornamento. Escolha uma direção.','countries.soon':'Em breve',
+        'join.title':'Você faz. Do resto tratamos nós.','join.maker':'Juntar-se como artesã','join.shop':'Juntar-se como loja',
+        'footer.nav':'Navegação','footer.partnership':'Parceria','footer.legal':'Legal','footer.countries':'Países','footer.patterns':'Motivos','footer.about':'Sobre nós','footer.terms':'Termos e devoluções','footer.privacy':'Privacidade',
+        'tabs.items':'Peças','tabs.makers':'Artesãs','tabs.partners':'Parceiros','tabs.schemes':'Esquemas','tabs.museums':'Museus',
+        'spec.material':'Material','spec.size':'Tamanho','spec.care':'Cuidados','spec.pattern':'Motivo','spec.reading':'Leitura','spec.madeIn':'Tempo de trabalho','spec.shipping':'Envio','spec.measurements':'Medidas',
+        'btn.addToCart':'Adicionar ao carrinho','btn.ask':'Perguntar sobre esta peça','btn.buy':'Comprar','price.onRequest':'Preço sob consulta','product.madeBy':'Feito por',
+        'cart.title':'O seu carrinho','cart.total':'Total','cart.remove':'Remover','cart.whatsapp':'Encomendar por WhatsApp','cart.email':'Encomendar por e-mail'
+      },
+      nl: {
+        'nav.workshops':'Werkplaatsen','nav.partners':'Partners','nav.join':'Meedoen','nav.forMakers':'Voor makers','nav.forShops':'Voor winkels','nav.cart':'Winkelwagen',
+        'hero.title':'Wat een land met de hand maakte, maken wij opnieuw',
+        'hero.sub':'We vinden verdwijnend handwerk in musea en dorpshuizen, leggen vast hoe het gemaakt werd, en geven het terug aan werkende handen.',
+        'hero.cta':'Bekijk de stukken',
+        'trust':'Met de hand gemaakt · Een maker met een naam · Verzending inbegrepen · 14 dagen retour',
+        'story.title':'Eerst schrijven we het op',
+        'story.p1':'Bijna niets hiervan is ooit opgeschreven. De kennis leefde in handen, en houdt op als de handen stoppen.',
+        'story.p2':"We vinden het voorwerp - in een museum, in een familiekist, bij de laatste persoon die nog zo werkt - leggen het ornament en de herkomst vast en brengen het terug in productie bij een maker die het kan dragen.",
+        'join.p':"Fotografie, teksten, vertaling, verzending, contact met kopers. Jij werkt alleen met je handen.",
+        'pillar1.t':'Een vastlegging achter elk stuk','pillar1.p':'Elk ornament krijgt een eigen pagina: het voorwerp waar het vandaan komt, het museum of het dorp, de streek, wat het motief betekende.',
+        'pillar2.t':'Een stuk met een maker','pillar2.p':'Gemaakt door een genoemd persoon op een genoemde plek - en we zeggen wat zij veranderd heeft. Een stuk is een lezing van de vastlegging, geen kopie.',
+        'pillar3.t':'Niet alleen wol','pillar3.p':'Textiel, klei, metaal, hout. Andere handen, dezelfde methode: vinden, vastleggen, opnieuw maken.',
+        'countries.title':'Handwerk zonder grenzen','countries.sub':'Elke streek heeft haar eigen ornament. Kies een richting.','countries.soon':'Binnenkort',
+        'join.title':'Jij maakt. De rest doen wij.','join.maker':'Meedoen als maker','join.shop':'Meedoen als winkel',
+        'footer.nav':'Navigatie','footer.partnership':'Samenwerking','footer.legal':'Juridisch','footer.countries':'Landen','footer.patterns':'Patronen','footer.about':'Over ons','footer.terms':'Voorwaarden en retour','footer.privacy':'Privacy',
+        'tabs.items':'Stukken','tabs.makers':'Makers','tabs.partners':'Partners','tabs.schemes':'Patronen','tabs.museums':'Musea',
+        'spec.material':'Materiaal','spec.size':'Maat','spec.care':'Onderhoud','spec.pattern':'Patroon','spec.reading':'Lezing','spec.madeIn':'Werktijd','spec.shipping':'Verzending','spec.measurements':'Maten',
+        'btn.addToCart':'In winkelwagen','btn.ask':'Vraag over dit stuk','btn.buy':'Kopen','price.onRequest':'Prijs op aanvraag','product.madeBy':'Gemaakt door',
+        'cart.title':'Je winkelwagen','cart.total':'Totaal','cart.remove':'Verwijderen','cart.whatsapp':'Bestellen via WhatsApp','cart.email':'Bestellen per e-mail'
+      },
+      sv: {
+        'nav.workshops':'Verkstäder','nav.partners':'Partner','nav.join':'Gå med','nav.forMakers':'För hantverkare','nav.forShops':'För butiker','nav.cart':'Varukorg',
+        'hero.title':'Det ett land gjorde för hand gör vi igen',
+        'hero.sub':'Vi hittar hantverk som håller på att försvinna i museer och byhus, dokumenterar hur det gjordes och lämnar tillbaka det till arbetande händer.',
+        'hero.cta':'Se plaggen',
+        'trust':'Handgjort · En hantverkare med namn · Frakt ingår · 14 dagars retur',
+        'story.title':'Först skriver vi ner det',
+        'story.p1':'Nästan inget av detta skrevs någonsin ner. Kunskapen levde i händerna och tar slut när händerna stannar.',
+        'story.p2':"Vi hittar foeremalet - i ett museum, i en familjekista, hos den sista personen som fortfarande arbetar sa - dokumenterar dess ornament och varifran det kommer, och lamnar tillbaka det i produktion hos en hantverkare som kan bara det vidare.",
+        'join.p':"Foto, texter, oversattning, frakt, samtal med kopare. Du arbetar bara med dina hander.",
+        'pillar1.t':'En dokumentation bakom varje plagg','pillar1.p':'Varje ornament får en egen sida: föremålet det kommer från, museet eller byn, regionen, vad motivet betydde.',
+        'pillar2.t':'Ett plagg med en upphovsperson','pillar2.p':'Gjort av en namngiven person på en namngiven plats - och vi säger vad hon ändrade. Ett plagg är en läsning av dokumentationen, inte en kopia.',
+        'pillar3.t':'Inte bara ull','pillar3.p':'Textil, lera, metall, trä. Andra händer, samma metod: hitta, dokumentera, göra igen.',
+        'countries.title':'Hantverk utan gränser','countries.sub':'Varje region har sitt eget ornament. Välj en riktning.','countries.soon':'Öppnar snart',
+        'join.title':'Du gör. Vi sköter resten.','join.maker':'Gå med som hantverkare','join.shop':'Gå med som butik',
+        'footer.nav':'Navigering','footer.partnership':'Samarbete','footer.legal':'Juridik','footer.countries':'Länder','footer.patterns':'Mönster','footer.about':'Om oss','footer.terms':'Villkor och retur','footer.privacy':'Integritet',
+        'tabs.items':'Plagg','tabs.makers':'Hantverkare','tabs.partners':'Partner','tabs.schemes':'Mönster','tabs.museums':'Museer',
+        'spec.material':'Material','spec.size':'Storlek','spec.care':'Skötsel','spec.pattern':'Mönster','spec.reading':'Läsning','spec.madeIn':'Arbetstid','spec.shipping':'Frakt','spec.measurements':'Mått',
+        'btn.addToCart':'Lägg i varukorgen','btn.ask':'Fråga om detta plagg','btn.buy':'Köp','price.onRequest':'Pris på förfrågan','product.madeBy':'Gjort av',
+        'cart.title':'Din varukorg','cart.total':'Totalt','cart.remove':'Ta bort','cart.whatsapp':'Beställ via WhatsApp','cart.email':'Beställ via e-post'
+      },
+      pl: {
+        'nav.workshops':'Pracownie','nav.partners':'Partnerzy','nav.join':'Dołącz','nav.forMakers':'Dla twórczyń','nav.forShops':'Dla sklepów','nav.cart':'Koszyk',
+        'hero.title':'To, co kraj robił ręcznie, robimy na nowo',
+        'hero.sub':'Znajdujemy ginące rzemiosło w muzeach i wiejskich domach, zapisujemy, jak je wykonywano, i oddajemy je pracującym rękom.',
+        'hero.cta':'Zobacz wyroby',
+        'trust':'Robione ręcznie · Twórczyni z imieniem · Wysyłka w cenie · 14 dni na zwrot',
+        'story.title':'Najpierw to zapisujemy',
+        'story.p1':'Prawie nic z tego nigdy nie zostało zapisane. Wiedza żyła w rękach i kończy się, gdy ręce się zatrzymują.',
+        'story.p2':"Znajdujemy przedmiot - w muzeum, w rodzinnej skrzyni, u ostatniej osoby, ktora wciaz tak pracuje - zapisujemy jego ornament i pochodzenie i wracamy z nim do produkcji z tworczynia, ktora go poprowadzi.",
+        'join.p':"Zdjecia, teksty, tlumaczenie, wysylka, rozmowy z kupujacymi. Ty tylko pracujesz rekami.",
+        'pillar1.t':'Za każdym wyrobem stoi zapis','pillar1.p':'Każdy ornament ma własną stronę: przedmiot, z którego pochodzi, muzeum lub wieś, region, co oznaczał motyw.',
+        'pillar2.t':'Wyrób z autorką','pillar2.p':'Zrobiony przez osobę z imieniem w miejscu z nazwą - i mówimy, co zmieniła. Wyrób jest odczytaniem zapisu, nie jego kopią.',
+        'pillar3.t':'Nie tylko wełna','pillar3.p':'Tkanina, glina, metal, drewno. Inne ręce, ta sama metoda: znaleźć, zapisać, zrobić na nowo.',
+        'countries.title':'Rzemiosło bez granic','countries.sub':'Każdy region ma własny ornament. Wybierz kierunek.','countries.soon':'Wkrótce',
+        'join.title':'Ty robisz. Resztą zajmujemy się my.','join.maker':'Dołącz jako twórczyni','join.shop':'Dołącz jako sklep',
+        'footer.nav':'Nawigacja','footer.partnership':'Współpraca','footer.legal':'Informacje prawne','footer.countries':'Kraje','footer.patterns':'Wzory','footer.about':'O nas','footer.terms':'Regulamin i zwroty','footer.privacy':'Prywatność',
+        'tabs.items':'Wyroby','tabs.makers':'Twórczynie','tabs.partners':'Partnerzy','tabs.schemes':'Wzory','tabs.museums':'Muzea',
+        'spec.material':'Materiał','spec.size':'Rozmiar','spec.care':'Pielęgnacja','spec.pattern':'Wzór','spec.reading':'Odczytanie','spec.madeIn':'Czas pracy','spec.shipping':'Wysyłka','spec.measurements':'Wymiary',
+        'btn.addToCart':'Do koszyka','btn.ask':'Zapytaj o ten wyrób','btn.buy':'Kup','price.onRequest':'Cena na zapytanie','product.madeBy':'Wykonała',
+        'cart.title':'Twój koszyk','cart.total':'Razem','cart.remove':'Usuń','cart.whatsapp':'Zamów przez WhatsApp','cart.email':'Zamów e-mailem'
+      },
+      sr: {
+        'nav.workshops':'Radionice','nav.partners':'Partneri','nav.join':'Pridruži se','nav.forMakers':'Za majstorice','nav.forShops':'Za prodavnice','nav.cart':'Korpa',
+        'hero.title':'Ono što je zemlja radila rukama, mi radimo ponovo',
+        'hero.sub':'Nalazimo zanat koji nestaje po muzejima i seoskim kućama, zapisujemo kako je rađen i vraćamo ga u ruke koje rade.',
+        'hero.cta':'Pogledaj radove',
+        'trust':'Ručni rad · Majstorica sa imenom · Dostava uključena · Povraćaj 14 dana',
+        'story.title':'Prvo to zapišemo',
+        'story.p1':'Gotovo ništa od ovoga nikada nije zapisano. Znanje je živelo u rukama i prestaje kada ruke stanu.',
+        'story.p2':"Nalazimo predmet - u muzeju, u porodicnom sanduku, kod poslednje osobe koja jos tako radi - zapisujemo njegov ornament i poreklo i vracamo ga u izradu sa majstoricom koja moze da ga ponese.",
+        'join.p':"Fotografija, tekstovi, prevod, dostava, razgovor sa kupcima. Vi samo radite rukama.",
+        'pillar1.t':'Iza svakog rada stoji zapis','pillar1.p':'Svaki ornament dobija svoju stranicu: predmet sa kog je snimljen, muzej ili selo, region, šta je motiv značio.',
+        'pillar2.t':'Rad sa autorkom','pillar2.p':'Napravila ga je osoba sa imenom na imenovanom mestu - i kažemo šta je promenila. Rad je čitanje zapisa, a ne njegova kopija.',
+        'pillar3.t':'Ne samo vuna','pillar3.p':'Tekstil, glina, metal, drvo. Druge ruke, isti metod: naći, zapisati, napraviti ponovo.',
+        'countries.title':'Zanat bez granica','countries.sub':'Svaki region ima svoj ornament. Izaberite pravac.','countries.soon':'Uskoro',
+        'join.title':'Vi radite. Ostalo je na nama.','join.maker':'Pridruži se kao majstorica','join.shop':'Pridruži se kao prodavnica',
+        'footer.nav':'Navigacija','footer.partnership':'Saradnja','footer.legal':'Pravno','footer.countries':'Zemlje','footer.patterns':'Ornamenti','footer.about':'O nama','footer.terms':'Uslovi i povraćaj','footer.privacy':'Privatnost',
+        'tabs.items':'Radovi','tabs.makers':'Majstorice','tabs.partners':'Partneri','tabs.schemes':'Šeme','tabs.museums':'Muzeji',
+        'spec.material':'Materijal','spec.size':'Veličina','spec.care':'Održavanje','spec.pattern':'Ornament','spec.reading':'Čitanje','spec.madeIn':'Vreme izrade','spec.shipping':'Dostava','spec.measurements':'Mere',
+        'btn.addToCart':'Dodaj u korpu','btn.ask':'Pitaj o ovom radu','btn.buy':'Kupi','price.onRequest':'Cena na upit','product.madeBy':'Izradila',
+        'cart.title':'Vaša korpa','cart.total':'Ukupno','cart.remove':'Ukloni','cart.whatsapp':'Poruči preko WhatsApp-a','cart.email':'Poruči imejlom'
+      },
+      tr: {
+        'nav.workshops':'Atölyeler','nav.partners':'Ortaklar','nav.join':'Katıl','nav.forMakers':'Ustalar için','nav.forShops':'Dükkânlar için','nav.cart':'Sepet',
+        'hero.title':'Bir ülkenin elle yaptığını yeniden yapıyoruz',
+        'hero.sub':'Kaybolan zanaatı müzelerde ve köy evlerinde buluyor, nasıl yapıldığını kayda geçiriyor ve çalışan ellere geri veriyoruz.',
+        'hero.cta':'Parçaları gör',
+        'trust':'El yapımı · Adı olan bir usta · Kargo dahil · 14 gün iade',
+        'story.title':'Önce onu kayda geçiriyoruz',
+        'story.p1':'Bunların neredeyse hiçbiri yazıya geçmedi. Bilgi ellerde yaşıyordu ve eller durunca bitiyor.',
+        'story.p2':"Nesneyi buluyoruz - bir muzede, bir aile sandiginda, hala boyle calisan son kiside - motifini ve nereden geldigini kayda geciriyor ve onu tasiyabilecek bir ustayla yeniden uretime sokuyoruz.",
+        'join.p':"Fotograf, metin, ceviri, kargo, alicilarla konusmak. Siz yalnizca ellerinizle calisiyorsunuz.",
+        'pillar1.t':'Her parçanın ardında bir kayıt','pillar1.p':'Her motifin kendi sayfası var: geldiği nesne, müze ya da köy, bölge, motifin ne anlama geldiği.',
+        'pillar2.t':'Yapanı belli bir parça','pillar2.p':'Adı olan bir kişinin adı olan bir yerde yaptığı - ve neyi değiştirdiğini söylüyoruz. Parça, kaydın bir okumasıdır, kopyası değil.',
+        'pillar3.t':'Yalnızca yün değil','pillar3.p':'Dokuma, kil, metal, ahşap. Farklı eller, aynı yöntem: bul, kaydet, yeniden yap.',
+        'countries.title':'Sınırsız zanaat','countries.sub':'Her bölgenin kendi motifi var. Bir yön seçin.','countries.soon':'Yakında',
+        'join.title':'Siz yapın. Gerisini biz üstleniyoruz.','join.maker':'Usta olarak katıl','join.shop':'Dükkân olarak katıl',
+        'footer.nav':'Gezinme','footer.partnership':'İş birliği','footer.legal':'Yasal','footer.countries':'Ülkeler','footer.patterns':'Motifler','footer.about':'Hakkımızda','footer.terms':'Koşullar ve iade','footer.privacy':'Gizlilik',
+        'tabs.items':'Parçalar','tabs.makers':'Ustalar','tabs.partners':'Ortaklar','tabs.schemes':'Şemalar','tabs.museums':'Müzeler',
+        'spec.material':'Malzeme','spec.size':'Beden','spec.care':'Bakım','spec.pattern':'Motif','spec.reading':'Okuma','spec.madeIn':'Çalışma süresi','spec.shipping':'Kargo','spec.measurements':'Ölçüler',
+        'btn.addToCart':'Sepete ekle','btn.ask':'Bu parçayı sor','btn.buy':'Satın al','price.onRequest':'Fiyat sorunuz','product.madeBy':'Yapan',
+        'cart.title':'Sepetiniz','cart.total':'Toplam','cart.remove':'Kaldır','cart.whatsapp':"WhatsApp'tan sipariş ver",'cart.email':'E-posta ile sipariş ver'
+      }
+    };
+
+    let currentLang = 'en';
+
+    function t(key) {
+      const dict = I18N[currentLang] || I18N.en;
+      return dict[key] || I18N.en[key] || key;
+    }
+
+    function applyLang(code) {
+      if (!I18N[code]) code = 'en';
+      currentLang = code;
+      try { localStorage.setItem('katun-lang', code); } catch (e) {}
+      document.documentElement.lang = code;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = t(el.getAttribute('data-i18n'));
+        if (v) el.textContent = v;
+      });
+      const picker = document.getElementById('lang-picker');
+      if (picker) picker.value = code;
+      if (typeof rerenderForLang === 'function') rerenderForLang();
+    }
+
+    function rerenderForLang() {
+      const active = document.querySelector('.view-section.active');
+      if (!active) return;
+      try {
+        if (active.id === 'view-country' && currentCountry) openCountry(currentCountry.id || currentCountry.key);
+        if (active.id === 'view-product' && currentProduct) openProduct(currentProduct.id);
+        if (active.id === 'view-cart') renderCart();
+        if (typeof updateCartCount === 'function') updateCartCount();
+      } catch (e) {}
+    }
+
+    function initLang() {
+      let saved = null;
+      try { saved = localStorage.getItem('katun-lang'); } catch (e) {}
+      if (!saved) {
+        const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+        saved = I18N[nav] ? nav : 'en';
+      }
+      const picker = document.getElementById('lang-picker');
+      if (picker) {
+        picker.innerHTML = LANGS.map(([c, n]) => `<option value="${c}">${n}</option>`).join('');
+        picker.onchange = () => applyLang(picker.value);
+      }
+      applyLang(saved);
+    }
+
     const DATA = {
       countries: {
         montenegro: {
@@ -4743,7 +5075,7 @@ const SHIPPING = [
 ];
 
 function priceLabel(v) {
-  return (v === null || v === undefined) ? 'Price on request' : '€' + v;
+  return (v === null || v === undefined) ? t('price.onRequest') : '€' + v;
 }
 
 function shippingRows() {
@@ -4779,7 +5111,7 @@ function saveCart(){
 }
 function updateCartCount(){
   const el = document.getElementById('cart-btn');
-  if (el) el.innerText = 'Cart (' + cart.length + ')';
+  if (el) el.innerText = t('nav.cart') + ' (' + cart.length + ')';
 }
 function addToCart(type, id){
   cart.push({ type: type, id: id });
@@ -4834,25 +5166,25 @@ function renderCart(){
           <p>${it.meta}</p>
         </div>
         <span class="cart-price">${price}</span>
-        <span class="cart-remove" onclick="removeFromCart(${i})">Remove</span>
+        <span class="cart-remove" onclick="removeFromCart(${i})">${t('cart.remove')}</span>
       </div>`;
   }).join('');
 
   const totalStr = (typeof fmt === 'function') ? fmt(total) : '€' + total;
   sum.innerHTML = `
     <div class="cart-total">
-      <span class="cart-total-label">Total</span>
+      <span class="cart-total-label">${t('cart.total')}</span>
       <span class="cart-total-value">${totalStr}</span>
     </div>
     ${cart.some(e => e.type === 'product') ? `
     <div style="margin-bottom:32px;">
-      <h3 class="serif" style="font-size:22px;margin-bottom:6px;">Shipping</h3>
+      <h3 class="serif" style="font-size:22px;margin-bottom:6px;">${t('spec.shipping')}</h3>
       <p style="font-size:14px;color:#665E58;margin-bottom:16px;">Included in the price. Sent with tracking, 7–14 working days in Europe. Records are digital and workshop places need no delivery.</p>
       <p style="font-size:13px;color:#665E58;margin-top:12px;">Customs charges in your country are yours to pay. In the EU that means import VAT and a small customs charge on arrival. <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">Terms &amp; returns</a></p>
     </div>` : ''}
     <div class="cart-actions">
-      <a class="btn-madder" onclick="orderWhatsApp()">Order via WhatsApp</a>
-      <a class="btn-outline" onclick="orderEmail()">Order by email</a>
+      <a class="btn-madder" onclick="orderWhatsApp()">${t('cart.whatsapp')}</a>
+      <a class="btn-outline" onclick="orderEmail()">${t('cart.email')}</a>
       <p style="font-size:13px;color:#665E58;line-height:1.5;margin-top:8px;">
         We'll confirm availability, then send payment details.
       </p>
@@ -4881,6 +5213,7 @@ function orderEmail(){
 
     // INIT DEFAULT STATE
     window.addEventListener('DOMContentLoaded', () => {
+      initLang();
       loadCart();
       const q = new URLSearchParams(location.search);
       const thanks = q.get('thanks') === '1';
