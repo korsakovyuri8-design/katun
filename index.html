@@ -2360,6 +2360,8 @@
 
               <p class="product-desc" id="product-desc"></p>
 
+              <p id="product-size-note" style="display:none;font-size:13px;color:#665E58;line-height:1.5;margin-bottom:16px;max-width:34em;">Knitted to the measurement you send, so this piece is outside the 14-day return. Measure before you order, and write to us if you are unsure. <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">Terms &amp; returns</a></p>
+
               <button class="btn-madder add-to-cart-btn" onclick="addToCart('product', currentProduct.id)">Add to cart</button>
               <a class="btn-madder add-to-cart-btn" id="product-ask" style="display:none;text-align:center;" href="mailto:katun.montenegro@gmail.com?subject=KATUN%20enquiry">Ask about this piece</a>
 
@@ -2919,7 +2921,7 @@
 
       <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Returns</h2>
       <p>You have 14 days from the day the parcel reaches you to tell us you want to return it. Write to katun.montenegro@gmail.com. Send the piece back unworn and in the condition it arrived, and we refund the price within 14 days of receiving it. Return postage is yours unless the piece arrived faulty or wrong.</p>
-      <p>[Decide and state: whether made-to-order pieces can be returned.]</p>
+      <p>Pieces knitted to a measurement you give us are made for you alone and cannot be resold, so they are outside the 14-day return. This is stated on every such piece before you order. It does not affect your rights if a piece arrives faulty or is not what we described.</p>
       <p>Pattern charts are digital files. Once the file has been sent to you, it can't be returned.</p>
 
       <h2 class="serif" style="font-size:24px;margin:32px 0 12px;">Faulty pieces</h2>
@@ -3069,7 +3071,7 @@
               countryId: 'montenegro',
               name: 'Elena',
               city: 'Budva',
-              itemsCount: 4,
+              itemsCount: 5,
               color: '#6E6350',
               foundedYear: '—',
               technique: 'Hand-knitting in undyed Montenegrin wool',
@@ -3081,6 +3083,32 @@
           ],
           partners: [], // Empty partners test state for Montenegro
           products: [
+            {
+              id: 'mn-carape',
+              countryId: 'montenegro',
+              title: "Čarape · Shepherd's Path",
+              price: 320,
+              workshopId: 'w-elena',
+              workshop: 'Elena',
+              city: 'Budva',
+              region: 'Budva',
+              color: '#1C1A18',
+              photo: 'carape-1.jpg',
+              photos: ['carape-1.jpg', 'carape-2.jpg', 'carape-3.jpg'],
+              thumbColors: ['#1C1A18', '#C79A2B', '#A81E28'],
+              material: 'Montenegrin wool with polyamide at heel and toe, so they do not wear through',
+              size: 'Made to your size · send us your foot length in cm',
+              madeToSize: true,
+              care: 'Hand wash cold',
+              days: 'about 4 days',
+              description: null,
+              patternCredit: 'Recorded in the ethnographic museum in Cetinje',
+              patternReading: null,
+              schemeId: 'sch-mn-01',
+              patternName: "Shepherd's Path",
+              patternOrigin: 'Recorded in the ethnographic museum in Cetinje, from the protective series.',
+              patternRevived: null
+            },
             {
               id: 'mn-prijecice',
               countryId: 'montenegro',
@@ -3095,7 +3123,8 @@
               photos: ['prijecice-1.jpg', 'prijecice-2.jpg'],
               thumbColors: ['#8C8375', '#D9D2C4', '#6B6255'],
               material: '100% Montenegrin wool',
-              size: 'Made to your size · EU 35–46',
+              size: 'Made to your size · send us your foot length in cm',
+              madeToSize: true,
               care: 'Hand wash cold, dry flat',
               days: 'about 3 days',
               description: null,
@@ -3143,7 +3172,8 @@
               photos: ['mittens-1.jpg', 'mittens-2.jpg', 'mittens-3.jpg'],
               thumbColors: ['#6E6350', '#7C7160', '#5C5344'],
               material: '75% wool, 25% polyamide',
-              size: 'Size 7 · a pair',
+              size: 'Made to your size · send us your hand circumference in cm',
+              madeToSize: true,
               care: 'Hand wash cold',
               days: '26 hours of work',
               description: 'PLACEHOLDER — 3-4 предложения: как выглядят, для кого, почему двадцать шесть часов.',
@@ -3168,7 +3198,8 @@
               photos: ['knee-warmers.jpg', 'knee-2.jpg', 'knee-3.jpg'],
               thumbColors: ['#6E6350', '#7C7160', '#5C5344'],
               material: '100% Montenegrin wool, undyed',
-              size: 'One size · knee 32–42 cm',
+              size: 'Made to your size · send us the circumference below your knee in cm',
+              madeToSize: true,
               care: 'Hand wash cold',
               days: '16 hours of work',
               description: 'Thick ribbed knee warmers in undyed Montenegrin wool, straight from local flocks - the natural grey-brown is the colour of the sheep, not of dye. Worn over tights in winter or under trousers in a cold house. They stretch to the knee and stay put. Made in one piece, without seams, and each pair takes about two days of work.',
@@ -3985,6 +4016,7 @@ currentView = viewId;
       // Update Main Info
       document.getElementById('product-title').innerText = foundProd.title;
       document.getElementById('product-price').innerText = priceLabel(foundProd.price);
+      document.getElementById('product-size-note').style.display = foundProd.madeToSize ? '' : 'none';
       const buyBtn = document.querySelector('#view-product .add-to-cart-btn');
       const askLink = document.getElementById('product-ask');
       if (foundProd.price === null || foundProd.price === undefined) {
