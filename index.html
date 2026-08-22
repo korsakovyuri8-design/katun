@@ -470,6 +470,71 @@
       }
     }
 
+    .museums-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .museums-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .museum-card {
+      background-color: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .museum-card h3 {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .museum-city {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #665E58;
+    }
+
+    .museum-note {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #38322E;
+    }
+
+    .museum-records {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .museum-record-chip {
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      padding: 6px 14px;
+      border: 1px solid var(--rule);
+      border-radius: 20px;
+      background-color: var(--bg-cream);
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .museum-record-chip:hover {
+      border-color: var(--madder);
+      color: var(--madder);
+    }
+
     .tab-btn {
       font-family: var(--font-serif);
       font-size: 22px;
@@ -2251,6 +2316,7 @@
 <button class="tab-btn" onclick="switchTab('workshops')">Makers</button>
             <button class="tab-btn" onclick="switchTab('partners')">Partners</button>
             <button class="tab-btn" onclick="switchTab('schemes')">Schemes</button>
+            <button class="tab-btn" onclick="switchTab('museums')">Museums</button>
           </div>
         </div>
 
@@ -2281,6 +2347,13 @@
           <div id="tab-schemes" class="tab-content">
            <div class="schemes-grid" id="country-schemes-grid">
               <!-- Schemes dynamic content -->
+            </div>
+          </div>
+
+          <!-- TAB CONTENT 5: MUSEUMS -->
+          <div id="tab-museums" class="tab-content">
+           <div class="museums-grid" id="country-museums-grid">
+              <!-- Museums dynamic content -->
             </div>
           </div>
 
@@ -3075,6 +3148,16 @@
               websiteUrl: null
             }
           ],
+          museums: [
+            {
+              id: 'm-cetinje',
+              countryId: 'montenegro',
+              name: 'Ethnographic Museum',
+              city: 'Cetinje',
+              partner: false,
+              note: null
+            }
+          ],
           partners: [], // Empty partners test state for Montenegro
           products: [
             {
@@ -3315,6 +3398,7 @@ patternName: 'Knee warmers, written pattern',
           schemes: [
             {
               id: 'sch-mn-01',
+              museumId: 'm-cetinje',
               name: 'Highland Solar Star Chart',
               region: 'Durmitor',
               countryId: 'montenegro',
@@ -3875,6 +3959,7 @@ currentView = viewId;
       const tabWorkshops = document.getElementById('tab-workshops');
       const tabPartners = document.getElementById('tab-partners');
       const tabSchemes = document.getElementById('tab-schemes');
+      const tabMuseums = document.getElementById('tab-museums');
       const openingContent = document.getElementById('country-opening-content');
 
       if (c.isOpeningSoon) {
@@ -3883,10 +3968,11 @@ currentView = viewId;
         tabWorkshops.style.display = 'none';
         tabPartners.style.display = 'none';
         tabSchemes.style.display = 'none';
+        tabMuseums.style.display = 'none';
         openingContent.style.display = 'block';
       } else {
         tabsRow.style.display = 'flex';
-        [tabItems, tabWorkshops, tabPartners, tabSchemes].forEach(el => el.style.display = '');
+        [tabItems, tabWorkshops, tabPartners, tabSchemes, tabMuseums].forEach(el => el.style.display = '');
         openingContent.style.display = 'none';
 
         // 1. Items Tab
@@ -3958,12 +4044,43 @@ currentView = viewId;
           schGrid.innerHTML = `<div class="empty-tab-msg">No schemes in this direction yet</div>`;
         }
 
+        // 5. Museums Tab
+        renderCountryMuseums(c);
+
         // Default active tab is items
         switchTab('items');
       }
 
       setHash('/country/' + countryId);
       showView('country');
+    }
+
+    /* RENDER MUSEUMS IN COUNTRY PAGE */
+    function renderCountryMuseums(c) {
+      const grid = document.getElementById('country-museums-grid');
+      grid.innerHTML = '';
+      const museums = c.museums || [];
+      if (!museums.length) {
+        grid.innerHTML = `<div class="empty-tab-msg">No museum collections recorded in this direction yet</div>`;
+        return;
+      }
+      museums.forEach(m => {
+        const records = (c.schemes || []).filter(s => s.museumId === m.id);
+        const chips = records.length
+          ? `<div class="museum-records">` + records.map(s =>
+              `<span class="museum-record-chip" onclick="openPatternPage('${s.id}')">${s.name}</span>`).join('') + `</div>`
+          : '';
+        const pieces = (c.products || []).filter(p => records.some(s => s.id === p.schemeId)).length;
+        grid.innerHTML += `
+          <div class="museum-card">
+            <span class="card-type-label">${m.partner ? 'Partner museum' : 'Collection'}</span>
+            <h3 class="serif">${m.name}</h3>
+            <div class="museum-city">${m.city} &middot; ${records.length} ${records.length === 1 ? 'record' : 'records'}${pieces ? ' &middot; ' + pieces + (pieces === 1 ? ' piece' : ' pieces') : ''}</div>
+            ${m.note ? `<p class="museum-note">${m.note}</p>` : ''}
+            ${chips}
+          </div>
+        `;
+      });
     }
 
     /* RENDER ITEMS IN COUNTRY PAGE */
@@ -4096,7 +4213,13 @@ currentView = viewId;
 
       const creditRow = document.getElementById('spec-credit-row');
       if (foundProd.patternCredit) {
-        document.getElementById('spec-credit').innerText = foundProd.patternCredit;
+        const prodScheme = (foundCountry.schemes || []).find(x => x.id === foundProd.schemeId);
+        const prodMuseum = prodScheme && prodScheme.museumId
+          ? (foundCountry.museums || []).find(m => m.id === prodScheme.museumId)
+          : null;
+        document.getElementById('spec-credit').innerHTML = prodMuseum
+          ? `<a onclick="openCountryTab('${foundProd.countryId}','museums')" style="color:var(--madder);cursor:pointer;">${foundProd.patternCredit}</a>`
+          : foundProd.patternCredit;
         creditRow.style.display = '';
       } else {
         creditRow.style.display = 'none';
