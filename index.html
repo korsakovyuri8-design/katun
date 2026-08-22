@@ -1932,6 +1932,7 @@
 .split-highlight td{background:var(--card)}
 .split-highlight td:first-child{font-weight:500;padding-left:12px!important}
 .split-highlight .split-share{color:var(--madder);font-size:24px}
+#measurements-list .split-share{width:auto;white-space:nowrap}
 .honest-block{background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:32px;max-width:680px}
 .honest-block p{font-size:15px;line-height:1.6;color:#38322E;margin-bottom:12px}
 .honest-block p:last-child{margin-bottom:0}
@@ -2394,6 +2395,12 @@
                   <span class="spec-label">Shipping</span>
                   <span class="spec-value" id="spec-shipping">Included, worldwide, tracked · <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">customs</a></span>
                 </div>
+              </div>
+
+             <div id="measurements-box" style="display:none;margin-top:32px;">
+                <h3 class="serif" style="font-size:22px;margin-bottom:12px;">Measurements</h3>
+                <div id="measurements-diagram"></div>
+                <table class="split-table" id="measurements-list" style="margin-top:16px;"></table>
               </div>
             </div>
 
@@ -3071,7 +3078,7 @@
               countryId: 'montenegro',
               name: 'Elena',
               city: 'Budva',
-              itemsCount: 5,
+              itemsCount: 6,
               color: '#6E6350',
               foundedYear: '—',
               technique: 'Hand-knitting in undyed Montenegrin wool',
@@ -3083,6 +3090,35 @@
           ],
           partners: [], // Empty partners test state for Montenegro
           products: [
+            {
+              id: 'mn-pojas',
+              countryId: 'montenegro',
+              title: 'Pojas · Kidney Belt',
+              price: 190,
+              workshopId: 'w-elena',
+              workshop: 'Elena',
+              city: 'Budva',
+              region: 'Budva',
+              color: '#6E6350',
+              photo: null,
+              photos: [],
+              thumbColors: ['#6E6350', '#7C7160', '#5C5344'],
+              material: '100% Montenegrin wool, undyed',
+              size: 'Made to your size · ties, one size',
+              care: 'Hand wash cold, dry flat',
+              days: 'about 6 days',
+              description: 'A wide wool belt worn low on the back, over a shirt or under a coat. Long ties wrap around and knot, so it holds without elastic and fits any waist. The grey-brown is the colour of the sheep, not of dye.',
+              measurements: [
+                ['Main panel', '35 cm'],
+                ['Height at centre', '22 cm'],
+                ['Height at ends', '24 cm'],
+                ['Ties', '115 cm each']
+              ],
+              schemeId: null,
+              patternName: '',
+              patternOrigin: '',
+              patternRevived: ''
+            },
             {
               id: 'mn-carape',
               countryId: 'montenegro',
@@ -4057,6 +4093,18 @@ currentView = viewId;
         readingRow.style.display = '';
       } else {
         readingRow.style.display = 'none';
+      }
+
+      const mBox = document.getElementById('measurements-box');
+      if (foundProd.measurements) {
+        document.getElementById('measurements-diagram').innerHTML = foundProd.diagram
+          ? `<div style="border:1px solid var(--rule);border-radius:2px;overflow:hidden;background:var(--card);"><img src="${foundProd.diagram}" alt="" style="width:100%;display:block;"></div>`
+          : '';
+        document.getElementById('measurements-list').innerHTML = foundProd.measurements
+          .map(m => `<tr><td>${m[0]}</td><td class="split-share">${m[1]}</td></tr>`).join('');
+        mBox.style.display = 'block';
+      } else {
+        mBox.style.display = 'none';
       }
 
       const creditRow = document.getElementById('spec-credit-row');
