@@ -2361,6 +2361,7 @@
               <p class="product-desc" id="product-desc"></p>
 
               <button class="btn-madder add-to-cart-btn" onclick="addToCart('product', currentProduct.id)">Add to cart</button>
+              <a class="btn-madder add-to-cart-btn" id="product-ask" style="display:none;text-align:center;" href="mailto:katun.montenegro@gmail.com?subject=KATUN%20enquiry">Ask about this piece</a>
 
              <div class="spec-table">
                <div class="spec-row">
@@ -3068,7 +3069,7 @@
               countryId: 'montenegro',
               name: 'Elena',
               city: 'Budva',
-              itemsCount: 3,
+              itemsCount: 4,
               color: '#6E6350',
               foundedYear: '—',
               technique: 'Hand-knitting in undyed Montenegrin wool',
@@ -3080,6 +3081,30 @@
           ],
           partners: [], // Empty partners test state for Montenegro
           products: [
+            {
+              id: 'mn-prijecice',
+              countryId: 'montenegro',
+              title: 'Priječice · Home Path',
+              price: null,
+              workshopId: 'w-elena',
+              workshop: 'Elena',
+              city: 'Budva',
+              region: 'Budva',
+              color: '#8C8375',
+              photo: 'prijecice-1.jpg',
+              photos: ['prijecice-1.jpg', 'prijecice-2.jpg'],
+              thumbColors: ['#8C8375', '#D9D2C4', '#6B6255'],
+              material: '100% Montenegrin wool',
+              size: 'Made to your size · EU 35–46',
+              care: 'Hand wash cold, dry flat',
+              days: 'about 3 days',
+              description: null,
+              patternCredit: null,
+              schemeId: null,
+              patternName: null,
+              patternOrigin: null,
+              patternRevived: null
+            },
             {
               id: 'mn-ognjiste',
               countryId: 'montenegro',
@@ -3904,7 +3929,7 @@ currentView = viewId;
               </div>
              <div class="product-card-body">
                 <h3 class="product-card-title serif">${p.title}</h3>
-               <div class="product-card-price">€${p.price}</div>
+               <div class="product-card-price">${priceLabel(p.price)}</div>
                <div class="product-card-meta">${p.workshop} · ${p.region}</div>
               </div>
             </div>
@@ -3959,7 +3984,16 @@ currentView = viewId;
 
       // Update Main Info
       document.getElementById('product-title').innerText = foundProd.title;
-      document.getElementById('product-price').innerText = `€${foundProd.price}`;
+      document.getElementById('product-price').innerText = priceLabel(foundProd.price);
+      const buyBtn = document.querySelector('#view-product .add-to-cart-btn');
+      const askLink = document.getElementById('product-ask');
+      if (foundProd.price === null || foundProd.price === undefined) {
+        buyBtn.style.display = 'none';
+        askLink.style.display = '';
+      } else {
+        buyBtn.style.display = '';
+        askLink.style.display = 'none';
+      }
 
       // Clickable Origin Link
       const originLink = document.getElementById('product-origin-link');
@@ -4158,7 +4192,7 @@ ${p.photo ? `<div class="photo-block" style="background-image:url('${p.photo}')"
               </div>
              <div class="product-card-body">
                 <h3 class="product-card-title serif">${p.title}</h3>
-               <div class="product-card-price">€${p.price}</div>
+               <div class="product-card-price">${priceLabel(p.price)}</div>
                <div class="product-card-meta">${p.region}</div>
               </div>
             </div>
@@ -4330,7 +4364,7 @@ setHash('/maker/' + entityId);
               </div>
              <div class="product-card-body">
                 <h3 class="product-card-title serif">${p.title}</h3>
-               <div class="product-card-price">€${p.price}</div>
+               <div class="product-card-price">${priceLabel(p.price)}</div>
                <div class="product-card-meta">${p.workshop} · ${p.region}</div>
               </div>
             </div>
@@ -4517,6 +4551,10 @@ const SHIPPING = [
   { zone: 'United States, Canada',            price: 19,    days: '10–20' },
   { zone: 'Rest of the world',                price: 36,    days: '14–25' }
 ];
+
+function priceLabel(v) {
+  return (v === null || v === undefined) ? 'Price on request' : '€' + v;
+}
 
 function shippingRows() {
   return SHIPPING.map(s => `
