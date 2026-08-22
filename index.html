@@ -3068,7 +3068,7 @@
               countryId: 'montenegro',
               name: 'Elena',
               city: 'Budva',
-              itemsCount: 1,
+              itemsCount: 3,
               color: '#6E6350',
               foundedYear: '—',
               technique: 'Hand-knitting in undyed Montenegrin wool',
@@ -3080,6 +3080,30 @@
           ],
           partners: [], // Empty partners test state for Montenegro
           products: [
+            {
+              id: 'mn-ognjiste',
+              countryId: 'montenegro',
+              title: 'Ognjište · Hearth',
+              price: 180,
+              workshopId: 'w-elena',
+              workshop: 'Elena',
+              city: 'Budva',
+              region: 'Budva',
+              color: '#4A423C',
+              photo: 'ognjiste-1.jpg',
+              photos: ['ognjiste-1.jpg'],
+              thumbColors: ['#4A423C', '#8A8078', '#D8CEBE'],
+              material: '100% Montenegrin wool',
+              size: '32 × 32 cm',
+              care: 'Hand wash',
+              days: null,
+              description: null,
+              patternCredit: null,
+              schemeId: null,
+              patternName: null,
+              patternOrigin: null,
+              patternRevived: null
+            },
             {
               id: 'mn-rukavice',
               countryId: 'montenegro',
@@ -3953,7 +3977,13 @@ currentView = viewId;
       document.getElementById('spec-material').innerText = foundProd.material;
       document.getElementById('spec-size').innerText = foundProd.size;
       document.getElementById('spec-care').innerText = foundProd.care;
-      document.getElementById('spec-days').innerText = foundProd.days;
+      const daysRow = document.getElementById('spec-days').closest('.spec-row');
+      if (foundProd.days) {
+        document.getElementById('spec-days').innerText = foundProd.days;
+        daysRow.style.display = '';
+      } else {
+        daysRow.style.display = 'none';
+      }
 
       const readingRow = document.getElementById('spec-reading-row');
       if (foundProd.patternReading) {
