@@ -492,6 +492,71 @@
       }
     }
 
+    .sections-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 700px) {
+      .sections-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    }
+
+    @media (min-width: 1100px) {
+      .sections-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    }
+
+    .section-card {
+      background-color: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+      text-align: center;
+      align-items: center;
+    }
+
+    .section-card:hover { border-color: var(--madder); }
+
+    .section-card h3 {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .section-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #38322E;
+      max-width: 34em;
+    }
+
+    .section-rule {
+      width: 28px;
+      height: 1px;
+      background-color: var(--madder);
+    }
+
+    .section-lines {
+      list-style: none;
+      margin: 24px 0 40px;
+      padding: 0;
+      max-width: 640px;
+    }
+
+    .section-lines li {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #38322E;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-lines li:last-child { border-bottom: none; }
+
     .museums-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -2078,7 +2143,11 @@
        <div class="header-inner">
           <a onclick="showView('home')" class="wordmark">KATUN</a>
           <nav class="nav">
-<a onclick="showView('all-workshops')" class="nav-link" data-i18n="nav.workshops">Workshops</a>
+<span class="nav-join" style="position:relative;">
+    <a onclick="toggleCollections(event)" class="nav-link"><span data-i18n="nav.collections">Collections</span> ▾</a>
+    <div id="collections-dropdown" class="join-dropdown"></div>
+  </span>
+  <a onclick="showView('all-workshops')" class="nav-link" data-i18n="nav.workshops">Workshops</a>
   <a onclick="showView('all-partners')" class="nav-link" data-i18n="nav.partners">Partners</a>
   <span class="nav-join">
     <a onclick="toggleJoin(event)" class="nav-link"><span data-i18n="nav.join">Join</span> ▾</a>
@@ -2275,19 +2344,20 @@
           </div>
         </div>
 
-        <!-- Russia -->
-        <div class="country-card soon">
-          <div class="country-card-media">
-            <div class="photo-block" style="background-image: url('russia.jpg')"></div>
-          </div>
-          <div class="country-card-body">
-            <h2 class="country-card-title serif">Russia</h2>
-            <span class="country-card-caption" data-i18n="countries.soon">Opening soon</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
+  <!-- 6b. SIX DIRECTIONS -->
+  <section class="countries-section" id="collections">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:40px;">
+        <h2 class="serif" data-i18n="sections.title">Six directions</h2>
+        <p class="countries-sub" data-i18n="sections.sub">One method across every material. Choose where to start.</p>
+      </div>
+      <div class="sections-grid" id="home-sections-grid"></div>
+    </div>
+  </section>
+
   <!-- 7. FOR MAKERS -->
   <section class="for-makers-section">
     <div class="container">
@@ -2302,6 +2372,26 @@
     </div>
   </section>
 </section>
+
+      <!-- SECTION PAGE -->
+      <section id="view-section" class="view-section">
+        <div class="container">
+          <div class="breadcrumbs-bar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-item" onclick="showView('home')" data-i18n="nav.home">Home</span>
+              <span>/</span>
+              <span class="breadcrumb-current" id="section-breadcrumb">Section</span>
+            </div>
+          </div>
+          <div class="directory-section">
+            <h1 class="serif" style="font-size:40px;margin-bottom:12px;" id="section-title">Section</h1>
+            <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;" id="section-blurb"></p>
+            <p style="font-size:15px;color:#665E58;margin-bottom:4px;" id="section-note"></p>
+            <ul class="section-lines" id="section-lines"></ul>
+            <div id="section-body"></div>
+          </div>
+        </div>
+      </section>
 
       <!-- ==========================================
            VIEW 2: COUNTRY PAGE (4 SEPARATE TABS)
@@ -4045,6 +4135,150 @@
       tr: {'nav.home':"Ana sayfa"}
     });
 
+    /* ===== SECTIONS (the six directions of the house) ===== */
+    const SECTIONS = [
+      { id: 'crafts', kind: 'products', color: '#7B1612', photo: 'hero.jpg',
+        lines: ['Knitwear and stranded knitting', 'Lace, embroidery and woven cloth', 'Rugs, kilims and felt'] },
+      { id: 'gastronomy', kind: 'products', color: '#6E4A2E', photo: null,
+        lines: ['Wine and distillates: Vranac, mulberry arak, rakija',
+                'Spices and endemics: Svan salt, La Mancha saffron, Tian Shan honey, first-press olive oil',
+                'Store-cupboard artefacts: unsweetened lekvar, mountain cheeses, kurut in wooden tubes'] },
+      { id: 'atmosphere', kind: 'products', color: '#4A5B4A', photo: null,
+        lines: ['Candles and diffusers in natural wax: immortelle, mountain sage, black pine resin',
+                'Incense: bakhoor, monastery frankincense, perfumed paper',
+                'Bathing rituals: pestemal towels, sandalwood combs, felt mitts, olive soap',
+                'Botanical elixirs: immortelle oil, Isparta rose water'] },
+      { id: 'spatial', kind: 'products', color: '#3B4A5B', photo: null,
+        lines: ['Light as artefact: chased brass candlesticks, shades in Sardinian felt or carved wood',
+                'Tile and carving: hand-made tiles after Azulejo and Iznik, stove tiles, architectural hardware',
+                'Sound and acoustic heritage: vinyl of fado, duduk and polyphonic singing, folk instruments as objects'] },
+      { id: 'museums', kind: 'museums', color: '#7B6A55', photo: null, lines: [] },
+      { id: 'experiences', kind: 'events', color: '#8C6239', photo: null, lines: [] }
+    ];
+
+    addStrings({
+      en: {
+        'sections.title':'Six directions','sections.sub':'One method across every material. Choose where to start.',
+        'sec.crafts':'Crafts & Textiles','sec.crafts.d':'Knitting, lace, weaving, felt and rugs, made from a recorded ornament.',
+        'sec.gastronomy':'Gastronomy & Harvest','sec.gastronomy.d':'Wine and distillates, spices and endemics, the store cupboard of a region.',
+        'sec.atmosphere':'Atmosphere & Wellness','sec.atmosphere.d':'Candles, incense, bathing rituals and botanical care.',
+        'sec.spatial':'Spatial Design & Light','sec.spatial.d':'Tile, carving, brass and shades - and the sound a place keeps.',
+        'sec.museums':'Museum Collaborations','sec.museums.d':'The collections the records come from, and what we agreed with them.',
+        'sec.experiences':'Sip & Craft Experiences','sec.experiences.d':'Sessions you can sit down to: knitting, cooking, a table and a maker.',
+        'sec.opening':'This direction is being built. What it will hold:','sec.noEvents':'No sessions announced yet','sec.noMuseums':'No collections recorded yet','nav.collections':'Collections'
+      },
+      de: {
+        'sections.title':'Sechs Richtungen','sections.sub':'Eine Methode über alle Materialien. Wählen Sie, wo Sie anfangen.',
+        'sec.crafts':'Handwerk & Textil','sec.crafts.d':'Stricken, Spitze, Weberei, Filz und Teppiche, nach einem aufgezeichneten Ornament.',
+        'sec.gastronomy':'Küche & Ernte','sec.gastronomy.d':'Wein und Destillate, Gewürze und Endemiten, die Vorratskammer einer Region.',
+        'sec.atmosphere':'Atmosphäre & Pflege','sec.atmosphere.d':'Kerzen, Räucherwerk, Baderituale und botanische Pflege.',
+        'sec.spatial':'Raum & Licht','sec.spatial.d':'Fliese, Schnitzerei, Messing und Schirme - und der Klang, den ein Ort bewahrt.',
+        'sec.museums':'Museumskooperationen','sec.museums.d':'Die Sammlungen, aus denen die Aufzeichnungen stammen, und was wir mit ihnen vereinbart haben.',
+        'sec.experiences':'Erleben & Handwerk','sec.experiences.d':'Termine, an die man sich setzen kann: Stricken, Kochen, ein Tisch und eine Handwerkerin.',
+        'sec.opening':'Diese Richtung wird gerade aufgebaut. Was darin sein wird:','sec.noEvents':'Noch keine Termine angekündigt','sec.noMuseums':'Noch keine Sammlungen erfasst','nav.collections':'Bereiche'
+      },
+      ru: {
+        'sections.title':'Шесть направлений','sections.sub':'Один метод во всех материалах. Выберите, с чего начать.',
+        'sec.crafts':'Ремесло и текстиль','sec.crafts.d':'Вязание, кружево, ткачество, войлок и ковры — по записанному орнаменту.',
+        'sec.gastronomy':'Гастрономия и урожай','sec.gastronomy.d':'Вино и дистилляты, специи и эндемики, кладовая региона.',
+        'sec.atmosphere':'Атмосфера и уход','sec.atmosphere.d':'Свечи, благовония, банные ритуалы и ботанический уход.',
+        'sec.spatial':'Пространство и свет','sec.spatial.d':'Плитка, резьба, латунь и абажуры — и звук, который хранит место.',
+        'sec.museums':'Музейные проекты','sec.museums.d':'Собрания, откуда взяты записи, и то, о чём мы с ними договорились.',
+        'sec.experiences':'Встречи и мастер-классы','sec.experiences.d':'Занятия, за которые можно сесть: вязание, готовка, стол и мастер.',
+        'sec.opening':'Это направление собирается. Что в нём будет:','sec.noEvents':'Занятия пока не объявлены','sec.noMuseums':'Собрания пока не записаны','nav.collections':'Направления'
+      },
+      fr: {
+        'sections.title':'Six directions','sections.sub':'Une méthode dans toutes les matières. Choisissez par où commencer.',
+        'sec.crafts':'Artisanat & Textile','sec.crafts.d':"Tricot, dentelle, tissage, feutre et tapis, d'après un ornement consigné.",
+        'sec.gastronomy':'Gastronomie & Récolte','sec.gastronomy.d':"Vins et distillats, épices et endémiques, le garde-manger d'une région.",
+        'sec.atmosphere':'Atmosphère & Soin','sec.atmosphere.d':'Bougies, encens, rituels de bain et soins botaniques.',
+        'sec.spatial':'Espace & Lumière','sec.spatial.d':"Carreau, sculpture, laiton et abat-jour - et le son qu'un lieu conserve.",
+        'sec.museums':'Collaborations muséales','sec.museums.d':'Les collections dont viennent les notices, et ce que nous avons convenu avec elles.',
+        'sec.experiences':'Rencontres & Ateliers','sec.experiences.d':"Des séances où l'on s'assoit : tricot, cuisine, une table et une artisane.",
+        'sec.opening':'Cette direction se construit. Ce qu\'elle contiendra :','sec.noEvents':'Aucune séance annoncée','sec.noMuseums':'Aucune collection consignée','nav.collections':'Directions'
+      },
+      it: {
+        'sections.title':'Sei direzioni','sections.sub':'Un metodo in ogni materiale. Scegli da dove partire.',
+        'sec.crafts':'Artigianato & Tessuto','sec.crafts.d':'Maglia, pizzo, tessitura, feltro e tappeti, da un ornamento registrato.',
+        'sec.gastronomy':'Gastronomia & Raccolto','sec.gastronomy.d':'Vini e distillati, spezie ed endemismi, la dispensa di una regione.',
+        'sec.atmosphere':'Atmosfera & Cura','sec.atmosphere.d':'Candele, incensi, rituali del bagno e cura botanica.',
+        'sec.spatial':'Spazio & Luce','sec.spatial.d':'Piastrella, intaglio, ottone e paralumi - e il suono che un luogo conserva.',
+        'sec.museums':'Collaborazioni museali','sec.museums.d':'Le collezioni da cui vengono le registrazioni e ciò che abbiamo concordato con loro.',
+        'sec.experiences':'Incontri & Laboratori','sec.experiences.d':"Incontri a cui ci si siede: maglia, cucina, un tavolo e un'artigiana.",
+        'sec.opening':'Questa direzione si sta costruendo. Cosa conterrà:','sec.noEvents':'Nessun incontro annunciato','sec.noMuseums':'Nessuna collezione registrata','nav.collections':'Direzioni'
+      },
+      es: {
+        'sections.title':'Seis direcciones','sections.sub':'Un método en cada material. Elige por dónde empezar.',
+        'sec.crafts':'Artesanía & Textil','sec.crafts.d':'Punto, encaje, tejido, fieltro y alfombras, a partir de un ornamento registrado.',
+        'sec.gastronomy':'Gastronomía & Cosecha','sec.gastronomy.d':'Vinos y destilados, especias y endemismos, la despensa de una región.',
+        'sec.atmosphere':'Atmósfera & Cuidado','sec.atmosphere.d':'Velas, inciensos, rituales de baño y cuidado botánico.',
+        'sec.spatial':'Espacio & Luz','sec.spatial.d':'Azulejo, talla, latón y pantallas - y el sonido que guarda un lugar.',
+        'sec.museums':'Colaboraciones con museos','sec.museums.d':'Las colecciones de donde vienen los registros y lo que acordamos con ellas.',
+        'sec.experiences':'Encuentros & Talleres','sec.experiences.d':'Sesiones a las que sentarse: punto, cocina, una mesa y una artesana.',
+        'sec.opening':'Esta dirección se está construyendo. Lo que contendrá:','sec.noEvents':'Todavía no hay sesiones anunciadas','sec.noMuseums':'Todavía no hay colecciones registradas','nav.collections':'Direcciones'
+      },
+      pt: {
+        'sections.title':'Seis direções','sections.sub':'Um método em cada material. Escolha por onde começar.',
+        'sec.crafts':'Ofício & Têxtil','sec.crafts.d':'Malha, renda, tecelagem, feltro e tapetes, a partir de um ornamento registado.',
+        'sec.gastronomy':'Gastronomia & Colheita','sec.gastronomy.d':'Vinhos e destilados, especiarias e endemismos, a despensa de uma região.',
+        'sec.atmosphere':'Atmosfera & Cuidado','sec.atmosphere.d':'Velas, incensos, rituais de banho e cuidado botânico.',
+        'sec.spatial':'Espaço & Luz','sec.spatial.d':'Azulejo, talha, latão e abajures - e o som que um lugar guarda.',
+        'sec.museums':'Colaborações com museus','sec.museums.d':'As coleções de onde vêm os registos e o que combinámos com elas.',
+        'sec.experiences':'Encontros & Oficinas','sec.experiences.d':'Sessões a que nos sentamos: malha, cozinha, uma mesa e uma artesã.',
+        'sec.opening':'Esta direção está a ser construída. O que vai conter:','sec.noEvents':'Ainda não há sessões anunciadas','sec.noMuseums':'Ainda não há coleções registadas','nav.collections':'Direções'
+      },
+      nl: {
+        'sections.title':'Zes richtingen','sections.sub':'Eén methode in elk materiaal. Kies waar je begint.',
+        'sec.crafts':'Handwerk & Textiel','sec.crafts.d':'Breiwerk, kant, weven, vilt en tapijten, naar een vastgelegd ornament.',
+        'sec.gastronomy':'Gastronomie & Oogst','sec.gastronomy.d':'Wijn en distillaten, specerijen en endemen, de voorraadkast van een streek.',
+        'sec.atmosphere':'Sfeer & Verzorging','sec.atmosphere.d':'Kaarsen, wierook, badrituelen en botanische verzorging.',
+        'sec.spatial':'Ruimte & Licht','sec.spatial.d':'Tegel, houtsnijwerk, messing en kappen - en de klank die een plek bewaart.',
+        'sec.museums':'Museumsamenwerkingen','sec.museums.d':'De collecties waar de vastleggingen vandaan komen, en wat we met hen afspraken.',
+        'sec.experiences':'Ontmoetingen & Workshops','sec.experiences.d':'Sessies om bij aan te schuiven: breien, koken, een tafel en een maker.',
+        'sec.opening':'Deze richting wordt opgebouwd. Wat erin komt:','sec.noEvents':'Nog geen sessies aangekondigd','sec.noMuseums':'Nog geen collecties vastgelegd','nav.collections':'Richtingen'
+      },
+      sv: {
+        'sections.title':'Sex riktningar','sections.sub':'En metod i alla material. Välj var du börjar.',
+        'sec.crafts':'Hantverk & Textil','sec.crafts.d':'Stickning, spets, vävnad, filt och mattor, efter ett dokumenterat ornament.',
+        'sec.gastronomy':'Gastronomi & Skörd','sec.gastronomy.d':'Vin och destillat, kryddor och endemer, en regions skafferi.',
+        'sec.atmosphere':'Atmosfär & Omsorg','sec.atmosphere.d':'Ljus, rökelse, badritualer och botanisk vård.',
+        'sec.spatial':'Rum & Ljus','sec.spatial.d':'Kakel, snideri, mässing och skärmar - och ljudet en plats bevarar.',
+        'sec.museums':'Museisamarbeten','sec.museums.d':'Samlingarna som dokumentationen kommer från, och vad vi kommit överens om med dem.',
+        'sec.experiences':'Möten & Kurser','sec.experiences.d':'Tillfällen att sätta sig ned vid: stickning, matlagning, ett bord och en hantverkare.',
+        'sec.opening':'Den här riktningen byggs upp. Vad den ska rymma:','sec.noEvents':'Inga tillfällen är utlysta ännu','sec.noMuseums':'Inga samlingar dokumenterade ännu','nav.collections':'Riktningar'
+      },
+      pl: {
+        'sections.title':'Sześć kierunków','sections.sub':'Jedna metoda w każdym materiale. Wybierz, od czego zacząć.',
+        'sec.crafts':'Rzemiosło & Tkanina','sec.crafts.d':'Dzianina, koronka, tkactwo, filc i dywany, według zapisanego ornamentu.',
+        'sec.gastronomy':'Gastronomia & Zbiór','sec.gastronomy.d':'Wina i destylaty, przyprawy i endemity, spiżarnia regionu.',
+        'sec.atmosphere':'Atmosfera & Pielęgnacja','sec.atmosphere.d':'Świece, kadzidła, rytuały kąpielowe i pielęgnacja botaniczna.',
+        'sec.spatial':'Przestrzeń & Światło','sec.spatial.d':'Kafel, rzeźba, mosiądz i klosze - oraz dźwięk, który miejsce zachowuje.',
+        'sec.museums':'Współpraca z muzeami','sec.museums.d':'Zbiory, z których pochodzą zapisy, i to, co z nimi ustaliliśmy.',
+        'sec.experiences':'Spotkania & Warsztaty','sec.experiences.d':'Zajęcia, przy których można usiąść: dzianie, gotowanie, stół i twórczyni.',
+        'sec.opening':'Ten kierunek dopiero powstaje. Co się w nim znajdzie:','sec.noEvents':'Nie ogłoszono jeszcze zajęć','sec.noMuseums':'Nie zapisano jeszcze zbiorów','nav.collections':'Kierunki'
+      },
+      sr: {
+        'sections.title':'Šest pravaca','sections.sub':'Jedan metod u svakom materijalu. Izaberite odakle počinjete.',
+        'sec.crafts':'Zanat & Tekstil','sec.crafts.d':'Pletivo, čipka, tkanje, filc i ćilimi, po zapisanom ornamentu.',
+        'sec.gastronomy':'Gastronomija & Berba','sec.gastronomy.d':'Vina i destilati, začini i endemi, ostava jednog kraja.',
+        'sec.atmosphere':'Atmosfera & Nega','sec.atmosphere.d':'Sveće, tamjan, kupatilski rituali i biljna nega.',
+        'sec.spatial':'Prostor & Svetlo','sec.spatial.d':'Pločica, rezbarija, mesing i abažuri - i zvuk koji mesto čuva.',
+        'sec.museums':'Saradnja sa muzejima','sec.museums.d':'Zbirke iz kojih dolaze zapisi i ono što smo sa njima dogovorili.',
+        'sec.experiences':'Susreti & Radionice','sec.experiences.d':'Termini za koje se sedne: pletenje, kuvanje, sto i majstorica.',
+        'sec.opening':'Ovaj pravac se gradi. Šta će sadržati:','sec.noEvents':'Termini još nisu najavljeni','sec.noMuseums':'Zbirke još nisu zapisane','nav.collections':'Pravci'
+      },
+      tr: {
+        'sections.title':'Altı yön','sections.sub':'Her malzemede tek yöntem. Nereden başlayacağınızı seçin.',
+        'sec.crafts':'Zanaat & Tekstil','sec.crafts.d':'Örgü, dantel, dokuma, keçe ve halılar, kayda geçmiş bir motiften.',
+        'sec.gastronomy':'Mutfak & Hasat','sec.gastronomy.d':'Şaraplar ve damıtıklar, baharatlar ve endemikler, bir bölgenin kileri.',
+        'sec.atmosphere':'Atmosfer & Bakım','sec.atmosphere.d':'Mumlar, tütsüler, hamam ritüelleri ve bitkisel bakım.',
+        'sec.spatial':'Mekân & Işık','sec.spatial.d':'Çini, oyma, pirinç ve abajurlar - ve bir yerin sakladığı ses.',
+        'sec.museums':'Müze iş birlikleri','sec.museums.d':'Kayıtların geldiği koleksiyonlar ve onlarla vardığımız anlaşma.',
+        'sec.experiences':'Buluşmalar & Atölyeler','sec.experiences.d':'Başına oturulacak oturumlar: örgü, yemek, bir masa ve bir usta.',
+        'sec.opening':'Bu yön kuruluyor. İçinde neler olacak:','sec.noEvents':'Henüz duyurulmuş oturum yok','sec.noMuseums':'Henüz kayıtlı koleksiyon yok','nav.collections':'Yönler'
+      }
+    });
+
     let currentLang = 'en';
 
     function t(key) {
@@ -4081,6 +4315,8 @@
         if (active.id === 'view-country' && currentCountry) openCountry(currentCountry.id || currentCountry.key);
         if (active.id === 'view-product' && currentProduct) openProduct(currentProduct.id);
         if (active.id === 'view-cart') renderCart();
+        if (active.id === 'view-section' && currentSection) openSection(currentSection.id);
+        renderHomeSections();
         if (typeof updateCartCount === 'function') updateCartCount();
       } catch (e) {}
     }
@@ -4172,6 +4408,7 @@
             {
               id: 'mn-pojas',
               countryId: 'montenegro',
+              category: 'crafts',
               title: 'Pojas · Kidney Belt',
               price: 190,
               workshopId: 'w-elena',
@@ -4201,6 +4438,7 @@
             {
               id: 'mn-carape',
               countryId: 'montenegro',
+              category: 'crafts',
               title: "Čarape · Shepherd's Path",
               price: 320,
               workshopId: 'w-elena',
@@ -4227,6 +4465,7 @@
             {
               id: 'mn-prijecice',
               countryId: 'montenegro',
+              category: 'crafts',
               title: 'Priječice · Home Path',
               price: null,
               workshopId: 'w-elena',
@@ -4252,6 +4491,7 @@
             {
               id: 'mn-ognjiste',
               countryId: 'montenegro',
+              category: 'crafts',
               title: 'Ognjište · Hearth',
               price: 180,
               workshopId: 'w-elena',
@@ -4276,6 +4516,7 @@
             {
               id: 'mn-rukavice',
               countryId: 'montenegro',
+              category: 'crafts',
               title: "Rukavice · Shepherd's Path",
               price: 150,
               workshopId: 'w-elena',
@@ -4302,6 +4543,7 @@
             {
               id: 'mn-knee',
               countryId: 'montenegro',
+              category: 'crafts',
               title: 'Knee warmers',
               price: 180,
               workshopId: 'w-elena',
@@ -4326,6 +4568,7 @@ patternName: 'Knee warmers, written pattern',
             {
               id: 'mn-01',
               countryId: 'montenegro',
+              category: 'crafts',
               title: 'Durmitor Ribbed Vest',
               price: 180,
               workshopId: 'w-durmitor',
@@ -4346,6 +4589,7 @@ patternName: 'Knee warmers, written pattern',
             {
               id: 'mn-02',
               countryId: 'montenegro',
+              category: 'crafts',
               title: 'Karst Highland Mittens',
               price: 65,
               workshopId: 'w-durmitor',
@@ -4366,6 +4610,7 @@ patternName: 'Knee warmers, written pattern',
             {
               id: 'mn-03',
               countryId: 'montenegro',
+              category: 'crafts',
               title: 'Bjelasica Heavy Cardigan',
               price: 290,
               workshopId: 'w-durmitor',
@@ -4386,6 +4631,7 @@ patternName: 'Knee warmers, written pattern',
             {
               id: 'mn-04',
               countryId: 'montenegro',
+              category: 'crafts',
               title: 'Prokletije Patterned Socks',
               price: 55,
               workshopId: 'w-durmitor',
@@ -4518,6 +4764,7 @@ regions: ['Subotica'],
             {
               id: 'rs-znak',
               countryId: 'serbia',
+              category: 'crafts',
               title: 'Znak cushion',
               price: 20,
               workshopId: 'w-anna',
@@ -4542,6 +4789,7 @@ color: '#3B4836',
             {
               id: 'rs-nitj',
               countryId: 'serbia',
+              category: 'crafts',
               title: 'Nitj cushion',
               price: 27,
               workshopId: 'w-anna',
@@ -4566,6 +4814,7 @@ color: '#3B4836',
             {
               id: 'rs-slavic',
               countryId: 'serbia',
+              category: 'crafts',
               title: 'Slavic blanket',
               price: 110,
               workshopId: 'w-anna',
@@ -4635,6 +4884,7 @@ color: '#3B4836',
             {
               id: 'ge-01',
               countryId: 'georgia',
+              category: 'crafts',
               title: 'Tusheti Stranded Socks (Chiti)',
               price: 85,
               workshopId: 'w-tusheti',
@@ -4655,6 +4905,7 @@ color: '#3B4836',
             {
               id: 'ge-02',
               countryId: 'georgia',
+              category: 'crafts',
               title: 'Svaneti Mountain Pullover',
               price: 240,
               workshopId: 'w-tusheti',
@@ -4675,6 +4926,7 @@ color: '#3B4836',
             {
               id: 'ge-03',
               countryId: 'georgia',
+              category: 'crafts',
               title: 'Omalo Patterned Scarf',
               price: 110,
               workshopId: 'w-tusheti',
@@ -4695,6 +4947,7 @@ color: '#3B4836',
             {
               id: 'ge-04',
               countryId: 'georgia',
+              category: 'crafts',
               title: 'Kakheti Sun Flat-Woven Runner',
               price: 320,
               partnerId: 'p-tbilisi-rugs',
@@ -4781,6 +5034,7 @@ color: '#3B4836',
             {
               id: 'kg-01',
               countryId: 'kyrgyzstan',
+              category: 'crafts',
               title: 'Naryn Camel-Wool Socks',
               price: 60,
               workshopId: 'w-naryn',
@@ -4801,6 +5055,7 @@ color: '#3B4836',
             {
               id: 'kg-02',
               countryId: 'kyrgyzstan',
+              category: 'crafts',
               title: 'Steppe Wool Mittens',
               price: 55,
               workshopId: 'w-naryn',
@@ -4821,6 +5076,7 @@ color: '#3B4836',
             {
               id: 'kg-03',
               countryId: 'kyrgyzstan',
+              category: 'crafts',
               title: 'Issyk-Kul Knitted Scarf',
               price: 95,
               workshopId: 'w-naryn',
@@ -4841,6 +5097,7 @@ color: '#3B4836',
             {
               id: 'kg-04',
               countryId: 'kyrgyzstan',
+              category: 'crafts',
               title: 'Shyrdak Wall Panel',
               price: 210,
               partnerId: 'p-issykkul',
@@ -5062,6 +5319,114 @@ currentView = viewId;
 
       setHash('/country/' + countryId);
       showView('country');
+    }
+
+    /* ===== SECTIONS ===== */
+    function sectionName(sec) { return t('sec.' + sec.id); }
+
+    function renderHomeSections() {
+      const grid = document.getElementById('home-sections-grid');
+      if (!grid) return;
+      grid.innerHTML = SECTIONS.map(sec => `
+        <div class="section-card" onclick="openSection('${sec.id}')">
+          <h3 class="serif">${sectionName(sec)}</h3>
+          <div class="section-rule"></div>
+          <p>${t('sec.' + sec.id + '.d')}</p>
+        </div>`).join('');
+    }
+
+    function allProductsInSection(id) {
+      let out = [];
+      Object.values(DATA.countries).forEach(c => {
+        (c.products || []).forEach(pr => {
+          if ((pr.category || 'crafts') === id) out.push(pr);
+        });
+      });
+      return out;
+    }
+
+    function openSection(id) {
+      const sec = SECTIONS.find(x => x.id === id);
+      if (!sec) return;
+      currentSection = sec;
+      document.getElementById('section-breadcrumb').innerText = sectionName(sec);
+      document.getElementById('section-title').innerText = sectionName(sec);
+      document.getElementById('section-blurb').innerText = t('sec.' + sec.id + '.d');
+
+      const body = document.getElementById('section-body');
+      const linesEl = document.getElementById('section-lines');
+      const noteEl = document.getElementById('section-note');
+      linesEl.innerHTML = '';
+      noteEl.innerText = '';
+      body.innerHTML = '';
+
+      if (sec.kind === 'products') {
+        const items = allProductsInSection(sec.id);
+        if (items.length) {
+          body.innerHTML = '<div class="products-grid">' + items.map(pr => `
+            <div class="product-card" onclick="openProduct('${pr.id}')">
+              <div class="product-card-media">
+                ${pr.photo ? `<div class="photo-block" style="background-image:url('${pr.photo}')"></div>` : `<div class="color-block" style="background-color: ${pr.color}; color: #F7F3ED;">${pr.title}</div>`}
+              </div>
+              <div class="product-card-body">
+                <h3 class="product-card-title serif">${pr.title}</h3>
+                <div class="product-card-price">${priceLabel(pr.price)}</div>
+                <div class="product-card-meta">${pr.workshop} · ${pr.region}</div>
+              </div>
+            </div>`).join('') + '</div>';
+        } else {
+          noteEl.innerText = t('sec.opening');
+          linesEl.innerHTML = sec.lines.map(l => `<li>${l}</li>`).join('');
+        }
+      } else if (sec.kind === 'museums') {
+        let cards = [];
+        Object.values(DATA.countries).forEach(c => {
+          (c.museums || []).forEach(m => {
+            const records = (c.schemes || []).filter(x => x.museumId === m.id);
+            cards.push(`
+              <div class="museum-card">
+                <span class="card-type-label">${m.partner ? t('meta.partnerMuseum') : t('meta.collection')}</span>
+                <h3 class="serif">${m.name}</h3>
+                <div class="museum-city">${m.city}, ${c.name} &middot; ${records.length} ${records.length === 1 ? t('meta.record') : t('meta.records')}</div>
+                ${records.length ? '<div class="museum-records">' + records.map(x => `<span class="museum-record-chip" onclick="openPatternPage('${x.id}')">${x.name}</span>`).join('') + '</div>' : ''}
+              </div>`);
+          });
+        });
+        body.innerHTML = cards.length
+          ? '<div class="museums-grid">' + cards.join('') + '</div>'
+          : `<div class="empty-tab-msg">${t('sec.noMuseums')}</div>`;
+      } else if (sec.kind === 'events') {
+        let evs = [];
+        Object.values(DATA.countries).forEach(c => {
+          (c.workshops || []).forEach(w => {
+            (w.events || []).forEach(e => evs.push({ e: e, w: w, c: c }));
+          });
+        });
+        body.innerHTML = evs.length
+          ? '<div class="events-list">' + evs.map(x => `
+              <div class="event-row">
+                <div class="event-main">
+                  <h3 class="serif">${x.e.title}</h3>
+                  <div class="event-meta">${x.e.date} &middot; ${x.e.place} &middot; ${x.w.name}, ${x.c.name}</div>
+                  <p class="event-desc">${x.e.desc}</p>
+                </div>
+                <div class="event-buy">
+                  <div class="event-price">&euro;${x.e.price}</div>
+                  <button class="btn-madder" onclick="addToCart('event','${x.e.id}')">${t('events.reserve')}</button>
+                </div>
+              </div>`).join('') + '</div>'
+          : `<div class="empty-tab-msg">${t('sec.noEvents')}</div>`;
+      }
+
+      setHash('/section/' + id);
+      showView('section');
+    }
+
+    function toggleCollections(e) {
+      e.stopPropagation();
+      const d = document.getElementById('collections-dropdown');
+      d.innerHTML = SECTIONS.map(sec => `<a onclick="openSection('${sec.id}')">${sectionName(sec)}</a>`).join('');
+      d.classList.toggle('open');
     }
 
     /* RENDER MUSEUMS IN COUNTRY PAGE */
@@ -5648,6 +6013,7 @@ function applyHash() {
   else if (parts[0] === 'item' && parts[1]) openProduct(parts[1]);
   else if (parts[0] === 'maker' && parts[1]) openPartnerDetail(parts[1]);
   else if (parts[0] === 'pattern' && parts[1]) openPatternPage(parts[1]);
+  else if (parts[0] === 'section' && parts[1]) openSection(parts[1]);
   else showView(parts[0]);
   routing = false;
   if (!document.querySelector('.view-section.active')) showView('home');
@@ -5684,12 +6050,16 @@ function renderWorkshopEvents(entity) {
       </div>`;
   }).join('');
 }
+let currentSection = null;
+
 function toggleJoin(e) {
   e.stopPropagation();
   document.getElementById('join-dropdown').classList.toggle('open');
 }
 document.addEventListener('click', () => {
   document.getElementById('join-dropdown').classList.remove('open');
+  const cd = document.getElementById('collections-dropdown');
+  if (cd) cd.classList.remove('open');
 });/* ===== PATTERNS VIEW ===== */
 let currentPatternFilter = 'all';
 
@@ -5891,6 +6261,7 @@ function orderEmail(){
     // INIT DEFAULT STATE
     window.addEventListener('DOMContentLoaded', () => {
       initLang();
+      renderHomeSections();
       loadCart();
       const q = new URLSearchParams(location.search);
       const thanks = q.get('thanks') === '1';
