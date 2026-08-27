@@ -1647,7 +1647,19 @@
   border-bottom: 1px solid var(--rule);
 }
 .join-dropdown a:last-child { border-bottom: none; }
-.join-dropdown a:hover { color: var(--madder); }      /* ==========================================
+.join-dropdown a:hover { color: var(--madder); }
+
+@media (max-width: 639px) {
+  .nav-join { display: contents; }
+  .join-dropdown {
+    position: static;
+    top: auto;
+    right: auto;
+    width: 100%;
+    min-width: 0;
+    margin-top: 4px;
+  }
+}      /* ==========================================
        HOME VIEW REWRITE STYLES
        ========================================== */
 
