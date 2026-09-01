@@ -557,6 +557,44 @@
 
     .section-lines li:last-child { border-bottom: none; }
 
+    .event-details {
+      list-style: none;
+      margin: 12px 0 10px;
+      padding: 0;
+      display: grid;
+      gap: 6px;
+    }
+
+    .event-details li {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #38322E;
+    }
+
+    .event-details .k {
+      color: #665E58;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 11px;
+      margin-right: 8px;
+    }
+
+    .event-note {
+      font-size: 12px;
+      line-height: 1.5;
+      color: #665E58;
+      margin-top: 8px;
+      max-width: 34em;
+    }
+
+    .event-age {
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--madder);
+      margin-top: 8px;
+    }
+
     .museums-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -4291,6 +4329,21 @@
       }
     });
 
+    addStrings({
+      en: {"ev.host": "Hosted by", "ev.language": "Language", "ev.meeting": "Meeting point", "ev.includes": "Included", "ev.cancel": "Cancellation", "ev.age": "18+ · drinks are poured by the producer", "ev.min": "Runs with at least", "ev.held": "Your place is held the moment payment reaches us.", "ev.notHeld": "Places are not held until payment reaches us. Write to us and we send the details.", "ev.people": "people", "ev.tasting": "Tasting", "ev.class": "Class"},
+      de: {"ev.host": "Veranstaltet von", "ev.language": "Sprache", "ev.meeting": "Treffpunkt", "ev.includes": "Inbegriffen", "ev.cancel": "Stornierung", "ev.age": "18+ · ausgeschenkt wird vom Erzeuger", "ev.min": "Findet statt ab", "ev.held": "Ihr Platz ist reserviert, sobald die Zahlung bei uns ist.", "ev.notHeld": "Plätze werden erst mit der Zahlung reserviert. Schreiben Sie uns, wir schicken die Details.", "ev.people": "Personen", "ev.tasting": "Verkostung", "ev.class": "Kurs"},
+      ru: {"ev.host": "Проводит", "ev.language": "Язык", "ev.meeting": "Место встречи", "ev.includes": "Входит в цену", "ev.cancel": "Отмена", "ev.age": "18+ · наливает сам производитель", "ev.min": "Состоится при", "ev.held": "Место закрепляется в момент поступления оплаты.", "ev.notHeld": "Место не бронируется до оплаты. Напишите нам, пришлём реквизиты.", "ev.people": "участниках", "ev.tasting": "Дегустация", "ev.class": "Занятие"},
+      fr: {"ev.host": "Animé par", "ev.language": "Langue", "ev.meeting": "Point de rendez-vous", "ev.includes": "Compris", "ev.cancel": "Annulation", "ev.age": "18+ · c'est le producteur qui sert", "ev.min": "A lieu à partir de", "ev.held": "Votre place est retenue dès réception du paiement.", "ev.notHeld": "Les places ne sont pas retenues avant paiement. Écrivez-nous, nous envoyons les détails.", "ev.people": "personnes", "ev.tasting": "Dégustation", "ev.class": "Atelier"},
+      it: {"ev.host": "A cura di", "ev.language": "Lingua", "ev.meeting": "Punto di ritrovo", "ev.includes": "Incluso", "ev.cancel": "Cancellazione", "ev.age": "18+ · versa il produttore", "ev.min": "Si tiene con almeno", "ev.held": "Il posto è tenuto nel momento in cui arriva il pagamento.", "ev.notHeld": "I posti non sono tenuti prima del pagamento. Scrivici e ti mandiamo i dettagli.", "ev.people": "persone", "ev.tasting": "Degustazione", "ev.class": "Corso"},
+      es: {"ev.host": "A cargo de", "ev.language": "Idioma", "ev.meeting": "Punto de encuentro", "ev.includes": "Incluido", "ev.cancel": "Cancelación", "ev.age": "18+ · sirve el productor", "ev.min": "Se realiza con al menos", "ev.held": "Tu plaza queda reservada en cuanto llega el pago.", "ev.notHeld": "Las plazas no se reservan hasta el pago. Escríbenos y te enviamos los datos.", "ev.people": "personas", "ev.tasting": "Cata", "ev.class": "Taller"},
+      pt: {"ev.host": "A cargo de", "ev.language": "Idioma", "ev.meeting": "Ponto de encontro", "ev.includes": "Incluído", "ev.cancel": "Cancelamento", "ev.age": "18+ · quem serve é o produtor", "ev.min": "Realiza-se com pelo menos", "ev.held": "O seu lugar fica reservado assim que o pagamento chega.", "ev.notHeld": "Os lugares só ficam reservados com o pagamento. Escreva-nos e enviamos os dados.", "ev.people": "pessoas", "ev.tasting": "Prova", "ev.class": "Oficina"},
+      nl: {"ev.host": "Verzorgd door", "ev.language": "Taal", "ev.meeting": "Verzamelpunt", "ev.includes": "Inbegrepen", "ev.cancel": "Annulering", "ev.age": "18+ · de producent schenkt zelf", "ev.min": "Gaat door vanaf", "ev.held": "Je plaats staat vast zodra de betaling binnen is.", "ev.notHeld": "Plaatsen worden pas bij betaling vastgehouden. Schrijf ons, we sturen de gegevens.", "ev.people": "personen", "ev.tasting": "Proeverij", "ev.class": "Cursus"},
+      sv: {"ev.host": "Arrangeras av", "ev.language": "Språk", "ev.meeting": "Mötesplats", "ev.includes": "Ingår", "ev.cancel": "Avbokning", "ev.age": "18+ · producenten häller upp", "ev.min": "Genomförs vid minst", "ev.held": "Din plats hålls så snart betalningen kommit in.", "ev.notHeld": "Platser hålls först vid betalning. Skriv till oss så skickar vi uppgifterna.", "ev.people": "personer", "ev.tasting": "Provning", "ev.class": "Kurs"},
+      pl: {"ev.host": "Prowadzi", "ev.language": "Język", "ev.meeting": "Miejsce zbiórki", "ev.includes": "W cenie", "ev.cancel": "Odwołanie", "ev.age": "18+ · nalewa sam producent", "ev.min": "Odbędzie się przy co najmniej", "ev.held": "Miejsce jest zarezerwowane z chwilą wpłynięcia płatności.", "ev.notHeld": "Miejsca nie są rezerwowane przed płatnością. Napisz do nas, prześlemy dane.", "ev.people": "osobach", "ev.tasting": "Degustacja", "ev.class": "Zajęcia"},
+      sr: {"ev.host": "Vodi", "ev.language": "Jezik", "ev.meeting": "Mesto sastanka", "ev.includes": "U cenu ulazi", "ev.cancel": "Otkazivanje", "ev.age": "18+ · toči sam proizvođač", "ev.min": "Održava se sa najmanje", "ev.held": "Mesto je rezervisano čim uplata stigne.", "ev.notHeld": "Mesta se ne drže do uplate. Pišite nam, poslaćemo podatke.", "ev.people": "učesnika", "ev.tasting": "Degustacija", "ev.class": "Radionica"},
+      tr: {"ev.host": "Düzenleyen", "ev.language": "Dil", "ev.meeting": "Buluşma noktası", "ev.includes": "Fiyata dahil", "ev.cancel": "İptal", "ev.age": "18+ · içkiyi üreticinin kendisi koyar", "ev.min": "En az şu kişiyle yapılır:", "ev.held": "Ödeme bize ulaştığı anda yeriniz ayrılır.", "ev.notHeld": "Ödeme yapılmadan yer tutulmaz. Bize yazın, bilgileri gönderelim.", "ev.people": "kişi", "ev.tasting": "Tadım", "ev.class": "Atölye"}
+    });
+
     let currentLang = 'en';
 
     function t(key) {
@@ -5408,25 +5461,13 @@ currentView = viewId;
           ? '<div class="museums-grid">' + cards.join('') + '</div>'
           : `<div class="empty-tab-msg">${t('sec.noMuseums')}</div>`;
       } else if (sec.kind === 'events') {
-        let evs = [];
-        Object.values(DATA.countries).forEach(c => {
-          (c.workshops || []).forEach(w => {
-            (w.events || []).forEach(e => evs.push({ e: e, w: w, c: c }));
-          });
-        });
+        const evs = allEvents();
         body.innerHTML = evs.length
-          ? '<div class="events-list">' + evs.map(x => `
-              <div class="event-row">
-                <div class="event-main">
-                  <h3 class="serif">${x.e.title}</h3>
-                  <div class="event-meta">${x.e.date} &middot; ${x.e.place} &middot; ${x.w.name}, ${x.c.name}</div>
-                  <p class="event-desc">${x.e.desc}</p>
-                </div>
-                <div class="event-buy">
-                  <div class="event-price">&euro;${x.e.price}</div>
-                  <button class="btn-madder" onclick="addToCart('event','${x.e.id}')">${t('events.reserve')}</button>
-                </div>
-              </div>`).join('') + '</div>'
+          ? '<div class="events-list">' + evs.map(x => eventCard(
+              x.e,
+              [x.e.date, x.e.place, t('ev.host') + ' ' + x.host.name + ', ' + x.country.name, x.e.duration]
+                .filter(Boolean).join(' &middot; ')
+            )).join('') + '</div>'
           : `<div class="empty-tab-msg">${t('sec.noEvents')}</div>`;
       }
 
@@ -6036,31 +6077,63 @@ window.addEventListener('popstate', applyHash);
   openCountry(countryId);
   switchTab(tab);
 }
+function eventCard(e, hostLine) {
+  const out = e.spotsLeft === 0;
+  const rows = [];
+  if (e.language)  rows.push([t('ev.language'), e.language]);
+  if (e.meeting)   rows.push([t('ev.meeting'), e.meeting]);
+  if (e.includes)  rows.push([t('ev.includes'), e.includes]);
+  if (e.cancel)    rows.push([t('ev.cancel'), e.cancel]);
+  if (e.minPlaces) rows.push([t('ev.min'), e.minPlaces + ' ' + t('ev.people')]);
+  const details = rows.length
+    ? '<ul class="event-details">' + rows.map(r =>
+        `<li><span class="k">${r[0]}</span>${r[1]}</li>`).join('') + '</ul>'
+    : '';
+  const buy = out
+    ? '<span class="event-sold">' + t('events.soldOut') + '</span>'
+    : (e.payUrl
+        ? `<a class="btn-madder" href="${e.payUrl}" target="_blank" rel="noopener">${t('events.pay')}</a>`
+        : `<button class="btn-madder" onclick="addToCart('event','${e.id}')">${t('events.reserve')}</button>`);
+  const note = out ? '' :
+    `<p class="event-note">${e.payUrl ? t('ev.held') : t('ev.notHeld')}</p>`;
+  return `
+    <div class="event-card">
+      <div class="event-main">
+        <h3 class="serif">${e.title}</h3>
+        <div class="event-meta">${hostLine}</div>
+        <p class="event-desc">${e.desc}</p>
+        ${details}
+        <div class="event-spots">${out ? t('events.full') : e.spotsLeft + ' / ' + e.spots + ' ' + t('events.left')}</div>
+        ${e.alcohol ? `<div class="event-age">${t('ev.age')}</div>` : ''}
+        ${note}
+      </div>
+      <div class="event-buy">
+        <div class="event-price">&euro;${e.price}</div>
+        ${buy}
+      </div>
+    </div>`;
+}
+
+function allEvents() {
+  const out = [];
+  Object.values(DATA.countries).forEach(c => {
+    [].concat(c.workshops || [], c.producers || []).forEach(h => {
+      (h.events || []).forEach(e => out.push({ e: e, host: h, country: c }));
+    });
+  });
+  return out;
+}
+
 function renderWorkshopEvents(entity) {
   const box = document.getElementById('workshop-events');
   const list = document.getElementById('events-list');
   if (!box || !list) return;
-  const evs = (entity.type === 'WORKSHOP' && entity.events) ? entity.events : [];
+  const evs = entity.events || [];
   if (evs.length === 0) { box.style.display = 'none'; return; }
   box.style.display = 'block';
-  list.innerHTML = evs.map(e => {
-    const out = e.spotsLeft === 0;
-    return `
-      <div class="event-card">
-        <div class="event-main">
-          <h3 class="serif">${e.title}</h3>
-          <div class="event-meta">${e.date} &middot; ${e.place} &middot; ${e.duration}</div>
-          <p class="event-desc">${e.desc}</p>
-          <div class="event-spots">${out ? t('events.full') : e.spotsLeft + ' / ' + e.spots + ' ' + t('events.left')}</div>
-        </div>
-        <div class="event-buy">
-          <div class="event-price">&euro;${e.price}</div>
-          ${out ? '<span class="event-sold">' + t('events.soldOut') + '</span>'
-                : `<button class="btn-madder" onclick="addToCart('event','${e.id}')">${t('events.reserve')}</button>`}
-          ${(!out && e.payUrl) ? `<a class="btn-outline-madder" href="${e.payUrl}" target="_blank" rel="noopener">${t('events.pay')}</a>` : ''}
-        </div>
-      </div>`;
-  }).join('');
+  list.innerHTML = evs.map(e =>
+    eventCard(e, [e.date, e.place, e.duration].filter(Boolean).join(' &middot; '))
+  ).join('');
 }
 let currentSection = null;
 
@@ -6189,7 +6262,7 @@ function findItem(entry){
       const p = c.products.find(x => x.id === entry.id);
       if (p) found = { title:p.title, price:p.price, meta:p.workshop + ' · ' + p.region, color:p.color };
     } else if (entry.type === 'event') {
-      (c.workshops || []).forEach(w => {
+      [].concat(c.workshops || [], c.producers || []).forEach(w => {
         const e = (w.events || []).find(x => x.id === entry.id);
         if (e) found = { title:e.title, price:e.price, meta:w.name + ' · ' + e.date, color:w.color };
       });
