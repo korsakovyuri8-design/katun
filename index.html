@@ -643,6 +643,23 @@
 
     .fund-list li:last-child { border-bottom: none; }
 
+    .record-soon {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #665E58;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .cart-min-note {
+      border: 1px solid var(--madder);
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #38322E;
+    }
+
     .museums-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -2339,7 +2356,7 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Montenegro</h2>
-            <span class="country-card-caption">1 workshop &middot; 4 items</span>
+            <span class="country-card-caption">1 maker &middot; 6 items</span>
           </div>
         </div>
 
@@ -2355,24 +2372,24 @@
         </div>
 
         <!-- Georgia -->
-        <div class="country-card" onclick="openCountry('georgia')">
+        <div class="country-card soon">
           <div class="country-card-media">
             <div class="photo-block" style="background-image: url('georgia.jpg')"></div>
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Georgia</h2>
-            <span class="country-card-caption">1 workshop &middot; 1 partner &middot; 4 items</span>
+            <span class="country-card-caption" data-i18n="countries.soon">Opening soon</span>
           </div>
         </div>
 
         <!-- Kyrgyzstan -->
-        <div class="country-card" onclick="openCountry('kyrgyzstan')">
+        <div class="country-card soon">
           <div class="country-card-media">
             <div class="photo-block" style="background-image: url('kyrgyzstan.jpg')"></div>
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Kyrgyzstan</h2>
-            <span class="country-card-caption">1 workshop &middot; 1 partner &middot; 4 items</span>
+            <span class="country-card-caption" data-i18n="countries.soon">Opening soon</span>
           </div>
         </div>
 
@@ -2872,9 +2889,10 @@
                 Origin story paragraph describing museum reference collection, historical shepherd lineage, and technical knitting structure revived.
               </div>
 
-             <div class="pattern-purchase-row">
+             <p id="pattern-page-soon" class="record-soon" style="display:none" data-i18n="record.soon">In preparation. Not on sale until the record is drawn.</p>
+             <div class="pattern-purchase-row" id="pattern-purchase-row">
                 <span class="pattern-price-tag" id="pattern-page-price">€14</span>
-                <button class="btn-madder" onclick="addToCart('scheme', currentPattern.id)"">Add to cart</button>
+                <button class="btn-madder" onclick="addToCart('scheme', currentPattern.id)">Add to cart</button>
               </div>
             </div>
           </div>
@@ -2960,7 +2978,7 @@
 
       <h2 class="serif" style="font-size:32px;margin-bottom:8px;" data-i18n="fm.money.t">Where the money goes</h2>
       <p style="font-size:15px;color:#665E58;margin-bottom:28px;max-width:600px;">
-        <span data-i18n="fm.money.p">The buyer pays one price, and most of it is yours. Until 1 December 2026 our share is 25%, so you keep 75%. Coordinators and museums are paid out of our share, never out of yours.</span>
+        <span data-i18n="fm.money.p">The buyer pays one price, and most of it is yours. Shares are counted on that price without the VAT inside it. Until 1 December 2026 our share is 25%, so you keep 75%. Coordinators and museums are paid out of our share, never out of yours.</span>
       </p>
 
       <table class="split-table">
@@ -3088,7 +3106,7 @@
 
       <h2 class="serif" style="font-size:32px;margin-bottom:8px;" data-i18n="fs.take.t">What we take, and for what</h2>
       <p style="font-size:15px;color:#665E58;margin-bottom:28px;max-width:600px;">
-        <span data-i18n="fs.take.p">We take the sale price as 100%. Nothing else.</span>
+        <span data-i18n="fs.take.p">We take the price the buyer pays, minus the VAT inside it, as 100%. Nothing else. The tax in a price was never ours to split, and never yours.</span>
       </p>
 
       <table class="split-table">
@@ -3909,7 +3927,7 @@
         'fm.p1t':"You're not on your own",'fm.p1p':'Photography, descriptions, translation, shipping, talking to the buyer, handling returns. All of it is ours - including how to pack what you make, so it arrives the way it left.',
         'fm.p2t':'Your name stays on it','fm.p2p':'Not an anonymous seller ID. Your name, your region, your technique - on the page and on the tag. And what you changed in the pattern is written there as yours, not hidden.',
         'fm.p3t':'You know your share before you start','fm.p3p':'No listing fees. No paying to be seen. No money held for months. A fixed share of the price the buyer pays, agreed before you cast on.',
-        'fm.money.p':'The buyer pays one price, and most of it is yours. Until 1 December 2026 our share is 25%, so you keep 75%. Coordinators and museums are paid out of our share, never out of yours.',
+        'fm.money.p':'The buyer pays one price, and most of it is yours. Shares are counted on that price without the VAT inside it. Until 1 December 2026 our share is 25%, so you keep 75%. Coordinators and museums are paid out of our share, never out of yours.',
         'fm.promise.p1':"We're at the start. There are no sales yet, so we can't promise you a number. What we can promise is a share you know in advance and conditions that don't change behind your back.",
         'fm.promise.p2':"If you're looking for a guaranteed salary, this isn't the place, and we'd rather say so now.",
         'fm.beyond.p':'The ornaments you work with become records we sell - and you get a share of every record sold, not just every piece. Later: in-person workshops in your region, recorded courses, and a permanent archive of what you know.',
@@ -3920,7 +3938,7 @@
         'fs.p3t':'Written and translated','fs.p3p':'Descriptions, captions and messages with buyers, in English. The barrier that keeps most workshops from ever selling outside their own country.',
         'fs.p4t':'Nothing to pay to be here','fs.p4p':'No listing fees, no ads you have to buy, no charge for a place on the site. A share of what actually sells, and nothing before that.',
         'fs.p5t':'Your ornaments on record','fs.p5p':"We document where each ornament comes from - in textile, clay, metal or wood - and keep it. If a workshop closes, what it knew doesn't disappear with it. That's the part museums and archives talk to us about.",
-        'fs.take.t':'What we take, and for what','fs.take.p':'We take the sale price as 100%. Nothing else.',
+        'fs.take.t':'What we take, and for what','fs.take.p':'We take the price the buyer pays, minus the VAT inside it, as 100%. Nothing else. The tax in a price was never ours to split, and never yours.',
         'fs.shop':'Your shop','fs.shopNote':'materials and your work','fs.katunNote':'page, photo prep, copy, translation, promotion, the buyer',
         'fs.commission':"This is a commission, not a wholesale discount. We don't buy your stock - your pieces stay yours until they reach the customer.",
         'fs.price':'You set the price the buyer sees. Our share comes out of it, never on top of it. Until 1 December 2026 that share is 25%, so you keep 75%.',
@@ -3938,7 +3956,7 @@
         'fm.p1t':'Sie sind nicht allein','fm.p1p':'Fotografie, Beschreibungen, Übersetzung, Versand, Gespräche mit dem Käufer, Rücksendungen. All das ist unsere Sache - auch wie man verpackt, was Sie machen, damit es so ankommt, wie es losging.',
         'fm.p2t':'Ihr Name bleibt darauf','fm.p2p':'Keine anonyme Verkäufernummer. Ihr Name, Ihre Region, Ihre Technik - auf der Seite und auf dem Anhänger. Und was Sie am Muster verändert haben, steht dort als Ihres, nicht versteckt.',
         'fm.p3t':'Sie kennen Ihren Anteil, bevor Sie anfangen','fm.p3p':'Keine Einstellgebühren. Kein Bezahlen für Sichtbarkeit. Kein Geld, das monatelang liegt. Ein fester Anteil am Preis, den der Käufer zahlt, vereinbart, bevor Sie anschlagen.',
-        'fm.money.p':'Der Käufer zahlt einen Preis, und das meiste davon gehört Ihnen. Bis zum 1. Dezember 2026 beträgt unser Anteil 25 %, Sie behalten also 75 %. Koordinatoren und Museen werden aus unserem Anteil bezahlt, nie aus Ihrem.',
+        'fm.money.p':'Der Käufer zahlt einen Preis, und das meiste davon gehört Ihnen. Die Anteile werden auf diesen Preis ohne die enthaltene Mehrwertsteuer gerechnet. Bis zum 1. Dezember 2026 beträgt unser Anteil 25%, Sie behalten also 75%. Koordinatoren und Museen werden aus unserem Anteil bezahlt, nie aus Ihrem.',
         'fm.promise.p1':'Wir stehen am Anfang. Es gibt noch keine Verkäufe, also können wir Ihnen keine Zahl versprechen. Versprechen können wir einen Anteil, den Sie vorher kennen, und Bedingungen, die sich nicht hinter Ihrem Rücken ändern.',
         'fm.promise.p2':'Wenn Sie ein garantiertes Gehalt suchen, ist das hier nicht der richtige Ort, und das sagen wir lieber jetzt.',
         'fm.beyond.p':'Die Ornamente, mit denen Sie arbeiten, werden zu Aufzeichnungen, die wir verkaufen - und Sie bekommen einen Anteil an jeder verkauften Aufzeichnung, nicht nur an jedem Stück. Später: Kurse vor Ort in Ihrer Region, aufgezeichnete Kurse und ein dauerhaftes Archiv dessen, was Sie können.',
@@ -3949,7 +3967,7 @@
         'fs.p3t':'Geschrieben und übersetzt','fs.p3p':'Beschreibungen, Bildtexte und die Korrespondenz mit Käufern, auf Englisch. Genau die Hürde, an der die meisten Werkstätten scheitern, wenn sie außerhalb des eigenen Landes verkaufen wollen.',
         'fs.p4t':'Nichts zu zahlen, um hier zu sein','fs.p4p':'Keine Einstellgebühren, keine Anzeigen, die Sie kaufen müssen, keine Gebühr für einen Platz auf der Seite. Ein Anteil an dem, was tatsächlich verkauft wird, und davor nichts.',
         'fs.p5t':'Ihre Ornamente aufgezeichnet','fs.p5p':'Wir halten fest, woher jedes Ornament kommt - in Textil, Ton, Metall oder Holz - und bewahren es. Wenn eine Werkstatt schließt, verschwindet ihr Wissen nicht mit ihr. Genau darüber sprechen Museen und Archive mit uns.',
-        'fs.take.t':'Was wir nehmen, und wofür','fs.take.p':'Wir nehmen den Verkaufspreis als 100 %. Sonst nichts.',
+        'fs.take.t':'Was wir nehmen, und wofür','fs.take.p':'Wir nehmen den Preis, den der Käufer zahlt, abzüglich der darin enthaltenen Mehrwertsteuer, als 100%. Sonst nichts. Die Steuer in einem Preis war nie unser Anteil und nie Ihrer.',
         'fs.shop':'Ihr Laden','fs.shopNote':'Material und Ihre Arbeit','fs.katunNote':'Seite, Bildbearbeitung, Texte, Übersetzung, Werbung, der Käufer',
         'fs.commission':'Das ist eine Provision, kein Großhandelsrabatt. Wir kaufen Ihre Ware nicht - Ihre Stücke bleiben Ihre, bis sie beim Kunden sind.',
         'fs.price':'Sie legen den Preis fest, den der Käufer sieht. Unser Anteil kommt daraus, nie obendrauf. Bis zum 1. Dezember 2026 beträgt dieser Anteil 25 %, Sie behalten also 75 %.',
@@ -3967,7 +3985,7 @@
         'fm.p1t':'Вы не одна','fm.p1p':'Съёмка, описания, перевод, доставка, разговор с покупателем, возвраты. Всё это наше — включая то, как упаковать сделанное, чтобы оно доехало таким, каким уехало.',
         'fm.p2t':'Ваше имя остаётся на вещи','fm.p2p':'Не безличный номер продавца. Ваше имя, ваш регион, ваша техника — на странице и на бирке. И то, что вы изменили в узоре, записано там как ваше, а не спрятано.',
         'fm.p3t':'Вы знаете свою долю до начала работы','fm.p3p':'Никакой платы за размещение. Никакой платы за то, чтобы вас увидели. Никаких денег, замороженных на месяцы. Твёрдая доля от цены, которую платит покупатель, оговорённая до того, как вы наберёте петли.',
-        'fm.money.p':'Покупатель платит одну цену, и большая её часть ваша. До 1 декабря 2026 года наша доля 25%, то есть вы оставляете себе 75%. Координаторы и музеи получают из нашей доли, никогда из вашей.',
+        'fm.money.p':'Покупатель платит одну цену, и большая её часть ваша. Доли считаются от этой цены без НДС внутри неё. До 1 декабря 2026 года наша доля — 25%, значит, вы оставляете себе 75%. Координаторы и музеи оплачиваются из нашей доли, никогда из вашей.',
         'fm.promise.p1':'Мы в самом начале. Продаж пока нет, поэтому мы не можем обещать вам цифру. Что мы можем обещать — это доля, известная заранее, и условия, которые не меняются за вашей спиной.',
         'fm.promise.p2':'Если вы ищете гарантированную зарплату, это не то место, и мы лучше скажем об этом сразу.',
         'fm.beyond.p':'Орнаменты, с которыми вы работаете, становятся записями, которые мы продаём, — и вы получаете долю с каждой проданной записи, а не только с каждой вещи. Позже: очные занятия в вашем регионе, записанные курсы и постоянный архив того, что вы знаете.',
@@ -3978,7 +3996,7 @@
         'fs.p3t':'Написано и переведено','fs.p3p':'Описания, подписи и переписка с покупателями, на английском. Тот самый барьер, из-за которого большинство мастерских так и не начинают продавать за пределами своей страны.',
         'fs.p4t':'За присутствие здесь платить не нужно','fs.p4p':'Ни платы за размещение, ни рекламы, которую надо выкупать, ни платы за место на сайте. Доля с того, что действительно продалось, и ничего до этого.',
         'fs.p5t':'Ваши орнаменты записаны','fs.p5p':'Мы фиксируем, откуда взялся каждый орнамент — в текстиле, глине, металле или дереве, — и храним это. Если мастерская закроется, её знание не исчезнет вместе с ней. Именно об этом с нами говорят музеи и архивы.',
-        'fs.take.t':'Что мы берём и за что','fs.take.p':'Мы берём цену продажи за 100%. Больше ничего.',
+        'fs.take.t':'Что мы берём и за что','fs.take.p':'За 100% мы берём цену, которую платит покупатель, за вычетом НДС внутри неё. Больше ничего. Налог, сидящий в цене, никогда не был ни нашей долей, ни вашей.',
         'fs.shop':'Вашей мастерской','fs.shopNote':'материалы и ваша работа','fs.katunNote':'страница, подготовка фото, тексты, перевод, продвижение, покупатель',
         'fs.commission':'Это комиссия, а не оптовая скидка. Мы не выкупаем товар — вещи остаются вашими, пока не дойдут до покупателя.',
         'fs.price':'Цену, которую видит покупатель, назначаете вы. Наша доля выходит из неё, а не добавляется сверху. До 1 декабря 2026 года эта доля 25%, то есть вы оставляете себе 75%.',
@@ -3996,7 +4014,7 @@
         'fm.p1t':"Vous n'êtes pas seule",'fm.p1p':"Photographie, descriptions, traduction, expédition, échanges avec l'acheteur, retours. Tout cela est à nous - y compris la façon d'emballer ce que vous faites, pour qu'il arrive comme il est parti.",
         'fm.p2t':'Votre nom reste dessus','fm.p2p':"Pas un identifiant de vendeur anonyme. Votre nom, votre région, votre technique - sur la page et sur l'étiquette. Et ce que vous avez changé au motif y est écrit comme vôtre, pas dissimulé.",
         'fm.p3t':'Vous connaissez votre part avant de commencer','fm.p3p':"Pas de frais de mise en ligne. Rien à payer pour être vue. Pas d'argent bloqué pendant des mois. Une part fixe du prix que paie l'acheteur, convenue avant que vous ne montiez vos mailles.",
-        'fm.money.p':"L'acheteur paie un prix, et l'essentiel vous revient. Jusqu'au 1er décembre 2026 notre part est de 25 %, vous gardez donc 75 %. Les coordinateurs et les musées sont payés sur notre part, jamais sur la vôtre.",
+        'fm.money.p':'L\'acheteur paie un prix, et l\'essentiel vous revient. Les parts se calculent sur ce prix sans la TVA qu\'il contient. Jusqu\'au 1er décembre 2026 notre part est de 25%, vous gardez donc 75%. Les coordinateurs et les musées sont payés sur notre part, jamais sur la vôtre.',
         'fm.promise.p1':"Nous débutons. Il n'y a pas encore de ventes, nous ne pouvons donc pas vous promettre un chiffre. Ce que nous pouvons promettre, c'est une part connue d'avance et des conditions qui ne changent pas dans votre dos.",
         'fm.promise.p2':"Si vous cherchez un salaire garanti, ce n'est pas le bon endroit, et nous préférons le dire maintenant.",
         'fm.beyond.p':"Les ornements avec lesquels vous travaillez deviennent des notices que nous vendons - et vous touchez une part sur chaque notice vendue, pas seulement sur chaque pièce. Plus tard : des ateliers en présentiel dans votre région, des cours enregistrés, et une archive durable de ce que vous savez.",
@@ -4007,7 +4025,7 @@
         'fs.p3t':'Écrit et traduit','fs.p3p':"Descriptions, légendes et échanges avec les acheteurs, en anglais. C'est la barrière qui empêche la plupart des ateliers de vendre hors de leur pays.",
         'fs.p4t':'Rien à payer pour être ici','fs.p4p':"Pas de frais de mise en ligne, pas de publicité à acheter, rien à payer pour une place sur le site. Une part sur ce qui se vend réellement, et rien avant.",
         'fs.p5t':'Vos ornements consignés','fs.p5p':"Nous documentons d'où vient chaque ornement - textile, argile, métal ou bois - et nous le conservons. Si un atelier ferme, ce qu'il savait ne disparaît pas avec lui. C'est de cela que les musées et les archives nous parlent.",
-        'fs.take.t':'Ce que nous prenons, et pour quoi','fs.take.p':'Nous prenons le prix de vente comme 100 %. Rien de plus.',
+        'fs.take.t':'Ce que nous prenons, et pour quoi','fs.take.p':'Nous prenons le prix payé par l\'acheteur, moins la TVA qu\'il contient, comme 100%. Rien d\'autre. La taxe contenue dans un prix n\'a jamais été notre part, ni la vôtre.',
         'fs.shop':'Votre atelier','fs.shopNote':'matières et votre travail','fs.katunNote':"page, préparation des photos, textes, traduction, promotion, l'acheteur",
         'fs.commission':"C'est une commission, pas une remise de gros. Nous n'achetons pas votre stock - vos pièces restent les vôtres jusqu'à ce qu'elles arrivent chez le client.",
         'fs.price':"C'est vous qui fixez le prix que voit l'acheteur. Notre part en sort, jamais en plus. Jusqu'au 1er décembre 2026 cette part est de 25 %, vous gardez donc 75 %.",
@@ -4025,7 +4043,7 @@
         'fm.p1t':'Non sei sola','fm.p1p':"Fotografia, descrizioni, traduzione, spedizione, dialogo con l'acquirente, resi. Tutto questo è nostro - compreso come imballare ciò che fai, perché arrivi come è partito.",
         'fm.p2t':'Il tuo nome resta sul pezzo','fm.p2p':"Non un codice venditore anonimo. Il tuo nome, la tua regione, la tua tecnica - sulla pagina e sull'etichetta. E ciò che hai cambiato nel motivo è scritto lì come tuo, non nascosto.",
         'fm.p3t':'Sai la tua quota prima di iniziare','fm.p3p':"Nessun costo di inserimento. Nessun pagamento per essere vista. Nessun denaro trattenuto per mesi. Una quota fissa del prezzo che paga l'acquirente, concordata prima che tu avvii le maglie.",
-        'fm.money.p':"L'acquirente paga un prezzo, e la maggior parte è tua. Fino al 1 dicembre 2026 la nostra quota è il 25%, quindi ne tieni il 75%. Coordinatori e musei sono pagati dalla nostra quota, mai dalla tua.",
+        'fm.money.p':'L\'acquirente paga un prezzo e la maggior parte è vostra. Le quote si calcolano su quel prezzo senza l\'IVA che contiene. Fino al 1° dicembre 2026 la nostra quota è del 25%, quindi voi tenete il 75%. Coordinatori e musei sono pagati dalla nostra quota, mai dalla vostra.',
         'fm.promise.p1':'Siamo all\'inizio. Non ci sono ancora vendite, quindi non possiamo prometterti un numero. Possiamo prometterti una quota che conosci in anticipo e condizioni che non cambiano alle tue spalle.',
         'fm.promise.p2':'Se cerchi uno stipendio garantito, questo non è il posto, e preferiamo dirlo subito.',
         'fm.beyond.p':'Gli ornamenti con cui lavori diventano registrazioni che vendiamo - e ricevi una quota su ogni registrazione venduta, non solo su ogni pezzo. Più avanti: corsi dal vivo nella tua regione, corsi registrati e un archivio permanente di ciò che sai.',
@@ -4036,7 +4054,7 @@
         'fs.p3t':'Scritto e tradotto','fs.p3p':'Descrizioni, didascalie e messaggi con gli acquirenti, in inglese. È la barriera che impedisce alla maggior parte dei laboratori di vendere fuori dal proprio paese.',
         'fs.p4t':'Non paghi nulla per essere qui','fs.p4p':'Nessun costo di inserimento, nessuna pubblicità da comprare, nessun canone per un posto sul sito. Una quota su ciò che si vende davvero, e nulla prima.',
         'fs.p5t':'I tuoi ornamenti registrati','fs.p5p':'Documentiamo da dove viene ogni ornamento - nel tessuto, nell\'argilla, nel metallo o nel legno - e lo conserviamo. Se un laboratorio chiude, ciò che sapeva non sparisce con lui. È di questo che musei e archivi ci parlano.',
-        'fs.take.t':'Cosa prendiamo, e per cosa','fs.take.p':'Prendiamo il prezzo di vendita come 100%. Nient\'altro.',
+        'fs.take.t':'Cosa prendiamo, e per cosa','fs.take.p':'Prendiamo come 100% il prezzo che paga l\'acquirente, meno l\'IVA che contiene. Nient\'altro. L\'imposta dentro un prezzo non è mai stata né nostra né vostra.',
         'fs.shop':'Al tuo laboratorio','fs.shopNote':'materiali e il tuo lavoro','fs.katunNote':'pagina, preparazione foto, testi, traduzione, promozione, l\'acquirente',
         'fs.commission':'È una commissione, non uno sconto all\'ingrosso. Non compriamo la tua merce - i tuoi pezzi restano tuoi finché non arrivano al cliente.',
         'fs.price':'Il prezzo che vede l\'acquirente lo stabilisci tu. La nostra quota esce da lì, mai in aggiunta. Fino al 1 dicembre 2026 quella quota è il 25%, quindi ne tieni il 75%.',
@@ -4054,7 +4072,7 @@
         'fm.p1t':'No estás sola','fm.p1p':'Fotografía, descripciones, traducción, envío, hablar con el comprador, gestionar devoluciones. Todo eso es nuestro, incluido cómo embalar lo que haces para que llegue como salió.',
         'fm.p2t':'Tu nombre se queda en la pieza','fm.p2p':'No un identificador de vendedor anónimo. Tu nombre, tu región, tu técnica: en la página y en la etiqueta. Y lo que cambiaste en el motivo está escrito ahí como tuyo, no escondido.',
         'fm.p3t':'Sabes tu parte antes de empezar','fm.p3p':'Sin cuotas por publicar. Sin pagar por que te vean. Sin dinero retenido durante meses. Una parte fija del precio que paga el comprador, acordada antes de que montes los puntos.',
-        'fm.money.p':'El comprador paga un precio, y la mayor parte es tuya. Hasta el 1 de diciembre de 2026 nuestra parte es del 25%, así que te quedas el 75%. Los coordinadores y los museos se pagan de nuestra parte, nunca de la tuya.',
+        'fm.money.p':'El comprador paga un precio, y la mayor parte es tuya. Las partes se calculan sobre ese precio sin el IVA que lleva dentro. Hasta el 1 de diciembre de 2026 nuestra parte es del 25%, así que te quedas el 75%. Coordinadores y museos se pagan de nuestra parte, nunca de la tuya.',
         'fm.promise.p1':'Estamos empezando. Todavía no hay ventas, así que no podemos prometerte una cifra. Lo que sí prometemos es una parte que conoces de antemano y condiciones que no cambian a tus espaldas.',
         'fm.promise.p2':'Si buscas un sueldo garantizado, este no es el sitio, y preferimos decirlo ya.',
         'fm.beyond.p':'Los ornamentos con los que trabajas se convierten en registros que vendemos, y recibes una parte de cada registro vendido, no solo de cada pieza. Más adelante: talleres presenciales en tu región, cursos grabados y un archivo permanente de lo que sabes.',
@@ -4065,7 +4083,7 @@
         'fs.p3t':'Escrito y traducido','fs.p3p':'Descripciones, pies de foto y mensajes con los compradores, en inglés. La barrera que impide a la mayoría de los talleres vender fuera de su país.',
         'fs.p4t':'Nada que pagar por estar aquí','fs.p4p':'Sin cuotas por publicar, sin anuncios que comprar, sin cargo por un sitio en la web. Una parte de lo que se vende de verdad, y nada antes.',
         'fs.p5t':'Tus ornamentos registrados','fs.p5p':'Documentamos de dónde viene cada ornamento - en tejido, barro, metal o madera - y lo guardamos. Si un taller cierra, lo que sabía no desaparece con él. De eso es de lo que nos hablan museos y archivos.',
-        'fs.take.t':'Qué tomamos, y por qué','fs.take.p':'Tomamos el precio de venta como 100%. Nada más.',
+        'fs.take.t':'Qué tomamos, y por qué','fs.take.p':'Tomamos como 100% el precio que paga el comprador, menos el IVA que lleva dentro. Nada más. El impuesto que va dentro de un precio nunca fue nuestra parte ni la tuya.',
         'fs.shop':'Tu taller','fs.shopNote':'materiales y tu trabajo','fs.katunNote':'página, preparación de fotos, textos, traducción, difusión, el comprador',
         'fs.commission':'Es una comisión, no un descuento mayorista. No compramos tu stock: tus piezas siguen siendo tuyas hasta que llegan al cliente.',
         'fs.price':'El precio que ve el comprador lo pones tú. Nuestra parte sale de ahí, nunca se añade encima. Hasta el 1 de diciembre de 2026 esa parte es del 25%, así que te quedas el 75%.',
@@ -4083,7 +4101,7 @@
         'fm.p1t':'Não está sozinha','fm.p1p':'Fotografia, descrições, tradução, envio, falar com o comprador, tratar devoluções. Tudo isso é nosso - incluindo como embalar o que faz, para que chegue como saiu.',
         'fm.p2t':'O seu nome fica na peça','fm.p2p':'Não um número de vendedor anónimo. O seu nome, a sua região, a sua técnica - na página e na etiqueta. E o que mudou no motivo está escrito ali como seu, não escondido.',
         'fm.p3t':'Sabe a sua parte antes de começar','fm.p3p':'Sem taxas de publicação. Sem pagar para ser vista. Sem dinheiro retido durante meses. Uma parte fixa do preço que o comprador paga, combinada antes de montar as malhas.',
-        'fm.money.p':'O comprador paga um preço, e a maior parte é sua. Até 1 de dezembro de 2026 a nossa parte é 25%, por isso fica com 75%. Coordenadores e museus são pagos da nossa parte, nunca da sua.',
+        'fm.money.p':'O comprador paga um preço, e a maior parte é sua. As partes contam-se sobre esse preço sem o IVA que traz dentro. Até 1 de dezembro de 2026 a nossa parte é de 25%, portanto fica com 75%. Coordenadores e museus são pagos da nossa parte, nunca da sua.',
         'fm.promise.p1':'Estamos no início. Ainda não há vendas, por isso não podemos prometer-lhe um número. O que podemos prometer é uma parte conhecida de antemão e condições que não mudam nas suas costas.',
         'fm.promise.p2':'Se procura um salário garantido, este não é o lugar, e preferimos dizê-lo agora.',
         'fm.beyond.p':'Os ornamentos com que trabalha tornam-se registos que vendemos - e recebe uma parte de cada registo vendido, não só de cada peça. Mais tarde: oficinas presenciais na sua região, cursos gravados e um arquivo permanente do que sabe.',
@@ -4094,7 +4112,7 @@
         'fs.p3t':'Escrito e traduzido','fs.p3p':'Descrições, legendas e mensagens com compradores, em inglês. A barreira que impede a maioria das oficinas de vender fora do seu país.',
         'fs.p4t':'Nada a pagar para estar aqui','fs.p4p':'Sem taxas de publicação, sem anúncios para comprar, sem custo por um lugar no site. Uma parte do que realmente se vende, e nada antes disso.',
         'fs.p5t':'Os seus ornamentos registados','fs.p5p':'Documentamos de onde vem cada ornamento - em têxtil, barro, metal ou madeira - e guardamo-lo. Se uma oficina fechar, o que sabia não desaparece com ela. É disso que museus e arquivos nos falam.',
-        'fs.take.t':'O que levamos, e por quê','fs.take.p':'Tomamos o preço de venda como 100%. Mais nada.',
+        'fs.take.t':'O que levamos, e por quê','fs.take.p':'Tomamos como 100% o preço que o comprador paga, menos o IVA que traz dentro. Nada mais. O imposto dentro de um preço nunca foi a nossa parte nem a sua.',
         'fs.shop':'A sua oficina','fs.shopNote':'materiais e o seu trabalho','fs.katunNote':'página, preparação de fotos, textos, tradução, divulgação, o comprador',
         'fs.commission':'Isto é uma comissão, não um desconto de grosso. Não compramos o seu stock - as suas peças continuam suas até chegarem ao cliente.',
         'fs.price':'O preço que o comprador vê é definido por si. A nossa parte sai dele, nunca é acrescentada por cima. Até 1 de dezembro de 2026 essa parte é 25%, por isso fica com 75%.',
@@ -4112,7 +4130,7 @@
         'fm.p1t':'Je staat er niet alleen voor','fm.p1p':'Fotografie, beschrijvingen, vertaling, verzending, contact met de koper, retouren afhandelen. Dat is allemaal van ons - inclusief hoe je verpakt wat je maakt, zodat het aankomt zoals het vertrok.',
         'fm.p2t':'Je naam blijft erop','fm.p2p':'Geen anoniem verkopersnummer. Je naam, je streek, je techniek - op de pagina en op het label. En wat je aan het patroon veranderd hebt staat er als het jouwe, niet verstopt.',
         'fm.p3t':'Je kent je aandeel voor je begint','fm.p3p':'Geen plaatsingskosten. Niet betalen om gezien te worden. Geen geld dat maanden vastzit. Een vast aandeel van de prijs die de koper betaalt, afgesproken voordat je opzet.',
-        'fm.money.p':'De koper betaalt één prijs, en het grootste deel is van jou. Tot 1 december 2026 is ons aandeel 25%, dus jij houdt 75%. Coördinatoren en musea worden uit ons aandeel betaald, nooit uit dat van jou.',
+        'fm.money.p':'De koper betaalt één prijs, en het meeste daarvan is voor u. De aandelen worden gerekend over die prijs zonder de btw die erin zit. Tot 1 december 2026 is ons aandeel 25%, dus u houdt 75%. Coördinatoren en musea worden uit ons aandeel betaald, nooit uit het uwe.',
         'fm.promise.p1':'We staan aan het begin. Er zijn nog geen verkopen, dus we kunnen je geen bedrag beloven. Wat we wel beloven is een aandeel dat je vooraf kent en voorwaarden die niet achter je rug om veranderen.',
         'fm.promise.p2':'Zoek je een gegarandeerd salaris, dan is dit niet de plek, en dat zeggen we liever nu.',
         'fm.beyond.p':'De ornamenten waarmee je werkt worden vastleggingen die wij verkopen - en je krijgt een aandeel van elke verkochte vastlegging, niet alleen van elk stuk. Later: cursussen ter plaatse in jouw streek, opgenomen cursussen, en een blijvend archief van wat jij weet.',
@@ -4123,7 +4141,7 @@
         'fs.p3t':'Geschreven en vertaald','fs.p3p':'Beschrijvingen, bijschriften en berichten met kopers, in het Engels. De drempel die de meeste werkplaatsen belet ooit buiten het eigen land te verkopen.',
         'fs.p4t':'Niets te betalen om hier te zijn','fs.p4p':'Geen plaatsingskosten, geen advertenties die je moet kopen, geen kosten voor een plek op de site. Een aandeel van wat er echt verkocht wordt, en daarvoor niets.',
         'fs.p5t':'Je ornamenten vastgelegd','fs.p5p':'We leggen vast waar elk ornament vandaan komt - in textiel, klei, metaal of hout - en bewaren het. Sluit een werkplaats, dan verdwijnt wat zij wist niet met haar mee. Daar praten musea en archieven met ons over.',
-        'fs.take.t':'Wat wij nemen, en waarvoor','fs.take.p':'We nemen de verkoopprijs als 100%. Verder niets.',
+        'fs.take.t':'Wat wij nemen, en waarvoor','fs.take.p':'Wij nemen de prijs die de koper betaalt, min de btw die erin zit, als 100%. Verder niets. De belasting in een prijs was nooit ons deel en nooit het uwe.',
         'fs.shop':'Jouw werkplaats','fs.shopNote':'materiaal en jouw werk','fs.katunNote':'pagina, fotobewerking, teksten, vertaling, promotie, de koper',
         'fs.commission':'Dit is een commissie, geen groothandelskorting. We kopen je voorraad niet - je stukken blijven van jou tot ze bij de klant zijn.',
         'fs.price':'Jij bepaalt de prijs die de koper ziet. Ons aandeel komt daaruit, nooit erbovenop. Tot 1 december 2026 is dat aandeel 25%, dus jij houdt 75%.',
@@ -4141,7 +4159,7 @@
         'fm.p1t':'Du är inte ensam','fm.p1p':'Fotografering, beskrivningar, översättning, frakt, samtal med köparen, returer. Allt det är vårt - även hur man packar det du gör, så att det kommer fram som det lämnade dig.',
         'fm.p2t':'Ditt namn stannar på plagget','fm.p2p':'Inget anonymt säljar-ID. Ditt namn, din region, din teknik - på sidan och på etiketten. Och det du ändrat i mönstret står där som ditt, inte dolt.',
         'fm.p3t':'Du vet din andel innan du börjar','fm.p3p':'Inga avgifter för att lägga upp. Inget betalande för att synas. Inga pengar som ligger i månader. En fast andel av priset köparen betalar, överenskommen innan du lägger upp maskorna.',
-        'fm.money.p':'Köparen betalar ett pris, och det mesta är ditt. Fram till 1 december 2026 är vår andel 25 %, så du behåller 75 %. Koordinatorer och museer betalas ur vår andel, aldrig ur din.',
+        'fm.money.p':'Köparen betalar ett pris, och det mesta av det är ditt. Andelarna räknas på det priset utan momsen i det. Fram till 1 december 2026 är vår andel 25%, så du behåller 75%. Samordnare och museer betalas ur vår andel, aldrig ur din.',
         'fm.promise.p1':'Vi är i början. Det finns inga försäljningar ännu, så vi kan inte lova dig en siffra. Vad vi kan lova är en andel du känner i förväg och villkor som inte ändras bakom ryggen på dig.',
         'fm.promise.p2':'Söker du en garanterad lön är det här fel plats, och det säger vi hellre nu.',
         'fm.beyond.p':'Ornamenten du arbetar med blir dokumentationer som vi säljer - och du får en andel av varje såld dokumentation, inte bara av varje plagg. Senare: kurser på plats i din region, inspelade kurser och ett bestående arkiv över det du kan.',
@@ -4152,7 +4170,7 @@
         'fs.p3t':'Skrivet och översatt','fs.p3p':'Beskrivningar, bildtexter och meddelanden med köpare, på engelska. Just den tröskel som hindrar de flesta verkstäder från att någonsin sälja utanför sitt eget land.',
         'fs.p4t':'Inget att betala för att vara här','fs.p4p':'Inga uppläggningsavgifter, inga annonser du måste köpa, ingen avgift för en plats på sidan. En andel av det som faktiskt säljs, och inget dessförinnan.',
         'fs.p5t':'Dina ornament dokumenterade','fs.p5p':'Vi dokumenterar varifrån varje ornament kommer - i textil, lera, metall eller trä - och bevarar det. Om en verkstad stänger försvinner inte det den kunde med den. Det är den delen museer och arkiv talar med oss om.',
-        'fs.take.t':'Vad vi tar, och för vad','fs.take.p':'Vi tar försäljningspriset som 100 %. Inget annat.',
+        'fs.take.t':'Vad vi tar, och för vad','fs.take.p':'Vi räknar det pris köparen betalar, minus momsen i det, som 100%. Inget annat. Skatten i ett pris har aldrig varit vår andel och aldrig din.',
         'fs.shop':'Din verkstad','fs.shopNote':'material och ditt arbete','fs.katunNote':'sidan, bildarbete, texter, översättning, spridning, köparen',
         'fs.commission':'Det här är en provision, inte en grossistrabatt. Vi köper inte ditt lager - dina plagg är dina tills de når kunden.',
         'fs.price':'Priset köparen ser sätter du. Vår andel tas ur det, aldrig ovanpå. Fram till 1 december 2026 är den andelen 25 %, så du behåller 75 %.',
@@ -4170,7 +4188,7 @@
         'fm.p1t':'Nie jesteś sama','fm.p1p':'Zdjęcia, opisy, tłumaczenie, wysyłka, rozmowa z kupującym, zwroty. To wszystko jest nasze - łącznie z tym, jak zapakować to, co robisz, żeby dotarło takie, jakie wyjechało.',
         'fm.p2t':'Twoje nazwisko zostaje na wyrobie','fm.p2p':'Nie anonimowy numer sprzedawcy. Twoje imię, twój region, twoja technika - na stronie i na metce. A to, co zmieniłaś we wzorze, jest tam zapisane jako twoje, nie ukryte.',
         'fm.p3t':'Znasz swój udział, zanim zaczniesz','fm.p3p':'Żadnych opłat za wystawienie. Żadnego płacenia za widoczność. Żadnych pieniędzy zamrożonych na miesiące. Stały udział w cenie, którą płaci kupujący, ustalony zanim nabierzesz oczka.',
-        'fm.money.p':'Kupujący płaci jedną cenę i większość z niej jest twoja. Do 1 grudnia 2026 nasz udział wynosi 25%, więc zostaje ci 75%. Koordynatorzy i muzea są opłacani z naszego udziału, nigdy z twojego.',
+        'fm.money.p':'Kupujący płaci jedną cenę i większość z niej jest twoja. Udziały liczy się od tej ceny bez VAT-u w niej zawartego. Do 1 grudnia 2026 nasz udział to 25%, więc zostaje ci 75%. Koordynatorzy i muzea są opłacani z naszego udziału, nigdy z twojego.',
         'fm.promise.p1':'Jesteśmy na początku. Sprzedaży jeszcze nie ma, więc nie możemy obiecać ci liczby. Możemy obiecać udział znany z góry i warunki, które nie zmieniają się za twoimi plecami.',
         'fm.promise.p2':'Jeśli szukasz gwarantowanej pensji, to nie jest to miejsce, i wolimy powiedzieć to od razu.',
         'fm.beyond.p':'Ornamenty, z którymi pracujesz, stają się zapisami, które sprzedajemy - i dostajesz udział z każdego sprzedanego zapisu, nie tylko z każdego wyrobu. Później: zajęcia na żywo w twoim regionie, nagrane kursy i trwałe archiwum tego, co umiesz.',
@@ -4181,7 +4199,7 @@
         'fs.p3t':'Napisane i przetłumaczone','fs.p3p':'Opisy, podpisy i korespondencja z kupującymi, po angielsku. Właśnie ta bariera powstrzymuje większość pracowni przed sprzedażą poza własnym krajem.',
         'fs.p4t':'Nic nie płacisz za obecność','fs.p4p':'Żadnych opłat za wystawienie, żadnych reklam do wykupienia, żadnej opłaty za miejsce na stronie. Udział w tym, co naprawdę się sprzeda, i nic wcześniej.',
         'fs.p5t':'Twoje ornamenty zapisane','fs.p5p':'Dokumentujemy, skąd pochodzi każdy ornament - w tkaninie, glinie, metalu czy drewnie - i to przechowujemy. Jeśli pracownia się zamknie, jej wiedza nie zniknie razem z nią. Właśnie o tym rozmawiają z nami muzea i archiwa.',
-        'fs.take.t':'Co bierzemy i za co','fs.take.p':'Bierzemy cenę sprzedaży jako 100%. Nic więcej.',
+        'fs.take.t':'Co bierzemy i za co','fs.take.p':'Za 100% bierzemy cenę, którą płaci kupujący, pomniejszoną o VAT w niej zawarty. Nic więcej. Podatek siedzący w cenie nigdy nie był ani naszym udziałem, ani twoim.',
         'fs.shop':'Twoja pracownia','fs.shopNote':'materiały i twoja praca','fs.katunNote':'strona, obróbka zdjęć, teksty, tłumaczenie, promocja, kupujący',
         'fs.commission':'To prowizja, a nie rabat hurtowy. Nie skupujemy twojego towaru - twoje wyroby pozostają twoje, dopóki nie dotrą do klienta.',
         'fs.price':'Cenę, którą widzi kupujący, ustalasz ty. Nasz udział wychodzi z niej, nigdy nie dokłada się z wierzchu. Do 1 grudnia 2026 ten udział wynosi 25%, więc zostaje ci 75%.',
@@ -4199,7 +4217,7 @@
         'fm.p1t':'Niste sami','fm.p1p':'Fotografija, opisi, prevod, dostava, razgovor sa kupcem, povraćaji. Sve je to naše - uključujući i kako se pakuje ono što pravite, da stigne onako kako je krenulo.',
         'fm.p2t':'Vaše ime ostaje na radu','fm.p2p':'Ne anonimni broj prodavca. Vaše ime, vaš region, vaša tehnika - na stranici i na etiketi. I ono što ste promenili u ornamentu piše tamo kao vaše, ne skriveno.',
         'fm.p3t':'Znate svoj udeo pre nego što počnete','fm.p3p':'Bez naknada za objavljivanje. Bez plaćanja da biste bili viđeni. Bez novca koji stoji mesecima. Fiksni udeo u ceni koju kupac plaća, dogovoren pre nego što nabacite prve petlje.',
-        'fm.money.p':'Kupac plaća jednu cenu i veći deo je vaš. Do 1. decembra 2026. naš udeo je 25%, dakle vama ostaje 75%. Koordinatori i muzeji se plaćaju iz našeg udela, nikada iz vašeg.',
+        'fm.money.p':'Kupac plaća jednu cenu i najveći deo je vaš. Udeli se računaju od te cene bez PDV-a u njoj. Do 1. decembra 2026. naš udeo je 25%, pa vi zadržavate 75%. Koordinatori i muzeji plaćaju se iz našeg dela, nikada iz vašeg.',
         'fm.promise.p1':'Na početku smo. Prodaje još nema, pa vam ne možemo obećati cifru. Možemo obećati udeo koji znate unapred i uslove koji se ne menjaju iza vaših leđa.',
         'fm.promise.p2':'Ako tražite zagarantovanu platu, ovo nije to mesto, i radije to kažemo odmah.',
         'fm.beyond.p':'Ornamenti sa kojima radite postaju zapisi koje prodajemo - i dobijate udeo od svakog prodatog zapisa, ne samo od svakog rada. Kasnije: radionice uživo u vašem regionu, snimljeni kursevi i trajna arhiva onoga što znate.',
@@ -4210,7 +4228,7 @@
         'fs.p3t':'Napisano i prevedeno','fs.p3p':'Opisi, potpisi i prepiska sa kupcima, na engleskom. Upravo ta prepreka sprečava većinu radionica da ikada prodaju van svoje zemlje.',
         'fs.p4t':'Ništa se ne plaća za mesto ovde','fs.p4p':'Bez naknada za objavljivanje, bez reklama koje morate kupiti, bez naplate mesta na sajtu. Udeo u onome što se stvarno proda, i ništa pre toga.',
         'fs.p5t':'Vaši ornamenti zapisani','fs.p5p':'Beležimo odakle svaki ornament dolazi - u tekstilu, glini, metalu ili drvetu - i to čuvamo. Ako se radionica zatvori, ono što je znala ne nestaje sa njom. Baš o tome muzeji i arhivi razgovaraju sa nama.',
-        'fs.take.t':'Šta uzimamo i za šta','fs.take.p':'Uzimamo prodajnu cenu kao 100%. Ništa drugo.',
+        'fs.take.t':'Šta uzimamo i za šta','fs.take.p':'Kao 100% uzimamo cenu koju kupac plaća, umanjenu za PDV u njoj. Ništa drugo. Porez unutar cene nikada nije bio ni naš deo ni vaš.',
         'fs.shop':'Vašoj radionici','fs.shopNote':'materijal i vaš rad','fs.katunNote':'stranica, priprema fotografija, tekstovi, prevod, promocija, kupac',
         'fs.commission':'Ovo je provizija, a ne veleprodajni popust. Ne otkupljujemo vašu robu - vaši radovi ostaju vaši dok ne stignu do kupca.',
         'fs.price':'Cenu koju kupac vidi određujete vi. Naš udeo izlazi iz nje, nikada se ne dodaje odozgo. Do 1. decembra 2026. taj udeo je 25%, dakle vama ostaje 75%.',
@@ -4228,7 +4246,7 @@
         'fm.p1t':'Yalnız değilsiniz','fm.p1p':'Fotoğraf, açıklamalar, çeviri, kargo, alıcıyla konuşmak, iadeleri halletmek. Hepsi bizde - yaptığınızı nasıl paketleyeceğiniz de dahil, çıktığı gibi ulaşsın diye.',
         'fm.p2t':'Adınız üzerinde kalır','fm.p2p':'Anonim bir satıcı numarası değil. Adınız, bölgeniz, tekniğiniz - sayfada ve etikette. Motifte neyi değiştirdiğiniz de orada sizin olarak yazar, gizlenmez.',
         'fm.p3t':'Payınızı başlamadan önce bilirsiniz','fm.p3p':'Listeleme ücreti yok. Görünmek için ödeme yok. Aylarca bekletilen para yok. Alıcının ödediği fiyattan sabit bir pay, siz ilmekleri atmadan önce kararlaştırılmış.',
-        'fm.money.p':'Alıcı tek bir fiyat öder ve büyük kısmı sizindir. 1 Aralık 2026\'ya kadar bizim payımız %25, yani siz %75 alırsınız. Koordinatörler ve müzeler bizim payımızdan ödenir, hiçbir zaman sizinkinden değil.',
+        'fm.money.p':'Alıcı tek bir fiyat öder ve bunun büyük kısmı sizindir. Paylar, içindeki KDV düşülmüş bu fiyat üzerinden hesaplanır. 1 Aralık 2026’ya kadar bizim payımız 25%, yani siz 75% alırsınız. Koordinatörler ve müzeler bizim payımızdan ödenir, asla sizinkinden.',
         'fm.promise.p1':'Henüz başlangıçtayız. Satış yok, bu yüzden size bir rakam söz veremeyiz. Söz verebileceğimiz şey, önceden bildiğiniz bir pay ve arkanızdan değişmeyen koşullar.',
         'fm.promise.p2':'Garantili maaş arıyorsanız burası doğru yer değil, bunu şimdi söylemeyi tercih ederiz.',
         'fm.beyond.p':'Çalıştığınız motifler bizim sattığımız kayıtlara dönüşür - ve yalnızca her parçadan değil, satılan her kayıttan da pay alırsınız. İleride: bölgenizde yüz yüze atölyeler, kaydedilmiş dersler ve bildiklerinizin kalıcı bir arşivi.',
@@ -4239,7 +4257,7 @@
         'fs.p3t':'Yazıldı ve çevrildi','fs.p3p':'Açıklamalar, altyazılar ve alıcılarla yazışmalar, İngilizce. Çoğu atölyenin kendi ülkesi dışında satış yapmasını engelleyen eşik tam da budur.',
         'fs.p4t':'Burada olmak için ödenecek bir şey yok','fs.p4p':'Listeleme ücreti yok, satın almanız gereken reklam yok, sitede yer için ücret yok. Gerçekten satılandan bir pay, ondan öncesinde hiçbir şey.',
         'fs.p5t':'Motifleriniz kayıtta','fs.p5p':'Her motifin nereden geldiğini belgeliyor - tekstilde, kilde, metalde ya da ahşapta - ve saklıyoruz. Bir atölye kapanırsa, bildiği şey onunla birlikte kaybolmaz. Müzelerin ve arşivlerin bizimle konuştuğu kısım bu.',
-        'fs.take.t':'Ne alıyoruz, ne karşılığında','fs.take.p':'Satış fiyatını %100 sayıyoruz. Başka bir şey yok.',
+        'fs.take.t':'Ne alıyoruz, ne karşılığında','fs.take.p':'Alıcının ödediği fiyatı, içindeki KDV düşüldükten sonra, 100% sayarız. Başka hiçbir şeyi. Fiyatın içindeki vergi ne bizim payımızdı ne de sizinki.',
         'fs.shop':'Atölyenize','fs.shopNote':'malzeme ve emeğiniz','fs.katunNote':'sayfa, fotoğraf hazırlığı, metin, çeviri, tanıtım, alıcı',
         'fs.commission':'Bu bir komisyondur, toptan indirimi değil. Stokunuzu satın almıyoruz - parçalarınız müşteriye ulaşana kadar sizin kalır.',
         'fs.price':'Alıcının gördüğü fiyatı siz belirlersiniz. Payımız onun içinden çıkar, üstüne eklenmez. 1 Aralık 2026\'ya kadar bu pay %25, yani siz %75 alırsınız.',
@@ -4453,6 +4471,21 @@
       tr: {"about.p6":"Bundan iki şey çıkar. Kayıt bu sitede kalmaz: kaynağıyla birlikte bir çizim olarak saklanır ve tasarımcılar, mimarlar ve markalar onu lisanslayabilir; bezemeyi taşıyan usta her seferinde adıyla anılır ve pay alır. Ve her şeyden, satıştan da lisanstan da, sabit bir bölüm koruma fonuna gider: hammaddeyi önceden alır, kaydı öder ve çalıştığımız nesnelerin onarımına yardım eder.","arch.lic.cta":"Lisans için sorun","arch.lic.p":"Tasarımcılar, mimarlar ve markalar bir kaydı kendi işleri için lisanslayabilir: baskılı kumaş, çini, kaplama, bütün bir koleksiyon. O bezemeyi taşıyan usta lisansta adıyla anılır ve oradan pay alır, sabit bir bölüm de koruma fonuna gider. Ne yaptığınızı yazın, koşullarla dönelim.","arch.lic.t":"Lisanslama","arch.p":"Her bezeme iki kez yazıya geçirilir: üzerinden çalışılabilecek bir şema olarak ve kaynağı yanında duran bir vektör çizimi olarak - nesne, koleksiyon, yöre, motif ve ne anlama geldiği. Açıklama Avrupa arşivlerinin kullandığı biçime uyar, böylece bir kayıt bu siteden çıktığında nereden geldiğini yitirmez. Oyma ve dokuma kayıtların kabartma modelleri hazırlanmaktadır.","arch.t":"Kayıt nedir","fm.fund":"35 yüzdemizden onda birini Miras Koruma Fonuna koyarız: önceden alınan hammadde, kaydın maliyeti, onarım. Bizim payımızdan çıkar, sizinkinden değil.","footer.fund":"Fon","fund.crumb":"Fon","fund.h.p":"Fon sıfırda. Henüz hiçbir şey satılmadı, dolayısıyla hiçbir şey girmedi. Başladığında, yılda bir kez neyin girdiğini ve neyi ödediğini, ulaştığı her atölye ve her müzenin adıyla yayımlarız. O zamana kadar bildirecek bir şey yok, ve bunu yuvarlamaktansa söylemeyi tercih ederiz.","fund.h.t":"Durum ne","fund.p1":"Burada satılan her şeyden payımızın onda biri ve her lisans bedelinin beşte biri, kendi paramızdan ayrı tuttuğumuz bir fona gider. Bizim payımızdan çıkar, ustanın payından asla: ustanın 65 yüzdesine dokunulmaz.","fund.sub":"Zanaat yalnız siparişle ayakta kalmaz. Bu sitenin kazandığının bir bölümü işin kendisine geri döner.","fund.title":"Miras Koruma Fonu","fund.w.t":"Neye harcanır","fund.w1":"Önceden alınan hammadde - yün, iplik, kil, sır - bir atölye sipariş beklemeden bir kışı çıkarabilsin diye.","fund.w2":"Kaydın kendisi: bir koleksiyona yolculuk, izin ve fotoğraf, ve şemanın nesneden çizilmesi.","fund.w3":"Kaydettiğimiz bir nesnenin, onu saklayan müzeyle anlaşarak yapılan onarımı.","fund.w4":"Aktarım: yaşlı bir ustaya, genç birine öğretmek için harcadığı zamanın ödenmesi."}
     });
 
+    addStrings({
+      en: {'record.soon':"In preparation. Not on sale until the record is drawn.",'record.soonShort':"In preparation",'cart.min':"Minimum order {min}. Shipping is inside the price, and a tracked parcel costs more than our share of a smaller order. Add another piece, or write to us and we will find a way."},
+      de: {'record.soon':"In Vorbereitung. Nicht im Verkauf, bis die Aufzeichnung gezeichnet ist.",'record.soonShort':"In Vorbereitung",'cart.min':"Mindestbestellwert {min}. Der Versand steckt im Preis, und ein verfolgtes Paket kostet mehr als unser Anteil an einer kleineren Bestellung. Nehmen Sie ein weiteres Stück dazu oder schreiben Sie uns."},
+      ru: {'record.soon':"Готовится. В продажу пойдёт, когда запись будет нарисована.",'record.soonShort':"Готовится",'cart.min':"Минимальный заказ {min}. Доставка внутри цены, а посылка с отслеживанием стоит больше, чем наша доля в заказе меньше этой суммы. Добавьте ещё вещь или напишите нам — что-нибудь придумаем."},
+      fr: {'record.soon':"En préparation. Pas en vente tant que le relevé n’est pas dessiné.",'record.soonShort':"En préparation",'cart.min':"Commande minimum {min}. La livraison est dans le prix, et un colis suivi coûte plus que notre part sur une commande plus petite. Ajoutez une pièce ou écrivez-nous."},
+      it: {'record.soon':"In preparazione. Non in vendita finché la registrazione non è disegnata.",'record.soonShort':"In preparazione",'cart.min':"Ordine minimo {min}. La spedizione è nel prezzo e un pacco tracciato costa più della nostra quota su un ordine più piccolo. Aggiungete un pezzo o scriveteci."},
+      es: {'record.soon':"En preparación. No está a la venta hasta que el registro esté dibujado.",'record.soonShort':"En preparación",'cart.min':"Pedido mínimo {min}. El envío está dentro del precio, y un paquete con seguimiento cuesta más que nuestra parte en un pedido menor. Añade otra pieza o escríbenos."},
+      pt: {'record.soon':"Em preparação. Não está à venda até o registo estar desenhado.",'record.soonShort':"Em preparação",'cart.min':"Encomenda mínima {min}. O envio está dentro do preço, e uma encomenda com seguimento custa mais do que a nossa parte num pedido menor. Junte outra peça ou escreva-nos."},
+      nl: {'record.soon':"In voorbereiding. Niet te koop tot de vastlegging getekend is.",'record.soonShort':"In voorbereiding",'cart.min':"Minimale bestelling {min}. Verzending zit in de prijs, en een pakket met track & trace kost meer dan ons aandeel in een kleinere bestelling. Voeg nog een stuk toe of schrijf ons."},
+      sv: {'record.soon':"Under arbete. Inte till salu förrän uppteckningen är ritad.",'record.soonShort':"Under arbete",'cart.min':"Minsta order {min}. Frakten ligger i priset, och ett spårat paket kostar mer än vår andel av en mindre order. Lägg till en sak till eller skriv till oss."},
+      pl: {'record.soon':"W przygotowaniu. Nie jest w sprzedaży, dopóki zapis nie zostanie narysowany.",'record.soonShort':"W przygotowaniu",'cart.min':"Zamówienie minimalne {min}. Wysyłka jest w cenie, a paczka ze śledzeniem kosztuje więcej niż nasz udział w mniejszym zamówieniu. Dodaj kolejną rzecz albo napisz do nas."},
+      sr: {'record.soon':"U pripremi. Nije u prodaji dok zapis ne bude nacrtan.",'record.soonShort':"U pripremi",'cart.min':"Najmanja porudžbina {min}. Dostava je u ceni, a paket sa praćenjem košta više od našeg dela u manjoj porudžbini. Dodajte još nešto ili nam pišite."},
+      tr: {'record.soon':"Hazırlanıyor. Kayıt çizilene kadar satışta değil.",'record.soonShort':"Hazırlanıyor",'cart.min':"En az sipariş {min}. Kargo fiyatın içinde ve takipli bir paket, daha küçük bir siparişteki payımızdan pahalıya gelir. Bir parça daha ekleyin ya da bize yazın."}
+    });
+
     let currentLang = 'en';
 
     function t(key) {
@@ -4520,35 +4553,6 @@
           desc: 'Montenegrin folk knitting is defined by thick, unbleached mountain wool designed for harsh karst winters. Geometric motifs from the Durmitor highlands traditionally encoded village lineages.',
           regions: ['All Regions', 'Durmitor', 'Bjelasica', 'Prokletije'],
           workshops: [
-            {
-              id: 'w-durmitor',
-              type: 'WORKSHOP',
-              countryId: 'montenegro',
-              name: 'Durmitor Craft Circle',
-              city: 'Žabljak',
-              itemsCount: 4,
-              color: '#6B2314',
-              foundedYear: '1984',
-              technique: 'Heavy Ribbed Hand-Knitting & Coarse Carding',
-              patternRegion: 'Durmitor Highlands',
-              storyP1: 'Organized as a rural collective of high-altitude sheep herders in Žabljak, the Durmitor Craft Circle preserves traditional winter garments built to withstand sub-zero karst gales.',
-              storyP2: 'Using unbleached local mountain wool spun on hand-carved wooden spindles, each garment is hand-knitted without modern synthetics, maintaining ancestral thermal properties.',
-              websiteUrl: null,
-              events: [
-                {
-                  id: 'ev-mn-01',
-                  title: 'Two-strand knitting, first steps',
-                  date: '19 September 2026, 11:00',
-                  place: 'Žabljak',
-                  duration: '3 hours',
-                  desc: 'You cast on, learn the two-strand hold and leave with a finished band in a Durmitor pattern. Wool and needles provided.',
-                  price: 45,
-                  spots: 8,
-                  spotsLeft: 8,
-                  payUrl: null
-                }
-              ]
-            }
 ,
             {
               id: 'w-elena',
@@ -4614,7 +4618,7 @@
               countryId: 'montenegro',
               category: 'crafts',
               title: "Čarape · Shepherd's Path",
-              price: 320,
+              price: 345,
               workshopId: 'w-elena',
               workshop: 'Elena',
               city: 'Budva',
@@ -4641,7 +4645,7 @@
               countryId: 'montenegro',
               category: 'crafts',
               title: 'Priječice · Home Path',
-              price: null,
+              price: 170,
               workshopId: 'w-elena',
               workshop: 'Elena',
               city: 'Budva',
@@ -4667,7 +4671,7 @@
               countryId: 'montenegro',
               category: 'crafts',
               title: 'Ognjište · Hearth',
-              price: 180,
+              price: 215,
               workshopId: 'w-elena',
               workshop: 'Elena',
               city: 'Budva',
@@ -4692,7 +4696,7 @@
               countryId: 'montenegro',
               category: 'crafts',
               title: "Rukavice · Shepherd's Path",
-              price: 150,
+              price: 325,
               workshopId: 'w-elena',
               workshop: 'Elena',
               city: 'Kolashin',
@@ -4719,7 +4723,7 @@
               countryId: 'montenegro',
               category: 'crafts',
               title: 'Knee warmers',
-              price: 180,
+              price: 210,
               workshopId: 'w-elena',
               workshop: 'Elena',
               city: 'Kolashin',
@@ -4739,90 +4743,6 @@ patternName: 'Knee warmers, written pattern',
               patternOrigin: 'PLACEHOLDER — one line: where this way of knitting them comes from.',
               patternRevived: 'PLACEHOLDER — one line: what makes this pattern worth writing down.'
             },
-            {
-              id: 'mn-01',
-              countryId: 'montenegro',
-              category: 'crafts',
-              title: 'Durmitor Ribbed Vest',
-              price: 180,
-              workshopId: 'w-durmitor',
-              workshop: 'Durmitor Craft Circle',
-              city: 'Žabljak',
-              region: 'Durmitor',
-              color: '#8C2D19',
-              thumbColors: ['#7A2715', '#99321C', '#611F12'],
-              material: '100% Unbleached Durmitor Wool',
-              size: 'One Size (M-L)',
-              care: 'Hand wash cold with wool detergent',
-              days: '12 days',
-              schemeId: 'sch-mn-01',
-              patternName: 'Highland Solar Star Motif',
-              patternOrigin: 'Recorded in Cetinje Museum ethnography archives, origin 1912.',
-              patternRevived: 'Double-ribbed insulating grid construction revived directly from high-pasture shepherd vests.'
-            },
-            {
-              id: 'mn-02',
-              countryId: 'montenegro',
-              category: 'crafts',
-              title: 'Karst Highland Mittens',
-              price: 65,
-              workshopId: 'w-durmitor',
-              workshop: 'Durmitor Craft Circle',
-              city: 'Žabljak',
-              region: 'Durmitor',
-              color: '#9E3B27',
-              thumbColors: ['#8A3321', '#B3432C', '#732A1B'],
-              material: '100% Coarse Mountain Wool',
-              size: 'Standard Adult',
-              care: 'Dry clean or gentle hand wash',
-              days: '4 days',
-              schemeId: 'sch-mn-01',
-              patternName: 'Highland Solar Star Motif',
-              patternOrigin: 'Documented in northern alpine settlements near Žabljak.',
-              patternRevived: 'Triangular star draft guarding against alpine wind gusts.'
-            },
-            {
-              id: 'mn-03',
-              countryId: 'montenegro',
-              category: 'crafts',
-              title: 'Bjelasica Heavy Cardigan',
-              price: 290,
-              workshopId: 'w-durmitor',
-              workshop: 'Durmitor Craft Circle',
-              city: 'Kolašin',
-              region: 'Bjelasica',
-              color: '#682213',
-              thumbColors: ['#541B0F', '#7C2917', '#42150C'],
-              material: 'Hand-spun Natural Grey Wool',
-              size: 'Large / Oversized',
-              care: 'Air outdoor in snow or hand wash',
-              days: '18 days',
-              schemeId: 'sch-mn-02',
-              patternName: 'Karst River Cable Grid',
-              patternOrigin: 'Kolašin regional textile archives.',
-              patternRevived: 'Heavy multi-stranded cable rows inspired by glacial riverbed paths.'
-            },
-            {
-              id: 'mn-04',
-              countryId: 'montenegro',
-              category: 'crafts',
-              title: 'Prokletije Patterned Socks',
-              price: 55,
-              workshopId: 'w-durmitor',
-              workshop: 'Durmitor Craft Circle',
-              city: 'Plav',
-              region: 'Prokletije',
-              color: '#B54731',
-              thumbColors: ['#A13E2A', '#C94F37', '#873423'],
-              material: 'Dense Highland Sheep Wool',
-              size: 'EU 39-42',
-              care: 'Hand wash cold',
-              days: '5 days',
-              schemeId: 'sch-mn-01',
-              patternName: 'Highland Solar Star Motif',
-              patternOrigin: 'Border pass traditional costume collection.',
-              patternRevived: 'High-density heel and toe reinforcement with contrasting solar bands.'
-            }
           ],
           schemes: [
             {
@@ -4874,7 +4794,7 @@ patternName: 'Knee warmers, written pattern',
               region: 'Bjelasica',
               countryId: 'montenegro',
               countryName: 'Montenegro',
-              price: 12,
+              price: null,
               seed: 2,
               originStory: 'Documented in Kolašin valley settlements, this heavy cable grid emulates the winding glacial streams of the Bjelasica range. The double-stranded draft creates insulating air pockets within thick mountain cardigans.'
             },
@@ -4940,7 +4860,7 @@ regions: ['Subotica'],
               countryId: 'serbia',
               category: 'crafts',
               title: 'Znak cushion',
-              price: 20,
+              price: 190,
               workshopId: 'w-anna',
               workshop: 'Anna Ananskaja',
 city: 'Subotica',
@@ -4965,7 +4885,7 @@ color: '#3B4836',
               countryId: 'serbia',
               category: 'crafts',
               title: 'Nitj cushion',
-              price: 27,
+              price: 195,
               workshopId: 'w-anna',
               workshop: 'Anna Ananskaja',
               city: 'Subotica',
@@ -4990,7 +4910,7 @@ color: '#3B4836',
               countryId: 'serbia',
               category: 'crafts',
               title: 'Slavic blanket',
-              price: 110,
+              price: 1175,
               workshopId: 'w-anna',
               workshop: 'Anna Ananskaja',
               city: 'Subotica',
@@ -5021,124 +4941,10 @@ color: '#3B4836',
           desc: 'Highland Georgian knitting from Tusheti and Svaneti utilizes rich natural vegetable dyes and complex stranded colorwork techniques dating back centuries.',
           regions: ['All Regions', 'Tusheti', 'Svaneti', 'Tbilisi'],
           workshops: [
-            {
-              id: 'w-tusheti',
-              type: 'WORKSHOP',
-              countryId: 'georgia',
-              name: 'Tusheti Women Guild',
-              city: 'Omalo',
-              itemsCount: 3,
-              color: '#8C5A2B',
-              foundedYear: '1998',
-              technique: 'Stranded Jacquard & Botanical Dyeing',
-              patternRegion: 'Tusheti High Passes',
-              storyP1: 'Located in the remote mountain settlement of Omalo, reachable only a few months a year, the Tusheti Women Guild keeps alive the intricate stranded sock-knitting traditions of northern Georgia.',
-              storyP2: 'The wool is dyed using wild madder roots, walnut husks, and onion skins gathered in the alpine valleys, creating deep earthy tones that do not fade.',
-              websiteUrl: null
-            }
           ],
           partners: [
-            {
-              id: 'p-tbilisi-rugs',
-              type: 'PARTNER',
-              countryId: 'georgia',
-              name: 'Tbilisi Tapestry & Atelier',
-              city: 'Tbilisi',
-              itemsCount: 4,
-              color: '#B57C48',
-              foundedYear: '2016',
-              technique: 'Traditional Kilim Weaving & Flat-Knit Tapestry',
-              patternRegion: 'Kakheti & Old Tbilisi Revival',
-              storyP1: 'Tbilisi Tapestry & Atelier is an independent design studio collaborating with master weavers from eastern Georgia to adapt museum flat-knit motifs into modern functional home textiles.',
-              storyP2: 'Operating out of an restored 19th-century courtyard in Sololaki, the studio documents historic Georgian ornament catalogs and translates them onto hand-loom wool rugs and wall panels.',
-              websiteUrl: 'https://example.com/tbilisi-tapestry'
-            }
           ],
           products: [
-            {
-              id: 'ge-01',
-              countryId: 'georgia',
-              category: 'crafts',
-              title: 'Tusheti Stranded Socks (Chiti)',
-              price: 85,
-              workshopId: 'w-tusheti',
-              workshop: 'Tusheti Women Guild',
-              city: 'Omalo',
-              region: 'Tusheti',
-              color: '#A66E38',
-              thumbColors: ['#916030', '#BC7D40', '#784E26'],
-              material: 'Vegetable-dyed Tushetian Wool',
-              size: 'EU 38-41',
-              care: 'Hand wash cold only',
-              days: '7 days',
-              schemeId: 'sch-ge-01',
-              patternName: 'Tushetian Chiti Jacquard Matrix',
-              patternOrigin: 'Omalo high mountain village collection.',
-              patternRevived: 'High-density stranded colorwork dyed with natural madder root and walnut husks.'
-            },
-            {
-              id: 'ge-02',
-              countryId: 'georgia',
-              category: 'crafts',
-              title: 'Svaneti Mountain Pullover',
-              price: 240,
-              workshopId: 'w-tusheti',
-              workshop: 'Tusheti Women Guild',
-              city: 'Mestia',
-              region: 'Svaneti',
-              color: '#8A5629',
-              thumbColors: ['#754822', '#9E632F', '#5E3A1B'],
-              material: '100% Unrefined Caucasian Wool',
-              size: 'Medium',
-              care: 'Dry flat, hand wash cold',
-              days: '15 days',
-              schemeId: 'sch-ge-02',
-              patternName: 'Svaneti Tower Masonry Motif',
-              patternOrigin: 'Mestia ethnography museum archives.',
-              patternRevived: 'Monochrome ribbing structure modeled after medieval defensive stone towers.'
-            },
-            {
-              id: 'ge-03',
-              countryId: 'georgia',
-              category: 'crafts',
-              title: 'Omalo Patterned Scarf',
-              price: 110,
-              workshopId: 'w-tusheti',
-              workshop: 'Tusheti Women Guild',
-              city: 'Omalo',
-              region: 'Tusheti',
-              color: '#BF8247',
-              thumbColors: ['#AA733E', '#D49150', '#916133'],
-              material: 'Soft Alpaca & Wool Blend',
-              size: '200cm x 35cm',
-              care: 'Hand wash cold',
-              days: '8 days',
-              schemeId: 'sch-ge-01',
-              patternName: 'Tushetian Chiti Jacquard Matrix',
-              patternOrigin: 'Alpine Caucasus transhumance heritage catalog.',
-              patternRevived: 'Repetitive diamond solar symbols representing seasonal migration routes.'
-            },
-            {
-              id: 'ge-04',
-              countryId: 'georgia',
-              category: 'crafts',
-              title: 'Kakheti Sun Flat-Woven Runner',
-              price: 320,
-              partnerId: 'p-tbilisi-rugs',
-              workshop: 'Tbilisi Tapestry & Atelier',
-              city: 'Tbilisi',
-              region: 'Tbilisi',
-              color: '#9C6233',
-              thumbColors: ['#87542B', '#B06F3A', '#734724'],
-              material: 'Hand-spun Organic Wool Weft',
-              size: '180cm x 60cm',
-              care: 'Vacuum without brush, dry clean',
-              days: '21 days',
-              schemeId: 'sch-ge-01',
-              patternName: 'Tushetian Chiti Jacquard Matrix',
-              patternOrigin: 'Late 18th-century Kakhetian flat-knit tapestry collection.',
-              patternRevived: 'Sunburst central motif adapted from antique loom samples.'
-            }
           ],
           schemes: [
             {
@@ -5147,7 +4953,7 @@ color: '#3B4836',
               region: 'Tusheti',
               countryId: 'georgia',
               countryName: 'Georgia',
-              price: 16,
+              price: null,
               seed: 3,
               originStory: 'Recovered from hand-knitted footwear in Omalo, Tusheti. This complex matrix utilizes double-stranded wool dyed with wild botanical extracts, historically created by women during winter snowlocks.'
             },
@@ -5157,7 +4963,7 @@ color: '#3B4836',
               region: 'Svaneti',
               countryId: 'georgia',
               countryName: 'Georgia',
-              price: 15,
+              price: null,
               seed: 4,
               originStory: 'Inspired by the defensive stone towers of Mestia. The pattern translates geometric masonry lines into high-gauge wool ribbing.'
             }
@@ -5171,124 +4977,10 @@ color: '#3B4836',
           desc: 'Nomadic Kyrgyz wool traditions fuse heavy felting with intricate needlework and camel-wool yarn spinning built for life on the high steppes.',
           regions: ['All Regions', 'Naryn', 'Issyk-Kul'],
           workshops: [
-            {
-              id: 'w-naryn',
-              type: 'WORKSHOP',
-              countryId: 'kyrgyzstan',
-              name: 'Naryn Wool Circle',
-              city: 'Naryn',
-              itemsCount: 3,
-              color: '#3E4E5C',
-              foundedYear: '—',
-              technique: 'Felting & Camel-Wool Hand-Knitting',
-              patternRegion: 'Naryn Valley',
-              storyP1: 'A group of women in Naryn working with wool from local flocks, knitting and felting through the winter months.',
-              storyP2: 'PLACEHOLDER — replace with the real story once the direction opens: who they are, how they learned, what they still make.',
-              websiteUrl: null
-            }
           ],
           partners: [
-            {
-              id: 'p-issykkul',
-              type: 'PARTNER',
-              countryId: 'kyrgyzstan',
-              name: 'Issyk-Kul Felt Studio',
-              city: 'Cholpon-Ata',
-              itemsCount: 1,
-              color: '#5C6E7E',
-              foundedYear: '—',
-              technique: 'Shyrdak Felt & Flat-Knit Panels',
-              patternRegion: 'Issyk-Kul',
-              storyP1: 'An independent studio on the north shore of Issyk-Kul working in felt and knitted panels.',
-              storyP2: 'PLACEHOLDER — replace with the real story once the direction opens.',
-              websiteUrl: null
-            }
           ],
           products: [
-            {
-              id: 'kg-01',
-              countryId: 'kyrgyzstan',
-              category: 'crafts',
-              title: 'Naryn Camel-Wool Socks',
-              price: 60,
-              workshopId: 'w-naryn',
-              workshop: 'Naryn Wool Circle',
-              city: 'Naryn',
-              region: 'Naryn',
-              color: '#4A5B6A',
-              thumbColors: ['#3E4E5C', '#5C6E7E', '#33414D'],
-              material: 'Camel wool',
-              size: 'EU 38-42',
-              care: 'Hand wash cold',
-              days: '6 days',
-              schemeId: 'sch-kg-01',
-              patternName: 'Naryn Horn Motif',
-              patternOrigin: 'PLACEHOLDER — where this pattern was found.',
-              patternRevived: 'PLACEHOLDER — what was revived in it.'
-            },
-            {
-              id: 'kg-02',
-              countryId: 'kyrgyzstan',
-              category: 'crafts',
-              title: 'Steppe Wool Mittens',
-              price: 55,
-              workshopId: 'w-naryn',
-              workshop: 'Naryn Wool Circle',
-              city: 'Naryn',
-              region: 'Naryn',
-              color: '#3E4E5C',
-              thumbColors: ['#33414D', '#4A5B6A', '#2B3740'],
-              material: 'Sheep wool',
-              size: 'Standard adult',
-              care: 'Hand wash cold',
-              days: '5 days',
-              schemeId: 'sch-kg-01',
-              patternName: 'Naryn Horn Motif',
-              patternOrigin: 'PLACEHOLDER — where this pattern was found.',
-              patternRevived: 'PLACEHOLDER — what was revived in it.'
-            },
-            {
-              id: 'kg-03',
-              countryId: 'kyrgyzstan',
-              category: 'crafts',
-              title: 'Issyk-Kul Knitted Scarf',
-              price: 95,
-              workshopId: 'w-naryn',
-              workshop: 'Naryn Wool Circle',
-              city: 'Karakol',
-              region: 'Issyk-Kul',
-              color: '#5C6E7E',
-              thumbColors: ['#4A5B6A', '#6B7C8B', '#3E4E5C'],
-              material: 'Wool blend',
-              size: '190cm x 32cm',
-              care: 'Hand wash cold',
-              days: '8 days',
-              schemeId: 'sch-kg-02',
-              patternName: 'Issyk-Kul Wave Border',
-              patternOrigin: 'PLACEHOLDER — where this pattern was found.',
-              patternRevived: 'PLACEHOLDER — what was revived in it.'
-            },
-            {
-              id: 'kg-04',
-              countryId: 'kyrgyzstan',
-              category: 'crafts',
-              title: 'Shyrdak Wall Panel',
-              price: 210,
-              partnerId: 'p-issykkul',
-              workshop: 'Issyk-Kul Felt Studio',
-              city: 'Cholpon-Ata',
-              region: 'Issyk-Kul',
-              color: '#6B7C8B',
-              thumbColors: ['#5C6E7E', '#7B8C9B', '#4A5B6A'],
-              material: 'Felted sheep wool',
-              size: '120cm x 70cm',
-              care: 'Air outdoors, spot clean',
-              days: '18 days',
-              schemeId: 'sch-kg-02',
-              patternName: 'Issyk-Kul Wave Border',
-              patternOrigin: 'PLACEHOLDER — where this pattern was found.',
-              patternRevived: 'PLACEHOLDER — what was revived in it.'
-            }
           ],
           schemes: [
             {
@@ -5297,7 +4989,7 @@ color: '#3B4836',
               region: 'Naryn',
               countryId: 'kyrgyzstan',
               countryName: 'Kyrgyzstan',
-              price: 14,
+              price: null,
               seed: 5,
               originStory: 'PLACEHOLDER — the origin of this chart: where it was recorded, who still knits it, what the motif meant.'
             },
@@ -5307,7 +4999,7 @@ color: '#3B4836',
               region: 'Issyk-Kul',
               countryId: 'kyrgyzstan',
               countryName: 'Kyrgyzstan',
-              price: 12,
+              price: null,
               seed: 6,
               originStory: 'PLACEHOLDER — the origin of this chart.'
             }
@@ -5474,7 +5166,7 @@ currentView = viewId;
                 </div>
                <div class="scheme-card-body">
                   <h3 class="scheme-card-title serif">${s.name}</h3>
-                 <div class="scheme-card-price">€${s.price}</div>
+                 <div class="scheme-card-price">${s.price == null ? t('record.soonShort') : '€' + s.price}</div>
                  <div class="scheme-card-meta">${s.region} · ${t('meta.digitalRecord')}</div>
                 </div>
               </div>
@@ -6064,7 +5756,12 @@ setHash('/maker/' + entityId);
       document.getElementById('pattern-page-title').innerText = foundScheme.name;
       document.getElementById('pattern-page-meta').innerText = `${foundScheme.region}, ${foundScheme.countryName}`;
       document.getElementById('pattern-page-story').innerText = foundScheme.originStory;
-      document.getElementById('pattern-page-price').innerText = `€${foundScheme.price}`;
+      // запись без нарисованной схемы и без текста продавать нечем
+      const buyable = foundScheme.price != null;
+      document.getElementById('pattern-purchase-row').style.display = buyable ? '' : 'none';
+      if (buyable) document.getElementById('pattern-page-price').innerText = `€${foundScheme.price}`;
+      const soonEl = document.getElementById('pattern-page-soon');
+      if (soonEl) soonEl.style.display = buyable ? 'none' : '';
 
       // Render Full Visible Chart Grid
       renderFullPatternChart();
@@ -6290,7 +5987,8 @@ function renderPatterns(filterCountry = 'all') {
 
   container.innerHTML = allSchemes.map(s => {
     const gridHtml = chartPreview(s, 200);
-    const price = (typeof fmt === 'function') ? fmt(s.price) : `€${s.price}`;
+    const price = s.price == null ? t('record.soonShort')
+                : ((typeof fmt === 'function') ? fmt(s.price) : `€${s.price}`);
     return `
       <div class="scheme-card" onclick="openPatternPage('${s.id}')">
         <div class="scheme-chart-preview">
@@ -6382,6 +6080,8 @@ function findItem(entry){
   });
   return found;
 }
+const MIN_ORDER = 110;
+
 function renderCart(){
   const box = document.getElementById('cart-items');
   const sum = document.getElementById('cart-summary');
@@ -6423,6 +6123,8 @@ function renderCart(){
       <p style="font-size:14px;color:#665E58;margin-bottom:16px;">Included in the price. Sent with tracking, 7–14 working days in Europe. Records are digital and workshop places need no delivery.</p>
       <p style="font-size:13px;color:#665E58;margin-top:12px;">Customs charges in your country are yours to pay. In the EU that means import VAT and a small customs charge on arrival. <a onclick="showView('terms')" style="color:var(--madder);cursor:pointer;">Terms &amp; returns</a></p>
     </div>` : ''}
+    ${(cart.some(e => e.type === 'product') && total < MIN_ORDER) ? `
+    <div class="cart-min-note">${t('cart.min').replace('{min}', '\u20ac' + MIN_ORDER)}</div>` : ''}
     <div class="cart-actions">
       <a class="btn-madder" onclick="orderWhatsApp()">${t('cart.whatsapp')}</a>
       <a class="btn-outline" onclick="orderEmail()">${t('cart.email')}</a>
