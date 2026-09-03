@@ -540,6 +540,29 @@
       background-color: var(--madder);
     }
 
+    /* блок архива на главной: тот же ритм, но без плашек, чтобы не дублировать
+       ряд карточек направлений прямо над ним */
+    .archive-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      padding: 0 12px;
+    }
+
+    .archive-col h3 { font-size: 22px; line-height: 1.2; }
+
+    .archive-col p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #38322E;
+      max-width: 30em;
+    }
+
+    .archive-col.clickable { cursor: pointer; }
+    .archive-col.clickable:hover h3 { color: var(--madder); }
+
     .section-lines {
       list-style: none;
       margin: 24px 0 40px;
@@ -2470,6 +2493,41 @@
         <p class="countries-sub" data-i18n="sections.sub">One method across every material. Choose where to start.</p>
       </div>
       <div class="sections-grid" id="home-sections-grid"></div>
+    </div>
+  </section>
+
+  <!-- 6c. THE ARCHIVE -->
+  <section class="countries-section" id="archive-home">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:40px;">
+        <h2 class="serif" data-i18n="arch.h.t">The record outlives the piece</h2>
+        <p class="countries-sub" data-i18n="arch.h.s">Every ornament we find is drawn once and then works three ways.</p>
+      </div>
+
+      <div class="sections-grid" style="margin-bottom:36px;">
+        <div class="archive-col">
+          <h3 class="serif" data-i18n="arch.h.a">For the maker</h3>
+          <div class="section-rule"></div>
+          <p data-i18n="arch.h.ad">A named person knits it by hand, to your measurement, and keeps the larger share of what you pay.</p>
+        </div>
+        <div class="archive-col clickable" onclick="showView('patterns')">
+          <h3 class="serif" data-i18n="arch.h.b">For the knitter</h3>
+          <div class="section-rule"></div>
+          <p data-i18n="arch.h.bd">The same record, written as a chart you can work from yourself. Two are ready; the rest say so.</p>
+        </div>
+        <div class="archive-col clickable" onclick="showView('patterns')">
+          <h3 class="serif" data-i18n="arch.h.c">For the studio</h3>
+          <div class="section-rule"></div>
+          <p data-i18n="arch.h.cd">Designers, architects and brands license a motif whose origin is documented. The maker is named in the licence and paid from it.</p>
+        </div>
+      </div>
+
+      <p style="text-align:center;font-size:15px;color:#665E58;max-width:640px;margin:0 auto 24px;line-height:1.6;" data-i18n="arch.h.f">A tenth of our share, and a fifth of every licence, goes to the Heritage Preservation Fund.</p>
+
+      <div style="text-align:center;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a class="btn-madder" onclick="showView('patterns')" data-i18n="arch.h.cta1">See the records</a>
+        <a class="btn-outline" onclick="showView('fund')" data-i18n="arch.h.cta2">The fund</a>
+      </div>
     </div>
   </section>
 
@@ -4484,6 +4542,21 @@
       pl: {'record.soon':"W przygotowaniu. Nie jest w sprzedaży, dopóki zapis nie zostanie narysowany.",'record.soonShort':"W przygotowaniu",'cart.min':"Zamówienie minimalne {min}. Wysyłka jest w cenie, a paczka ze śledzeniem kosztuje więcej niż nasz udział w mniejszym zamówieniu. Dodaj kolejną rzecz albo napisz do nas."},
       sr: {'record.soon':"U pripremi. Nije u prodaji dok zapis ne bude nacrtan.",'record.soonShort':"U pripremi",'cart.min':"Najmanja porudžbina {min}. Dostava je u ceni, a paket sa praćenjem košta više od našeg dela u manjoj porudžbini. Dodajte još nešto ili nam pišite."},
       tr: {'record.soon':"Hazırlanıyor. Kayıt çizilene kadar satışta değil.",'record.soonShort':"Hazırlanıyor",'cart.min':"En az sipariş {min}. Kargo fiyatın içinde ve takipli bir paket, daha küçük bir siparişteki payımızdan pahalıya gelir. Bir parça daha ekleyin ya da bize yazın."}
+    });
+
+    addStrings({
+      en: {'arch.h.a':"For the maker",'arch.h.ad':"A named person knits it by hand, to your measurement, and keeps the larger share of what you pay.",'arch.h.b':"For the knitter",'arch.h.bd':"The same record, written as a chart you can work from yourself. Two are ready; the rest say so.",'arch.h.c':"For the studio",'arch.h.cd':"Designers, architects and brands license a motif whose origin is documented. The maker is named in the licence and paid from it.",'arch.h.cta1':"See the records",'arch.h.cta2':"The fund",'arch.h.f':"A tenth of our share, and a fifth of every licence, goes to the Heritage Preservation Fund.",'arch.h.s':"Every ornament we find is drawn once and then works three ways.",'arch.h.t':"The record outlives the piece"},
+      de: {'arch.h.a':"Für die Handwerkerin",'arch.h.ad':"Eine namentlich genannte Person strickt es von Hand, nach Ihrem Maß, und behält den größeren Teil dessen, was Sie zahlen.",'arch.h.b':"Für die Strickerin",'arch.h.bd':"Dieselbe Aufzeichnung, als Vorlage geschrieben, nach der Sie selbst arbeiten können. Zwei sind fertig, die übrigen sagen es.",'arch.h.c':"Für das Studio",'arch.h.cd':"Designer, Architekten und Marken lizenzieren ein Motiv mit belegter Herkunft. Die Handwerkerin wird in der Lizenz genannt und daraus bezahlt.",'arch.h.cta1':"Die Aufzeichnungen ansehen",'arch.h.cta2':"Der Fonds",'arch.h.f':"Ein Zehntel unseres Anteils und ein Fünftel jeder Lizenz gehen an den Fonds für den Erhalt des Erbes.",'arch.h.s':"Jedes Ornament, das wir finden, wird einmal gezeichnet und wirkt dann dreifach.",'arch.h.t':"Die Aufzeichnung überlebt das Stück"},
+      ru: {'arch.h.a':"Мастеру",'arch.h.ad':"Названный человек вяжет вещь руками, под вашу мерку, и оставляет себе большую часть того, что вы платите.",'arch.h.b':"Вязальщице",'arch.h.bd':"Та же запись, написанная схемой, по которой можно работать самой. Две готовы, остальные так и помечены.",'arch.h.c':"Студии",'arch.h.cd':"Дизайнеры, архитекторы и марки берут по лицензии мотив с подтверждённым происхождением. Мастер назван в лицензии и получает из неё.",'arch.h.cta1':"Посмотреть записи",'arch.h.cta2':"Фонд",'arch.h.f':"Десятая часть нашей доли и пятая часть каждой лицензии идут в Фонд сохранения наследия.",'arch.h.s':"Каждый найденный орнамент рисуется один раз и потом работает трижды.",'arch.h.t':"Запись живёт дольше вещи"},
+      fr: {'arch.h.a':"Pour l’artisane",'arch.h.ad':"Une personne nommée le tricote à la main, à votre mesure, et garde la plus grande part de ce que vous payez.",'arch.h.b':"Pour la tricoteuse",'arch.h.bd':"Le même relevé, écrit en grille dont vous pouvez travailler vous-même. Deux sont prêts, les autres le disent.",'arch.h.c':"Pour le studio",'arch.h.cd':"Designers, architectes et marques prennent sous licence un motif dont l’origine est documentée. L’artisane est nommée dans la licence et rémunérée par elle.",'arch.h.cta1':"Voir les relevés",'arch.h.cta2':"Le fonds",'arch.h.f':"Un dixième de notre part et un cinquième de chaque licence vont au Fonds de sauvegarde du patrimoine.",'arch.h.s':"Chaque ornement trouvé est dessiné une fois, puis travaille de trois façons.",'arch.h.t':"Le relevé survit à la pièce"},
+      it: {'arch.h.a':"Per l’artigiana",'arch.h.ad':"Una persona con un nome lo lavora a mano, sulla vostra misura, e tiene la parte maggiore di ciò che pagate.",'arch.h.b':"Per chi lavora a maglia",'arch.h.bd':"La stessa registrazione, scritta come schema su cui potete lavorare da soli. Due sono pronte, le altre lo dicono.",'arch.h.c':"Per lo studio",'arch.h.cd':"Designer, architetti e marchi prendono in licenza un motivo dall’origine documentata. L’artigiana è nominata nella licenza e pagata da essa.",'arch.h.cta1':"Vedere le registrazioni",'arch.h.cta2':"Il fondo",'arch.h.f':"Un decimo della nostra quota e un quinto di ogni licenza vanno al Fondo per la tutela del patrimonio.",'arch.h.s':"Ogni ornamento che troviamo è disegnato una volta e poi lavora in tre modi.",'arch.h.t':"La registrazione sopravvive al pezzo"},
+      es: {'arch.h.a':"Para la artesana",'arch.h.ad':"Una persona con nombre la teje a mano, a tu medida, y se queda con la mayor parte de lo que pagas.",'arch.h.b':"Para quien teje",'arch.h.bd':"El mismo registro, escrito como patrón con el que puedes trabajar tú. Dos están listos; los demás lo dicen.",'arch.h.c':"Para el estudio",'arch.h.cd':"Diseñadores, arquitectos y marcas licencian un motivo de origen documentado. La artesana aparece nombrada en la licencia y cobra de ella.",'arch.h.cta1':"Ver los registros",'arch.h.cta2':"El fondo",'arch.h.f':"Una décima parte de nuestra parte y una quinta de cada licencia van al Fondo de conservación del patrimonio.",'arch.h.s':"Cada ornamento que encontramos se dibuja una vez y luego trabaja de tres maneras.",'arch.h.t':"El registro dura más que la pieza"},
+      pt: {'arch.h.a':"Para a artesã",'arch.h.ad':"Uma pessoa com nome tricota-a à mão, à sua medida, e fica com a maior parte do que paga.",'arch.h.b':"Para quem tricota",'arch.h.bd':"O mesmo registo, escrito como grelha com que pode trabalhar sozinho. Dois estão prontos; os outros dizem-no.",'arch.h.c':"Para o estúdio",'arch.h.cd':"Designers, arquitetos e marcas licenciam um motivo de origem documentada. A artesã é nomeada na licença e paga a partir dela.",'arch.h.cta1':"Ver os registos",'arch.h.cta2':"O fundo",'arch.h.f':"Um décimo da nossa parte e um quinto de cada licença vão para o Fundo de salvaguarda do património.",'arch.h.s':"Cada ornamento que encontramos é desenhado uma vez e depois trabalha de três maneiras.",'arch.h.t':"O registo dura mais do que a peça"},
+      nl: {'arch.h.a':"Voor de maakster",'arch.h.ad':"Een persoon met een naam breit het met de hand, op uw maat, en houdt het grootste deel van wat u betaalt.",'arch.h.b':"Voor de breister",'arch.h.bd':"Dezelfde vastlegging, geschreven als patroon waarnaar u zelf kunt werken. Twee zijn klaar; de rest zegt dat.",'arch.h.c':"Voor het atelier",'arch.h.cd':"Ontwerpers, architecten en merken nemen een motief met vastgelegde herkomst in licentie. De maakster wordt genoemd en betaald.",'arch.h.cta1':"De vastleggingen bekijken",'arch.h.cta2':"Het fonds",'arch.h.f':"Een tiende van ons aandeel en een vijfde van elke licentie gaat naar het Fonds voor behoud van erfgoed.",'arch.h.s':"Elk ornament dat we vinden wordt één keer getekend en werkt daarna op drie manieren.",'arch.h.t':"De vastlegging overleeft het stuk"},
+      sv: {'arch.h.a':"För hantverkaren",'arch.h.ad':"En namngiven person stickar det för hand, efter ditt mått, och behåller den större delen av det du betalar.",'arch.h.b':"För stickaren",'arch.h.bd':"Samma uppteckning, skriven som ett mönster du kan arbeta efter själv. Två är klara; de övriga säger det.",'arch.h.c':"För ateljén",'arch.h.cd':"Formgivare, arkitekter och varumärken licensierar ett motiv med dokumenterat ursprung. Hantverkaren namnges i licensen och får betalt ur den.",'arch.h.cta1':"Se uppteckningarna",'arch.h.cta2':"Fonden",'arch.h.f':"En tiondel av vår andel och en femtedel av varje licens går till Fonden för bevarande av arvet.",'arch.h.s':"Varje ornament vi hittar ritas en gång och arbetar sedan på tre sätt.",'arch.h.t':"Uppteckningen lever längre än plagget"},
+      pl: {'arch.h.a':"Dla rzemieślniczki",'arch.h.ad':"Osoba z imieniem robi to ręcznie, na twoją miarę, i zatrzymuje większą część tego, co płacisz.",'arch.h.b':"Dla dziergającej",'arch.h.bd':"Ten sam zapis, napisany jako wzór, według którego możesz pracować sama. Dwa są gotowe; reszta tak mówi.",'arch.h.c':"Dla studia",'arch.h.cd':"Projektanci, architekci i marki biorą na licencję motyw o udokumentowanym pochodzeniu. Rzemieślniczka jest wymieniona w licencji i z niej opłacana.",'arch.h.cta1':"Zobaczyć zapisy",'arch.h.cta2':"Fundusz",'arch.h.f':"Jedna dziesiąta naszego udziału i jedna piąta każdej licencji idą do Funduszu ochrony dziedzictwa.",'arch.h.s':"Każdy znaleziony ornament rysujemy raz, a potem pracuje na trzy sposoby.",'arch.h.t':"Zapis żyje dłużej niż rzecz"},
+      sr: {'arch.h.a':"Za majstoricu",'arch.h.ad':"Osoba sa imenom plete to rukama, po vašoj meri, i zadržava veći deo onoga što platite.",'arch.h.b':"Za pletilju",'arch.h.bd':"Isti zapis, napisan kao šema po kojoj možete raditi sami. Dva su gotova; ostali to i kažu.",'arch.h.c':"Za studio",'arch.h.cd':"Dizajneri, arhitekte i brendovi uzimaju pod licencu motiv dokumentovanog porekla. Majstorica je navedena u licenci i plaćena iz nje.",'arch.h.cta1':"Pogledati zapise",'arch.h.cta2':"Fond",'arch.h.f':"Desetina našeg dela i petina svake licence idu u Fond za očuvanje nasleđa.",'arch.h.s':"Svaki ornament koji nađemo crta se jednom, a potom radi na tri načina.",'arch.h.t':"Zapis živi duže od stvari"},
+      tr: {'arch.h.a':"Usta için",'arch.h.ad':"Adı bilinen biri onu elle örer, sizin ölçünüze göre, ve ödediğinizin büyük kısmını alır.",'arch.h.b':"Ören için",'arch.h.bd':"Aynı kayıt, kendinizin çalışabileceği bir şema olarak yazılı. İkisi hazır; kalanlar bunu söylüyor.",'arch.h.c':"Stüdyo için",'arch.h.cd':"Tasarımcılar, mimarlar ve markalar kaynağı belgeli bir motifi lisanslar. Usta lisansta anılır ve oradan pay alır.",'arch.h.cta1':"Kayıtlara bakın",'arch.h.cta2':"Fon",'arch.h.f':"Payımızın onda biri ve her lisansın beşte biri Miras Koruma Fonuna gider.",'arch.h.s':"Bulduğumuz her bezeme bir kez çizilir, sonra üç biçimde çalışır.",'arch.h.t':"Kayıt, nesneden uzun yaşar"}
     });
 
     let currentLang = 'en';
