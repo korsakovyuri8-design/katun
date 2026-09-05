@@ -677,6 +677,27 @@
       border-radius: 2px;
     }
 
+    .share-btn {
+      display: inline-block;
+      align-self: flex-start;   /* иначе тянется во всю колонку и спорит с покупкой */
+      width: auto;
+      margin-top: 14px;
+      margin-bottom: 8px;
+      padding: 10px 18px;
+      background: transparent;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #665E58;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+
+    .share-btn:hover { border-color: var(--madder); color: var(--madder); }
+
     .team-initial {
       width: 64px;
       height: 64px;
@@ -2736,6 +2757,10 @@
               <button class="btn-madder add-to-cart-btn" onclick="addToCart('product', currentProduct.id)" data-i18n="btn.addToCart">Add to cart</button>
               <a class="btn-madder add-to-cart-btn" id="product-ask" style="display:none;text-align:center;" href="mailto:katun.montenegro@gmail.com?subject=KATUN%20enquiry" data-i18n="btn.ask">Ask about this piece</a>
 
+              <button class="share-btn" onclick="sharePiece('item', currentProduct.id, currentProduct.title, this)">
+                <span data-i18n="btn.share">Share this piece</span>
+              </button>
+
              <div class="spec-table">
                <div class="spec-row">
                   <span class="spec-label" data-i18n="spec.material">Material</span>
@@ -2974,7 +2999,10 @@
              <p id="pattern-page-soon" class="record-soon" style="display:none" data-i18n="record.soon">In preparation. Not on sale until the record is drawn.</p>
              <div class="pattern-purchase-row" id="pattern-purchase-row">
                 <span class="pattern-price-tag" id="pattern-page-price">€14</span>
-                <button class="btn-madder" onclick="addToCart('scheme', currentPattern.id)">Add to cart</button>
+                <button class="btn-madder" onclick="addToCart('scheme', currentPattern.id)" data-i18n="btn.addToCart">Add to cart</button>
+                <button class="share-btn" onclick="sharePiece('pattern', currentPattern.id, currentPattern.name, this)">
+                  <span data-i18n="btn.share">Share this piece</span>
+                </button>
               </div>
             </div>
           </div>
@@ -4627,6 +4655,21 @@
       pl: {'cta.maker':"Czy jesteś tradycyjną rzemieślniczką z",'cta.apply':"Zgłosić się do KATUN",'meta.maker.one':"rzemieślniczka",'meta.maker.few':"rzemieślniczki",'meta.maker.many':"rzemieślniczek"},
       sr: {'cta.maker':"Da li ste tradicionalna majstorica iz",'cta.apply':"Prijaviti se u KATUN",'meta.maker.one':"majstorica",'meta.maker.few':"majstorice",'meta.maker.many':"majstorica"},
       tr: {'cta.maker':"Şuradan geleneksel bir usta mısınız:",'cta.apply':"KATUN’a başvurun",'meta.maker.one':"usta",'meta.maker.few':"usta",'meta.maker.many':"usta"}
+    });
+
+    addStrings({
+      en: {'btn.share':"Share this piece",'btn.shared':"Link copied"},
+      de: {'btn.share':"Diese Arbeit teilen",'btn.shared':"Link kopiert"},
+      ru: {'btn.share':"Поделиться",'btn.shared':"Ссылка скопирована"},
+      fr: {'btn.share':"Partager cette pièce",'btn.shared':"Lien copié"},
+      it: {'btn.share':"Condividere questo pezzo",'btn.shared':"Link copiato"},
+      es: {'btn.share':"Compartir esta pieza",'btn.shared':"Enlace copiado"},
+      pt: {'btn.share':"Partilhar esta peça",'btn.shared':"Ligação copiada"},
+      nl: {'btn.share':"Dit stuk delen",'btn.shared':"Link gekopieerd"},
+      sv: {'btn.share':"Dela den här saken",'btn.shared':"Länken kopierad"},
+      pl: {'btn.share':"Udostępnić",'btn.shared':"Skopiowano link"},
+      sr: {'btn.share':"Podeliti",'btn.shared':"Link kopiran"},
+      tr: {'btn.share':"Bu parçayı paylaş",'btn.shared':"Bağlantı kopyalandı"}
     });
 
     let currentLang = 'en';
@@ -6316,6 +6359,35 @@ function renderCountryCaptions() {
     const items  = (c.products || []).length;
     el.textContent = countLabel(makers, 'meta.maker') + ' \u00b7 ' + countLabel(items, 'meta.piece');
   });
+}
+
+/* Ссылка, которая показывает саму вещь.
+   Хеш до сервера не доходит, поэтому делимся страницей из /p/. */
+function shareUrl(kind, id) {
+  const base = location.hostname.endsWith('katunheritage.com')
+    ? 'https://katunheritage.com'
+    : location.origin;
+  return base + '/p/' + id + '.html';
+}
+
+function sharePiece(kind, id, title, btn) {
+  const url = shareUrl(kind, id);
+  if (navigator.share) {
+    navigator.share({ title: title + ' · KATUN', url: url }).catch(() => {});
+    return;
+  }
+  const done = () => {
+    if (!btn) return;
+    const span = btn.querySelector('span') || btn;
+    const was = span.textContent;
+    span.textContent = t('btn.shared');
+    setTimeout(() => { span.textContent = was; }, 2000);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done).catch(() => window.prompt(t('btn.share'), url));
+  } else {
+    window.prompt(t('btn.share'), url);
+  }
 }
 
 function real(v) {
