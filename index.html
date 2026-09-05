@@ -666,6 +666,17 @@
 
     .fund-list li:last-child { border-bottom: none; }
 
+    /* Клавиатурный фокус должно быть видно — иначе им нельзя пользоваться */
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    input:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid var(--madder);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
     .team-initial {
       width: 64px;
       height: 64px;
@@ -2392,7 +2403,7 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Montenegro</h2>
-            <span class="country-card-caption">1 maker &middot; 6 items</span>
+            <span class="country-card-caption" data-count="montenegro"></span>
           </div>
         </div>
 
@@ -2403,7 +2414,7 @@
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Serbia</h2>
-            <span class="country-card-caption">1 maker &middot; 3 items</span>
+            <span class="country-card-caption" data-count="serbia"></span>
           </div>
         </div>
 
@@ -2675,8 +2686,8 @@
 
        <div class="container">
          <div class="maker-cta-banner">
-            <span>Are you a traditional maker from <strong id="country-cta-name">this country</strong>?</span>
-            <a onclick="showView('for-makers')">Apply to join KATUN</a>
+            <span><span data-i18n="cta.maker">Are you a traditional maker from</span> <strong id="country-cta-name">this country</strong>?</span>
+            <a onclick="showView('for-makers')" data-i18n="cta.apply">Apply to join KATUN</a>
           </div>
         </div>
 
@@ -4603,6 +4614,21 @@
       tr: {'meta.piece.one':"parça",'meta.piece.few':"parça",'meta.piece.many':"parça",'meta.rec.one':"kayıt",'meta.rec.few':"kayıt",'meta.rec.many':"kayıt"}
     });
 
+    addStrings({
+      en: {'cta.maker':"Are you a traditional maker from",'cta.apply':"Apply to join KATUN",'meta.maker.one':"maker",'meta.maker.few':"makers",'meta.maker.many':"makers"},
+      de: {'cta.maker':"Sind Sie eine traditionelle Handwerkerin aus",'cta.apply':"Bei KATUN mitmachen",'meta.maker.one':"Handwerkerin",'meta.maker.few':"Handwerkerinnen",'meta.maker.many':"Handwerkerinnen"},
+      ru: {'cta.maker':"Вы традиционный мастер из",'cta.apply':"Подать заявку в KATUN",'meta.maker.one':"мастер",'meta.maker.few':"мастера",'meta.maker.many':"мастеров"},
+      fr: {'cta.maker':"Êtes-vous une artisane traditionnelle de",'cta.apply':"Rejoindre KATUN",'meta.maker.one':"artisane",'meta.maker.few':"artisanes",'meta.maker.many':"artisanes"},
+      it: {'cta.maker':"Siete un artigiano tradizionale di",'cta.apply':"Candidarsi a KATUN",'meta.maker.one':"artigiana",'meta.maker.few':"artigiane",'meta.maker.many':"artigiane"},
+      es: {'cta.maker':"¿Eres artesana tradicional de",'cta.apply':"Solicitar unirte a KATUN",'meta.maker.one':"artesana",'meta.maker.few':"artesanas",'meta.maker.many':"artesanas"},
+      pt: {'cta.maker':"É artesã tradicional de",'cta.apply':"Candidatar-se à KATUN",'meta.maker.one':"artesã",'meta.maker.few':"artesãs",'meta.maker.many':"artesãs"},
+      nl: {'cta.maker':"Bent u een traditionele maker uit",'cta.apply':"Meedoen met KATUN",'meta.maker.one':"maker",'meta.maker.few':"makers",'meta.maker.many':"makers"},
+      sv: {'cta.maker':"Är du en traditionell hantverkare från",'cta.apply':"Ansök till KATUN",'meta.maker.one':"hantverkare",'meta.maker.few':"hantverkare",'meta.maker.many':"hantverkare"},
+      pl: {'cta.maker':"Czy jesteś tradycyjną rzemieślniczką z",'cta.apply':"Zgłosić się do KATUN",'meta.maker.one':"rzemieślniczka",'meta.maker.few':"rzemieślniczki",'meta.maker.many':"rzemieślniczek"},
+      sr: {'cta.maker':"Da li ste tradicionalna majstorica iz",'cta.apply':"Prijaviti se u KATUN",'meta.maker.one':"majstorica",'meta.maker.few':"majstorice",'meta.maker.many':"majstorica"},
+      tr: {'cta.maker':"Şuradan geleneksel bir usta mısınız:",'cta.apply':"KATUN’a başvurun",'meta.maker.one':"usta",'meta.maker.few':"usta",'meta.maker.many':"usta"}
+    });
+
     let currentLang = 'en';
 
     function t(key) {
@@ -4642,6 +4668,7 @@
         if (active.id === 'view-section' && currentSection) openSection(currentSection.id);
         renderHomeSections();
         renderTeam();
+        renderCountryCaptions();
         setPageTitle(lastTitle.view, lastTitle.name);
         if (typeof updateCartCount === 'function') updateCartCount();
       } catch (e) {}
@@ -5159,6 +5186,7 @@ currentView = viewId;
 
       setPageTitle(viewId);
       if (typeof initLazyPhotos === 'function') initLazyPhotos();
+      if (typeof makeKeyboardReachable === 'function') makeKeyboardReachable();
     }
 
     /* Заголовок вкладки. Открытых вкладок бывает несколько,
@@ -6255,6 +6283,41 @@ function initLazyPhotos() {
   targets.forEach(el => io.observe(el));
 }
 
+/* Половина сайта — это div и span с onclick: мышью работает, с клавиатуры нет.
+   Один проход делает их фокусируемыми, один обработчик — нажимаемыми. */
+function makeKeyboardReachable(root) {
+  (root || document).querySelectorAll('[onclick]').forEach(el => {
+    const tag = el.tagName.toLowerCase();
+    if (tag === 'button' || (tag === 'a' && el.hasAttribute('href'))) return;
+    if (el.hasAttribute('tabindex')) return;
+    el.setAttribute('tabindex', '0');
+    if (!el.hasAttribute('role')) el.setAttribute('role', 'button');
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+  const el = e.target;
+  if (!el || typeof el.hasAttribute !== 'function' || !el.hasAttribute('onclick')) return;
+  const tag = el.tagName.toLowerCase();
+  if (tag === 'button' || (tag === 'a' && el.hasAttribute('href')) ||
+      tag === 'input' || tag === 'select' || tag === 'textarea') return;
+  e.preventDefault();
+  el.click();
+});
+
+/* Подписи под открытыми странами считаются по данным, а не вписываются руками:
+   иначе они врут после первой же правки каталога и не переводятся. */
+function renderCountryCaptions() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const c = DATA.countries[el.getAttribute('data-count')];
+    if (!c) return;
+    const makers = (c.workshops || []).length;
+    const items  = (c.products || []).length;
+    el.textContent = countLabel(makers, 'meta.maker') + ' \u00b7 ' + countLabel(items, 'meta.piece');
+  });
+}
+
 function real(v) {
   if (typeof v !== 'string') return v || '';
   const cut = v.split(/\s*[·-]\s*PLACEHOLDER/)[0];
@@ -6407,6 +6470,8 @@ function orderEmail(){
       renderTeam();
       hideEmptyNav();
       initLazyPhotos();
+      makeKeyboardReachable();
+      renderCountryCaptions();
       loadCart();
       const q = new URLSearchParams(location.search);
       const thanks = q.get('thanks') === '1';
