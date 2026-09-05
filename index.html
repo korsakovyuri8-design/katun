@@ -4573,6 +4573,36 @@
       tr: {'record.get':"Kaydın tamamını alın"}
     });
 
+    addStrings({
+      en: {'meta.piece':"piece",'meta.pieces':"pieces"},
+      de: {'meta.piece':"Stück",'meta.pieces':"Stücke"},
+      ru: {'meta.piece':"вещь",'meta.pieces':"вещей"},
+      fr: {'meta.piece':"pièce",'meta.pieces':"pièces"},
+      it: {'meta.piece':"pezzo",'meta.pieces':"pezzi"},
+      es: {'meta.piece':"pieza",'meta.pieces':"piezas"},
+      pt: {'meta.piece':"peça",'meta.pieces':"peças"},
+      nl: {'meta.piece':"stuk",'meta.pieces':"stukken"},
+      sv: {'meta.piece':"sak",'meta.pieces':"saker"},
+      pl: {'meta.piece':"rzecz",'meta.pieces':"rzeczy"},
+      sr: {'meta.piece':"stvar",'meta.pieces':"stvari"},
+      tr: {'meta.piece':"parça",'meta.pieces':"parça"}
+    });
+
+    addStrings({
+      en: {'meta.piece.one':"piece",'meta.piece.few':"pieces",'meta.piece.many':"pieces",'meta.rec.one':"record",'meta.rec.few':"records",'meta.rec.many':"records"},
+      de: {'meta.piece.one':"Stück",'meta.piece.few':"Stücke",'meta.piece.many':"Stücke",'meta.rec.one':"Aufzeichnung",'meta.rec.few':"Aufzeichnungen",'meta.rec.many':"Aufzeichnungen"},
+      ru: {'meta.piece.one':"вещь",'meta.piece.few':"вещи",'meta.piece.many':"вещей",'meta.rec.one':"запись",'meta.rec.few':"записи",'meta.rec.many':"записей"},
+      fr: {'meta.piece.one':"pièce",'meta.piece.few':"pièces",'meta.piece.many':"pièces",'meta.rec.one':"relevé",'meta.rec.few':"relevés",'meta.rec.many':"relevés"},
+      it: {'meta.piece.one':"pezzo",'meta.piece.few':"pezzi",'meta.piece.many':"pezzi",'meta.rec.one':"registrazione",'meta.rec.few':"registrazioni",'meta.rec.many':"registrazioni"},
+      es: {'meta.piece.one':"pieza",'meta.piece.few':"piezas",'meta.piece.many':"piezas",'meta.rec.one':"registro",'meta.rec.few':"registros",'meta.rec.many':"registros"},
+      pt: {'meta.piece.one':"peça",'meta.piece.few':"peças",'meta.piece.many':"peças",'meta.rec.one':"registo",'meta.rec.few':"registos",'meta.rec.many':"registos"},
+      nl: {'meta.piece.one':"stuk",'meta.piece.few':"stukken",'meta.piece.many':"stukken",'meta.rec.one':"vastlegging",'meta.rec.few':"vastleggingen",'meta.rec.many':"vastleggingen"},
+      sv: {'meta.piece.one':"sak",'meta.piece.few':"saker",'meta.piece.many':"saker",'meta.rec.one':"uppteckning",'meta.rec.few':"uppteckningar",'meta.rec.many':"uppteckningar"},
+      pl: {'meta.piece.one':"rzecz",'meta.piece.few':"rzeczy",'meta.piece.many':"rzeczy",'meta.rec.one':"zapis",'meta.rec.few':"zapisy",'meta.rec.many':"zapisów"},
+      sr: {'meta.piece.one':"stvar",'meta.piece.few':"stvari",'meta.piece.many':"stvari",'meta.rec.one':"zapis",'meta.rec.few':"zapisa",'meta.rec.many':"zapisa"},
+      tr: {'meta.piece.one':"parça",'meta.piece.few':"parça",'meta.piece.many':"parça",'meta.rec.one':"kayıt",'meta.rec.few':"kayıt",'meta.rec.many':"kayıt"}
+    });
+
     let currentLang = 'en';
 
     function t(key) {
@@ -5340,7 +5370,7 @@ currentView = viewId;
               <div class="museum-card">
                 <span class="card-type-label">${m.partner ? t('meta.partnerMuseum') : t('meta.collection')}</span>
                 <h3 class="serif">${m.name}</h3>
-                <div class="museum-city">${m.city}, ${c.name} &middot; ${records.length} ${records.length === 1 ? t('meta.record') : t('meta.records')}</div>
+                <div class="museum-city">${m.city}, ${c.name} &middot; ${countLabel(records.length, 'meta.rec')}</div>
                 ${records.length ? '<div class="museum-records">' + records.map(x => `<span class="museum-record-chip" onclick="openPatternPage('${x.id}')">${x.name}</span>`).join('') + '</div>' : ''}
               </div>`);
           });
@@ -5390,7 +5420,7 @@ currentView = viewId;
           <div class="museum-card">
             <span class="card-type-label">${m.partner ? t('meta.partnerMuseum') : t('meta.collection')}</span>
             <h3 class="serif">${m.name}</h3>
-            <div class="museum-city">${m.city} &middot; ${records.length} ${records.length === 1 ? t('meta.record') : t('meta.records')}${pieces ? ' &middot; ' + pieces + (pieces === 1 ? ' ' + t('meta.piece') : ' ' + t('meta.pieces')) : ''}</div>
+            <div class="museum-city">${m.city} &middot; ${countLabel(records.length, 'meta.rec')}${pieces ? ' &middot; ' + pieces + (pieces === 1 ? ' ' + t('meta.piece') : ' ' + t('meta.pieces')) : ''}</div>
             ${m.note ? `<p class="museum-note">${m.note}</p>` : ''}
             ${chips}
           </div>
@@ -5725,7 +5755,9 @@ setHash('/maker/' + entityId);
       // Filter Pills
       const filterPills = document.getElementById('workshops-filter-pills');
       filterPills.innerHTML = '';
-      const countries = ['ALL', 'Montenegro', 'Serbia', 'Georgia', 'Kyrgyzstan'];
+      // страны в фильтре — только те, где кто-то действительно есть
+      const countries = ['ALL'].concat(
+        Object.values(DATA.countries).filter(c => (c.workshops || []).length).map(c => c.name));
 
       countries.forEach(cName => {
         const pill = document.createElement('span');
@@ -5744,12 +5776,11 @@ setHash('/maker/' + entityId);
 
       let list = [];
       Object.values(DATA.countries).forEach(c => {
-        if (c.workshops) {
-          c.workshops.forEach(w => {
-            if (w.soloMaker) return;
-            list.push({ ...w, countryName: c.name });
-          });
-        }
+        (c.workshops || []).forEach(w => {
+          // одиночный мастер — тоже мастер, и других у нас пока нет
+          const count = (c.products || []).filter(pr => pr.workshop === w.name).length;
+          list.push({ ...w, countryName: c.name, itemsCount: count });
+        });
       });
 
       if (activeWorkshopsFilter !== 'ALL') {
@@ -5764,9 +5795,9 @@ setHash('/maker/' + entityId);
                <div class="color-block" style="background-color: ${w.color}; color: #F7F3ED; font-size: 10px;">${w.name}</div>
               </div>
              <div class="workshop-info">
-                <span class="card-type-label">${t('meta.workshop')}</span>
+                <span class="card-type-label">${w.soloMaker ? t('role.maker') : t('meta.workshop')}</span>
                 <h3 class="serif">${w.name}</h3>
-                <p>${w.city}, ${w.countryName} · ${w.itemsCount} items</p>
+                <p>${w.city}, ${w.countryName} &middot; ${countLabel(w.itemsCount, 'meta.piece')}</p>
               </div>
             </div>
           `;
@@ -5781,7 +5812,8 @@ setHash('/maker/' + entityId);
       // Filter Pills
       const filterPills = document.getElementById('partners-filter-pills');
       filterPills.innerHTML = '';
-      const countries = ['ALL', 'Montenegro', 'Serbia', 'Georgia', 'Kyrgyzstan'];
+      const countries = ['ALL'].concat(
+        Object.values(DATA.countries).filter(c => (c.partners || []).length).map(c => c.name));
 
       countries.forEach(cName => {
         const pill = document.createElement('span');
@@ -6133,6 +6165,32 @@ const SHIPPING = [
         </div>`).join('');
     }
 
+/* Пункт меню, за которым ничего нет, хуже отсутствующего */
+function hideEmptyNav() {
+  const partners = Object.values(DATA.countries)
+    .reduce((n, c) => n + (c.partners || []).length, 0);
+  if (partners === 0) {
+    document.querySelectorAll("[onclick*=\"showView('all-partners')\"]").forEach(el => {
+      const li = el.closest('li');
+      (li || el).style.display = 'none';
+    });
+  }
+}
+
+/* Счёт предметов. В славянских языках три формы, в остальных две. */
+function countLabel(n, base) {
+  let idx;
+  if (['ru', 'sr', 'pl'].indexOf(currentLang) >= 0) {
+    const m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) idx = 0;
+    else if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) idx = 1;
+    else idx = 2;
+  } else {
+    idx = n === 1 ? 0 : 2;
+  }
+  return n + ' ' + t(base + '.' + ['one', 'few', 'many'][idx]);
+}
+
 function real(v) {
   if (typeof v !== 'string') return v || '';
   const cut = v.split(/\s*[·-]\s*PLACEHOLDER/)[0];
@@ -6285,6 +6343,7 @@ function orderEmail(){
       initLang();
       renderHomeSections();
       renderTeam();
+      hideEmptyNav();
       loadCart();
       const q = new URLSearchParams(location.search);
       const thanks = q.get('thanks') === '1';
