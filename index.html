@@ -4642,6 +4642,7 @@
         if (active.id === 'view-section' && currentSection) openSection(currentSection.id);
         renderHomeSections();
         renderTeam();
+        setPageTitle(lastTitle.view, lastTitle.name);
         if (typeof updateCartCount === 'function') updateCartCount();
       } catch (e) {}
     }
@@ -5155,6 +5156,40 @@ currentView = viewId;
       } else if (viewId === 'cart') {
         renderCart();
       }
+
+      setPageTitle(viewId);
+    }
+
+    /* Заголовок вкладки. Открытых вкладок бывает несколько,
+       и «KATUN» на каждой из них ничего не говорит. */
+    const VIEW_TITLE_KEY = {
+      'home': null,
+      'about': 'footer.about',
+      'patterns': 'patterns.title',
+      'for-makers': 'nav.forMakers',
+      'for-shops': 'nav.forShops',
+      'all-workshops': 'nav.workshops',
+      'all-partners': 'nav.partners',
+      'fund': 'fund.title',
+      'cart': 'nav.cart',
+      'terms': 'footer.terms',
+      'privacy': 'footer.privacy'
+    };
+
+    let lastTitle = { view: 'home', name: null };
+
+    function setPageTitle(viewId, name) {
+      lastTitle = { view: viewId, name: name || null };
+      const base = 'KATUN';
+      let head = name;
+      if (!head) {
+        if (viewId === 'home' || !(viewId in VIEW_TITLE_KEY)) {
+          document.title = base + ' \u2014 ' + t('hero.title');
+          return;
+        }
+        head = t(VIEW_TITLE_KEY[viewId]);
+      }
+      document.title = head + ' \u00b7 ' + base;
     }
 
     /* SWITCH TAB IN COUNTRY VIEW */
@@ -5302,6 +5337,7 @@ currentView = viewId;
 
       setHash('/country/' + countryId);
       showView('country');
+      setPageTitle('country', c.name);
     }
 
     /* ===== SECTIONS ===== */
@@ -5391,6 +5427,7 @@ currentView = viewId;
 
       setHash('/section/' + id);
       showView('section');
+      setPageTitle('section', sectionName(sec));
     }
 
     function toggleCollections(e) {
@@ -5630,6 +5667,7 @@ currentView = viewId;
 
 setHash('/item/' + productId);
       showView('product');
+      setPageTitle('item', foundProd.title);
     }
 function swapPhoto(el, src) {
       document.getElementById('product-main-media').innerHTML =
@@ -5748,6 +5786,7 @@ ${p.photo ? `<div class="photo-block" style="background-image:url('${p.photo}')"
 
 setHash('/maker/' + entityId);
       showView('partner-detail');
+      setPageTitle('maker', foundEntity.name);
     }
 
     /* GLOBAL WORKSHOPS VIEW */
@@ -5929,6 +5968,7 @@ setHash('/maker/' + entityId);
 
 setHash('/pattern/' + schemeId);
       showView('pattern-detail');
+      setPageTitle('pattern', foundScheme.name);
     }
 
     /* RENDER FULL 20x20 CHART GRID ON PATTERN PAGE */
