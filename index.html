@@ -2388,7 +2388,7 @@
         <!-- Montenegro -->
         <div class="country-card" onclick="openCountry('montenegro')">
           <div class="country-card-media">
-            <div class="photo-block" style="background-image: url('montenegro.jpg')"></div>
+            <div class="photo-block" data-bg="montenegro.jpg"></div>
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Montenegro</h2>
@@ -2399,7 +2399,7 @@
         <!-- Serbia -->
         <div class="country-card" onclick="openCountry('serbia')">
           <div class="country-card-media">
-            <div class="photo-block" style="background-image: url('serbia.jpg')"></div>
+            <div class="photo-block" data-bg="serbia.jpg"></div>
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Serbia</h2>
@@ -2410,7 +2410,7 @@
         <!-- Georgia -->
         <div class="country-card soon">
           <div class="country-card-media">
-            <div class="photo-block" style="background-image: url('georgia.jpg')"></div>
+            <div class="photo-block" data-bg="georgia.jpg"></div>
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Georgia</h2>
@@ -2421,7 +2421,7 @@
         <!-- Kyrgyzstan -->
         <div class="country-card soon">
           <div class="country-card-media">
-            <div class="photo-block" style="background-image: url('kyrgyzstan.jpg')"></div>
+            <div class="photo-block" data-bg="kyrgyzstan.jpg"></div>
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Kyrgyzstan</h2>
@@ -2432,7 +2432,7 @@
         <!-- Italy -->
         <div class="country-card soon">
           <div class="country-card-media">
-            <div class="photo-block" style="background-image: url('italy.jpg')"></div>
+            <div class="photo-block" data-bg="italy.jpg"></div>
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Italy</h2>
@@ -2443,7 +2443,7 @@
         <!-- Armenia -->
         <div class="country-card soon">
           <div class="country-card-media">
-            <div class="photo-block" style="background-image: url('armenia.jpg')"></div>
+            <div class="photo-block" data-bg="armenia.jpg"></div>
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Armenia</h2>
@@ -2454,7 +2454,7 @@
         <!-- Turkey -->
         <div class="country-card soon">
           <div class="country-card-media">
-            <div class="photo-block" style="background-image: url('turkey.jpg')"></div>
+            <div class="photo-block" data-bg="turkey.jpg"></div>
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Turkey</h2>
@@ -2465,7 +2465,7 @@
         <!-- Spain -->
         <div class="country-card soon">
           <div class="country-card-media">
-            <div class="photo-block" style="background-image: url('spain.jpg')"></div>
+            <div class="photo-block" data-bg="spain.jpg"></div>
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Spain</h2>
@@ -2476,7 +2476,7 @@
         <!-- Ukraine -->
         <div class="country-card soon">
           <div class="country-card-media">
-            <div class="photo-block" style="background-image: url('ukraine.jpg')"></div>
+            <div class="photo-block" data-bg="ukraine.jpg"></div>
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Ukraine</h2>
@@ -2487,7 +2487,7 @@
         <!-- Portugal -->
         <div class="country-card soon">
           <div class="country-card-media">
-            <div class="photo-block" style="background-image: url('portugal.jpg')"></div>
+            <div class="photo-block" data-bg="portugal.jpg"></div>
           </div>
           <div class="country-card-body">
             <h2 class="country-card-title serif">Portugal</h2>
@@ -3022,7 +3022,7 @@
     </div>
 
     <div class="directory-section">
-      <div class="page-header-photo" style="background-image: url('for-makers.jpg')"></div>
+      <div class="page-header-photo" data-bg="for-makers.jpg"></div>
 
       <h1 class="serif" style="font-size:40px;margin-bottom:12px;" data-i18n="join.title">You make. We handle the rest.</h1>
       <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;">
@@ -3139,7 +3139,7 @@
     </div>
 
     <div class="directory-section">
-      <div class="page-header-photo" style="background-image: url('for-shops.jpg')"></div>
+      <div class="page-header-photo" data-bg="for-shops.jpg"></div>
 
       <h1 class="serif" style="font-size:40px;margin-bottom:12px;" data-i18n="fs.title">For workshops, studios and brands</h1>
       <p style="font-size:17px;color:#38322E;max-width:640px;margin-bottom:32px;line-height:1.6;">
@@ -5158,6 +5158,7 @@ currentView = viewId;
       }
 
       setPageTitle(viewId);
+      if (typeof initLazyPhotos === 'function') initLazyPhotos();
     }
 
     /* Заголовок вкладки. Открытых вкладок бывает несколько,
@@ -6231,6 +6232,29 @@ function countLabel(n, base) {
   return n + ' ' + t(base + '.' + ['one', 'few', 'many'][idx]);
 }
 
+/* Фотографии подтягиваются, когда до них долистали.
+   Десять карточек стран весят больше, чем весь остальной первый экран. */
+function initLazyPhotos() {
+  const targets = document.querySelectorAll('[data-bg]');
+  if (!targets.length) return;
+  const load = el => {
+    const f = el.getAttribute('data-bg');
+    if (!f) return;
+    el.style.backgroundImage = "url('" + f + "')";
+    el.removeAttribute('data-bg');
+  };
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(load);
+    return;
+  }
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { load(e.target); obs.unobserve(e.target); }
+    });
+  }, { rootMargin: '400px' });
+  targets.forEach(el => io.observe(el));
+}
+
 function real(v) {
   if (typeof v !== 'string') return v || '';
   const cut = v.split(/\s*[·-]\s*PLACEHOLDER/)[0];
@@ -6382,6 +6406,7 @@ function orderEmail(){
       renderHomeSections();
       renderTeam();
       hideEmptyNav();
+      initLazyPhotos();
       loadCart();
       const q = new URLSearchParams(location.search);
       const thanks = q.get('thanks') === '1';
