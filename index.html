@@ -666,6 +666,19 @@
 
     .fund-list li:last-child { border-bottom: none; }
 
+    .team-initial {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'EB Garamond', serif;
+      font-size: 28px;
+      color: #F7F3ED;
+      margin-bottom: 16px;
+    }
+
     .record-soon {
       font-size: 14px;
       line-height: 1.6;
@@ -3246,21 +3259,7 @@
 
       <h2 class="serif" style="font-size:32px;margin-bottom:32px;" data-i18n="about.team">Who we are</h2>
 
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="team-photo" data-label="Photo"></div>
-          <h3 class="serif">Name Surname</h3>
-          <div class="team-role" data-i18n="role.founder">Founder</div>
-          <p>Short paragraph: where they're from, what they did before, why this project.</p>
-        </div>
-
-        <div class="team-card">
-          <div class="team-photo" data-label="Photo"></div>
-          <h3 class="serif">Name Surname</h3>
-          <div class="team-role" data-i18n="role.maker">Maker</div>
-          <p>Short paragraph: where they're from, what they make, how long they've been doing it.</p>
-        </div>
-      </div>
+      <div class="team-grid" id="team-grid"></div>
     </div>
   </div>
 </section>
@@ -4559,6 +4558,21 @@
       tr: {'arch.h.a':"Usta için",'arch.h.ad':"Adı bilinen biri onu elle örer, sizin ölçünüze göre, ve ödediğinizin büyük kısmını alır.",'arch.h.b':"Ören için",'arch.h.bd':"Aynı kayıt, kendinizin çalışabileceği bir şema olarak yazılı. İkisi hazır; kalanlar bunu söylüyor.",'arch.h.c':"Stüdyo için",'arch.h.cd':"Tasarımcılar, mimarlar ve markalar kaynağı belgeli bir motifi lisanslar. Usta lisansta anılır ve oradan pay alır.",'arch.h.cta1':"Kayıtlara bakın",'arch.h.cta2':"Fon",'arch.h.f':"Payımızın onda biri ve her lisansın beşte biri Miras Koruma Fonuna gider.",'arch.h.s':"Bulduğumuz her bezeme bir kez çizilir, sonra üç biçimde çalışır.",'arch.h.t':"Kayıt, nesneden uzun yaşar"}
     });
 
+    addStrings({
+      en: {'record.get':"Get the full record"},
+      de: {'record.get':"Die vollständige Aufzeichnung holen"},
+      ru: {'record.get':"Взять полную запись"},
+      fr: {'record.get':"Obtenir le relevé complet"},
+      it: {'record.get':"Prendere la registrazione completa"},
+      es: {'record.get':"Obtener el registro completo"},
+      pt: {'record.get':"Obter o registo completo"},
+      nl: {'record.get':"De volledige vastlegging halen"},
+      sv: {'record.get':"Hämta hela uppteckningen"},
+      pl: {'record.get':"Wziąć pełny zapis"},
+      sr: {'record.get':"Uzeti ceo zapis"},
+      tr: {'record.get':"Kaydın tamamını alın"}
+    });
+
     let currentLang = 'en';
 
     function t(key) {
@@ -4597,6 +4611,7 @@
         if (active.id === 'view-cart') renderCart();
         if (active.id === 'view-section' && currentSection) openSection(currentSection.id);
         renderHomeSections();
+        renderTeam();
         if (typeof updateCartCount === 'function') updateCartCount();
       } catch (e) {}
     }
@@ -4626,7 +4641,6 @@
           desc: 'Montenegrin folk knitting is defined by thick, unbleached mountain wool designed for harsh karst winters. Geometric motifs from the Durmitor highlands traditionally encoded village lineages.',
           regions: ['All Regions', 'Durmitor', 'Bjelasica', 'Prokletije'],
           workshops: [
-,
             {
               id: 'w-elena',
               soloMaker: true,
@@ -5478,10 +5492,11 @@ currentView = viewId;
 
       // Specs
       const descEl = document.getElementById('product-desc');
-      descEl.innerText = foundProd.description || '';
-      descEl.style.display = foundProd.description ? 'block' : 'none';
+      const descTxt = real(foundProd.description);
+      descEl.innerText = descTxt;
+      descEl.style.display = descTxt ? 'block' : 'none';
 
-      document.getElementById('spec-material').innerText = foundProd.material;
+      document.getElementById('spec-material').innerText = real(foundProd.material);
       document.getElementById('spec-size').innerText = foundProd.size;
       document.getElementById('spec-care').innerText = foundProd.care;
       const daysRow = document.getElementById('spec-days').closest('.spec-row');
@@ -5493,7 +5508,7 @@ currentView = viewId;
       }
 
       const readingRow = document.getElementById('spec-reading-row');
-      if (foundProd.patternReading) {
+      if (real(foundProd.patternReading)) {
         document.getElementById('spec-reading').innerText = foundProd.patternReading;
         readingRow.style.display = '';
       } else {
@@ -5552,16 +5567,22 @@ currentView = viewId;
 
       // UPDATE TEASER BLOCK (NO VISIBLE CHART)
       document.getElementById('teaser-pattern-heading').innerText = foundProd.patternName || 'Traditional Regional Pattern';
-      document.getElementById('teaser-p1').innerText = foundProd.patternOrigin || 'Recorded in regional ethnography museum archives.';
-      document.getElementById('teaser-p2').innerText = foundProd.patternRevived || 'Revived directly from preserved shepherd garments.';
+      [['teaser-p1', real(foundProd.patternOrigin)],
+       ['teaser-p2', real(foundProd.patternRevived)]].forEach(([id, txt]) => {
+        const el = document.getElementById(id);
+        el.innerText = txt;
+        el.style.display = txt ? '' : 'none';
+      });
 
-      // Get Price for Pattern button from Scheme object
-      let patternPrice = 14;
+      // Кнопка ведёт к записи только тогда, когда запись готова и продаётся
       const targetScheme = foundCountry.schemes.find(s => s.id === foundProd.schemeId);
-      if (targetScheme) {
-        patternPrice = targetScheme.price;
+      const chartBtn = document.getElementById('get-full-chart-btn');
+      if (targetScheme && targetScheme.price != null) {
+        chartBtn.style.display = '';
+        chartBtn.innerText = `${t('record.get')} — €${targetScheme.price}`;
+      } else {
+        chartBtn.style.display = 'none';
       }
-      document.getElementById('get-full-chart-btn').innerText = `Get the full record — €${patternPrice}`;
 
       const teaser = document.querySelector('#view-product .pattern-section');
       if (foundProd.schemeId) {
@@ -5654,7 +5675,9 @@ function swapPhoto(el, src) {
       document.getElementById('partner-meta-row').innerHTML = facts;
       
       document.getElementById('partner-p1').innerText = foundEntity.storyP1;
-      document.getElementById('partner-p2').innerText = foundEntity.storyP2;
+      const p2El = document.getElementById('partner-p2');
+      p2El.innerText = real(foundEntity.storyP2);
+      p2El.style.display = p2El.innerText ? '' : 'none';
 
       // Workshop Pattern line
       const patternLine = document.getElementById('partner-pattern-line');
@@ -5828,7 +5851,9 @@ setHash('/maker/' + entityId);
       document.getElementById('pattern-breadcrumb-name').innerText = foundScheme.name;
       document.getElementById('pattern-page-title').innerText = foundScheme.name;
       document.getElementById('pattern-page-meta').innerText = `${foundScheme.region}, ${foundScheme.countryName}`;
-      document.getElementById('pattern-page-story').innerText = foundScheme.originStory;
+      const storyEl = document.getElementById('pattern-page-story');
+      storyEl.innerText = real(foundScheme.originStory);
+      storyEl.style.display = storyEl.innerText ? '' : 'none';
       // запись без нарисованной схемы и без текста продавать нечем
       const buyable = foundScheme.price != null;
       document.getElementById('pattern-purchase-row').style.display = buyable ? '' : 'none';
@@ -6086,6 +6111,34 @@ const SHIPPING = [
   { zone: 'Rest of the world',                price: 36,    days: '14–25' }
 ];
 
+/* Внутренние заметки не должны доезжать до покупателя.
+   Возвращает пустую строку, если значение — заглушка,
+   и отрезает хвост-заглушку внутри строки. */
+    /* Кто мы — из тех же данных, что и весь сайт: выдумывать людей нельзя */
+    function renderTeam() {
+      const grid = document.getElementById('team-grid');
+      if (!grid) return;
+      const people = [];
+      Object.values(DATA.countries).forEach(c => {
+        (c.workshops || []).forEach(w => {
+          if (w.soloMaker) people.push({ w: w, country: c });
+        });
+      });
+      grid.innerHTML = people.map(({ w, country }) => `
+        <div class="team-card" onclick="openPartnerDetail('${w.id}')" style="cursor:pointer;">
+          <div class="team-initial" style="background-color:${w.color || 'var(--madder)'}">${w.name.charAt(0)}</div>
+          <h3 class="serif">${w.name}</h3>
+          <div class="team-role">${t('role.maker')} &middot; ${w.city}, ${country.name}</div>
+          <p>${real(w.storyP1)}</p>
+        </div>`).join('');
+    }
+
+function real(v) {
+  if (typeof v !== 'string') return v || '';
+  const cut = v.split(/\s*[·-]\s*PLACEHOLDER/)[0];
+  return /^\s*PLACEHOLDER/.test(cut) ? '' : cut.trim();
+}
+
 function priceLabel(v) {
   return (v === null || v === undefined) ? t('price.onRequest') : '€' + v;
 }
@@ -6231,6 +6284,7 @@ function orderEmail(){
     window.addEventListener('DOMContentLoaded', () => {
       initLang();
       renderHomeSections();
+      renderTeam();
       loadCart();
       const q = new URLSearchParams(location.search);
       const thanks = q.get('thanks') === '1';
